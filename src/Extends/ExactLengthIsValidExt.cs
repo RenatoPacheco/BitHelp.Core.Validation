@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification ExactLengthEhValido(
-            this ValidationNotification notificacao, object value, int exact)
+            this ValidationNotification source, object value, int exact)
         {
-            return notificacao.ExactLengthEhValido(value, Resource.Value, null, exact);
+            return source.ExactLengthEhValido(value, Resource.Value, null, exact);
         }
 
         private static ValidationNotification ExactLengthEhValido(

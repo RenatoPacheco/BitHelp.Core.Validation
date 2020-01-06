@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification TimeSpanEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.TimeSpanEhValido(value, Resource.Value, null);
+            return source.TimeSpanEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification TimeSpanEhValido(

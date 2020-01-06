@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification DoubleEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.DoubleEhValido(value, Resource.Value, null);
+            return source.DoubleEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification DoubleEhValido(

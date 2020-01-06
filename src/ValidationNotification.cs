@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation
             Expression<Func<T, object>> expression,
             string message = null, string reference = null)
         {
-            this.Add<T>(expression, message, reference, ValidationType.Error);
+            this.Add(expression, message, reference, ValidationType.Error);
         }
 
         #endregion
@@ -90,7 +90,7 @@ namespace BitHelp.Core.Validation
             Expression<Func<T, object>> expression, 
             string message = null, string reference = null)
         {
-            this.Add<T>(expression, message, reference, ValidationType.Unauthorized);
+            this.Add(expression, message, reference, ValidationType.Unauthorized);
         }
 
         #endregion
@@ -107,7 +107,7 @@ namespace BitHelp.Core.Validation
             Expression<Func<T, object>> expression, 
             string message = null, string reference = null)
         {
-            this.Add<T>(expression, message, reference, ValidationType.Alert);
+            this.Add(expression, message, reference, ValidationType.Alert);
         }
 
         #endregion
@@ -124,7 +124,7 @@ namespace BitHelp.Core.Validation
             Expression<Func<T, object>> expression, 
             string message = null, string reference = null)
         {
-            this.Add<T>(expression, message, reference, ValidationType.Success);
+            this.Add(expression, message, reference, ValidationType.Success);
         }
 
         #endregion
@@ -141,7 +141,7 @@ namespace BitHelp.Core.Validation
             Expression<Func<T, object>> expression, string message = null,
             string reference = null)
         {
-            this.Add<T>(expression, message, reference, ValidationType.Info);
+            this.Add(expression, message, reference, ValidationType.Info);
         }
 
         #endregion

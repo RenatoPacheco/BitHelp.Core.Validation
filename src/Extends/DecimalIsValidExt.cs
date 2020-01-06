@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification DecimalEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.DecimalEhValido(value, Resource.Value, null);
+            return source.DecimalEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification DecimalEhValido(

@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification CpfEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.CpfEhValido(value, Resource.Value, null);
+            return source.CpfEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification CpfEhValido(

@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification MaxLengthEhValido(
-            this ValidationNotification notificacao, object value, int maximum)
+            this ValidationNotification source, object value, int maximum)
         {
-            return notificacao.MaxLengthEhValido(value, Resource.Value, null, maximum);
+            return source.MaxLengthEhValido(value, Resource.Value, null, maximum);
         }
 
         private static ValidationNotification MaxLengthEhValido(

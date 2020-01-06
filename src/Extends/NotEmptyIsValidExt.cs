@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification NotEmptyEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.NotEmptyEhValido(value, Resource.Value, null);
+            return source.NotEmptyEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification NotEmptyEhValido(

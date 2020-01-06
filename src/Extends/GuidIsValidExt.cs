@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification GuidEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.GuidEhValido(value, Resource.Value, null);
+            return source.GuidEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification GuidEhValido(

@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification EmailEhValido(
-            this ValidationNotification notificacao, object value)
+            this ValidationNotification source, object value)
         {
-            return notificacao.EmailEhValido(value, Resource.Value, null);
+            return source.EmailEhValido(value, Resource.Value, null);
         }
 
         private static ValidationNotification EmailEhValido(
