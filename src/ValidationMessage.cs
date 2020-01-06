@@ -57,7 +57,7 @@ namespace BitHelp.Core.Validation
             return this.Message;
         }
 
-        public bool IsError()
+        public bool IsTypeError()
         {
             return (int)this.Type >= (int)ValidationType.Unauthorized;
         }

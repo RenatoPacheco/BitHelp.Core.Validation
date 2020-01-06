@@ -29,7 +29,7 @@ namespace BitHelp.Core.Validation.Extends
         {
             source.LastMessage = null;
             RequiredIsValidAttribute validation = new RequiredIsValidAttribute();
-            if(!source.Messages.Any(x => x.IsError() && x.Reference?.ToLower() == reference?.ToLower()))
+            if(!source.Messages.Any(x => x.IsTypeError() && x.Reference?.ToLower() == reference?.ToLower()))
             {
                 if (!validation.IsValid(value))
                 {

@@ -13,6 +13,11 @@ namespace BitHelp.Core.Validation
         public IList<ValidationMessage> Messages { get; set; } = new List<ValidationMessage>();
         
         public ValidationMessage LastMessage { get; set; }
+        
+        public void Add(ValidationMessage data)
+        {
+            this.Messages.Add(data);
+        }
 
         public void Add(ISelfValidation data)
         {
@@ -24,16 +29,9 @@ namespace BitHelp.Core.Validation
             this.Messages = this.Messages.Concat(notification.Messages).ToList();
         }
 
-        public void Add(
-           string message, ValidationType type = ValidationType.Error, 
-           string reference = null)
-        {
-            this.Messages.Add(new ValidationMessage(message, reference, type));
-        }
-
-        public void Add<T>(
-            Expression<Func<T, object>> expression, string message = null, 
-            ValidationType type = ValidationType.Error, string reference = null)
+        private void Add<T>(
+            Expression<Func<T, object>> expression, string message,
+            string reference, ValidationType type)
         {
             string display = expression.PropertyDisplay();
 
@@ -45,21 +43,123 @@ namespace BitHelp.Core.Validation
             this.Messages.Add(new ValidationMessage(message, reference, type));
         }
 
-        public void Add<T>(
-            Expression<Func<T, object>> expression, 
-            ValidationType type, string reference = null)
+        #region AddError
+
+        public void AddError(
+           string message, string reference = null)
         {
-            this.Add(expression, null, type, reference);
+            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Error));
         }
 
-        public bool AnyEror()
+        public void AddError<T>(
+            Expression<Func<T, object>> expression,
+            string message = null, string reference = null)
         {
-            return this.Messages.Any(x => x.IsError());
+            this.Add<T>(expression, message, reference, ValidationType.Error);
+        }
+
+        #endregion
+
+        #region AddFatal
+
+        public void AddFatal(
+           Exception exception, string reference = null)
+        {
+            this.Messages.Add(new ValidationMessage(exception, reference));
+        }
+
+        public void AddFatal<T>(
+            Expression<Func<T, object>> expression, 
+            Exception exception, string reference = null)
+        {
+            reference = reference ?? expression.PropertyTrail();
+            this.Messages.Add(new ValidationMessage(exception, reference));
+        }
+
+        #endregion
+
+        #region AddUnauthorized
+
+        public void AddUnauthorized(
+           string message, string reference = null)
+        {
+            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Unauthorized));
+        }
+
+        public void AddUnauthorized<T>(
+            Expression<Func<T, object>> expression, 
+            string message = null, string reference = null)
+        {
+            this.Add<T>(expression, message, reference, ValidationType.Unauthorized);
+        }
+
+        #endregion
+
+        #region AddAlert
+
+        public void AddAlert(
+           string message, string reference = null)
+        {
+            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Alert));
+        }
+
+        public void AddAlert<T>(
+            Expression<Func<T, object>> expression, 
+            string message = null, string reference = null)
+        {
+            this.Add<T>(expression, message, reference, ValidationType.Alert);
+        }
+
+        #endregion
+
+        #region AddSuccess
+
+        public void AddSuccess(
+           string message, string reference = null)
+        {
+            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Success));
+        }
+
+        public void AddSuccess<T>(
+            Expression<Func<T, object>> expression, 
+            string message = null, string reference = null)
+        {
+            this.Add<T>(expression, message, reference, ValidationType.Success);
+        }
+
+        #endregion
+
+        #region AddInfo
+
+        public void AddInfo(
+           string message, string reference = null)
+        {
+            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Info));
+        }
+
+        public void AddInfo<T>(
+            Expression<Func<T, object>> expression, string message = null,
+            string reference = null)
+        {
+            this.Add<T>(expression, message, reference, ValidationType.Info);
+        }
+
+        #endregion
+
+        public bool AnyTypeError()
+        {
+            return this.Messages.Any(x => x.IsTypeError());
         }
 
         public void Clear()
         {
             this.Messages.Clear();
+        }
+
+        public void RemoveAtReference(string reference)
+        {
+            reference = reference?.ToLower();
+            this.Messages = this.Messages.Where(x => x.Reference?.ToLower() == reference).ToList();
         }
     }
 }
