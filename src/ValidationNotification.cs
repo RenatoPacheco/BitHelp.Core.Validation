@@ -146,6 +146,11 @@ namespace BitHelp.Core.Validation
 
         #endregion
 
+        public bool IsValid()
+        {
+            return !this.Messages.Any(x => x.IsTypeError());
+        }
+
         public bool AnyTypeError()
         {
             return this.Messages.Any(x => x.IsTypeError());
