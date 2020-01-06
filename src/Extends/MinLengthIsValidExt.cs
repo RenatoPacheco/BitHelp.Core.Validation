@@ -20,7 +20,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MinLengthEhValido(
             this ValidationNotification source, object value, int minimum)
         {
-            return source.MinLengthEhValido(value, Resource.Value, null, minimum);
+            return source.MinLengthEhValido(value, Resource.DisplayValue, null, minimum);
         }
 
         private static ValidationNotification MinLengthEhValido(

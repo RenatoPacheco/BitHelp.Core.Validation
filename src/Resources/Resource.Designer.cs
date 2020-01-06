@@ -61,6 +61,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        internal static string DisplayValue {
+            get {
+                return ResourceManager.GetString("DisplayValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimum value is {0}..
         /// </summary>
         internal static string MinimumValieIs {
@@ -93,15 +102,6 @@ namespace BitHelp.Core.Validation.Resources {
         internal static string Valid {
             get {
                 return ResourceManager.GetString("Valid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Value.
-        /// </summary>
-        internal static string Value {
-            get {
-                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
         

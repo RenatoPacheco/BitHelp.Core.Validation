@@ -20,7 +20,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification DateTimeEhValido(
             this ValidationNotification source, object value)
         {
-            return source.DateTimeEhValido(value, Resource.Value, null);
+            return source.DateTimeEhValido(value, Resource.DisplayValue, null);
         }
 
         private static ValidationNotification DateTimeEhValido(

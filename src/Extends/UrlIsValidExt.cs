@@ -20,7 +20,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification UrlEhValido(
             this ValidationNotification source, object value)
         {
-            return source.UrlEhValido(value, Resource.Value, null);
+            return source.UrlEhValido(value, Resource.DisplayValue, null);
         }
 
         private static ValidationNotification UrlEhValido(

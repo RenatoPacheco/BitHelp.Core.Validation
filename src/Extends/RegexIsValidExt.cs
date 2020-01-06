@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RegexEhValido(
             this ValidationNotification source, object value, string pattern, RegexOptions options = RegexOptions.None)
         {
-            return source.RegexEhValido(value, Resource.Value, null, pattern, options);
+            return source.RegexEhValido(value, Resource.DisplayValue, null, pattern, options);
         }
 
         private static ValidationNotification RegexEhValido(
