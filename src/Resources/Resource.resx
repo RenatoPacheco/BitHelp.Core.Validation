@@ -118,16 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MinimumValieIs" xml:space="preserve">
-    <value>Minimum value is {0}</value>
+    <value>Minimum value is {0}.</value>
   </data>
   <data name="NotValid" xml:space="preserve">
-    <value>Value is not valid."</value>
+    <value>Value is not valid.</value>
   </data>
   <data name="Requerid" xml:space="preserve">
     <value>Value is required.</value>
   </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
   <data name="XNotValid" xml:space="preserve">
-    <value>{0} is not valid."</value>
+    <value>{0} is not valid.</value>
   </data>
   <data name="XRequerid" xml:space="preserve">
     <value>{0} is requerid.</value>

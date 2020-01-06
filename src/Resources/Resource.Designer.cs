@@ -61,7 +61,7 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum value is {0}.
+        ///   Looks up a localized string similar to Minimum value is {0}..
         /// </summary>
         internal static string MinimumValieIs {
             get {
@@ -70,7 +70,7 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value is not valid.&quot;.
+        ///   Looks up a localized string similar to Value is not valid..
         /// </summary>
         internal static string NotValid {
             get {
@@ -88,7 +88,16 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is not valid.&quot;.
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        internal static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not valid..
         /// </summary>
         internal static string XNotValid {
             get {

@@ -11,6 +11,18 @@ namespace BitHelp.Core.Validation
     public class ValidationNotification
     {
         public IList<ValidationMessage> Messages { get; set; } = new List<ValidationMessage>();
+        
+        public ValidationMessage LastMessage { get; set; }
+
+        public void Add(ISelfValidation data)
+        {
+            this.Messages = this.Messages.Concat(data.Notifications.Messages).ToList();
+        }
+
+        public void Add(ValidationNotification notification)
+        {
+            this.Messages = this.Messages.Concat(notification.Messages).ToList();
+        }
 
         public void Add(
            string message, ValidationType type = ValidationType.Error, 

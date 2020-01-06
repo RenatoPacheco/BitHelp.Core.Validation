@@ -1,0 +1,41 @@
+﻿using System;
+using System.Linq.Expressions;
+using BitHelp.Core.Extend;
+using BitHelp.Core.Validation.Notations;
+using BitHelp.Core.Validation.Resources;
+
+namespace BitHelp.Core.Validation.Extends
+{
+    public static class LongIsValidExt
+    {
+        public static ValidationNotification LongEhValido<TClasse>(
+            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
+        {
+            string prorpety = expression.PropertyTrail();
+            object value = expression.PropertyInfo().GetValue(data);
+            string display = expression.PropertyDisplay();
+            return source.LongEhValido(value, display, prorpety);
+        }
+
+        public static ValidationNotification LongEhValido(
+            this ValidationNotification notificacao, object value)
+        {
+            return notificacao.LongEhValido(value, Resource.Value, null);
+        }
+
+        private static ValidationNotification LongEhValido(
+            this ValidationNotification source, object value, string display, string reference)
+        {
+            source.LastMessage = null;
+            LongIsValidAttribute validation = new LongIsValidAttribute();
+            if (!validation.IsValid(value))
+            {
+                string text = validation.FormatErrorMessage(display);
+                var message = new ValidationMessage(text, reference);
+                source.LastMessage = message;
+                source.Add(message);
+            }
+            return source;
+        }
+    }
+}
