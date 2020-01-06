@@ -37,7 +37,7 @@ namespace BitHelp.Core.Validation
 
             reference = reference ?? expression.PropertyTrail();
 
-            message = message ?? Resource.XNotValid;
+            message = message ?? (ValidationMessage.IsTypeError(type) ? Resource.XNotValid : Resource.XValid);
             message = Regex.Replace(message, @"\{0\}", display);
 
             this.Messages.Add(new ValidationMessage(message, reference, type));

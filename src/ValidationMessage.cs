@@ -62,6 +62,11 @@ namespace BitHelp.Core.Validation
             return (int)this.Type >= (int)ValidationType.Unauthorized;
         }
 
+        public static bool IsTypeError(ValidationType type)
+        {
+            return (int)type >= (int)ValidationType.Unauthorized;
+        }
+
         #region operator
 
         public override bool Equals(object obj)

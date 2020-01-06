@@ -88,6 +88,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value is valid..
+        /// </summary>
+        internal static string Valid {
+            get {
+                return ResourceManager.GetString("Valid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
         internal static string Value {
@@ -111,6 +120,15 @@ namespace BitHelp.Core.Validation.Resources {
         internal static string XRequerid {
             get {
                 return ResourceManager.GetString("XRequerid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is valid..
+        /// </summary>
+        internal static string XValid {
+            get {
+                return ResourceManager.GetString("XValid", resourceCulture);
             }
         }
     }

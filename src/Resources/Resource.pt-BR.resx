@@ -126,6 +126,9 @@
   <data name="Requerid" xml:space="preserve">
     <value>Valor é obrigatório.</value>
   </data>
+  <data name="Valid" xml:space="preserve">
+    <value>Valor é válido.</value>
+  </data>
   <data name="Value" xml:space="preserve">
     <value>Valor</value>
   </data>
@@ -134,5 +137,8 @@
   </data>
   <data name="XRequerid" xml:space="preserve">
     <value>{0} é obrigatório(a). </value>
+  </data>
+  <data name="XValid" xml:space="preserve">
+    <value>{0} é válido.</value>
   </data>
 </root>
