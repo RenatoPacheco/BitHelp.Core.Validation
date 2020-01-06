@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Notations
             }
             else
             {
-                value = base.IsValid(value);
+                result = base.IsValid(value);
             }
             return result;
         }
