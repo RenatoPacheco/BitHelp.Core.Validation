@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -9,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
         public ExactLengthIsValidAttribute(int exact)
         {
             if (exact < 1)
-                throw new ArgumentException("Minimum value is 1", nameof(exact));
+                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(exact));
 
             this.Exact = exact;
         }
