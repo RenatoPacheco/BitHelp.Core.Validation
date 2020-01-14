@@ -13,7 +13,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, string pattern, RegexOptions options = RegexOptions.None)
         {
             string prorpety = expression.PropertyTrail();
-            object value = expression.PropertyInfo().GetValue(data);
+            object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
             return source.RegexEhValido(value, display, prorpety, pattern, options);
         }

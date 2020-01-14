@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
-            object value = expression.PropertyInfo().GetValue(data);
+            object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
             return source.UrlEhValido(value, display, prorpety);
         }
