@@ -59,7 +59,7 @@ namespace BitHelp.Core.Validation
 
         public bool IsTypeError()
         {
-            return (int)this.Type >= (int)ValidationType.Unauthorized;
+            return (int)this.Type <= (int)ValidationType.Unauthorized;
         }
 
         public static bool IsTypeError(ValidationType type)
