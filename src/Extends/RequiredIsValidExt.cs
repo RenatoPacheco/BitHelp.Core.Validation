@@ -9,22 +9,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RequiredIsValidExt
     {
-        public static ValidationNotification RequiredEhValido<TClasse>(
+        public static ValidationNotification RequiredIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.RequiredEhValido(value, display, prorpety);
+            return source.RequiredIsValid(value, display, prorpety);
         }
 
-        public static ValidationNotification RequiredEhValido(
+        public static ValidationNotification RequiredIsValid(
             this ValidationNotification source, object value)
         {
-            return source.RequiredEhValido(value, Resource.DisplayValue, null);
+            return source.RequiredIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification RequiredEhValido(
+        private static ValidationNotification RequiredIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;

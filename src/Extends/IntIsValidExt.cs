@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class IntIsValidExt
     {
-        public static ValidationNotification IntEhValido<TClasse>(
+        public static ValidationNotification IntIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.IntEhValido(value, display, prorpety);
+            return source.IntIsValid(value, display, prorpety);
         }
 
-        public static ValidationNotification IntEhValido(
+        public static ValidationNotification IntIsValid(
             this ValidationNotification source, object value)
         {
-            return source.IntEhValido(value, Resource.DisplayValue, null);
+            return source.IntIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification IntEhValido(
+        private static ValidationNotification IntIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;

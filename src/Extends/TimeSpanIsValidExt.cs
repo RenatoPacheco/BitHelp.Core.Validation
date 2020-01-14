@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class TimeSpanIsValidExt
     {
-        public static ValidationNotification TimeSpanEhValido<TClasse>(
+        public static ValidationNotification TimeSpanIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.TimeSpanEhValido(value, display, prorpety);
+            return source.TimeSpanIsValid(value, display, prorpety);
         }
 
-        public static ValidationNotification TimeSpanEhValido(
+        public static ValidationNotification TimeSpanIsValid(
             this ValidationNotification source, object value)
         {
-            return source.TimeSpanEhValido(value, Resource.DisplayValue, null);
+            return source.TimeSpanIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification TimeSpanEhValido(
+        private static ValidationNotification TimeSpanIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;

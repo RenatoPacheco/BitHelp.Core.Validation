@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ExactLengthIsValidExt
     {
-        public static ValidationNotification ExactLengthEhValido<TClasse>(
+        public static ValidationNotification ExactLengthIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int exact)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.ExactLengthEhValido(value, display, prorpety, exact);
+            return source.ExactLengthIsValid(value, display, prorpety, exact);
         }
 
-        public static ValidationNotification ExactLengthEhValido(
+        public static ValidationNotification ExactLengthIsValid(
             this ValidationNotification source, object value, int exact)
         {
-            return source.ExactLengthEhValido(value, Resource.DisplayValue, null, exact);
+            return source.ExactLengthIsValid(value, Resource.DisplayValue, null, exact);
         }
 
-        private static ValidationNotification ExactLengthEhValido(
+        private static ValidationNotification ExactLengthIsValid(
             this ValidationNotification source, object value, string display, string reference, int exact)
         {
             source.LastMessage = null;

@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class NotEmptyIsValidExt
     {
-        public static ValidationNotification NotEmptyEhValido<TClasse>(
+        public static ValidationNotification NotEmptyIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.NotEmptyEhValido(value, display, prorpety);
+            return source.NotEmptyIsValid(value, display, prorpety);
         }
 
-        public static ValidationNotification NotEmptyEhValido(
+        public static ValidationNotification NotEmptyIsValid(
             this ValidationNotification source, object value)
         {
-            return source.NotEmptyEhValido(value, Resource.DisplayValue, null);
+            return source.NotEmptyIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification NotEmptyEhValido(
+        private static ValidationNotification NotEmptyIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;

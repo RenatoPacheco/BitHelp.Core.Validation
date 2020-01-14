@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class EnumIsValidExt
     {
-        public static ValidationNotification EnumEhValido<TClasse>(
+        public static ValidationNotification EnumIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, Type type)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.EnumEhValido(value, display, prorpety, type);
+            return source.EnumIsValid(value, display, prorpety, type);
         }
 
-        public static ValidationNotification EnumEhValido(
+        public static ValidationNotification EnumIsValid(
             this ValidationNotification source, object value, Type type)
         {
-            return source.EnumEhValido(value, Resource.DisplayValue, null, type);
+            return source.EnumIsValid(value, Resource.DisplayValue, null, type);
         }
 
-        private static ValidationNotification EnumEhValido(
+        private static ValidationNotification EnumIsValid(
             this ValidationNotification source, object value, string display, string reference, Type type)
         {
             source.LastMessage = null;

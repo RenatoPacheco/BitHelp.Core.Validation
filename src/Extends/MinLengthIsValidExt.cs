@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinLengthIsValidExt
     {
-        public static ValidationNotification MinLengthEhValido<TClasse>(
+        public static ValidationNotification MinLengthIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int minimum)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.MinLengthEhValido(value, display, prorpety, minimum);
+            return source.MinLengthIsValid(value, display, prorpety, minimum);
         }
 
-        public static ValidationNotification MinLengthEhValido(
+        public static ValidationNotification MinLengthIsValid(
             this ValidationNotification source, object value, int minimum)
         {
-            return source.MinLengthEhValido(value, Resource.DisplayValue, null, minimum);
+            return source.MinLengthIsValid(value, Resource.DisplayValue, null, minimum);
         }
 
-        private static ValidationNotification MinLengthEhValido(
+        private static ValidationNotification MinLengthIsValid(
             this ValidationNotification source, object value, string display, string reference, int minimum)
         {
             source.LastMessage = null;

@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class CpfIsValidExt
     {
-        public static ValidationNotification CpfEhValido<TClasse>(
+        public static ValidationNotification CpfIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.CpfEhValido(value, display, prorpety);
+            return source.CpfIsValid(value, display, prorpety);
         }
 
-        public static ValidationNotification CpfEhValido(
+        public static ValidationNotification CpfIsValid(
             this ValidationNotification source, object value)
         {
-            return source.CpfEhValido(value, Resource.DisplayValue, null);
+            return source.CpfIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification CpfEhValido(
+        private static ValidationNotification CpfIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;

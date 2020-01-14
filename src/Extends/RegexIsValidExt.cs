@@ -9,22 +9,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RegexIsValidExt
     {
-        public static ValidationNotification RegexEhValido<TClasse>(
+        public static ValidationNotification RegexIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, string pattern, RegexOptions options = RegexOptions.None)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.RegexEhValido(value, display, prorpety, pattern, options);
+            return source.RegexIsValid(value, display, prorpety, pattern, options);
         }
 
-        public static ValidationNotification RegexEhValido(
+        public static ValidationNotification RegexIsValid(
             this ValidationNotification source, object value, string pattern, RegexOptions options = RegexOptions.None)
         {
-            return source.RegexEhValido(value, Resource.DisplayValue, null, pattern, options);
+            return source.RegexIsValid(value, Resource.DisplayValue, null, pattern, options);
         }
 
-        private static ValidationNotification RegexEhValido(
+        private static ValidationNotification RegexIsValid(
             this ValidationNotification source, object value, string display, string reference, string pattern, RegexOptions options = RegexOptions.None)
         {
             source.LastMessage = null;

@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class DateTimeIsValidExt
     {
-        public static ValidationNotification DateTimeEhValido<TClasse>(
+        public static ValidationNotification DateTimeIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.DateTimeEhValido(value, display, prorpety);
+            return source.DateTimeIsValid(value, display, prorpety);
         }
 
-        public static ValidationNotification DateTimeEhValido(
+        public static ValidationNotification DateTimeIsValid(
             this ValidationNotification source, object value)
         {
-            return source.DateTimeEhValido(value, Resource.DisplayValue, null);
+            return source.DateTimeIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification DateTimeEhValido(
+        private static ValidationNotification DateTimeIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;

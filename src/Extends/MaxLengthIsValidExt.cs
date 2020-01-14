@@ -8,22 +8,22 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MaxLengthIsValidExt
     {
-        public static ValidationNotification MaxLengthEhValido<TClasse>(
+        public static ValidationNotification MaxLengthIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int maximum)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.MaxLengthEhValido(value, display, prorpety, maximum);
+            return source.MaxLengthIsValid(value, display, prorpety, maximum);
         }
 
-        public static ValidationNotification MaxLengthEhValido(
+        public static ValidationNotification MaxLengthIsValid(
             this ValidationNotification source, object value, int maximum)
         {
-            return source.MaxLengthEhValido(value, Resource.DisplayValue, null, maximum);
+            return source.MaxLengthIsValid(value, Resource.DisplayValue, null, maximum);
         }
 
-        private static ValidationNotification MaxLengthEhValido(
+        private static ValidationNotification MaxLengthIsValid(
             this ValidationNotification source, object value, string display, string reference, int maximum)
         {
             source.LastMessage = null;
