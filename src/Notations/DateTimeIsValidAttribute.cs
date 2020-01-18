@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -11,10 +12,15 @@ namespace BitHelp.Core.Validation.Notations
             this.ErrorMessageResourceName = nameof(Resources.Resource.XDateTimeInvalid);
         }
 
+        /// <summary>
+        /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
+        /// </summary>
+        public CultureInfo CultureInfo { get; set; }
+
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return DateTime.TryParse(input, out _);
+            return DateTime.TryParse(input, this.CultureInfo ?? CultureInfo.CurrentCulture, DateTimeStyles.None, out _);
         }
     }
 }
