@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification BoolIsValid(
-            this ValidationNotification source, object value)
+            this ValidationNotification source, object value, string reference = null)
         {
-            return source.BoolIsValid(value, Resource.DisplayValue, null);
+            return source.BoolIsValid(value, Resource.DisplayValue, reference);
         }
 
         private static ValidationNotification BoolIsValid(

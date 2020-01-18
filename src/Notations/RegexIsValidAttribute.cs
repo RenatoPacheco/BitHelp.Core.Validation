@@ -8,6 +8,7 @@ namespace BitHelp.Core.Validation.Notations
     public class RegexIsValidAttribute : ListIsValidAttribute
     {
         public RegexIsValidAttribute(string pattern, RegexOptions options = RegexOptions.None)
+            :base()
         {
             this.Pattern = pattern;
             this.Options = options;

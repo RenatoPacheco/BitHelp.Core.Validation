@@ -6,6 +6,11 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class TimeSpanIsValidAttribute : ListIsValidAttribute
     {
+        public TimeSpanIsValidAttribute() : base()
+        {
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XTimeSpanInvalid);
+        }
+
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);

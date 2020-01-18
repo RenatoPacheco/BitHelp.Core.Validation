@@ -44,5 +44,10 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         [Display(Name = "Bool null")]
         public bool? BoolNull { get; set; }
+
+        public EnumValue Enum { get; set; }
+
+        [Display(Name = "Enum null")]
+        public EnumValue? EnumNull { get; set; }
     }
 }

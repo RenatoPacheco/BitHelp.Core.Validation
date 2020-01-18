@@ -10,10 +10,14 @@ namespace BitHelp.Core.Validation.Notations
         public MaxNumberIsValidAttribute(int maximum)
             : base()
         {
-            if (maximum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XMaxNumberInvalid);
 
             this.Maximum = maximum;
+        }
+
+        public override string FormatErrorMessage(string name)
+        {
+            return string.Format(this.ErrorMessageString, name, this.Maximum);
         }
 
         public int Maximum { get; set; }

@@ -10,10 +10,14 @@ namespace BitHelp.Core.Validation.Notations
         public MinNumberIsValidAttribute(int minimum)
             : base()
         {
-            if (minimum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(minimum));
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XMinCharactersInvalid);
 
             this.Minimum = minimum;
+        }
+
+        public override string FormatErrorMessage(string name)
+        {
+            return string.Format(this.ErrorMessageString, name, this.Minimum);
         }
 
         public int Minimum { get; set; }

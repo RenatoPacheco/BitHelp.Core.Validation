@@ -162,8 +162,14 @@
   <data name="XMaxCharactersInvalid" xml:space="preserve">
     <value>{0} must contain at most {1} characters.</value>
   </data>
+  <data name="XMaxNumberInvalid" xml:space="preserve">
+    <value>{0} must be less than or equal to {1}.</value>
+  </data>
   <data name="XMinCharactersInvalid" xml:space="preserve">
     <value>{0} must contain at least {1} characters.</value>
+  </data>
+  <data name="XMinNumberInvalid" xml:space="preserve">
+    <value>{0} must be greater than or equal to {1}.</value>
   </data>
   <data name="XNotEmptyInvalid" xml:space="preserve">
     <value>{0} is empty.</value>
@@ -179,6 +185,9 @@
   </data>
   <data name="XRequerid" xml:space="preserve">
     <value>{0} is requerid.</value>
+  </data>
+  <data name="XTimeSpanInvalid" xml:space="preserve">
+    <value>{0} is not valid timespan.</value>
   </data>
   <data name="XUrlInvalid" xml:space="preserve">
     <value>{0} is not a valid url.</value>

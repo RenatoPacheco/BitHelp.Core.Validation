@@ -2,8 +2,9 @@
 {
     public class RequiredIsValidAttribute : ListIsValidAttribute
     {
-        public RequiredIsValidAttribute()
+        public RequiredIsValidAttribute() : base()
         {
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XRequerid);
             this.IgnoreNull = false;
         }
 

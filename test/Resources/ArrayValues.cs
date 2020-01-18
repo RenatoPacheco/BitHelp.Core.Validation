@@ -31,5 +31,8 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         [Display(Name = "Array bool")]
         public bool[] Bool { get; set; }
+
+        [Display(Name = "Array enum")]
+        public EnumValue[] Enum { get; set; }
     }
 }

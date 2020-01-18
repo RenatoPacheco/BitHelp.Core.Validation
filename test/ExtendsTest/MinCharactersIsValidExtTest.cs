@@ -1,62 +1,64 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
-using System.Globalization;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class DateTimeIsValidExtTest
+    public class MinCharactersIsValidExtTest
     {
         readonly ValidationNotification notification = new ValidationNotification();
 
         [Fact]
-        public void Check_date_en_US_valid()
+        public void Check_min_characters_valid()
         {
+
             var single = new SingleValues
             {
-                String = "12/22/2020"
+                String = "MinCharactersIsValid"
             };
 
             notification.Clear();
-            notification.DateTimeIsValid(single.String, new CultureInfo("en-US"));
+            notification.MinCharactersIsValid(single.String, single.String.Length);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.DateTimeIsValid<SingleValues>(single, x => x.String, new CultureInfo("en-US"));
+            notification.MinCharactersIsValid<SingleValues>(single, x => x.String, single.String.Length);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_date_en_US_Invalid()
+        public void Check_min_characters_invalid()
         {
+
             var single = new SingleValues
             {
-                String = "22/12/2020"
+                String = "MinCharactersIsValid"
             };
 
             notification.Clear();
-            notification.DateTimeIsValid(single.String, new CultureInfo("en-US"));
+            notification.MinCharactersIsValid(single.String, single.String.Length + 1);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.DateTimeIsValid<SingleValues>(single, x => x.String, new CultureInfo("en-US"));
+            notification.MinCharactersIsValid<SingleValues>(single, x => x.String, single.String.Length + 1);
             Assert.False(notification.IsValid());
         }
 
         [Fact]
-        public void Check_date_pt_BR_valid()
+        public void Check_null_valid()
         {
+
             var single = new SingleValues
             {
-                String = "22/12/2020"
+                String = null
             };
 
             notification.Clear();
-            notification.DateTimeIsValid(single.String, new CultureInfo("pt-BR"));
+            notification.MinCharactersIsValid(single.String, 101);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.DateTimeIsValid<SingleValues>(single, x => x.String, new CultureInfo("pt-BR"));
+            notification.MinCharactersIsValid<SingleValues>(single, x => x.String, 10);
             Assert.True(notification.IsValid());
         }
     }

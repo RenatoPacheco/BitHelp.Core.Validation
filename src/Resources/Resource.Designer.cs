@@ -196,11 +196,29 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} must be less than or equal to {1}..
+        /// </summary>
+        internal static string XMaxNumberInvalid {
+            get {
+                return ResourceManager.GetString("XMaxNumberInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must contain at least {1} characters..
         /// </summary>
         internal static string XMinCharactersInvalid {
             get {
                 return ResourceManager.GetString("XMinCharactersInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be greater than or equal to {1}..
+        /// </summary>
+        internal static string XMinNumberInvalid {
+            get {
+                return ResourceManager.GetString("XMinNumberInvalid", resourceCulture);
             }
         }
         
@@ -246,6 +264,15 @@ namespace BitHelp.Core.Validation.Resources {
         internal static string XRequerid {
             get {
                 return ResourceManager.GetString("XRequerid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not valid timespan..
+        /// </summary>
+        internal static string XTimeSpanInvalid {
+            get {
+                return ResourceManager.GetString("XTimeSpanInvalid", resourceCulture);
             }
         }
         
