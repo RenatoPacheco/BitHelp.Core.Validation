@@ -132,11 +132,56 @@
   <data name="Valid" xml:space="preserve">
     <value>Value is valid.</value>
   </data>
+  <data name="XBooleanInvalid" xml:space="preserve">
+    <value>{0} is not valid boolean.</value>
+  </data>
+  <data name="XConfirmedInvalid" xml:space="preserve">
+    <value>{0} has not been confirmed.</value>
+  </data>
+  <data name="XDateTimeInvalid" xml:space="preserve">
+    <value>{0} is not valid date time.</value>
+  </data>
+  <data name="XDecimalInvalid" xml:space="preserve">
+    <value>{0} is not valid decimal.</value>
+  </data>
+  <data name="XDoubleInvalid" xml:space="preserve">
+    <value>{0} is not valid double.</value>
+  </data>
+  <data name="XExactCharactersInvalid" xml:space="preserve">
+    <value>{0} must contain exactly {1} characters.</value>
+  </data>
+  <data name="XGuidInvalid" xml:space="preserve">
+    <value>{0} is not valid guid.</value>
+  </data>
+  <data name="XIntInvalid" xml:space="preserve">
+    <value>{0} is not valid int.</value>
+  </data>
+  <data name="XLongInvalid" xml:space="preserve">
+    <value>{0} is not valid long.</value>
+  </data>
+  <data name="XMaxCharactersInvalid" xml:space="preserve">
+    <value>{0} must contain at most {1} characters.</value>
+  </data>
+  <data name="XMinCharactersInvalid" xml:space="preserve">
+    <value>{0} must contain at least {1} characters.</value>
+  </data>
+  <data name="XNotEmptyInvalid" xml:space="preserve">
+    <value>{0} is empty.</value>
+  </data>
   <data name="XNotValid" xml:space="preserve">
     <value>{0} is not valid.</value>
   </data>
+  <data name="XRangeCharactersInvalid" xml:space="preserve">
+    <value>{0} must have a caster between {1} and {2}.</value>
+  </data>
+  <data name="XRangeNumerInvalid" xml:space="preserve">
+    <value>{0} must contain a value between {1} and {2}.</value>
+  </data>
   <data name="XRequerid" xml:space="preserve">
     <value>{0} is requerid.</value>
+  </data>
+  <data name="XUrlInvalid" xml:space="preserve">
+    <value>{0} is not a valid url.</value>
   </data>
   <data name="XValid" xml:space="preserve">
     <value>{0} is valid.</value>

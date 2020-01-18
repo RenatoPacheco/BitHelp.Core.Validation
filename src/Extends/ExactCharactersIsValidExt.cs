@@ -6,28 +6,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class ExactLengthIsValidExt
+    public static class ExactCharactersIsValidExt
     {
-        public static ValidationNotification ExactLengthIsValid<TClasse>(
+        public static ValidationNotification ExactCharactersIsValid<TClasse>(
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int exact)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.ExactLengthIsValid(value, display, prorpety, exact);
+            return source.ExactCharactersIsValid(value, display, prorpety, exact);
         }
 
-        public static ValidationNotification ExactLengthIsValid(
+        public static ValidationNotification ExactCharactersIsValid(
             this ValidationNotification source, object value, int exact)
         {
-            return source.ExactLengthIsValid(value, Resource.DisplayValue, null, exact);
+            return source.ExactCharactersIsValid(value, Resource.DisplayValue, null, exact);
         }
 
-        private static ValidationNotification ExactLengthIsValid(
+        private static ValidationNotification ExactCharactersIsValid(
             this ValidationNotification source, object value, string display, string reference, int exact)
         {
             source.LastMessage = null;
-            ExactLengthIsValidAttribute validation = new ExactLengthIsValidAttribute(exact);
+            ExactCharactersIsValidAttribute validation = new ExactCharactersIsValidAttribute(exact);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

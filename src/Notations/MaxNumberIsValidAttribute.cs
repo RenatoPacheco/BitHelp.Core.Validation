@@ -5,9 +5,10 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class MaxLengthIsValidAttribute : ListIsValidAttribute
+    public class MaxNumberIsValidAttribute : ListIsValidAttribute
     {
-        public MaxLengthIsValidAttribute(int maximum)
+        public MaxNumberIsValidAttribute(int maximum)
+            : base()
         {
             if (maximum < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
@@ -20,7 +21,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return input.Length <= this.Maximum;
+            return int.TryParse(input, out int number) && number <= this.Maximum;
         }
     }
 }

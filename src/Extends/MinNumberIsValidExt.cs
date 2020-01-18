@@ -6,28 +6,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class MaxLengthIsValidExt
+    public static class MinNumberIsValidExt
     {
-        public static ValidationNotification MaxLengthIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int maximum)
+        public static ValidationNotification MinNumberIsValid<TClasse>(
+            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int minimum)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.PropertyInfo().GetValue(data, null);
             string display = expression.PropertyDisplay();
-            return source.MaxLengthIsValid(value, display, prorpety, maximum);
+            return source.MinNumberIsValid(value, display, prorpety, minimum);
         }
 
-        public static ValidationNotification MaxLengthIsValid(
-            this ValidationNotification source, object value, int maximum)
+        public static ValidationNotification MinNumberIsValid(
+            this ValidationNotification source, object value, int minimum)
         {
-            return source.MaxLengthIsValid(value, Resource.DisplayValue, null, maximum);
+            return source.MinNumberIsValid(value, Resource.DisplayValue, null, minimum);
         }
 
-        private static ValidationNotification MaxLengthIsValid(
-            this ValidationNotification source, object value, string display, string reference, int maximum)
+        private static ValidationNotification MinNumberIsValid(
+            this ValidationNotification source, object value, string display, string reference, int minimum)
         {
             source.LastMessage = null;
-            MaxLengthIsValidAttribute validation = new MaxLengthIsValidAttribute(maximum);
+            MinNumberIsValidAttribute validation = new MinNumberIsValidAttribute(minimum);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

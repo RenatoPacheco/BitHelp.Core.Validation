@@ -6,6 +6,11 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class DateTimeIsValidAttribute : ListIsValidAttribute
     {
+        public DateTimeIsValidAttribute() : base()
+        {
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XDateTimeInvalid);
+        }
+
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);

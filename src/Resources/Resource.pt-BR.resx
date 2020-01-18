@@ -132,11 +132,56 @@
   <data name="Valid" xml:space="preserve">
     <value>Valor é válido.</value>
   </data>
+  <data name="XBooleanInvalid" xml:space="preserve">
+    <value>{0} não é um boleano válido.</value>
+  </data>
+  <data name="XConfirmedInvalid" xml:space="preserve">
+    <value>{0} não foi confirmado.</value>
+  </data>
+  <data name="XDateTimeInvalid" xml:space="preserve">
+    <value>{0} não é uma data/hora válido.</value>
+  </data>
+  <data name="XDecimalInvalid" xml:space="preserve">
+    <value>{0} não é um número decimal válido.</value>
+  </data>
+  <data name="XDoubleInvalid" xml:space="preserve">
+    <value>{0} não é um número duplo válido.</value>
+  </data>
+  <data name="XExactCharactersInvalid" xml:space="preserve">
+    <value>{0} deve conter exatamente {1} caractéres.</value>
+  </data>
+  <data name="XGuidInvalid" xml:space="preserve">
+    <value>{0} não é um guid valido.</value>
+  </data>
+  <data name="XIntInvalid" xml:space="preserve">
+    <value>{0} não é  um número inteiro válido.</value>
+  </data>
+  <data name="XLongInvalid" xml:space="preserve">
+    <value>{0} não é um número longo válido.</value>
+  </data>
+  <data name="XMaxCharactersInvalid" xml:space="preserve">
+    <value>{0} deve conter no máximo {1} caractére(s).</value>
+  </data>
+  <data name="XMinCharactersInvalid" xml:space="preserve">
+    <value>{0} deve conter no mínimo {1} caractére(s).</value>
+  </data>
+  <data name="XNotEmptyInvalid" xml:space="preserve">
+    <value>{0} está vazio.</value>
+  </data>
   <data name="XNotValid" xml:space="preserve">
     <value>{0} não é válido(a).</value>
   </data>
+  <data name="XRangeCharactersInvalid" xml:space="preserve">
+    <value>{0} deve ter um número entre {1} e {2}.</value>
+  </data>
+  <data name="XRangeNumerInvalid" xml:space="preserve">
+    <value>{0} deve conter um valor entre {1} e {2}.</value>
+  </data>
   <data name="XRequerid" xml:space="preserve">
     <value>{0} é obrigatório(a). </value>
+  </data>
+  <data name="XUrlInvalid" xml:space="preserve">
+    <value>{0} não é uma url válida.</value>
   </data>
   <data name="XValid" xml:space="preserve">
     <value>{0} é válido.</value>

@@ -4,63 +4,63 @@ using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class GuidIsValidExtTest
+    public class RangeNumberIsValidExtTest
     {
         readonly ValidationNotification notification = new ValidationNotification();
 
         [Fact]
-        public void Check_guid_valid()
+        public void Check_ranger_10_between_20_at_15_valid()
         {
             var single = new SingleValues
             {
-                String = "3b8e6bc1-82eb-4339-998c-5f1fba019ae7"
+                Int = 15
             };
 
             notification.Clear();
-            notification.GuidIsValid(single.String);
+            notification.RangeNumberIsValid(single.Int, 10, 20);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_empty_guid_valid()
+        public void Check_ranger_10_between_20_at_30_invalid()
         {
             var single = new SingleValues
             {
-                String = "00000000-0000-0000-0000-000000000000"
+                Int = 30
             };
 
             notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.True(notification.IsValid());
-
-            notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
-            Assert.True(notification.IsValid());
-        }
-
-        [Fact]
-        public void Check_empty_is_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = string.Empty
-            };
-
-            notification.Clear();
-            notification.GuidIsValid(single.String);
+            notification.RangeNumberIsValid(single.Int, 10, 20);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
             Assert.False(notification.IsValid());
         }
 
         [Fact]
-        public void Check_null_is_valid()
+        public void Check_ranger_10_between_20_at_text_invalid()
+        {
+            var single = new SingleValues
+            {
+                String = "text"
+            };
+
+            notification.Clear();
+            notification.RangeNumberIsValid(single.Int, 10, 20);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_ranger_10_between_20_at_null_valid()
         {
             var single = new SingleValues
             {
@@ -68,28 +68,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.True(notification.IsValid());
-
-            notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
-            Assert.True(notification.IsValid());
-        }
-
-        [Fact]
-        public void Check_value_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = "3b8e6bc1-ghij-klmn-opqr-5f1fba019ae7"
-            };
-
-            notification.Clear();
-            notification.GuidIsValid(single.String);
+            notification.RangeNumberIsValid(single.Int, 10, 20);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_ranger_10_between_20_at_empty_invalid()
+        {
+            var single = new SingleValues
+            {
+                String = string.Empty
+            };
+
+            notification.Clear();
+            notification.RangeNumberIsValid(single.Int, 10, 20);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
             Assert.False(notification.IsValid());
         }
     }

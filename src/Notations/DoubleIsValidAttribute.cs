@@ -6,6 +6,12 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class DoubleIsValidAttribute : ListIsValidAttribute
     {
+        public DoubleIsValidAttribute() : base()
+        {
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XDoubleInvalid);
+        }
+
+
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);

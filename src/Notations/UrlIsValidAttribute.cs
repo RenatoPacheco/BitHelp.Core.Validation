@@ -7,6 +7,11 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class UrlIsValidAttribute : ListIsValidAttribute
     {
+        public UrlIsValidAttribute() : base()
+        {
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XUrlInvalid);
+        }
+
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
