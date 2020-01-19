@@ -1,8 +1,5 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest

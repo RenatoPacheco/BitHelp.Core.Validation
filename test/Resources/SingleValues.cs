@@ -24,6 +24,11 @@ namespace BitHelp.Core.Validation.Test.Resources
         [Display(Name = "Decimal null")]
         public decimal? DecimalNull { get; set; }
 
+        public double Double { get; set; }
+
+        [Display(Name = "Double null")]
+        public double? DoubleNull { get; set; }
+
         public uint Uint { get; set; }
 
         [Display(Name = "Uint null")]
