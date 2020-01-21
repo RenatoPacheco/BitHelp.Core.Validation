@@ -126,7 +126,7 @@
   <data name="NotValid" xml:space="preserve">
     <value>Valor não é válido.</value>
   </data>
-  <data name="NumberOfItemsEqualInvalid" xml:space="preserve">
+  <data name="EqualNumberItensInvalid" xml:space="preserve">
     <value>Quantidades de itens não são iguais.</value>
   </data>
   <data name="Requerid" xml:space="preserve">

@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class NumberOfItemsEqualIsValidExt
+    public static class EqualNumberItensIsValidExt
     {
-        public static ValidationNotification NumberOfItemsEqualIsValid<TClasse>(
+        public static ValidationNotification EqualNumberItensIsValid<TClasse>(
             this ValidationNotification source, TClasse data, string reference, Expression<Func<TClasse, IList>> expression,
                 Expression<Func<TClasse, IList>> expressionCompare, params Expression<Func<TClasse, IList>>[] expressionList)
             where TClasse : class
@@ -23,17 +23,17 @@ namespace BitHelp.Core.Validation.Extends
             {
                 values.Add(item.Compile().DynamicInvoke(data) as IList);
             }
-            return source.NumberOfItemsEqualIsValid(reference, values);
+            return source.EqualNumberItensIsValid(reference, values);
         }
 
-        public static ValidationNotification NumberOfItemsEqualIsValid(
+        public static ValidationNotification EqualNumberItensIsValid(
             this ValidationNotification source, string reference, IList value, IList valueCompare, params IList[] valueList)
         {
             valueList = valueList.Concat(new IList[] { value, valueCompare }).ToArray();
-            return source.NumberOfItemsEqualIsValid(reference, valueList);
+            return source.EqualNumberItensIsValid(reference, valueList);
         }
 
-        private static ValidationNotification NumberOfItemsEqualIsValid(
+        private static ValidationNotification EqualNumberItensIsValid(
             this ValidationNotification source, string reference, IEnumerable<IList> value)
         {
             bool result = true;
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Extends
             source.LastMessage = null;
             if (!result)
             {
-                string text = Resource.NumberOfItemsEqualInvalid;
+                string text = Resource.EqualNumberItensInvalid;
                 var message = new ValidationMessage(text, reference);
                 source.LastMessage = message;
                 source.Add(message);

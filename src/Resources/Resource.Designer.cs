@@ -90,9 +90,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Number of items are not the same.
         /// </summary>
-        internal static string NumberOfItemsEqualInvalid {
+        internal static string EqualNumberItensInvalid {
             get {
-                return ResourceManager.GetString("NumberOfItemsEqualInvalid", resourceCulture);
+                return ResourceManager.GetString("EqualNumberItensInvalid", resourceCulture);
             }
         }
         
