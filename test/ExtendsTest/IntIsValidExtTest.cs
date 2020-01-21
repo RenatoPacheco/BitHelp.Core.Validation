@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.IntIsValid<SingleValues>(single, x => x.Int);
+            notification.IntIsValid(single, x => x.Int);
             Assert.True(notification.IsValid());
         }
 
@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.IntIsValid<SingleValues>(single, x => x.String);
+            notification.IntIsValid(single, x => x.String);
             Assert.False(notification.IsValid());
         }
 
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.IntIsValid<SingleValues>(single, x => x.IntNull);
+            notification.IntIsValid(single, x => x.IntNull);
             Assert.True(notification.IsValid());
         }
     }

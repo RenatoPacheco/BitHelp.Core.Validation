@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.LongIsValid<SingleValues>(single, x => x.Long);
+            notification.LongIsValid(single, x => x.Long);
             Assert.True(notification.IsValid());
         }
 
@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.LongIsValid<SingleValues>(single, x => x.String);
+            notification.LongIsValid(single, x => x.String);
             Assert.False(notification.IsValid());
         }
 
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.LongIsValid<SingleValues>(single, x => x.LongNull);
+            notification.LongIsValid(single, x => x.LongNull);
             Assert.True(notification.IsValid());
         }
     }

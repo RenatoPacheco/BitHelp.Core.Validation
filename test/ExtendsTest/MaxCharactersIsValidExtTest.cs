@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.MaxCharactersIsValid<SingleValues>(single, x => x.String, single.String.Length);
+            notification.MaxCharactersIsValid(single, x => x.String, single.String.Length);
             Assert.True(notification.IsValid());
         }
 
@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.MaxCharactersIsValid<SingleValues>(single, x => x.String, single.String.Length - 1);
+            notification.MaxCharactersIsValid(single, x => x.String, single.String.Length - 1);
             Assert.False(notification.IsValid());
         }
 
@@ -58,7 +58,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.MaxCharactersIsValid<SingleValues>(single, x => x.String, 10);
+            notification.MaxCharactersIsValid(single, x => x.String, 10);
             Assert.True(notification.IsValid());
         }
     }

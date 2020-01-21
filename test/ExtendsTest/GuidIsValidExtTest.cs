@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.GuidIsValid(single, x => x.String);
             Assert.True(notification.IsValid());
         }
 
@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.GuidIsValid(single, x => x.String);
             Assert.True(notification.IsValid());
         }
 
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.GuidIsValid(single, x => x.String);
             Assert.False(notification.IsValid());
         }
 
@@ -72,7 +72,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.GuidIsValid(single, x => x.String);
             Assert.True(notification.IsValid());
         }
 
@@ -89,7 +89,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.GuidIsValid<SingleValues>(single, x => x.String);
+            notification.GuidIsValid(single, x => x.String);
             Assert.False(notification.IsValid());
         }
     }

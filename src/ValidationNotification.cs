@@ -158,6 +158,7 @@ namespace BitHelp.Core.Validation
 
         public void Clear()
         {
+            this.LastMessage = null;
             this.Messages.Clear();
         }
 

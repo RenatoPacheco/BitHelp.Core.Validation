@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.DateTimeIsValid<SingleValues>(single, x => x.String, new CultureInfo("en-US"));
+            notification.DateTimeIsValid(single, x => x.String, new CultureInfo("en-US"));
             Assert.True(notification.IsValid());
         }
 
@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.DateTimeIsValid<SingleValues>(single, x => x.String, new CultureInfo("en-US"));
+            notification.DateTimeIsValid(single, x => x.String, new CultureInfo("en-US"));
             Assert.False(notification.IsValid());
         }
 
@@ -56,7 +56,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.DateTimeIsValid<SingleValues>(single, x => x.String, new CultureInfo("pt-BR"));
+            notification.DateTimeIsValid(single, x => x.String, new CultureInfo("pt-BR"));
             Assert.True(notification.IsValid());
         }
     }

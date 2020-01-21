@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
             Assert.True(notification.IsValid());
         }
 
@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
             Assert.False(notification.IsValid());
         }
 
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
             Assert.False(notification.IsValid());
         }
 
@@ -72,7 +72,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
             Assert.False(notification.IsValid());
         }
 
@@ -89,7 +89,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid<SingleValues>(single, x => x.Int, 10, 20);
+            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
             Assert.False(notification.IsValid());
         }
     }

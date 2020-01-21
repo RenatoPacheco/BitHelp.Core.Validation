@@ -23,7 +23,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.EmailIsValid<SingleValues>(single, x => x.String);
+            notification.EmailIsValid(single, x => x.String);
             Assert.True(notification.IsValid());
         }
 
@@ -41,7 +41,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.EmailIsValid<SingleValues>(single, x => x.String);
+            notification.EmailIsValid(single, x => x.String);
             Assert.False(notification.IsValid());
         }
         
@@ -58,7 +58,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.EmailIsValid<SingleValues>(single, x => x.String);
+            notification.EmailIsValid(single, x => x.String);
             Assert.True(notification.IsValid());
         }
     }

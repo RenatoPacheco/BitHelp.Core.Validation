@@ -126,6 +126,9 @@
   <data name="NotValid" xml:space="preserve">
     <value>Value is not valid.</value>
   </data>
+  <data name="NumberOfItemsEqualInvalid" xml:space="preserve">
+    <value>Number of items are not the same</value>
+  </data>
   <data name="Requerid" xml:space="preserve">
     <value>Value is required.</value>
   </data>

@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.EnumIsValid<SingleValues>(single, x => x.Enum, typeof(EnumValue));
+            notification.EnumIsValid(single, x => x.Enum, typeof(EnumValue));
             Assert.True(notification.IsValid());
         }
 
@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.EnumIsValid<SingleValues>(single, x => x.String, typeof(EnumValue));
+            notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
             Assert.True(notification.IsValid());
         }
 
@@ -56,7 +56,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.EnumIsValid<SingleValues>(single, x => x.String, typeof(EnumValue));
+            notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
             Assert.False(notification.IsValid());
         }
 
@@ -73,7 +73,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.EnumIsValid<SingleValues>(single, x => x.Int, typeof(EnumValue));
+            notification.EnumIsValid(single, x => x.Int, typeof(EnumValue));
             Assert.True(notification.IsValid());
         }
 
@@ -90,7 +90,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.EnumIsValid<SingleValues>(single, x => x.String, typeof(EnumValue));
+            notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
             Assert.True(notification.IsValid());
         }
     }
