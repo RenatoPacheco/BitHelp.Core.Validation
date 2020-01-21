@@ -207,4 +207,7 @@
   <data name="XMinNumberItensIsInvalid" xml:space="preserve">
     <value>{0} must contain at least {1} element.</value>
   </data>
+  <data name="XRangeNumerItensInvalid" xml:space="preserve">
+    <value>{0} must contain between {1} and {2} elements.</value>
+  </data>
 </root>

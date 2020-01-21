@@ -1,0 +1,113 @@
+﻿using BitHelp.Core.Validation.Test.Resources;
+using BitHelp.Core.Validation.Extends;
+using Xunit;
+
+namespace BitHelp.Core.Validation.Test.ExtendsTest
+{
+    public class RangeNumberItensIsValidExtTest
+    {
+        readonly ValidationNotification notification = new ValidationNotification();
+
+        [Fact]
+        public void Check_if_6_itens_is_in_range_5_and_10_valid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { 1, 2, 3, 4, 5, 6 }
+            };
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array.Int, 5, 10);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_5_itens_is_in_range_5_and_10_valid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { 1, 2, 3, 4, 5 }
+            };
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array.Int, 5, 110);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_10_itens_is_in_range_5_and_10_valid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }
+            };
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array.Int, 5, 110);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_4_itens_is_in_range_5_and_10_invalid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { 1, 2, 3, 4 }
+            };
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array.Int, 5, 10);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array, x => x.Int, 5, 10);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_0_itens_is_in_range_5_and_10_invalid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { }
+            };
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array.Int, 5, 10);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array, x => x.Int, 5, 10);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_null_itens_is_in_range_5_and_10_invalid()
+        {
+            var array = new ArrayValues
+            {
+                Int = null
+            };
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array.Int, 5, 10);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeNumberItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(notification.IsValid());
+        }
+    }
+}

@@ -295,6 +295,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} must contain between {1} and {2} elements..
+        /// </summary>
+        internal static string XRangeNumerItensInvalid {
+            get {
+                return ResourceManager.GetString("XRangeNumerItensInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is requerid..
         /// </summary>
         internal static string XRequerid {
