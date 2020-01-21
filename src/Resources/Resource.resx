@@ -198,4 +198,13 @@
   <data name="XValid" xml:space="preserve">
     <value>{0} is valid.</value>
   </data>
+  <data name="XEqualNumberItensIsInvalid" xml:space="preserve">
+    <value>{0} must contain {1} element.</value>
+  </data>
+  <data name="XMaxNumberItensIsInvalid" xml:space="preserve">
+    <value>{0} must contain a maximum of {1} element.</value>
+  </data>
+  <data name="XMinNumberItensIsInvalid" xml:space="preserve">
+    <value>{0} must contain at least {1} element.</value>
+  </data>
 </root>
