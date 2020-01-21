@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, Type type)
         {
             string prorpety = expression.PropertyTrail();
-            object value = expression.PropertyInfo().GetValue(data, null);
+            object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
             return source.EnumIsValid(value, display, prorpety, type);
         }

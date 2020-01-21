@@ -11,7 +11,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, object toConfirm)
         {
             string prorpety = expression.PropertyTrail();
-            object value = expression.PropertyInfo().GetValue(data, null);
+            object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
             return source.ConfirmedIsValid(value, display, prorpety, toConfirm);
         }

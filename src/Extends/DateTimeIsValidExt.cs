@@ -13,7 +13,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, CultureInfo cultureInfo = null)
         {
             string prorpety = expression.PropertyTrail();
-            object value = expression.PropertyInfo().GetValue(data, null);
+            object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
             return source.DateTimeIsValid(value, display, prorpety, cultureInfo);
         }
