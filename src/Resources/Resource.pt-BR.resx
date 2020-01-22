@@ -210,4 +210,13 @@
   <data name="XRangeNumerItensInvalid" xml:space="preserve">
     <value>{0} deve conter entre {1} e {2} elementos.</value>
   </data>
+  <data name="XNoValueCanEqual" xml:space="preserve">
+    <value>Valor de não {0} pode ser igual a {1}.</value>
+  </data>
+  <data name="XNoValueCanLess" xml:space="preserve">
+    <value>Valor de não {0} pode ser menor que {1}.</value>
+  </data>
+  <data name="XNoValueCanPlus" xml:space="preserve">
+    <value>Valor de não {0} pode ser maior que {1}.</value>
+  </data>
 </root>

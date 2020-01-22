@@ -17,6 +17,12 @@ namespace BitHelp.Core.Validation.Notations
             if (maximum < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
 
+            if (maximum < minimum)
+                throw new ArgumentException(string.Format(Resource.XNoValueCanLess, nameof(maximum), nameof(minimum)));
+
+            if (maximum == minimum)
+                throw new ArgumentException(string.Format(Resource.XNoValueCanEqual, nameof(maximum), nameof(minimum)));
+
             this.ErrorMessageResourceName = nameof(Resources.Resource.XRangeNumerItensInvalid);
 
             this.Minimum = minimum;

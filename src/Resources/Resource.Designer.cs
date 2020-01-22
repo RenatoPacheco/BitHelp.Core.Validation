@@ -277,6 +277,33 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No {0} value can be equal to {1}..
+        /// </summary>
+        internal static string XNoValueCanEqual {
+            get {
+                return ResourceManager.GetString("XNoValueCanEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No {0} value can be less to {1}..
+        /// </summary>
+        internal static string XNoValueCanLess {
+            get {
+                return ResourceManager.GetString("XNoValueCanLess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No {0} value can be plus to {1}..
+        /// </summary>
+        internal static string XNoValueCanPlus {
+            get {
+                return ResourceManager.GetString("XNoValueCanPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must have a caster between {1} and {2}..
         /// </summary>
         internal static string XRangeCharactersInvalid {
