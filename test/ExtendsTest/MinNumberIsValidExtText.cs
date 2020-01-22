@@ -9,52 +9,52 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         readonly ValidationNotification notification = new ValidationNotification();
 
         [Fact]
-        public void Check_min_number_valid()
+        public void Check_if_15_is_in_minimum_10_valid()
         {
 
             var single = new SingleValues
             {
-                String = "123"
+                String = "15"
             };
 
             notification.Clear();
-            notification.MinNumberIsValid(single.String, 123);
+            notification.MinNumberIsValid(single.String, 10);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.MinNumberIsValid(single, x => x.String, 123);
+            notification.MinNumberIsValid(single, x => x.String, 10);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_min_number_invalid()
+        public void Check_if_10_is_in_minimum_10_valid()
         {
 
             var single = new SingleValues
             {
-                String = "123"
+                String = "10"
             };
 
             notification.Clear();
-            notification.MinNumberIsValid(single.String, 124);
-            Assert.False(notification.IsValid());
+            notification.MinNumberIsValid(single.String, 10);
+            Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.MinNumberIsValid(single, x => x.String, 124);
-            Assert.False(notification.IsValid());
+            notification.MinNumberIsValid(single, x => x.String, 10);
+            Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_not_number_invalid()
+        public void Check_if_9_is_in_minimum_10_invalid()
         {
 
             var single = new SingleValues
             {
-                String = "text"
+                String = "9"
             };
 
             notification.Clear();
-            notification.MinNumberIsValid(single.String, 101);
+            notification.MinNumberIsValid(single.String, 10);
             Assert.False(notification.IsValid());
 
             notification.Clear();
@@ -63,16 +63,49 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
-        public void Check_null_valid()
+        public void Check_if_text_invalid()
         {
+            var single = new SingleValues
+            {
+                String = "text"
+            };
 
+            notification.Clear();
+            notification.MinNumberIsValid(single.String, 10);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.MinNumberIsValid(single, x => x.String, 10);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_empty_invalid()
+        {
+            var single = new SingleValues
+            {
+                String = string.Empty
+            };
+
+            notification.Clear();
+            notification.MinNumberIsValid(single.String, 10);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.MinNumberIsValid(single, x => x.String, 10);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_null_invalid()
+        {
             var single = new SingleValues
             {
                 String = null
             };
 
             notification.Clear();
-            notification.MinNumberIsValid(single.String, 101);
+            notification.MinNumberIsValid(single.String, 10);
             Assert.True(notification.IsValid());
 
             notification.Clear();
