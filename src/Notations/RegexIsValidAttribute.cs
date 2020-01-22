@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 using System.Text.RegularExpressions;
 
 namespace BitHelp.Core.Validation.Notations
@@ -10,6 +11,12 @@ namespace BitHelp.Core.Validation.Notations
         public RegexIsValidAttribute(string pattern, RegexOptions options = RegexOptions.None)
             :base()
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
+            if (string.IsNullOrWhiteSpace(pattern))
+                throw new ArgumentException(string.Format(Resource.XNotEmptyInvalid, nameof(pattern)), nameof(pattern));
+
             this.Pattern = pattern;
             this.Options = options;
         }
