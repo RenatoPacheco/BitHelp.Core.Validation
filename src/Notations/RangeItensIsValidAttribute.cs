@@ -6,9 +6,9 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class RangeNumberItensIsValidAttribute : BaseIsValidAttribute
+    public class RangeItensIsValidAttribute : BaseIsValidAttribute
     {
-        public RangeNumberItensIsValidAttribute(int minimum, int maximum)
+        public RangeItensIsValidAttribute(int minimum, int maximum)
             : base()
         {
             if (minimum < 1)

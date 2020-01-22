@@ -201,10 +201,10 @@
   <data name="XEqualNumberItensIsInvalid" xml:space="preserve">
     <value>{0} deve conter {1} elemento(s).</value>
   </data>
-  <data name="XMaxNumberItensIsInvalid" xml:space="preserve">
+  <data name="XMaxItensIsInvalid" xml:space="preserve">
     <value>{0} deve conter no máximo {1} elemento(s).</value>
   </data>
-  <data name="XMinNumberItensIsInvalid" xml:space="preserve">
+  <data name="XMinItensIsInvalid" xml:space="preserve">
     <value>{0} deve conter no mínimo {1} elemento(s).</value>
   </data>
   <data name="XRangeNumerItensInvalid" xml:space="preserve">

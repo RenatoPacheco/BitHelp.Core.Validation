@@ -7,28 +7,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class MinNumberItensIsValidExt
+    public static class MaxItensIsValidExt
     {
-        public static ValidationNotification MinNumberItensIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, IList>> expression, int minimum)
+        public static ValidationNotification MaxItensIsValid<TClasse>(
+            this ValidationNotification source, TClasse data, Expression<Func<TClasse, IList>> expression, int maximum)
         {
             string prorpety = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;
             string display = expression.PropertyDisplay();
-            return source.MinNumberItensIsValid(value, display, prorpety, minimum);
+            return source.MaxItensIsValid(value, display, prorpety, maximum);
         }
 
-        public static ValidationNotification MinNumberItensIsValid(
-            this ValidationNotification source, IList value, int minimum)
+        public static ValidationNotification MaxItensIsValid(
+            this ValidationNotification source, IList value, int maximum)
         {
-            return source.MinNumberItensIsValid(value, Resource.DisplayValue, null, minimum);
+            return source.MaxItensIsValid(value, Resource.DisplayValue, null, maximum);
         }
 
-        private static ValidationNotification MinNumberItensIsValid(
-            this ValidationNotification source, object value, string display, string reference, int minimum)
+        private static ValidationNotification MaxItensIsValid(
+            this ValidationNotification source, object value, string display, string reference, int maximum)
         {
             source.LastMessage = null;
-            MinNumberItensIsValidAttribute validation = new MinNumberItensIsValidAttribute(minimum);
+            MaxItensIsValidAttribute validation = new MaxItensIsValidAttribute(maximum);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

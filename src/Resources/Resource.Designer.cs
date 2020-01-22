@@ -225,9 +225,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain a maximum of {1} element..
         /// </summary>
-        internal static string XMaxNumberItensIsInvalid {
+        internal static string XMaxItensIsInvalid {
             get {
-                return ResourceManager.GetString("XMaxNumberItensIsInvalid", resourceCulture);
+                return ResourceManager.GetString("XMaxItensIsInvalid", resourceCulture);
             }
         }
         
@@ -252,9 +252,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain at least {1} element..
         /// </summary>
-        internal static string XMinNumberItensIsInvalid {
+        internal static string XMinItensIsInvalid {
             get {
-                return ResourceManager.GetString("XMinNumberItensIsInvalid", resourceCulture);
+                return ResourceManager.GetString("XMinItensIsInvalid", resourceCulture);
             }
         }
         

@@ -6,15 +6,15 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class MaxNumberItensIsValidAttribute : BaseIsValidAttribute
+    public class MaxItensIsValidAttribute : BaseIsValidAttribute
     {
-        public MaxNumberItensIsValidAttribute(int maximum)
+        public MaxItensIsValidAttribute(int maximum)
             : base()
         {
             if (maximum < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
 
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XMaxNumberItensIsInvalid);
+            this.ErrorMessageResourceName = nameof(Resources.Resource.XMaxItensIsInvalid);
 
             this.Maximum = maximum;
         }
