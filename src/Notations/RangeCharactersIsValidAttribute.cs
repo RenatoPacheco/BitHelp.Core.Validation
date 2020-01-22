@@ -16,9 +16,16 @@ namespace BitHelp.Core.Validation.Notations
             if (maximum < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
 
+            if (maximum < minimum)
+                throw new ArgumentException(string.Format(Resource.XNoValueCanLess, nameof(maximum), nameof(minimum)));
+
+            if (maximum == minimum)
+                throw new ArgumentException(string.Format(Resource.XNoValueCanEqual, nameof(maximum), nameof(minimum)));
+
             this.ErrorMessageResourceName = nameof(Resources.Resource.XRangeCharactersInvalid);
 
             this.Minimum = minimum;
+            this.Maximum = maximum;
         }
 
         public override string FormatErrorMessage(string name)
@@ -33,7 +40,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return input.Length >= this.Minimum && input.Length <= Maximum;
+            return input.Length >= this.Minimum && input.Length <= this.Maximum;
         }
     }
 }

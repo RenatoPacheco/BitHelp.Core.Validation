@@ -5,109 +5,92 @@ using System;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class RangeNumberIsValidExtTest
+    public class RangeCharactersIsValidExtTest
     {
         readonly ValidationNotification notification = new ValidationNotification();
 
         [Fact]
-        public void Check_if_15_is_in_range_10_and_20_valid()
+        public void Check_if_15_characters_is_in_range_10_and_20_valid()
         {
             var single = new SingleValues
             {
-                Int = 15
+                String = "123456789012345"
             };
 
             notification.Clear();
-            notification.RangeNumberIsValid(single.Int, 10, 20);
+            notification.RangeCharactersIsValid(single.String, 10, 20);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
-            Assert.True(notification.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_10_is_in_range_10_and_20_valid()
-        {
-            var single = new SingleValues
-            {
-                Int = 10
-            };
-
-            notification.Clear();
-            notification.RangeNumberIsValid(single.Int, 10, 20);
-            Assert.True(notification.IsValid());
-
-            notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_if_20_is_in_range_10_and_20_valid()
+        public void Check_if_10_characters_is_in_range_10_and_20_valid()
         {
             var single = new SingleValues
             {
-                Int = 20
+                String = "1234567890"
             };
 
             notification.Clear();
-            notification.RangeNumberIsValid(single.Int, 10, 20);
+            notification.RangeCharactersIsValid(single.String, 10, 20);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_if_9_is_in_range_10_and_20_invalid()
+        public void Check_if_20_characters_is_in_range_10_and_20_valid()
         {
             var single = new SingleValues
             {
-                Int = 9
+                String = "12345678901234567890"
             };
 
             notification.Clear();
-            notification.RangeNumberIsValid(single.Int, 10, 20);
+            notification.RangeCharactersIsValid(single.String, 10, 20);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
+            Assert.True(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_9_characters_is_in_range_10_and_20_invalid()
+        {
+            var single = new SingleValues
+            {
+                String = "123456789"
+            };
+
+            notification.Clear();
+            notification.RangeCharactersIsValid(single.String, 10, 20);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.False(notification.IsValid());
         }
 
         [Fact]
-        public void Check_if_21_is_in_range_10_and_20_invalid()
+        public void Check_if_21_characters_is_in_range_10_and_20_invalid()
         {
             var single = new SingleValues
             {
-                Int = 21
+                String = "123456789012345678901"
             };
 
             notification.Clear();
-            notification.RangeNumberIsValid(single.Int, 10, 20);
+            notification.RangeCharactersIsValid(single.String, 10, 20);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.Int, 10, 20);
-            Assert.False(notification.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_text_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = "text"
-            };
-
-            notification.Clear();
-            notification.RangeNumberIsValid(single.String, 10, 20);
-            Assert.False(notification.IsValid());
-
-            notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.String, 10, 20);
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.False(notification.IsValid());
         }
 
@@ -120,11 +103,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             notification.Clear();
-            notification.RangeNumberIsValid(single.String, 10, 20);
+            notification.RangeCharactersIsValid(single.String, 10, 20);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.String, 10, 20);
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.False(notification.IsValid());
         }
 
@@ -137,11 +120,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             notification.Clear();
-            notification.RangeNumberIsValid(single.String, 10, 20);
+            notification.RangeCharactersIsValid(single.String, 10, 20);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.RangeNumberIsValid(single, x => x.String, 10, 20);
+            notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(notification.IsValid());
         }
 
@@ -153,8 +136,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single.String, 0, 10));
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single, x => x.String, 0, 10));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single.String, 0, 10));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single, x => x.String, 0, 10));
         }
 
         [Fact]
@@ -165,8 +148,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single.String, 5, 0));
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single, x => x.String, 5, 0));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single.String, 5, 0));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single, x => x.String, 5, 0));
         }
 
         [Fact]
@@ -177,8 +160,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single.String, 5, 4));
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single, x => x.String, 5, 4));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single.String, 5, 4));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single, x => x.String, 5, 4));
         }
 
         [Fact]
@@ -189,8 +172,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single.String, 5, 5));
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single, x => x.String, 5, 5));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single.String, 5, 5));
+            Assert.Throws<ArgumentException>(() => notification.RangeCharactersIsValid(single, x => x.String, 5, 5));
         }
     }
 }
