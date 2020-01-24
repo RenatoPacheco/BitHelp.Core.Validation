@@ -1,8 +1,6 @@
 ﻿using BitHelp.Core.Validation.Test.Resources;
 using BitHelp.Core.Validation.Extends;
 using Xunit;
-using System.Text.RegularExpressions;
-using System;
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RequiredIsValidExtTest
