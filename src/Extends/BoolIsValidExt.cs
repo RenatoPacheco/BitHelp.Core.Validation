@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class BoolIsValidExt
     {
-        public static ValidationNotification BoolIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
+        public static ValidationNotification BoolIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
@@ -18,9 +18,9 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification BoolIsValid(
-            this ValidationNotification source, object value, string reference = null)
+            this ValidationNotification source, object value)
         {
-            return source.BoolIsValid(value, Resource.DisplayValue, reference);
+            return source.BoolIsValid(value, Resource.DisplayValue, null);
         }
 
         private static ValidationNotification BoolIsValid(

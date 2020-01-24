@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RequiredIsValidExt
     {
-        public static ValidationNotification RequiredIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
+        public static ValidationNotification RequiredIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

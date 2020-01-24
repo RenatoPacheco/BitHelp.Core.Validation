@@ -9,10 +9,10 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class EqualNumberItensIsValidExt
     {
-        public static ValidationNotification EqualNumberItensIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, string reference, Expression<Func<TClasse, IList>> expression,
-                Expression<Func<TClasse, IList>> expressionCompare, params Expression<Func<TClasse, IList>>[] expressionList)
-            where TClasse : class
+        public static ValidationNotification EqualNumberItensIsValid<TClass>(
+            this ValidationNotification source, TClass data, string reference, Expression<Func<TClass, IList>> expression,
+                Expression<Func<TClass, IList>> expressionCompare, params Expression<Func<TClass, IList>>[] expressionList)
+            where TClass : class
         {
             IList<IList> values = new List<IList>();
 

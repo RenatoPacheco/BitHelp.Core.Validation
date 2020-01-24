@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class UrlIsValidExt
     {
-        public static ValidationNotification UrlIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression)
+        public static ValidationNotification UrlIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

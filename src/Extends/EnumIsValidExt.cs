@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class EnumIsValidExt
     {
-        public static ValidationNotification EnumIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, Type type)
+        public static ValidationNotification EnumIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, Type type)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

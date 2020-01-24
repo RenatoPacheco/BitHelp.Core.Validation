@@ -7,8 +7,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ConfirmedIsValidExt
     {
-        public static ValidationNotification ConfirmedIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, object toConfirm)
+        public static ValidationNotification ConfirmedIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, object toConfirm)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

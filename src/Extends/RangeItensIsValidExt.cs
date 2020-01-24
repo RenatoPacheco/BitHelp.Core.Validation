@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RangeItensIsValidExt
     {
-        public static ValidationNotification RangeItensIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, IList>> expression, int minimum, int maximum)
+        public static ValidationNotification RangeItensIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int minimum, int maximum)
         {
             string prorpety = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;

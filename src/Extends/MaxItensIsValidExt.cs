@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MaxItensIsValidExt
     {
-        public static ValidationNotification MaxItensIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, IList>> expression, int maximum)
+        public static ValidationNotification MaxItensIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int maximum)
         {
             string prorpety = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;

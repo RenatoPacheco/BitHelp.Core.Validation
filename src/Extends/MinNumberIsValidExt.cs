@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinNumberIsValidExt
     {
-        public static ValidationNotification MinNumberIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int minimum)
+        public static ValidationNotification MinNumberIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, int minimum)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

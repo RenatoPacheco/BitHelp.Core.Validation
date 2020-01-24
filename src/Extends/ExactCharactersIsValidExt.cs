@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ExactCharactersIsValidExt
     {
-        public static ValidationNotification ExactCharactersIsValid<TClasse>(
-            this ValidationNotification source, TClasse data, Expression<Func<TClasse, object>> expression, int exact)
+        public static ValidationNotification ExactCharactersIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, int exact)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
