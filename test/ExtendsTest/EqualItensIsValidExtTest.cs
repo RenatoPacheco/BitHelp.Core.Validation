@@ -1,10 +1,10 @@
-﻿using BitHelp.Core.Validation.Extends;
+﻿using Xunit;
+using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
-using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class EqualNumberItensIsValidExtTest
+    public class EqualItensIsValidExtTest
     {
         readonly ValidationNotification notification = new ValidationNotification();
 
@@ -16,11 +16,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Char = new char[] { 'a', 'b', 'c' };
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(null, array.Bool, array.Char);
+            this.notification.EqualItensIsValid(array.Bool, array.Char);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(array, null, x => x.Bool, y => y.Char);
+            this.notification.EqualItensIsValid(array, x => x.Bool, y => y.Char);
             Assert.True(notification.IsValid());
         }
 
@@ -32,11 +32,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Char = new char[] { 'a', 'b' };
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(null, array.Bool, array.Char);
+            this.notification.EqualItensIsValid(array.Bool, array.Char);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(array, null, x => x.Bool, y => y.Char);
+            this.notification.EqualItensIsValid(array, x => x.Bool, y => y.Char);
             Assert.False(notification.IsValid());
         }
 
@@ -48,43 +48,43 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Char = null;
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(null, array.Bool, array.Char);
+            this.notification.EqualItensIsValid(array.Bool, array.Char);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(array, null, x => x.Bool, y => y.Char);
+            this.notification.EqualItensIsValid(array, x => x.Bool, y => y.Char);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_onbne_value_null_is_invalid()
+        public void Check_one_value_null_is_invalid()
         {
             ArrayValues array = new ArrayValues();
             array.Bool = new bool[] { true, false, true };
             array.Char = null;
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(null, array.Bool, array.Char);
+            this.notification.EqualItensIsValid(array.Bool, array.Char);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(array, null, x => x.Bool, y => y.Char);
+            this.notification.EqualItensIsValid(array, x => x.Bool, y => y.Char);
             Assert.False(notification.IsValid());
         }
 
         [Fact]
-        public void Check_onbne_value_null_and_other_empty_is_invalid()
+        public void Check_one_value_null_and_other_empty_is_invalid()
         {
             ArrayValues array = new ArrayValues();
             array.Bool = new bool[] { };
             array.Char = null;
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(null, array.Bool, array.Char);
+            this.notification.EqualItensIsValid(array.Bool, array.Char);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            this.notification.EqualNumberItensIsValid(array, null, x => x.Bool, y => y.Char);
+            this.notification.EqualItensIsValid(array, x => x.Bool, y => y.Char);
             Assert.False(notification.IsValid());
         }
     }

@@ -78,7 +78,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
-        public void Check_if_0_itens_is_in_range_5_and_10_invalid()
+        public void Check_if_0_itens_is_in_range_5_and_10_ignore_valid()
         {
             var array = new ArrayValues
             {
@@ -87,11 +87,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             notification.Clear();
             notification.RangeItensIsValid(array.Int, 5, 10);
-            Assert.False(notification.IsValid());
+            Assert.True(notification.IsValid());
 
             notification.Clear();
             notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.False(notification.IsValid());
+            Assert.True(notification.IsValid());
         }
 
         [Fact]

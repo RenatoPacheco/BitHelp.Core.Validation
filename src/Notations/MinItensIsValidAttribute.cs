@@ -29,7 +29,8 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             IList input = value as IList;
-            return input == null || input.Count >= this.Minimum;
+            return (input == null || input.Count == 0) 
+                || input.Count >= this.Minimum;
         }
     }
 }

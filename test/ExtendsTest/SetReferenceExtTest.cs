@@ -1,6 +1,6 @@
-﻿using BitHelp.Core.Validation.Extends;
+﻿using Xunit;
+using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
-using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
@@ -18,13 +18,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             string reference = "New reference";
 
             notification.Clear();
-            notification.LongIsValid(single.String).SetReference(reference);
+            notification.LongIsValid(single.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(reference, notification.Messages[0].Reference);
 
             notification.Clear();
-            notification.LongIsValid(single, x => x.String).SetReference(reference);
+            notification.LongIsValid(single, x => x.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(reference, notification.Messages[0].Reference);
@@ -40,13 +42,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             string reference = null;
 
             notification.Clear();
-            notification.LongIsValid(single.String).SetReference(reference);
+            notification.LongIsValid(single.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(reference, notification.Messages[0].Reference);
 
             notification.Clear();
-            notification.LongIsValid(single, x => x.String).SetReference(reference);
+            notification.LongIsValid(single, x => x.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(reference, notification.Messages[0].Reference);
@@ -62,13 +66,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             string reference = string.Empty;
 
             notification.Clear();
-            notification.LongIsValid(single.String).SetReference(reference);
+            notification.LongIsValid(single.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(reference, notification.Messages[0].Reference);
 
             notification.Clear();
-            notification.LongIsValid(single, x => x.String).SetReference(reference);
+            notification.LongIsValid(single, x => x.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(reference, notification.Messages[0].Reference);
@@ -85,13 +91,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             string reference = "         ";
 
             notification.Clear();
-            notification.LongIsValid(single.String).SetReference(reference);
+            notification.LongIsValid(single.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(string.Empty, notification.Messages[0].Reference);
 
             notification.Clear();
-            notification.LongIsValid(single, x => x.String).SetReference(reference);
+            notification.LongIsValid(single, x => x.String)
+                .SetReference(reference);
 
             Assert.False(notification.IsValid());
             Assert.Equal(string.Empty, notification.Messages[0].Reference);

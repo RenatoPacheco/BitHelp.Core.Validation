@@ -198,7 +198,7 @@
   <data name="XValid" xml:space="preserve">
     <value>{0} é válido.</value>
   </data>
-  <data name="XEqualNumberItensIsInvalid" xml:space="preserve">
+  <data name="XExactItensIsInvalid" xml:space="preserve">
     <value>{0} deve conter {1} elemento(s).</value>
   </data>
   <data name="XMaxItensIsInvalid" xml:space="preserve">

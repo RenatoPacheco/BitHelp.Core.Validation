@@ -1,8 +1,8 @@
-﻿using BitHelp.Core.Validation.Extends;
-using BitHelp.Core.Validation.Test.Resources;
-using Xunit;
-using BitHelp.Core.Validation.Test.Extend;
+﻿using Xunit;
 using System;
+using BitHelp.Core.Validation.Extends;
+using BitHelp.Core.Validation.Test.Extend;
+using BitHelp.Core.Validation.Test.Resources;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
@@ -20,13 +20,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             string message = "New message";
 
             notification.Clear();
-            notification.LongIsValid(single.String).SetMessage(message);
+            notification.LongIsValid(single.String)
+                .SetMessage(message);
 
             Assert.False(notification.IsValid());
             Assert.Equal(message, notification.Messages[0].Message);
 
             notification.Clear();
-            notification.LongIsValid(single, x => x.String).SetMessage(message);
+            notification.LongIsValid(single, x => x.String)
+                .SetMessage(message);
 
             Assert.False(notification.IsValid());
             Assert.Equal(message, notification.Messages[0].Message);
@@ -68,10 +70,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             notification.Clear();
             Assert.Throws<ArgumentNullException>(() =>
-                notification.LongIsValid(single.String).SetMessage(message));
+                notification.LongIsValid(single.String)
+                    .SetMessage(message));
 
             Assert.Throws<ArgumentNullException>(() =>
-                notification.LongIsValid(single, x => x.String).SetMessage(message));
+                notification.LongIsValid(single, x => x.String)
+                    .SetMessage(message));
         }
 
         [Fact]
@@ -85,10 +89,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             notification.Clear();
             Assert.Throws<ArgumentNullException>(() =>
-                notification.LongIsValid(single.String).SetMessage(message));
+                notification.LongIsValid(single.String)
+                    .SetMessage(message));
 
             Assert.Throws<ArgumentNullException>(() =>
-                notification.LongIsValid(single, x => x.String).SetMessage(message));
+                notification.LongIsValid(single, x => x.String)
+                    .SetMessage(message));
         }
 
         [Fact]
@@ -102,10 +108,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             notification.Clear();
             Assert.Throws<ArgumentNullException>(() =>
-                notification.LongIsValid(single.String).SetMessage(message));
+                notification.LongIsValid(single.String)
+                    .SetMessage(message));
 
             Assert.Throws<ArgumentNullException>(() =>
-                notification.LongIsValid(single, x => x.String).SetMessage(message));
+                notification.LongIsValid(single, x => x.String)
+                    .SetMessage(message));
         }
     }
 }

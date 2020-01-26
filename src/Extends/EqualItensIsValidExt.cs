@@ -7,34 +7,34 @@ using System.Linq.Expressions;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class EqualNumberItensIsValidExt
+    public static class EqualItensIsValidExt
     {
-        public static ValidationNotification EqualNumberItensIsValid<TClass>(
-            this ValidationNotification source, TClass data, string reference, Expression<Func<TClass, IList>> expression,
-                Expression<Func<TClass, IList>> expressionCompare, params Expression<Func<TClass, IList>>[] expressionList)
+        public static ValidationNotification EqualItensIsValid<TClass>(
+            this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression,
+                Expression<Func<TClass, IList>> compare, params Expression<Func<TClass, IList>>[] compareMore)
             where TClass : class
         {
             IList<IList> values = new List<IList>();
 
             values.Add(expression.Compile().DynamicInvoke(data) as IList);
-            values.Add(expressionCompare.Compile().DynamicInvoke(data) as IList);
+            values.Add(compare.Compile().DynamicInvoke(data) as IList);
 
-            foreach (var item in expressionList)
+            foreach (var item in compareMore)
             {
                 values.Add(item.Compile().DynamicInvoke(data) as IList);
             }
-            return source.EqualNumberItensIsValid(reference, values);
+            return source.EqualItensIsValid(values);
         }
 
-        public static ValidationNotification EqualNumberItensIsValid(
-            this ValidationNotification source, string reference, IList value, IList valueCompare, params IList[] valueList)
+        public static ValidationNotification EqualItensIsValid(
+            this ValidationNotification source, IList value, IList compare, params IList[] compareMore)
         {
-            valueList = valueList.Concat(new IList[] { value, valueCompare }).ToArray();
-            return source.EqualNumberItensIsValid(reference, valueList);
+            compareMore = compareMore.Concat(new IList[] { value, compare }).ToArray();
+            return source.EqualItensIsValid(compareMore);
         }
 
-        private static ValidationNotification EqualNumberItensIsValid(
-            this ValidationNotification source, string reference, IEnumerable<IList> value)
+        private static ValidationNotification EqualItensIsValid(
+            this ValidationNotification source, IEnumerable<IList> value)
         {
             bool result = true;
             int? total = null;
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Extends
             if (!result)
             {
                 string text = Resource.EqualNumberItensInvalid;
-                var message = new ValidationMessage(text, reference);
+                var message = new ValidationMessage(text, null);
                 source.LastMessage = message;
                 source.Add(message);
             }

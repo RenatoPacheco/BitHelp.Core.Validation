@@ -5,46 +5,12 @@ using System;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class MinItensIsValidExtTest
+    public class ExactItensIsValidExtTest
     {
         readonly ValidationNotification notification = new ValidationNotification();
 
         [Fact]
-        public void Check_if_6_itens_is_in_minimum_5_valid()
-        {
-            var array = new ArrayValues
-            {
-                Int = new int[] { 1, 2, 3, 4, 5, 6 }
-            };
-
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.True(notification.IsValid());
-
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.True(notification.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_5_itens_is_in_minimum_5_valid()
-        {
-            var array = new ArrayValues
-            {
-                Int = new int[] { 1, 2, 3, 4, 5 }
-            };
-
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.True(notification.IsValid());
-
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.True(notification.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_4_itens_is_in_minimum_5_invalid()
+        public void Check_if_4_itens_is_in_exact_4_valid()
         {
             var array = new ArrayValues
             {
@@ -52,16 +18,50 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
+            notification.ExactItensIsValid(array.Int, 4);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.ExactItensIsValid(array, x => x.Int, 4);
+            Assert.True(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_4_itens_is_in_exact_5_invalid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { 1, 2, 3, 4 }
+            };
+
+            notification.Clear();
+            notification.ExactItensIsValid(array.Int, 5);
             Assert.False(notification.IsValid());
 
             notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
+            notification.ExactItensIsValid(array, x => x.Int, 5);
             Assert.False(notification.IsValid());
         }
 
         [Fact]
-        public void Check_if_0_itens_is_in_minimum_5_ignore_valid()
+        public void Check_if_6_itens_is_in_exact_5_invalid()
+        {
+            var array = new ArrayValues
+            {
+                Int = new int[] { 1, 2, 3, 4, 5, 6 }
+            };
+
+            notification.Clear();
+            notification.ExactItensIsValid(array.Int, 5);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.ExactItensIsValid(array, x => x.Int, 5);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_if_0_itens_is_in_exact_5_ignore_valid()
         {
             var array = new ArrayValues
             {
@@ -69,16 +69,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
+            notification.ExactItensIsValid(array.Int, 5);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
+            notification.ExactItensIsValid(array, x => x.Int, 5);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_if_null_itens_is_in_minimum_5_invalid()
+        public void Check_if_null_itens_is_in_exact_5_invalid()
         {
             var array = new ArrayValues
             {
@@ -86,24 +86,24 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
+            notification.ExactItensIsValid(array.Int, 5);
             Assert.True(notification.IsValid());
 
             notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
+            notification.ExactItensIsValid(array, x => x.Int, 5);
             Assert.True(notification.IsValid());
         }
 
         [Fact]
-        public void Check_if_minimum_less_1_exception()
+        public void Check_if_exact_less_1_exception()
         {
             var array = new ArrayValues
             {
                 Int = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.MinItensIsValid(array.Int, 0));
-            Assert.Throws<ArgumentException>(() => notification.MinItensIsValid(array, x => x.Int, 0));
+            Assert.Throws<ArgumentException>(() => notification.ExactItensIsValid(array.Int, 0));
+            Assert.Throws<ArgumentException>(() => notification.ExactItensIsValid(array, x => x.Int, 0));
         }
     }
 }
