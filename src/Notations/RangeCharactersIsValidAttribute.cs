@@ -22,15 +22,15 @@ namespace BitHelp.Core.Validation.Notations
             if (maximum == minimum)
                 throw new ArgumentException(string.Format(Resource.XNoValueCanEqual, nameof(maximum), nameof(minimum)));
 
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XRangeCharactersInvalid);
+            ErrorMessageResourceName = nameof(Resource.XRangeCharactersInvalid);
 
-            this.Minimum = minimum;
-            this.Maximum = maximum;
+            Minimum = minimum;
+            Maximum = maximum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Minimum, this.Maximum);
+            return string.Format(ErrorMessageString, name, Minimum, Maximum);
         }
 
         public int Minimum { get; set; }
@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return input.Length >= this.Minimum && input.Length <= this.Maximum;
+            return input.Length >= Minimum && input.Length <= Maximum;
         }
     }
 }

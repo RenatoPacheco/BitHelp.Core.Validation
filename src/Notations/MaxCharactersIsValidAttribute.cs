@@ -13,14 +13,14 @@ namespace BitHelp.Core.Validation.Notations
             if (maximum < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
 
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XMaxCharactersInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMaxCharactersInvalid);
 
-            this.Maximum = maximum;
+            Maximum = maximum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Maximum);
+            return string.Format(ErrorMessageString, name, Maximum);
         }
 
         public int Maximum { get; set; }
@@ -28,7 +28,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return input.Length <= this.Maximum;
+            return input.Length <= Maximum;
         }
     }
 }

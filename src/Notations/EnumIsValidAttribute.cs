@@ -15,7 +15,7 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override bool Check(object value)
         {
-            return Enum.IsDefined(this.Type, value);
+            return Enum.IsDefined(Type, value);
         }
     }
 }

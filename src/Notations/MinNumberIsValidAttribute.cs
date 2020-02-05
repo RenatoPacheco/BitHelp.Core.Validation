@@ -10,14 +10,14 @@ namespace BitHelp.Core.Validation.Notations
         public MinNumberIsValidAttribute(int minimum)
             : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XMinCharactersInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMinValueInvalid);
 
-            this.Minimum = minimum;
+            Minimum = minimum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Minimum);
+            return string.Format(ErrorMessageString, name, Minimum);
         }
 
         public int Minimum { get; set; }
@@ -25,7 +25,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return int.TryParse(input, out int number) && number >= this.Minimum;
+            return int.TryParse(input, out int compare) && compare >= Minimum;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 using System.Globalization;
 
 namespace BitHelp.Core.Validation.Notations
@@ -9,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public DateTimeIsValidAttribute() : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XDateTimeInvalid);
+            ErrorMessageResourceName = nameof(Resource.XDateTimeInvalid);
         }
 
         /// <summary>
@@ -20,7 +21,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return DateTime.TryParse(input, this.CultureInfo ?? CultureInfo.CurrentCulture, DateTimeStyles.None, out _);
+            return DateTime.TryParse(input, CultureInfo ?? CultureInfo.CurrentCulture, DateTimeStyles.None, out _);
         }
     }
 }

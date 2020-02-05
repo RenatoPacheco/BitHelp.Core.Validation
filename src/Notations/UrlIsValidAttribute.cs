@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 using System.Text.RegularExpressions;
 
 namespace BitHelp.Core.Validation.Notations
@@ -9,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public UrlIsValidAttribute() : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XUrlInvalid);
+            ErrorMessageResourceName = nameof(Resource.XUrlInvalid);
         }
 
         protected override bool Check(object value)

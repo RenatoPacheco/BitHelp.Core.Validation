@@ -14,14 +14,14 @@ namespace BitHelp.Core.Validation.Notations
             if (exact < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(exact));
 
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XExactItensIsInvalid);
+            ErrorMessageResourceName = nameof(Resource.XExactItensIsInvalid);
 
-            this.Exact = exact;
+            Exact = exact;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Exact);
+            return string.Format(ErrorMessageString, name, Exact);
         }
 
         public int Exact { get; set; }
@@ -30,7 +30,7 @@ namespace BitHelp.Core.Validation.Notations
         {
             IList input = value as IList;
             return (input == null || input.Count == 0) 
-                || input.Count == this.Exact;
+                || input.Count == Exact;
         }
     }
 }

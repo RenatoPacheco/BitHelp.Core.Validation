@@ -17,8 +17,8 @@ namespace BitHelp.Core.Validation.Notations
             if (string.IsNullOrWhiteSpace(pattern))
                 throw new ArgumentException(string.Format(Resource.XNotEmptyInvalid, nameof(pattern)), nameof(pattern));
 
-            this.Pattern = pattern;
-            this.Options = options;
+            Pattern = pattern;
+            Options = options;
         }
 
         public string Pattern { get; set; }
@@ -28,7 +28,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return Regex.IsMatch(input, this.Pattern, this.Options);
+            return Regex.IsMatch(input, Pattern, Options);
         }
     }
 }

@@ -1,11 +1,13 @@
-﻿namespace BitHelp.Core.Validation.Notations
+﻿using BitHelp.Core.Validation.Resources;
+
+namespace BitHelp.Core.Validation.Notations
 {
     public class RequiredIsValidAttribute : ListIsValidAttribute
     {
         public RequiredIsValidAttribute() : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XRequerid);
-            this.IgnoreNull = false;
+            ErrorMessageResourceName = nameof(Resource.XRequerid);
+            IgnoreNull = false;
         }
 
         protected override bool Check(object value)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -8,7 +9,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public BoolIsValidAttribute() : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XBooleanInvalid);
+            ErrorMessageResourceName = nameof(Resource.XBooleanInvalid);
         }
 
         protected override bool Check(object value)

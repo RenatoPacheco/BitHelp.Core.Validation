@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation.Notations
@@ -7,8 +8,8 @@ namespace BitHelp.Core.Validation.Notations
     {
         public BaseIsValidAttribute()
         {
-            this.ErrorMessageResourceType = typeof(Resources.Resource);
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XNotValid);
+            ErrorMessageResourceType = typeof(Resource);
+            ErrorMessageResourceName = nameof(Resource.XNotValid);
         }
 
         protected bool IgnoreEmpty { get; set; } = false;
@@ -22,9 +23,9 @@ namespace BitHelp.Core.Validation.Notations
             if (!object.Equals(value, null))
             {
                 string input = Convert.ToString(value ?? string.Empty);
-                return (this.IgnoreEmpty && string.IsNullOrEmpty(input)) || this.Check(value);
+                return (IgnoreEmpty && string.IsNullOrEmpty(input)) || Check(value);
             }
-            return this.IgnoreNull;
+            return IgnoreNull;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
         public MinTimeSpanIsValidAttribute(TimeSpan minimum)
             : base()
         {
-            ErrorMessageResourceName = nameof(Resource.XMinCharactersInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMinValueInvalid);
 
             Minimum = minimum;
         }

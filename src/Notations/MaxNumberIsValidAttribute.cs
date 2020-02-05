@@ -10,14 +10,14 @@ namespace BitHelp.Core.Validation.Notations
         public MaxNumberIsValidAttribute(int maximum)
             : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XMaxValueInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMaxValueInvalid);
 
-            this.Maximum = maximum;
+            Maximum = maximum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Maximum);
+            return string.Format(ErrorMessageString, name, Maximum);
         }
 
         public int Maximum { get; set; }
@@ -25,7 +25,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return int.TryParse(input, out int number) && number <= this.Maximum;
+            return int.TryParse(input, out int compare) && compare <= Maximum;
         }
     }
 }

@@ -13,14 +13,14 @@ namespace BitHelp.Core.Validation.Notations
             if (minimum < 1)
                 throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(minimum));
 
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XMinCharactersInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMinCharactersInvalid);
 
-            this.Minimum = minimum;
+            Minimum = minimum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Minimum);
+            return string.Format(ErrorMessageString, name, Minimum);
         }
 
         public int Minimum { get; set; }
@@ -28,7 +28,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return input.Length >= this.Minimum;
+            return input.Length >= Minimum;
         }
     }
 }

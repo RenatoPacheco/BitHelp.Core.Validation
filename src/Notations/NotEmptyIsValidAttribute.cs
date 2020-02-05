@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -6,8 +7,8 @@ namespace BitHelp.Core.Validation.Notations
     {
         public NotEmptyIsValidAttribute(bool ignoreWithSpace = false) : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XNotEmptyInvalid);
-            this.IgnoreWithSpace = ignoreWithSpace;
+            ErrorMessageResourceName = nameof(Resource.XNotEmptyInvalid);
+            IgnoreWithSpace = ignoreWithSpace;
         }
 
         public bool IgnoreWithSpace { get; set; }
@@ -15,7 +16,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return this.IgnoreWithSpace ? 
+            return IgnoreWithSpace ? 
                 !string.IsNullOrEmpty(input) : !string.IsNullOrWhiteSpace(input);
         }
     }
