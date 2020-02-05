@@ -78,6 +78,23 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
+        public void Check_number_is_invalid()
+        {
+            var single = new SingleValues
+            {
+                Int = 100
+            };
+
+            notification.Clear();
+            notification.EnumIsValid(single.Int, typeof(EnumValue));
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.EnumIsValid(single, x => x.Int, typeof(EnumValue));
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
         public void Check_ignore_null()
         {
             var single = new SingleValues

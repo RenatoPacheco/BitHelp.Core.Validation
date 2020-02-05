@@ -1,5 +1,4 @@
-﻿
-using BitHelp.Core.Validation.Extends;
+﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
 using Xunit;
 
@@ -104,6 +103,24 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             notification.Clear();
             notification.EqualIsValid(single, x => x.LongNull, single.IntNull);
             Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_string_and_int_with_equal_value_valid()
+        {
+            var single = new SingleValues
+            {
+                String = "123",
+                Int = 123
+            };
+
+            notification.Clear();
+            notification.EqualIsValid(single.String, single.Int);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.EqualIsValid(single, x => x.String, single.Int);
+            Assert.True(notification.IsValid());
         }
     }
 }
