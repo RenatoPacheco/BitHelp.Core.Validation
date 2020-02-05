@@ -43,6 +43,23 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
+        public void Check_empty_ignore_with_space_invalid()
+        {
+            var single = new SingleValues
+            {
+                String = string.Empty
+            };
+
+            notification.Clear();
+            notification.NotEmptyIsValid(single.String, true);
+            Assert.False(notification.IsValid());
+
+            notification.Clear();
+            notification.NotEmptyIsValid(single, x => x.String, true);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
         public void Check_ignore_null_valid()
         {
             var single = new SingleValues
@@ -60,7 +77,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
-        public void Check_with_space_valid()
+        public void Check_with_space_invalid()
         {
             var single = new SingleValues
             {
@@ -69,10 +86,27 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             notification.Clear();
             notification.NotEmptyIsValid(single.String);
-            Assert.True(notification.IsValid());
+            Assert.False(notification.IsValid());
 
             notification.Clear();
             notification.NotEmptyIsValid(single, x => x.String);
+            Assert.False(notification.IsValid());
+        }
+
+        [Fact]
+        public void Check_with_space_and_ignore_valid()
+        {
+            var single = new SingleValues
+            {
+                String = "     "
+            };
+
+            notification.Clear();
+            notification.NotEmptyIsValid(single.String, true);
+            Assert.True(notification.IsValid());
+
+            notification.Clear();
+            notification.NotEmptyIsValid(single, x => x.String, true);
             Assert.True(notification.IsValid());
         }
     }
