@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Extends
     public static class RangeNumberIsValidExt
     {
         public static ValidationNotification RangeNumberIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, long minimum, long maximum)
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, decimal minimum, decimal maximum)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification RangeNumberIsValid(
-            this ValidationNotification source, object value, long minimum, long maximum)
+            this ValidationNotification source, object value, decimal minimum, decimal maximum)
         {
             return source.RangeNumberIsValid(value, Resource.DisplayValue, null, minimum, maximum);
         }
 
         private static ValidationNotification RangeNumberIsValid(
-            this ValidationNotification source, object value, string display, string reference, long minimum, long maximum)
+            this ValidationNotification source, object value, string display, string reference, decimal minimum, decimal maximum)
         {
             source.LastMessage = null;
             RangeNumberIsValidAttribute validation = new RangeNumberIsValidAttribute(minimum, maximum);
