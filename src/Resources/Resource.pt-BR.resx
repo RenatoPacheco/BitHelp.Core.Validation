@@ -165,14 +165,14 @@
   <data name="XMaxCharactersInvalid" xml:space="preserve">
     <value>{0} deve conter no máximo {1} caractére(s).</value>
   </data>
-  <data name="XMaxNumberInvalid" xml:space="preserve">
-    <value>{0} deve ser menor ou igual á {1}.</value>
+  <data name="XMaxValueInvalid" xml:space="preserve">
+    <value>{0} não pode ter um valor maior que {1}.</value>
   </data>
   <data name="XMinCharactersInvalid" xml:space="preserve">
     <value>{0} deve conter no mínimo {1} caractére(s).</value>
   </data>
-  <data name="XMinNumberInvalid" xml:space="preserve">
-    <value>{0} deve ser maior ou igual á {1}.</value>
+  <data name="XMinValueInvalid" xml:space="preserve">
+    <value>{0} não pode ter um valor menor que {1}.</value>
   </data>
   <data name="XNotEmptyInvalid" xml:space="preserve">
     <value>{0} está vazio.</value>
@@ -183,7 +183,7 @@
   <data name="XRangeCharactersInvalid" xml:space="preserve">
     <value>{0} deve ter um número entre {1} e {2}.</value>
   </data>
-  <data name="XRangeNumerInvalid" xml:space="preserve">
+  <data name="XRangeValueInvalid" xml:space="preserve">
     <value>{0} deve conter um valor entre {1} e {2}.</value>
   </data>
   <data name="XRequerid" xml:space="preserve">
@@ -207,7 +207,7 @@
   <data name="XMinItensIsInvalid" xml:space="preserve">
     <value>{0} deve conter no mínimo {1} elemento(s).</value>
   </data>
-  <data name="XRangeNumerItensInvalid" xml:space="preserve">
+  <data name="XRangeItensInvalid" xml:space="preserve">
     <value>{0} deve conter entre {1} e {2} elementos.</value>
   </data>
   <data name="XNoValueCanEqual" xml:space="preserve">

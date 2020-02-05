@@ -5,27 +5,27 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class MaxNumberIsValidAttribute : ListIsValidAttribute
+    public class MinTimeSpanIsValidAttribute : ListIsValidAttribute
     {
-        public MaxNumberIsValidAttribute(int maximum)
+        public MinTimeSpanIsValidAttribute(TimeSpan minimum)
             : base()
         {
-            this.ErrorMessageResourceName = nameof(Resources.Resource.XMaxValueInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMinCharactersInvalid);
 
-            this.Maximum = maximum;
+            Minimum = minimum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(this.ErrorMessageString, name, this.Maximum);
+            return string.Format(ErrorMessageString, name, Minimum);
         }
 
-        public int Maximum { get; set; }
+        public TimeSpan Minimum { get; set; }
         
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return int.TryParse(input, out int number) && number <= this.Maximum;
+            return TimeSpan.TryParse(input, out TimeSpan compare) && compare >= Minimum;
         }
     }
 }

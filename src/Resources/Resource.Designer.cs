@@ -223,11 +223,11 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must be less than or equal to {1}..
+        ///   Looks up a localized string similar to {0} cannot be greater than {1}..
         /// </summary>
-        internal static string XMaxNumberInvalid {
+        internal static string XMaxValueInvalid {
             get {
-                return ResourceManager.GetString("XMaxNumberInvalid", resourceCulture);
+                return ResourceManager.GetString("XMaxValueInvalid", resourceCulture);
             }
         }
         
@@ -250,11 +250,11 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must be greater than or equal to {1}..
+        ///   Looks up a localized string similar to {0} cannot be less than {1}..
         /// </summary>
-        internal static string XMinNumberInvalid {
+        internal static string XMinValueInvalid {
             get {
-                return ResourceManager.GetString("XMinNumberInvalid", resourceCulture);
+                return ResourceManager.GetString("XMinValueInvalid", resourceCulture);
             }
         }
         
@@ -313,20 +313,20 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must contain a value between {1} and {2}..
+        ///   Looks up a localized string similar to {0} must contain between {1} and {2} elements..
         /// </summary>
-        internal static string XRangeNumerInvalid {
+        internal static string XRangeItensInvalid {
             get {
-                return ResourceManager.GetString("XRangeNumerInvalid", resourceCulture);
+                return ResourceManager.GetString("XRangeItensInvalid", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} must contain between {1} and {2} elements..
+        ///   Looks up a localized string similar to {0} must contain a value between {1} and {2}..
         /// </summary>
-        internal static string XRangeNumerItensInvalid {
+        internal static string XRangeValueInvalid {
             get {
-                return ResourceManager.GetString("XRangeNumerItensInvalid", resourceCulture);
+                return ResourceManager.GetString("XRangeValueInvalid", resourceCulture);
             }
         }
         
