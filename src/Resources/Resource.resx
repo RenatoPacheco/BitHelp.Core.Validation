@@ -219,4 +219,7 @@
   <data name="XNoValueCanPlus" xml:space="preserve">
     <value>No {0} value can be plus to {1}.</value>
   </data>
+  <data name="XNullOrEmpty" xml:space="preserve">
+    <value>{0} cannot be null or empty.</value>
+  </data>
 </root>

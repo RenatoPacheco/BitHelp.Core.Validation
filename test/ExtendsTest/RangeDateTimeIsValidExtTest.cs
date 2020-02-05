@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     public class RangeDateTimeIsValidExtTest
     {
         readonly ValidationNotification notification = new ValidationNotification();
-        private DateTime date = DateTime.Now;
+        readonly DateTime date = DateTime.Now;
 
         [Fact]
         public void Check_if_15_is_in_range_10_and_20_valid()

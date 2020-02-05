@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     public class MaxDateTimeIsValidExtText
     {
         readonly ValidationNotification notification = new ValidationNotification();
-        private DateTime date = DateTime.Now;
+        readonly DateTime date = DateTime.Now;
 
         [Fact]
         public void Check_if_5_is_in_maximum_10_valid()

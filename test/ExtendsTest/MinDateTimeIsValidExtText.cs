@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     public class MinDateTimeIsValidExtText
     {
         readonly ValidationNotification notification = new ValidationNotification();
-        private DateTime date = DateTime.Now;
+        readonly DateTime date = DateTime.Now;
 
         [Fact]
         public void Check_if_15_is_in_minimum_10_valid()

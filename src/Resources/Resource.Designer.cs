@@ -304,6 +304,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} cannot be null or empty..
+        /// </summary>
+        internal static string XNullOrEmpty {
+            get {
+                return ResourceManager.GetString("XNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must have a caster between {1} and {2}..
         /// </summary>
         internal static string XRangeCharactersInvalid {
