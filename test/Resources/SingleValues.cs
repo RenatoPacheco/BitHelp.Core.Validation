@@ -40,6 +40,13 @@ namespace BitHelp.Core.Validation.Test.Resources
         [Display(Name = "Date time null")]
         public DateTime? DateTimeNull { get; set; }
 
+
+        [Display(Name = "Time span")]
+        public TimeSpan TimeSpan { get; set; }
+
+        [Display(Name = "Time span null")]
+        public TimeSpan? TimeSpanNull { get; set; }
+
         public Guid Guid { get; set; }
 
         [Display(Name = "Guid null")]
