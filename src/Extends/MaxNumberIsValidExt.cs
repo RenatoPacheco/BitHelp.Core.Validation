@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Extends
     public static class MaxNumberIsValidExt
     {
         public static ValidationNotification MaxNumberIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, int maximum)
+            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, long maximum)
         {
             string prorpety = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification MaxNumberIsValid(
-            this ValidationNotification source, object value, int maximum)
+            this ValidationNotification source, object value, long maximum)
         {
             return source.MaxNumberIsValid(value, Resource.DisplayValue, null, maximum);
         }
 
         private static ValidationNotification MaxNumberIsValid(
-            this ValidationNotification source, object value, string display, string reference, int maximum)
+            this ValidationNotification source, object value, string display, string reference, long maximum)
         {
             source.LastMessage = null;
             MaxNumberIsValidAttribute validation = new MaxNumberIsValidAttribute(maximum);

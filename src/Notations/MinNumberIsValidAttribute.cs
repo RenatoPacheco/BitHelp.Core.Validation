@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class MinNumberIsValidAttribute : ListIsValidAttribute
     {
-        public MinNumberIsValidAttribute(int minimum)
+        public MinNumberIsValidAttribute(long minimum)
             : base()
         {
             ErrorMessageResourceName = nameof(Resource.XMinValueInvalid);
@@ -20,12 +20,12 @@ namespace BitHelp.Core.Validation.Notations
             return string.Format(ErrorMessageString, name, Minimum);
         }
 
-        public int Minimum { get; set; }
+        public long Minimum { get; set; }
         
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return int.TryParse(input, out int compare) && compare >= Minimum;
+            return long.TryParse(input, out long compare) && compare >= Minimum;
         }
     }
 }

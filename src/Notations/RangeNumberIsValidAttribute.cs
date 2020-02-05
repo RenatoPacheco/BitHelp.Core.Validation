@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class RangeNumberIsValidAttribute : ListIsValidAttribute
     {
-        public RangeNumberIsValidAttribute(int minimum, int maximum)
+        public RangeNumberIsValidAttribute(long minimum, long maximum)
             : base()
         {
             if (maximum < minimum)
@@ -27,14 +27,14 @@ namespace BitHelp.Core.Validation.Notations
             return string.Format(ErrorMessageString, name, Minimum, Maximum);
         }
 
-        public int Minimum { get; set; }
+        public long Minimum { get; set; }
 
-        public int Maximum { get; set; }
+        public long Maximum { get; set; }
 
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return int.TryParse(input, out int compare) && compare >= Minimum && compare <= Maximum;
+            return long.TryParse(input, out long compare) && compare >= Minimum && compare <= Maximum;
         }
     }
 }

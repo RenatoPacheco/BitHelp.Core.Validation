@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class MaxNumberIsValidAttribute : ListIsValidAttribute
     {
-        public MaxNumberIsValidAttribute(int maximum)
+        public MaxNumberIsValidAttribute(long maximum)
             : base()
         {
             ErrorMessageResourceName = nameof(Resource.XMaxValueInvalid);
@@ -20,12 +20,12 @@ namespace BitHelp.Core.Validation.Notations
             return string.Format(ErrorMessageString, name, Maximum);
         }
 
-        public int Maximum { get; set; }
+        public long Maximum { get; set; }
         
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return int.TryParse(input, out int compare) && compare <= Maximum;
+            return long.TryParse(input, out long compare) && compare <= Maximum;
         }
     }
 }
