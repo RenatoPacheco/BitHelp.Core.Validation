@@ -28,10 +28,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, object value, string display, string reference, CultureInfo cultureInfo)
         {
             source.LastMessage = null;
-            DateTimeIsValidAttribute validation = new DateTimeIsValidAttribute() 
-            { 
-                CultureInfo = cultureInfo 
-            };
+            DateTimeIsValidAttribute validation = new DateTimeIsValidAttribute(cultureInfo);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

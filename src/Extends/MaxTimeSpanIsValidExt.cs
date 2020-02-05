@@ -27,7 +27,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, object value, string display, string reference, TimeSpan maximum)
         {
             source.LastMessage = null;
-            MaxTimespanIsValidAttribute validation = new MaxTimespanIsValidAttribute(maximum);
+            MaxTimeSpanIsValidAttribute validation = new MaxTimeSpanIsValidAttribute(maximum);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

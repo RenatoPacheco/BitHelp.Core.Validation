@@ -5,9 +5,9 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class MaxTimespanIsValidAttribute : ListIsValidAttribute
+    public class MaxTimeSpanIsValidAttribute : ListIsValidAttribute
     {
-        public MaxTimespanIsValidAttribute(TimeSpan maximum)
+        public MaxTimeSpanIsValidAttribute(TimeSpan maximum)
             : base()
         {
             ErrorMessageResourceName = nameof(Resource.XMaxValueInvalid);
