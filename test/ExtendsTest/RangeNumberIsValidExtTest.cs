@@ -146,18 +146,6 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
-        public void Check_if_minimum_less_1_exception()
-        {
-            var single = new SingleValues
-            {
-                String = null
-            };
-
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single.String, 0, 10));
-            Assert.Throws<ArgumentException>(() => notification.RangeNumberIsValid(single, x => x.String, 0, 10));
-        }
-
-        [Fact]
         public void Check_if_maximum_less_1_exception()
         {
             var single = new SingleValues

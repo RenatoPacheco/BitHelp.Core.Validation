@@ -10,12 +10,6 @@ namespace BitHelp.Core.Validation.Notations
         public RangeNumberIsValidAttribute(int minimum, int maximum)
             : base()
         {
-            if (minimum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(minimum));
-
-            if (maximum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
-
             if (maximum < minimum)
                 throw new ArgumentException(string.Format(Resource.XNoValueCanLess, nameof(maximum), nameof(minimum)));
 
