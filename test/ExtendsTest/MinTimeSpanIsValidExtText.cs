@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MinTimeSpanIsValidExtText
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_15_is_in_minimum_10_valid()
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = TimeSpan.FromMinutes(15).ToString()
             };
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -36,13 +36,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = TimeSpan.FromMinutes(10).ToString()
             };
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -54,13 +54,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = TimeSpan.FromMinutes(9).ToString()
             };
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -71,13 +71,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "text"
             };
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -88,13 +88,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = string.Empty
             };
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -105,13 +105,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10));
+            Assert.True(_notification.IsValid());
         }
     }
 }

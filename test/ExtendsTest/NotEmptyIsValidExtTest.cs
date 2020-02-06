@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class NotEmptyIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_no_empty_valid()
@@ -16,13 +16,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "123"
             };
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -33,13 +33,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = string.Empty
             };
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -50,13 +50,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = string.Empty
             };
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single.String, true);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single.String, true);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single, x => x.String, true);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single, x => x.String, true);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -67,13 +67,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -84,13 +84,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "     "
             };
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -101,13 +101,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "     "
             };
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single.String, true);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single.String, true);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.NotEmptyIsValid(single, x => x.String, true);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.NotEmptyIsValid(single, x => x.String, true);
+            Assert.True(_notification.IsValid());
         }
     }
 }

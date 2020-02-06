@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class DateTimeIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_date_en_US_valid()
@@ -17,13 +17,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "12/22/2020"
             };
 
-            notification.Clear();
-            notification.DateTimeIsValid(single.String, new CultureInfo("en-US"));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DateTimeIsValid(single.String, new CultureInfo("en-US"));
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.DateTimeIsValid(single, x => x.String, new CultureInfo("en-US"));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DateTimeIsValid(single, x => x.String, new CultureInfo("en-US"));
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -34,13 +34,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "22/12/2020"
             };
 
-            notification.Clear();
-            notification.DateTimeIsValid(single.String, new CultureInfo("en-US"));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.DateTimeIsValid(single.String, new CultureInfo("en-US"));
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.DateTimeIsValid(single, x => x.String, new CultureInfo("en-US"));
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.DateTimeIsValid(single, x => x.String, new CultureInfo("en-US"));
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -51,13 +51,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "22/12/2020"
             };
 
-            notification.Clear();
-            notification.DateTimeIsValid(single.String, new CultureInfo("pt-BR"));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DateTimeIsValid(single.String, new CultureInfo("pt-BR"));
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.DateTimeIsValid(single, x => x.String, new CultureInfo("pt-BR"));
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DateTimeIsValid(single, x => x.String, new CultureInfo("pt-BR"));
+            Assert.True(_notification.IsValid());
         }
     }
 }

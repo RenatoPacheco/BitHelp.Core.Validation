@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class IntIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_is_valid()
@@ -16,13 +16,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = 123
             };
 
-            notification.Clear();
-            notification.IntIsValid(single.Int);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.IntIsValid(single.Int);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.IntIsValid(single, x => x.Int);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.IntIsValid(single, x => x.Int);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -33,13 +33,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "text"
             };
 
-            notification.Clear();
-            notification.IntIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.IntIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.IntIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.IntIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -50,13 +50,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 IntNull = null
             };
 
-            notification.Clear();
-            notification.IntIsValid(single.IntNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.IntIsValid(single.IntNull);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.IntIsValid(single, x => x.IntNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.IntIsValid(single, x => x.IntNull);
+            Assert.True(_notification.IsValid());
         }
     }
 }

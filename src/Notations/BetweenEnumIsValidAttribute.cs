@@ -24,7 +24,7 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            IEnumerable<string> texts = this.Options.Select(x => x.ToString());
+            IEnumerable<string> texts = Options.Select(x => x.ToString());
             return texts.Contains(input);
         }
     }

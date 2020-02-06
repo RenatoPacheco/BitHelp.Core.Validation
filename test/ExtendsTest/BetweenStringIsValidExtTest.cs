@@ -7,8 +7,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class BetweenStringIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
-        readonly string[] options = new string[] { "1", "2", "3" };
+        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly string[] _options = new string[] { "1", "2", "3" };
 
         [Fact]
         public void Check_contain_value_1_valid()
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "1"
             };
 
-            notification.Clear();
-            notification.BetweenStringIsValid(single.String, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenStringIsValid(single.String, _options);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.BetweenStringIsValid(single, x => x.String, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenStringIsValid(single, x => x.String, _options);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -35,13 +35,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "10"
             };
 
-            notification.Clear();
-            notification.BetweenStringIsValid(single.String, options);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenStringIsValid(single.String, _options);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.BetweenStringIsValid(single, x => x.String, options);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenStringIsValid(single, x => x.String, _options);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -52,13 +52,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.BetweenStringIsValid(single.String, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenStringIsValid(single.String, _options);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.BetweenStringIsValid(single, x => x.String, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenStringIsValid(single, x => x.String, _options);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -69,8 +69,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.BetweenStringIsValid(single.String, null));
-            Assert.Throws<ArgumentException>(() => notification.BetweenStringIsValid(single, x => x.String, null));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single.String, null));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single, x => x.String, null));
         }
 
         [Fact]
@@ -81,8 +81,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.BetweenStringIsValid(single.String, new string[] { }));
-            Assert.Throws<ArgumentException>(() => notification.BetweenStringIsValid(single, x => x.String, new string[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single.String, new string[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single, x => x.String, new string[] { }));
         }
     }
 }

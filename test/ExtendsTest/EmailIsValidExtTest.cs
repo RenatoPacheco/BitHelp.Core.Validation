@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EmailIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_is_valid()
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "myemail@site.com"
             };
 
-            notification.Clear();
-            notification.EmailIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.EmailIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.EmailIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.EmailIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
 
@@ -36,13 +36,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "myemailsite.com"
             };
 
-            notification.Clear();
-            notification.EmailIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.EmailIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.EmailIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.EmailIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
         
         [Fact]
@@ -53,13 +53,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.EmailIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.EmailIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.EmailIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.EmailIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
     }
 }

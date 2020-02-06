@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MaxNumberIsValidExtText
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_5_is_in_maximum_10_valid()
@@ -17,13 +17,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "5"
             };
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single.String, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single.String, 10);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single, x => x.String, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single, x => x.String, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -35,13 +35,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "10"
             };
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single.String, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single.String, 10);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single, x => x.String, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single, x => x.String, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -53,13 +53,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "11"
             };
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single.String, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single.String, 10);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single, x => x.String, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single, x => x.String, 10);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -70,13 +70,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "text"
             };
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single.String, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single.String, 10);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single, x => x.String, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single, x => x.String, 10);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -87,13 +87,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = string.Empty
             };
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single.String, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single.String, 10);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single, x => x.String, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single, x => x.String, 10);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -104,13 +104,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single.String, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single.String, 10);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MaxNumberIsValid(single, x => x.String, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MaxNumberIsValid(single, x => x.String, 10);
+            Assert.True(_notification.IsValid());
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class UrlIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_simple_url_https_valid()
@@ -16,13 +16,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "https://www.site.com"
             };
 
-            notification.Clear();
-            notification.UrlIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.UrlIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -33,13 +33,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "http://site.com"
             };
 
-            notification.Clear();
-            notification.UrlIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.UrlIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -50,13 +50,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "htt://site.com"
             };
 
-            notification.Clear();
-            notification.UrlIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.UrlIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -67,13 +67,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "ftp://site.com"
             };
 
-            notification.Clear();
-            notification.UrlIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.UrlIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -84,13 +84,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.UrlIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.UrlIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.UrlIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
     }
 }

@@ -5,7 +5,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RequiredIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_null_invalid()
@@ -15,13 +15,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.RequiredIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -32,13 +32,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = string.Empty
             };
 
-            notification.Clear();
-            notification.RequiredIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -49,13 +49,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = new string[] { string.Empty, null }
             };
 
-            notification.Clear();
-            notification.RequiredIsValid(array.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIsValid(array, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -66,13 +66,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = new string[] { string.Empty, string.Empty }
             };
 
-            notification.Clear();
-            notification.RequiredIsValid(array.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIsValid(array, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -83,13 +83,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = new string[] { }
             };
 
-            notification.Clear();
-            notification.RequiredIsValid(array.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIsValid(array, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
 
@@ -101,13 +101,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.RequiredIsValid(array.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIsValid(array, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIsValid(array, x => x.String);
+            Assert.False(_notification.IsValid());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RequiredIfOtherNotNullIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_all_null_valid()
@@ -19,13 +19,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 BoolNull = null                
             };
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -37,13 +37,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 BoolNull = null
             };
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -55,13 +55,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 BoolNull = true
             };
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
+            Assert.True(_notification.IsValid());
         }
 
 
@@ -74,13 +74,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 BoolNull = true
             };
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single.String, single.BoolNull);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
+            Assert.False(_notification.IsValid());
         }
     }
 }

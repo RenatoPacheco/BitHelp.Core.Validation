@@ -6,9 +6,9 @@ namespace BitHelp.Core.Validation
     {
         protected ValidationMessage()
         {
-            this.Id = Guid.NewGuid();
-            this.Date = DateTime.Now;
-            this.Type = ValidationType.Error;
+            Id = Guid.NewGuid();
+            Date = DateTime.Now;
+            Type = ValidationType.Error;
         }
 
         public ValidationMessage(
@@ -16,17 +16,17 @@ namespace BitHelp.Core.Validation
             ValidationType type = ValidationType.Error)
             : this()
         {
-            this.Message = message;
-            this.Reference = reference;
-            this.Type = type;
+            Message = message;
+            Reference = reference;
+            Type = type;
         }
 
         public ValidationMessage(
             string message, ValidationType type)
             : this()
         {
-            this.Message = message;
-            this.Type = type;
+            Message = message;
+            Type = type;
         }
 
         public ValidationMessage(
@@ -34,10 +34,10 @@ namespace BitHelp.Core.Validation
             ValidationType type = ValidationType.Fatal)
             : this()
         {
-            this.Message = exception.StackTrace;
-            this.Exception = exception;
-            this.Reference = reference;
-            this.Type = type;
+            Message = exception.StackTrace;
+            Exception = exception;
+            Reference = reference;
+            Type = type;
         }
 
         public Guid Id { get; set; }
@@ -54,12 +54,12 @@ namespace BitHelp.Core.Validation
 
         public override string ToString()
         {
-            return this.Message;
+            return Message;
         }
 
         public bool IsTypeError()
         {
-            return (int)this.Type <= (int)ValidationType.Unauthorized;
+            return (int)Type <= (int)ValidationType.Unauthorized;
         }
 
         public static bool IsTypeError(ValidationType type)
@@ -73,12 +73,12 @@ namespace BitHelp.Core.Validation
         {
             ValidationMessage comparar = obj as ValidationMessage;
             return !object.Equals(comparar, null)
-                && this.GetHashCode() == comparar.GetHashCode();
+                && GetHashCode() == comparar.GetHashCode();
         }
 
         public override int GetHashCode()
         {
-            return $"{this.Id}:{this.GetType()}".GetHashCode();
+            return $"{Id}:{GetType()}".GetHashCode();
         }
 
         public static bool operator ==(ValidationMessage a, ValidationMessage b)

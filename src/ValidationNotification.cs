@@ -16,17 +16,17 @@ namespace BitHelp.Core.Validation
         
         public void Add(ValidationMessage data)
         {
-            this.Messages.Add(data);
+            Messages.Add(data);
         }
 
         public void Add(ISelfValidation data)
         {
-            this.Messages = this.Messages.Concat(data.Notifications.Messages).ToList();
+            Messages = Messages.Concat(data.Notifications.Messages).ToList();
         }
 
         public void Add(ValidationNotification notification)
         {
-            this.Messages = this.Messages.Concat(notification.Messages).ToList();
+            Messages = Messages.Concat(notification.Messages).ToList();
         }
 
         private void Add<T>(
@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation
             message = message ?? (ValidationMessage.IsTypeError(type) ? Resource.XNotValid : Resource.XValid);
             message = Regex.Replace(message, @"\{0\}", display);
 
-            this.Messages.Add(new ValidationMessage(message, reference, type));
+            Messages.Add(new ValidationMessage(message, reference, type));
         }
 
         #region AddError
@@ -48,14 +48,14 @@ namespace BitHelp.Core.Validation
         public void AddError(
            string message, string reference = null)
         {
-            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Error));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Error));
         }
 
         public void AddError<T>(
             Expression<Func<T, object>> expression,
             string message = null, string reference = null)
         {
-            this.Add(expression, message, reference, ValidationType.Error);
+            Add(expression, message, reference, ValidationType.Error);
         }
 
         #endregion
@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation
         public void AddFatal(
            Exception exception, string reference = null)
         {
-            this.Messages.Add(new ValidationMessage(exception, reference));
+            Messages.Add(new ValidationMessage(exception, reference));
         }
 
         public void AddFatal<T>(
@@ -73,7 +73,7 @@ namespace BitHelp.Core.Validation
             Exception exception, string reference = null)
         {
             reference = reference ?? expression.PropertyTrail();
-            this.Messages.Add(new ValidationMessage(exception, reference));
+            Messages.Add(new ValidationMessage(exception, reference));
         }
 
         #endregion
@@ -83,14 +83,14 @@ namespace BitHelp.Core.Validation
         public void AddUnauthorized(
            string message, string reference = null)
         {
-            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Unauthorized));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Unauthorized));
         }
 
         public void AddUnauthorized<T>(
             Expression<Func<T, object>> expression, 
             string message = null, string reference = null)
         {
-            this.Add(expression, message, reference, ValidationType.Unauthorized);
+            Add(expression, message, reference, ValidationType.Unauthorized);
         }
 
         #endregion
@@ -100,14 +100,14 @@ namespace BitHelp.Core.Validation
         public void AddAlert(
            string message, string reference = null)
         {
-            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Alert));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Alert));
         }
 
         public void AddAlert<T>(
             Expression<Func<T, object>> expression, 
             string message = null, string reference = null)
         {
-            this.Add(expression, message, reference, ValidationType.Alert);
+            Add(expression, message, reference, ValidationType.Alert);
         }
 
         #endregion
@@ -117,14 +117,14 @@ namespace BitHelp.Core.Validation
         public void AddSuccess(
            string message, string reference = null)
         {
-            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Success));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Success));
         }
 
         public void AddSuccess<T>(
             Expression<Func<T, object>> expression, 
             string message = null, string reference = null)
         {
-            this.Add(expression, message, reference, ValidationType.Success);
+            Add(expression, message, reference, ValidationType.Success);
         }
 
         #endregion
@@ -134,38 +134,38 @@ namespace BitHelp.Core.Validation
         public void AddInfo(
            string message, string reference = null)
         {
-            this.Messages.Add(new ValidationMessage(message, reference, ValidationType.Info));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Info));
         }
 
         public void AddInfo<T>(
             Expression<Func<T, object>> expression, string message = null,
             string reference = null)
         {
-            this.Add(expression, message, reference, ValidationType.Info);
+            Add(expression, message, reference, ValidationType.Info);
         }
 
         #endregion
 
         public bool IsValid()
         {
-            return !this.Messages.Any(x => x.IsTypeError());
+            return !Messages.Any(x => x.IsTypeError());
         }
 
         public bool AnyTypeError()
         {
-            return this.Messages.Any(x => x.IsTypeError());
+            return Messages.Any(x => x.IsTypeError());
         }
 
         public void Clear()
         {
-            this.LastMessage = null;
-            this.Messages.Clear();
+            LastMessage = null;
+            Messages.Clear();
         }
 
         public void RemoveAtReference(string reference)
         {
             reference = reference?.ToLower();
-            this.Messages = this.Messages.Where(x => x.Reference?.ToLower() == reference).ToList();
+            Messages = Messages.Where(x => x.Reference?.ToLower() == reference).ToList();
         }
     }
 }

@@ -7,8 +7,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class BetweenEnumIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
-        readonly Enum[] options = new Enum[] { EnumValue.Guid, EnumValue.Enum, EnumValue.Number };
+        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly Enum[] _options = new Enum[] { EnumValue.Guid, EnumValue.Enum, EnumValue.Number };
 
         [Fact]
         public void Check_contain_value_guid_valid()
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Enum = EnumValue.Guid
             };
 
-            notification.Clear();
-            notification.BetweenEnumIsValid(single.Enum, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single.Enum, _options);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.BetweenEnumIsValid(single, x => x.Enum, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single, x => x.Enum, _options);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -35,13 +35,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Enum = EnumValue.String
             };
 
-            notification.Clear();
-            notification.BetweenEnumIsValid(single.Enum, options);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single.Enum, _options);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.BetweenEnumIsValid(single, x => x.Enum, options);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single, x => x.Enum, _options);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -52,13 +52,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 EnumNull = null
             };
 
-            notification.Clear();
-            notification.BetweenEnumIsValid(single.EnumNull, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single.EnumNull, _options);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.BetweenEnumIsValid(single, x => x.EnumNull, options);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single, x => x.EnumNull, _options);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -69,8 +69,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 EnumNull = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.BetweenEnumIsValid(single.EnumNull, null));
-            Assert.Throws<ArgumentException>(() => notification.BetweenEnumIsValid(single, x => x.EnumNull, null));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.EnumNull, null));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.EnumNull, null));
         }
 
         [Fact]
@@ -81,8 +81,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 EnumNull = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.BetweenEnumIsValid(single.EnumNull, new Enum[] { }));
-            Assert.Throws<ArgumentException>(() => notification.BetweenEnumIsValid(single, x => x.EnumNull, new Enum[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.EnumNull, new Enum[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.EnumNull, new Enum[] { }));
         }
     }
 }

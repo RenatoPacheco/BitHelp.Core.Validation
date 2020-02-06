@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MinItensIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_6_itens_is_in_minimum_5_valid()
@@ -17,13 +17,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4, 5, 6 }
             };
 
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array.Int, 5);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array, x => x.Int, 5);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -34,13 +34,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4, 5 }
             };
 
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array.Int, 5);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array, x => x.Int, 5);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -51,13 +51,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4 }
             };
 
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array.Int, 5);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array, x => x.Int, 5);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -68,13 +68,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { }
             };
 
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array.Int, 5);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array, x => x.Int, 5);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -85,13 +85,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            notification.Clear();
-            notification.MinItensIsValid(array.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array.Int, 5);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.MinItensIsValid(array, x => x.Int, 5);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.MinItensIsValid(array, x => x.Int, 5);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -102,8 +102,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.MinItensIsValid(array.Int, 0));
-            Assert.Throws<ArgumentException>(() => notification.MinItensIsValid(array, x => x.Int, 0));
+            Assert.Throws<ArgumentException>(() => _notification.MinItensIsValid(array.Int, 0));
+            Assert.Throws<ArgumentException>(() => _notification.MinItensIsValid(array, x => x.Int, 0));
         }
     }
 }

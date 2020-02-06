@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RangeItensIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_6_itens_is_in_range_5_and_10_valid()
@@ -17,13 +17,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4, 5, 6 }
             };
 
-            notification.Clear();
-            notification.RangeItensIsValid(array.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array.Int, 5, 10);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -34,13 +34,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4, 5 }
             };
 
-            notification.Clear();
-            notification.RangeItensIsValid(array.Int, 5, 110);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array.Int, 5, 110);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -51,13 +51,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }
             };
 
-            notification.Clear();
-            notification.RangeItensIsValid(array.Int, 5, 110);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array.Int, 5, 110);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -68,13 +68,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { 1, 2, 3, 4 }
             };
 
-            notification.Clear();
-            notification.RangeItensIsValid(array.Int, 5, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array.Int, 5, 10);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array, x => x.Int, 5, 10);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -85,13 +85,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = new int[] { }
             };
 
-            notification.Clear();
-            notification.RangeItensIsValid(array.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array.Int, 5, 10);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -102,13 +102,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            notification.Clear();
-            notification.RangeItensIsValid(array.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array.Int, 5, 10);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RangeItensIsValid(array, x => x.Int, 5, 10);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RangeItensIsValid(array, x => x.Int, 5, 10);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -119,8 +119,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array.Int, 0, 10));
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array, x => x.Int, 0, 10));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array.Int, 0, 10));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array, x => x.Int, 0, 10));
         }
 
         [Fact]
@@ -131,8 +131,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array.Int, 5, 0));
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array, x => x.Int, 5, 0));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array.Int, 5, 0));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array, x => x.Int, 5, 0));
         }
 
         [Fact]
@@ -143,8 +143,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array.Int, 5, 4));
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array, x => x.Int, 5, 4));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array.Int, 5, 4));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array, x => x.Int, 5, 4));
         }
 
         [Fact]
@@ -155,8 +155,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Int = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array.Int, 5, 5));
-            Assert.Throws<ArgumentException>(() => notification.RangeItensIsValid(array, x => x.Int, 5, 5));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array.Int, 5, 5));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItensIsValid(array, x => x.Int, 5, 5));
         }
     }
 }

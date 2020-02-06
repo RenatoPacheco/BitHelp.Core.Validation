@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class DecimalIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_is_valid()
@@ -16,13 +16,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Decimal = .121m
             };
 
-            notification.Clear();
-            notification.DecimalIsValid(single.Decimal);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DecimalIsValid(single.Decimal);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.DecimalIsValid(single, x => x.Decimal);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DecimalIsValid(single, x => x.Decimal);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -33,13 +33,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "text"
             };
 
-            notification.Clear();
-            notification.DecimalIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.DecimalIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.DecimalIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.DecimalIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -50,13 +50,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 DecimalNull = null
             };
 
-            notification.Clear();
-            notification.DecimalIsValid(single.DecimalNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DecimalIsValid(single.DecimalNull);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.DecimalIsValid(single, x => x.DecimalNull);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.DecimalIsValid(single, x => x.DecimalNull);
+            Assert.True(_notification.IsValid());
         }
     }
 }

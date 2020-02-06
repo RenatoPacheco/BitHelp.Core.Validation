@@ -25,13 +25,10 @@ namespace BitHelp.Core.Validation.Notations
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
-            object otherValue = null;
-
             if (object.Equals(property, null))
                 throw new ArgumentException(Resource.NotValid, nameof(OtherProperty));
 
-            otherValue = property.GetValue(validationContext.ObjectInstance, null);
-
+            object otherValue = property.GetValue(validationContext.ObjectInstance, null);
             if (object.Equals(otherValue, null) || !object.Equals(value, null))
                 return null;
 

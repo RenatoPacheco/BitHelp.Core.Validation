@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RegexIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
         
         [Fact]
         public void Check_text_lowercase_only_valid()
@@ -18,13 +18,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "abcdfg"
             };
 
-            notification.Clear();
-            notification.RegexIsValid(single.String, @"^[a-z]+$");
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RegexIsValid(single.String, @"^[a-z]+$");
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -35,13 +35,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "AbCdFg"
             };
 
-            notification.Clear();
-            notification.RegexIsValid(single.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RegexIsValid(single.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.RegexIsValid(single, x => x.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -52,13 +52,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "AbCdFg123"
             };
 
-            notification.Clear();
-            notification.RegexIsValid(single.String, @"^[a-z]+$");
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RegexIsValid(single.String, @"^[a-z]+$");
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -69,8 +69,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => notification.RegexIsValid(array.String, string.Empty));
-            Assert.Throws<ArgumentException>(() => notification.RegexIsValid(array, x => x.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array, x => x.String, string.Empty));
         }
 
 
@@ -82,8 +82,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentNullException>(() => notification.RegexIsValid(array.String, null));
-            Assert.Throws<ArgumentNullException>(() => notification.RegexIsValid(array, x => x.String, null));
+            Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array.String, null));
+            Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array, x => x.String, null));
         }
     }
 }

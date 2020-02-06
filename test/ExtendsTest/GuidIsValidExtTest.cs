@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class GuidIsValidExtTest
     {
-        readonly ValidationNotification notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_guid_valid()
@@ -16,13 +16,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "3b8e6bc1-82eb-4339-998c-5f1fba019ae7"
             };
 
-            notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.GuidIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -33,13 +33,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "00000000-0000-0000-0000-000000000000"
             };
 
-            notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.GuidIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -50,13 +50,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = string.Empty
             };
 
-            notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.GuidIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
 
         [Fact]
@@ -67,13 +67,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single.String);
+            Assert.True(_notification.IsValid());
 
-            notification.Clear();
-            notification.GuidIsValid(single, x => x.String);
-            Assert.True(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single, x => x.String);
+            Assert.True(_notification.IsValid());
         }
 
         [Fact]
@@ -84,13 +84,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "3b8e6bc1-ghij-klmn-opqr-5f1fba019ae7"
             };
 
-            notification.Clear();
-            notification.GuidIsValid(single.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single.String);
+            Assert.False(_notification.IsValid());
 
-            notification.Clear();
-            notification.GuidIsValid(single, x => x.String);
-            Assert.False(notification.IsValid());
+            _notification.Clear();
+            _notification.GuidIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
         }
     }
 }
