@@ -222,4 +222,7 @@
   <data name="XNullOrEmpty" xml:space="preserve">
     <value>{0} não pode ser nulo ou vazio.</value>
   </data>
+  <data name="XSingletonItensInvalid" xml:space="preserve">
+    <value>{0} contém valores repetidos.</value>
+  </data>
 </root>

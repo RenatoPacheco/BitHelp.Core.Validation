@@ -349,6 +349,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} contains repeated values..
+        /// </summary>
+        internal static string XSingletonItensInvalid {
+            get {
+                return ResourceManager.GetString("XSingletonItensInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is not valid timespan..
         /// </summary>
         internal static string XTimeSpanInvalid {
