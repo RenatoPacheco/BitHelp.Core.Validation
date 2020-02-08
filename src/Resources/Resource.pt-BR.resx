@@ -225,4 +225,7 @@
   <data name="XSingletonItensInvalid" xml:space="preserve">
     <value>{0} contém valores repetidos.</value>
   </data>
+  <data name="XCompareEqualInvalid" xml:space="preserve">
+    <value>{0} deve ser igual a {1}.</value>
+  </data>
 </root>
