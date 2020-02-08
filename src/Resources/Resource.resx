@@ -228,4 +228,7 @@
   <data name="XCompareEqualInvalid" xml:space="preserve">
     <value>{0} must equal {1}.</value>
   </data>
+  <data name="XCompareDifferentInvalid" xml:space="preserve">
+    <value>{0} must different {1}.</value>
+  </data>
 </root>

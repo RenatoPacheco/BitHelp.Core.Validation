@@ -124,6 +124,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} must different {1}..
+        /// </summary>
+        internal static string XCompareDifferentInvalid {
+            get {
+                return ResourceManager.GetString("XCompareDifferentInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must equal {1}..
         /// </summary>
         internal static string XCompareEqualInvalid {
