@@ -142,6 +142,24 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} must be less than {1}..
+        /// </summary>
+        internal static string XCompareLessInvalid {
+            get {
+                return ResourceManager.GetString("XCompareLessInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be greater than {1}..
+        /// </summary>
+        internal static string XComparePlusInvalid {
+            get {
+                return ResourceManager.GetString("XComparePlusInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has not been confirmed..
         /// </summary>
         internal static string XConfirmedInvalid {

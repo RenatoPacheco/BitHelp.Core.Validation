@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/BitHelp.Core.Validation.Test/bin/Debug/netcoreapp2.2/BitHelp.Core.Validation.Test.dll",
+            "program": "${workspaceFolder}/test/bin/Debug/netcoreapp2.2/BitHelp.Core.Validation.Test.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/BitHelp.Core.Validation.Test",
+            "cwd": "${workspaceFolder}/test",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

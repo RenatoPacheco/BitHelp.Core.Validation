@@ -25,7 +25,11 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_all_not_null_valid()
         {
-            var model = new RequiredIfOtherNotNullIsValidTest() { Value = string.Empty, Compare = string.Empty };
+            var model = new RequiredIfOtherNotNullIsValidTest()
+            { 
+                Value = string.Empty, 
+                Compare = string.Empty 
+            };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
             var isValid = Validator.TryValidateObject(model, context, results, true);
@@ -35,7 +39,10 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_compare_not_null_invalid()
         {
-            var model = new RequiredIfOtherNotNullIsValidTest() { Compare = string.Empty };
+            var model = new RequiredIfOtherNotNullIsValidTest() 
+            { 
+                Compare = string.Empty 
+            };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
             var isValid = Validator.TryValidateObject(model, context, results, true);
@@ -45,7 +52,10 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_not_null_valid()
         {
-            var model = new RequiredIfOtherNotNullIsValidTest() { Value = string.Empty };
+            var model = new RequiredIfOtherNotNullIsValidTest() 
+            { 
+                Value = string.Empty 
+            };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
             var isValid = Validator.TryValidateObject(model, context, results, true);

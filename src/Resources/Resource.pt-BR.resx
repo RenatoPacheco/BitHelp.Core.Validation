@@ -231,4 +231,10 @@
   <data name="XCompareDifferentInvalid" xml:space="preserve">
     <value>{0} deve ser diferente de {1}.</value>
   </data>
+  <data name="XCompareLessInvalid" xml:space="preserve">
+    <value>{0} deve ser menor que {1}.</value>
+  </data>
+  <data name="XComparePlusInvalid" xml:space="preserve">
+    <value>{0} deve ser maior que {1}.</value>
+  </data>
 </root>
