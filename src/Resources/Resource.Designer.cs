@@ -72,18 +72,18 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Number of items are not the same.
         /// </summary>
-        internal static string EqualNumberItensInvalid {
+        internal static string EqualNumberItemsInvalid {
             get {
-                return ResourceManager.GetString("EqualNumberItensInvalid", resourceCulture);
+                return ResourceManager.GetString("EqualNumberItemsInvalid", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Minimum value is {0}..
         /// </summary>
-        internal static string MinimumValieIs {
+        internal static string MinimumValidIs {
             get {
-                return ResourceManager.GetString("MinimumValieIs", resourceCulture);
+                return ResourceManager.GetString("MinimumValidIs", resourceCulture);
             }
         }
         
@@ -99,9 +99,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Value is required..
         /// </summary>
-        internal static string Requerid {
+        internal static string Required {
             get {
-                return ResourceManager.GetString("Requerid", resourceCulture);
+                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
         
@@ -207,9 +207,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain {1} element..
         /// </summary>
-        internal static string XExactItensIsInvalid {
+        internal static string XExactItemsIsInvalid {
             get {
-                return ResourceManager.GetString("XExactItensIsInvalid", resourceCulture);
+                return ResourceManager.GetString("XExactItemsIsInvalid", resourceCulture);
             }
         }
         
@@ -252,9 +252,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain a maximum of {1} element..
         /// </summary>
-        internal static string XMaxItensIsInvalid {
+        internal static string XMaxItemsIsInvalid {
             get {
-                return ResourceManager.GetString("XMaxItensIsInvalid", resourceCulture);
+                return ResourceManager.GetString("XMaxItemsIsInvalid", resourceCulture);
             }
         }
         
@@ -279,9 +279,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain at least {1} element..
         /// </summary>
-        internal static string XMinItensIsInvalid {
+        internal static string XMinItemsIsInvalid {
             get {
-                return ResourceManager.GetString("XMinItensIsInvalid", resourceCulture);
+                return ResourceManager.GetString("XMinItemsIsInvalid", resourceCulture);
             }
         }
         
@@ -360,9 +360,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain between {1} and {2} elements..
         /// </summary>
-        internal static string XRangeItensInvalid {
+        internal static string XRangeItemsInvalid {
             get {
-                return ResourceManager.GetString("XRangeItensInvalid", resourceCulture);
+                return ResourceManager.GetString("XRangeItemsInvalid", resourceCulture);
             }
         }
         
@@ -378,18 +378,18 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is requerid..
         /// </summary>
-        internal static string XRequerid {
+        internal static string XRequired {
             get {
-                return ResourceManager.GetString("XRequerid", resourceCulture);
+                return ResourceManager.GetString("XRequired", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {0} contains repeated values..
         /// </summary>
-        internal static string XSingletonItensInvalid {
+        internal static string XSingletonItemsInvalid {
             get {
-                return ResourceManager.GetString("XSingletonItensInvalid", resourceCulture);
+                return ResourceManager.GetString("XSingletonItemsInvalid", resourceCulture);
             }
         }
         

@@ -13,10 +13,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenDateTimeIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, IEnumerable<DateTime> options, CultureInfo cultureInfo = null)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.BetweenDateTimeIsValid(value, display, prorpety, options, cultureInfo);
+            return source.BetweenDateTimeIsValid(value, display, reference, options, cultureInfo);
         }
 
         public static ValidationNotification BetweenDateTimeIsValid(

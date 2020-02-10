@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RangeNumberIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, decimal minimum, decimal maximum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.RangeNumberIsValid(value, display, prorpety, minimum, maximum);
+            return source.RangeNumberIsValid(value, display, reference, minimum, maximum);
         }
 
         public static ValidationNotification RangeNumberIsValid(

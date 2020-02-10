@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification NotEmptyIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, bool ignoreWithSpace = false)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.NotEmptyIsValid(value, display, prorpety, ignoreWithSpace);
+            return source.NotEmptyIsValid(value, display, reference, ignoreWithSpace);
         }
 
         public static ValidationNotification NotEmptyIsValid(

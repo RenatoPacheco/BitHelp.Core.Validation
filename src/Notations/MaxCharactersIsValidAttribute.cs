@@ -11,7 +11,7 @@ namespace BitHelp.Core.Validation.Notations
             : base()
         {
             if (maximum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
+                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(maximum));
 
             ErrorMessageResourceName = nameof(Resource.XMaxCharactersInvalid);
 

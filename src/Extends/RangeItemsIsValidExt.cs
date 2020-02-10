@@ -7,28 +7,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class RangeItensIsValidExt
+    public static class RangeItemsIsValidExt
     {
-        public static ValidationNotification RangeItensIsValid<TClass>(
+        public static ValidationNotification RangeItemsIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int minimum, int maximum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;
             string display = expression.PropertyDisplay();
-            return source.RangeItensIsValid(value, display, prorpety, minimum, maximum);
+            return source.RangeItemsIsValid(value, display, reference, minimum, maximum);
         }
 
-        public static ValidationNotification RangeItensIsValid(
+        public static ValidationNotification RangeItemsIsValid(
             this ValidationNotification source, IList value, int minimum, int maximum)
         {
-            return source.RangeItensIsValid(value, Resource.DisplayValue, null, minimum, maximum);
+            return source.RangeItemsIsValid(value, Resource.DisplayValue, null, minimum, maximum);
         }
 
-        private static ValidationNotification RangeItensIsValid(
+        private static ValidationNotification RangeItemsIsValid(
             this ValidationNotification source, object value, string display, string reference, int minimum, int maximum)
         {
             source.LastMessage = null;
-            RangeItensIsValidAttribute validation = new RangeItensIsValidAttribute(minimum, maximum);
+            RangeItemsIsValidAttribute validation = new RangeItemsIsValidAttribute(minimum, maximum);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

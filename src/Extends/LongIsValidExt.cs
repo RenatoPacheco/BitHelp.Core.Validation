@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification LongIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.LongIsValid(value, display, prorpety);
+            return source.LongIsValid(value, display, reference);
         }
 
         public static ValidationNotification LongIsValid(

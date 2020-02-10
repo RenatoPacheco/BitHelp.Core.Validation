@@ -12,10 +12,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RegexIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, string pattern, RegexOptions options = RegexOptions.None)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.RegexIsValid(value, display, prorpety, pattern, options);
+            return source.RegexIsValid(value, display, reference, pattern, options);
         }
 
         public static ValidationNotification RegexIsValid(

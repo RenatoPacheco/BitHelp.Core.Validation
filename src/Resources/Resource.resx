@@ -120,16 +120,16 @@
   <data name="DisplayValue" xml:space="preserve">
     <value>Value</value>
   </data>
-  <data name="MinimumValieIs" xml:space="preserve">
+  <data name="MinimumValidIs" xml:space="preserve">
     <value>Minimum value is {0}.</value>
   </data>
   <data name="NotValid" xml:space="preserve">
     <value>Value is not valid.</value>
   </data>
-  <data name="EqualNumberItensInvalid" xml:space="preserve">
+  <data name="EqualNumberItemsInvalid" xml:space="preserve">
     <value>Number of items are not the same</value>
   </data>
-  <data name="Requerid" xml:space="preserve">
+  <data name="Required" xml:space="preserve">
     <value>Value is required.</value>
   </data>
   <data name="Valid" xml:space="preserve">
@@ -186,7 +186,7 @@
   <data name="XRangeValueInvalid" xml:space="preserve">
     <value>{0} must contain a value between {1} and {2}.</value>
   </data>
-  <data name="XRequerid" xml:space="preserve">
+  <data name="XRequired" xml:space="preserve">
     <value>{0} is requerid.</value>
   </data>
   <data name="XTimeSpanInvalid" xml:space="preserve">
@@ -198,16 +198,16 @@
   <data name="XValid" xml:space="preserve">
     <value>{0} is valid.</value>
   </data>
-  <data name="XExactItensIsInvalid" xml:space="preserve">
+  <data name="XExactItemsIsInvalid" xml:space="preserve">
     <value>{0} must contain {1} element.</value>
   </data>
-  <data name="XMaxItensIsInvalid" xml:space="preserve">
+  <data name="XMaxItemsIsInvalid" xml:space="preserve">
     <value>{0} must contain a maximum of {1} element.</value>
   </data>
-  <data name="XMinItensIsInvalid" xml:space="preserve">
+  <data name="XMinItemsIsInvalid" xml:space="preserve">
     <value>{0} must contain at least {1} element.</value>
   </data>
-  <data name="XRangeItensInvalid" xml:space="preserve">
+  <data name="XRangeItemsInvalid" xml:space="preserve">
     <value>{0} must contain between {1} and {2} elements.</value>
   </data>
   <data name="XNoValueCanEqual" xml:space="preserve">
@@ -222,7 +222,7 @@
   <data name="XNullOrEmpty" xml:space="preserve">
     <value>{0} cannot be null or empty.</value>
   </data>
-  <data name="XSingletonItensInvalid" xml:space="preserve">
+  <data name="XSingletonItemsInvalid" xml:space="preserve">
     <value>{0} contains repeated values.</value>
   </data>
   <data name="XCompareEqualInvalid" xml:space="preserve">

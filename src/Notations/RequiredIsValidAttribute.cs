@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public RequiredIsValidAttribute() : base()
         {
-            ErrorMessageResourceName = nameof(Resource.XRequerid);
+            ErrorMessageResourceName = nameof(Resource.XRequired);
             IgnoreNull = false;
         }
 

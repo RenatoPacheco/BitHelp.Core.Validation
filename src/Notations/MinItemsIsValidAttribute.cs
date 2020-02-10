@@ -6,15 +6,15 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class MinItensIsValidAttribute : BaseIsValidAttribute
+    public class MinItemsIsValidAttribute : BaseIsValidAttribute
     {
-        public MinItensIsValidAttribute(int minimum)
+        public MinItemsIsValidAttribute(int minimum)
             : base()
         {
             if (minimum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(minimum));
+                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(minimum));
 
-            ErrorMessageResourceName = nameof(Resource.XMinItensIsInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMinItemsIsInvalid);
 
             Minimum = minimum;
         }

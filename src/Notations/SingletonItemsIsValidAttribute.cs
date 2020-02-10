@@ -7,11 +7,11 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class SingletonItensIsValidAttribute : BaseIsValidAttribute
+    public class SingletonItemsIsValidAttribute : BaseIsValidAttribute
     {
-        public SingletonItensIsValidAttribute() : base()
+        public SingletonItemsIsValidAttribute() : base()
         {
-            ErrorMessageResourceName = nameof(Resource.XSingletonItensInvalid);
+            ErrorMessageResourceName = nameof(Resource.XSingletonItemsInvalid);
         }
 
         protected override bool Check(object value)

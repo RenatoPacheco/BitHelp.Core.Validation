@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification EnumIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, Type type)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.EnumIsValid(value, display, prorpety, type);
+            return source.EnumIsValid(value, display, reference, type);
         }
 
         public static ValidationNotification EnumIsValid(

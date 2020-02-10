@@ -7,28 +7,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class ExactItensIsValidExt
+    public static class ExactItemsIsValidExt
     {
-        public static ValidationNotification ExactItensIsValid<TClass>(
+        public static ValidationNotification ExactItemsIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int exact)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;
             string display = expression.PropertyDisplay();
-            return source.ExactItensIsValid(value, display, prorpety, exact);
+            return source.ExactItemsIsValid(value, display, reference, exact);
         }
 
-        public static ValidationNotification ExactItensIsValid(
+        public static ValidationNotification ExactItemsIsValid(
             this ValidationNotification source, IList value, int exact)
         {
-            return source.ExactItensIsValid(value, Resource.DisplayValue, null, exact);
+            return source.ExactItemsIsValid(value, Resource.DisplayValue, null, exact);
         }
 
-        private static ValidationNotification ExactItensIsValid(
+        private static ValidationNotification ExactItemsIsValid(
             this ValidationNotification source, object value, string display, string reference, int exact)
         {
             source.LastMessage = null;
-            ExactItensIsValidAttribute validation = new ExactItensIsValidAttribute(exact);
+            ExactItemsIsValidAttribute validation = new ExactItemsIsValidAttribute(exact);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

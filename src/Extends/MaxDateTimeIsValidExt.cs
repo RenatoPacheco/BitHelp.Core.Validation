@@ -12,10 +12,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MaxDateTimeIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, DateTime maximum, CultureInfo cultureInfo = null)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.MaxDateTimeIsValid(value, display, prorpety, maximum, cultureInfo);
+            return source.MaxDateTimeIsValid(value, display, reference, maximum, cultureInfo);
         }
 
         public static ValidationNotification MaxDateTimeIsValid(

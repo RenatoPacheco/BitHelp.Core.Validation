@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Extends
             Expression<Func<TClass, object>> expression,
             Expression<Func<TClass, object>> expressionCompare)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
 
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
@@ -30,7 +30,7 @@ namespace BitHelp.Core.Validation.Extends
                         Resource.XCompareEqualInvalid,
                         display, displayCompare);
 
-                    var message = new ValidationMessage(text, prorpety);
+                    var message = new ValidationMessage(text, reference);
                     source.LastMessage = message;
                     source.Add(message);
                 }

@@ -5,7 +5,7 @@ using System;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class SingletonItensIsValidExtTest
+    public class SingletonItemsIsValidExtTest
     {
         readonly ValidationNotification _notification = new ValidationNotification();
 
@@ -18,11 +18,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.String);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
         }
 
@@ -35,11 +35,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.String);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
         }
 
@@ -52,11 +52,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.String);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
         }
 
@@ -69,11 +69,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.String);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
         }
 
@@ -86,11 +86,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.String);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
         }
 
@@ -103,11 +103,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.String);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItensIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
         }
     }

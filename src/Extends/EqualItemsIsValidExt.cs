@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class EqualItensIsValidExt
+    public static class EqualItemsIsValidExt
     {
-        public static ValidationNotification EqualItensIsValid<TClass>(
+        public static ValidationNotification EqualItemsIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression,
                 Expression<Func<TClass, IList>> compare, params Expression<Func<TClass, IList>>[] compareMore)
             where TClass : class
@@ -23,28 +23,28 @@ namespace BitHelp.Core.Validation.Extends
             {
                 values.Add(item.Compile().DynamicInvoke(data) as IList);
             }
-            return source.EqualItensIsValid(values);
+            return source.EqualItemsIsValid(values);
         }
 
-        public static ValidationNotification EqualItensIsValid(
+        public static ValidationNotification EqualItemsIsValid(
             this ValidationNotification source, IList value, IList compare, params IList[] compareMore)
         {
             compareMore = compareMore.Concat(new IList[] { value, compare }).ToArray();
-            return source.EqualItensIsValid(compareMore);
+            return source.EqualItemsIsValid(compareMore);
         }
 
-        private static ValidationNotification EqualItensIsValid(
+        private static ValidationNotification EqualItemsIsValid(
             this ValidationNotification source, IEnumerable<IList> value)
         {
             bool result = true;
             int? total = null;
-            bool isnull = false;
+            bool isNull = false;
             
             foreach (var item in value)
             {
                 if(item != null)
                 {
-                    if(isnull)
+                    if(isNull)
                     {
                         result = false;
                         break;
@@ -63,7 +63,7 @@ namespace BitHelp.Core.Validation.Extends
                 }
                 else
                 {
-                    isnull = true;
+                    isNull = true;
                     if (total != null)
                     {
                         result = false;
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Extends
             source.LastMessage = null;
             if (!result)
             {
-                string text = Resource.EqualNumberItensInvalid;
+                string text = Resource.EqualNumberItemsInvalid;
                 var message = new ValidationMessage(text, null);
                 source.LastMessage = message;
                 source.Add(message);

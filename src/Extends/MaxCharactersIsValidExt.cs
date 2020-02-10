@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MaxCharactersIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, int maximum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.MaxCharactersIsValid(value, display, prorpety, maximum);
+            return source.MaxCharactersIsValid(value, display, reference, maximum);
         }
 
         public static ValidationNotification MaxCharactersIsValid(

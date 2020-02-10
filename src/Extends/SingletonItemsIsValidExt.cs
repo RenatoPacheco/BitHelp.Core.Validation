@@ -6,28 +6,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class SingletonItensIsValidExt
+    public static class SingletonItemsIsValidExt
     {
-        public static ValidationNotification SingletonItensIsValid<TClass>(
+        public static ValidationNotification SingletonItemsIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.SingletonItensIsValid(value, display, prorpety);
+            return source.SingletonItemsIsValid(value, display, reference);
         }
 
-        public static ValidationNotification SingletonItensIsValid(
+        public static ValidationNotification SingletonItemsIsValid(
             this ValidationNotification source, object value)
         {
-            return source.SingletonItensIsValid(value, Resource.DisplayValue, null);
+            return source.SingletonItemsIsValid(value, Resource.DisplayValue, null);
         }
 
-        private static ValidationNotification SingletonItensIsValid(
+        private static ValidationNotification SingletonItemsIsValid(
             this ValidationNotification source, object value, string display, string reference)
         {
             source.LastMessage = null;
-            SingletonItensIsValidAttribute validation = new SingletonItensIsValidAttribute();
+            SingletonItemsIsValidAttribute validation = new SingletonItemsIsValidAttribute();
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

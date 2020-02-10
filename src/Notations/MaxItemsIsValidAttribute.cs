@@ -6,31 +6,31 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class ExactItensIsValidAttribute : BaseIsValidAttribute
+    public class MaxItemsIsValidAttribute : BaseIsValidAttribute
     {
-        public ExactItensIsValidAttribute(int exact)
+        public MaxItemsIsValidAttribute(int maximum)
             : base()
         {
-            if (exact < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(exact));
+            if (maximum < 1)
+                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(maximum));
 
-            ErrorMessageResourceName = nameof(Resource.XExactItensIsInvalid);
+            ErrorMessageResourceName = nameof(Resource.XMaxItemsIsInvalid);
 
-            Exact = exact;
+            Maximum = maximum;
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(ErrorMessageString, name, Exact);
+            return string.Format(ErrorMessageString, name, Maximum);
         }
 
-        public int Exact { get; set; }
+        public int Maximum { get; set; }
         
         protected override bool Check(object value)
         {
             IList input = value as IList;
             return (input == null || input.Count == 0) 
-                || input.Count == Exact;
+                || input.Count <= Maximum;
         }
     }
 }

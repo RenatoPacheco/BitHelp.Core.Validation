@@ -12,10 +12,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification DateTimeIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, CultureInfo cultureInfo = null)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.DateTimeIsValid(value, display, prorpety, cultureInfo);
+            return source.DateTimeIsValid(value, display, reference, cultureInfo);
         }
 
         public static ValidationNotification DateTimeIsValid(

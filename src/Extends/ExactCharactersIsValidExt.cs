@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification ExactCharactersIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, int exact)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.ExactCharactersIsValid(value, display, prorpety, exact);
+            return source.ExactCharactersIsValid(value, display, reference, exact);
         }
 
         public static ValidationNotification ExactCharactersIsValid(

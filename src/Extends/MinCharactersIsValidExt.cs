@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MinCharactersIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, int minimum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.MinCharactersIsValid(value, display, prorpety, minimum);
+            return source.MinCharactersIsValid(value, display, reference, minimum);
         }
 
         public static ValidationNotification MinCharactersIsValid(

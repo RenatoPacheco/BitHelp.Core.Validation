@@ -14,7 +14,7 @@ namespace BitHelp.Core.Validation.Extends
             Expression<Func<TClass, object>> expressionCompare,
             CultureInfo cultureInfo = null)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
 
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
@@ -35,7 +35,7 @@ namespace BitHelp.Core.Validation.Extends
                         Resource.XComparePlusInvalid,
                         display, displayCompare);
 
-                    var message = new ValidationMessage(text, prorpety);
+                    var message = new ValidationMessage(text, reference);
                     source.LastMessage = message;
                     source.Add(message);
                 }

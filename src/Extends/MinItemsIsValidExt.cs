@@ -7,28 +7,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class MinItensIsValidExt
+    public static class MinItemsIsValidExt
     {
-        public static ValidationNotification MinItensIsValid<TClass>(
+        public static ValidationNotification MinItemsIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int minimum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;
             string display = expression.PropertyDisplay();
-            return source.MinItensIsValid(value, display, prorpety, minimum);
+            return source.MinItemsIsValid(value, display, reference, minimum);
         }
 
-        public static ValidationNotification MinItensIsValid(
+        public static ValidationNotification MinItemsIsValid(
             this ValidationNotification source, IList value, int minimum)
         {
-            return source.MinItensIsValid(value, Resource.DisplayValue, null, minimum);
+            return source.MinItemsIsValid(value, Resource.DisplayValue, null, minimum);
         }
 
-        private static ValidationNotification MinItensIsValid(
+        private static ValidationNotification MinItemsIsValid(
             this ValidationNotification source, object value, string display, string reference, int minimum)
         {
             source.LastMessage = null;
-            MinItensIsValidAttribute validation = new MinItensIsValidAttribute(minimum);
+            MinItemsIsValidAttribute validation = new MinItemsIsValidAttribute(minimum);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);

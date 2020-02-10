@@ -10,10 +10,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification EqualIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, object compare)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.EqualIsValid(value, display, prorpety, compare);
+            return source.EqualIsValid(value, display, reference, compare);
         }
 
         public static ValidationNotification EqualIsValid(

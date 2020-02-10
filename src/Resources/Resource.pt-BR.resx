@@ -120,16 +120,16 @@
   <data name="DisplayValue" xml:space="preserve">
     <value>Valor</value>
   </data>
-  <data name="MinimumValieIs" xml:space="preserve">
+  <data name="MinimumValidIs" xml:space="preserve">
     <value>Valor mínimo é {0}.</value>
   </data>
   <data name="NotValid" xml:space="preserve">
     <value>Valor não é válido.</value>
   </data>
-  <data name="EqualNumberItensInvalid" xml:space="preserve">
-    <value>Quantidades de itens não são iguais.</value>
+  <data name="EqualNumberItemsInvalid" xml:space="preserve">
+    <value>Quantidades de items não são iguais.</value>
   </data>
-  <data name="Requerid" xml:space="preserve">
+  <data name="Required" xml:space="preserve">
     <value>Valor é obrigatório.</value>
   </data>
   <data name="Valid" xml:space="preserve">
@@ -186,7 +186,7 @@
   <data name="XRangeValueInvalid" xml:space="preserve">
     <value>{0} deve conter um valor entre {1} e {2}.</value>
   </data>
-  <data name="XRequerid" xml:space="preserve">
+  <data name="XRequired" xml:space="preserve">
     <value>{0} é obrigatório(a). </value>
   </data>
   <data name="XTimeSpanInvalid" xml:space="preserve">
@@ -198,16 +198,16 @@
   <data name="XValid" xml:space="preserve">
     <value>{0} é válido.</value>
   </data>
-  <data name="XExactItensIsInvalid" xml:space="preserve">
+  <data name="XExactItemsIsInvalid" xml:space="preserve">
     <value>{0} deve conter {1} elemento(s).</value>
   </data>
-  <data name="XMaxItensIsInvalid" xml:space="preserve">
+  <data name="XMaxItemsIsInvalid" xml:space="preserve">
     <value>{0} deve conter no máximo {1} elemento(s).</value>
   </data>
-  <data name="XMinItensIsInvalid" xml:space="preserve">
+  <data name="XMinItemsIsInvalid" xml:space="preserve">
     <value>{0} deve conter no mínimo {1} elemento(s).</value>
   </data>
-  <data name="XRangeItensInvalid" xml:space="preserve">
+  <data name="XRangeItemsInvalid" xml:space="preserve">
     <value>{0} deve conter entre {1} e {2} elementos.</value>
   </data>
   <data name="XNoValueCanEqual" xml:space="preserve">
@@ -222,7 +222,7 @@
   <data name="XNullOrEmpty" xml:space="preserve">
     <value>{0} não pode ser nulo ou vazio.</value>
   </data>
-  <data name="XSingletonItensInvalid" xml:space="preserve">
+  <data name="XSingletonItemsInvalid" xml:space="preserve">
     <value>{0} contém valores repetidos.</value>
   </data>
   <data name="XCompareEqualInvalid" xml:space="preserve">

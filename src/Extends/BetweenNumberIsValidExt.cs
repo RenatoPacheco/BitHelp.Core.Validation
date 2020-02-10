@@ -12,10 +12,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenNumberIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, IEnumerable<decimal> options)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.BetweenNumberIsValid(value, display, prorpety, options);
+            return source.BetweenNumberIsValid(value, display, reference, options);
         }
 
         public static ValidationNotification BetweenNumberIsValid(

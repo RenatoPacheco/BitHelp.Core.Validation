@@ -6,16 +6,16 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class RangeItensIsValidAttribute : BaseIsValidAttribute
+    public class RangeItemsIsValidAttribute : BaseIsValidAttribute
     {
-        public RangeItensIsValidAttribute(int minimum, int maximum)
+        public RangeItemsIsValidAttribute(int minimum, int maximum)
             : base()
         {
             if (minimum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(minimum));
+                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(minimum));
 
             if (maximum < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(maximum));
+                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(maximum));
 
             if (maximum < minimum)
                 throw new ArgumentException(string.Format(Resource.XNoValueCanLess, nameof(maximum), nameof(minimum)));
@@ -23,7 +23,7 @@ namespace BitHelp.Core.Validation.Notations
             if (maximum == minimum)
                 throw new ArgumentException(string.Format(Resource.XNoValueCanEqual, nameof(maximum), nameof(minimum)));
 
-            ErrorMessageResourceName = nameof(Resource.XRangeItensInvalid);
+            ErrorMessageResourceName = nameof(Resource.XRangeItemsInvalid);
 
             Minimum = minimum;
             Maximum = maximum;

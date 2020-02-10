@@ -11,10 +11,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MaxTimeSpanIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, TimeSpan maximum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.MaxTimeSpanIsValid(value, display, prorpety, maximum);
+            return source.MaxTimeSpanIsValid(value, display, reference, maximum);
         }
 
         public static ValidationNotification MaxTimeSpanIsValid(

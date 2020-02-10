@@ -15,7 +15,7 @@ namespace BitHelp.Core.Validation.Notations
                 throw new ArgumentNullException(nameof(otherProperty));
 
             ErrorMessageResourceType = typeof(Resource);
-            ErrorMessageResourceName = nameof(Resource.XRequerid);
+            ErrorMessageResourceName = nameof(Resource.XRequired);
 
             OtherProperty = otherProperty;
         }

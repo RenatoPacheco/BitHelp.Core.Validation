@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
         public ExactCharactersIsValidAttribute(int exact)
         {
             if (exact < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValieIs, "1"), nameof(exact));
+                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(exact));
 
             ErrorMessageResourceName = nameof(Resource.XExactCharactersInvalid);
 

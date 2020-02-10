@@ -12,10 +12,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RequiredIfOtherNotNullIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, object compare)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.RequiredIfOtherNotNullIsValid(value, display, prorpety, compare);
+            return source.RequiredIfOtherNotNullIsValid(value, display, reference, compare);
         }
 
         public static ValidationNotification RequiredIfOtherNotNullIsValid(
@@ -32,7 +32,7 @@ namespace BitHelp.Core.Validation.Extends
             {
                 if (!object.Equals(compare, null) && object.Equals(value, null))
                 {
-                    string text = string.Format(Resource.XRequerid, display);
+                    string text = string.Format(Resource.XRequired, display);
                     var message = new ValidationMessage(text, reference);
                     source.LastMessage = message;
                     source.Add(message);

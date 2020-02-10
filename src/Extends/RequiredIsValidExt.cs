@@ -12,10 +12,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RequiredIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);
             string display = expression.PropertyDisplay();
-            return source.RequiredIsValid(value, display, prorpety);
+            return source.RequiredIsValid(value, display, reference);
         }
 
         public static ValidationNotification RequiredIsValid(

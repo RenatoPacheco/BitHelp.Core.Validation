@@ -7,28 +7,28 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class MaxItensIsValidExt
+    public static class MaxItemsIsValidExt
     {
-        public static ValidationNotification MaxItensIsValid<TClass>(
+        public static ValidationNotification MaxItemsIsValid<TClass>(
             this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int maximum)
         {
-            string prorpety = expression.PropertyTrail();
+            string reference = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;
             string display = expression.PropertyDisplay();
-            return source.MaxItensIsValid(value, display, prorpety, maximum);
+            return source.MaxItemsIsValid(value, display, reference, maximum);
         }
 
-        public static ValidationNotification MaxItensIsValid(
+        public static ValidationNotification MaxItemsIsValid(
             this ValidationNotification source, IList value, int maximum)
         {
-            return source.MaxItensIsValid(value, Resource.DisplayValue, null, maximum);
+            return source.MaxItemsIsValid(value, Resource.DisplayValue, null, maximum);
         }
 
-        private static ValidationNotification MaxItensIsValid(
+        private static ValidationNotification MaxItemsIsValid(
             this ValidationNotification source, object value, string display, string reference, int maximum)
         {
             source.LastMessage = null;
-            MaxItensIsValidAttribute validation = new MaxItensIsValidAttribute(maximum);
+            MaxItemsIsValidAttribute validation = new MaxItemsIsValidAttribute(maximum);
             if (!validation.IsValid(value))
             {
                 string text = validation.FormatErrorMessage(display);
