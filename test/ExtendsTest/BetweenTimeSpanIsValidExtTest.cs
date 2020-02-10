@@ -98,8 +98,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, new TimeSpan[] { }));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, new TimeSpan[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, Array.Empty<TimeSpan>()));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, Array.Empty<TimeSpan>()));
         }
     }
 }

@@ -81,8 +81,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 EnumNull = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.EnumNull, new Enum[] { }));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.EnumNull, new Enum[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.EnumNull, Array.Empty<Enum>()));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.EnumNull, Array.Empty<Enum>()));
         }
     }
 }

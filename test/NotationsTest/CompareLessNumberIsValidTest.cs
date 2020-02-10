@@ -26,7 +26,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_compare_null_valid()
         {
             var model = new CompareLessNumberIsValidTest()
-            { 
+            {
                 Value = 123,
                 Compare = null
             };
@@ -39,8 +39,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_null_valid()
         {
-            var model = new CompareLessNumberIsValidTest() 
-            { 
+            var model = new CompareLessNumberIsValidTest()
+            {
                 Value = null,
                 Compare = 123
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_less_valid()
         {
             var model = new CompareLessNumberIsValidTest()
-            { 
+            {
                 Value = 123,
                 Compare = 456
             };
@@ -68,7 +68,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_equal_invalid()
         {
             var model = new CompareLessNumberIsValidTest()
-            { 
+            {
                 Value = 123,
                 Compare = 123
             };
@@ -82,9 +82,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_plus_invalid()
         {
             var model = new CompareLessNumberIsValidTest()
-            { 
-                Value = 456, 
-                Compare = 123 
+            {
+                Value = 456,
+                Compare = 123
             };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();

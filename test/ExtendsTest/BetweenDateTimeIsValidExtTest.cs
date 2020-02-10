@@ -110,8 +110,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single.String, new DateTime[] { }));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single, x => x.String, new DateTime[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single.String, Array.Empty<DateTime>()));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single, x => x.String, Array.Empty<DateTime>()));
         }
     }
 }

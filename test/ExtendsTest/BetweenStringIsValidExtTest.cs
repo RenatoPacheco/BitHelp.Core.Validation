@@ -81,8 +81,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single.String, new string[] { }));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single, x => x.String, new string[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single.String, Array.Empty<string>()));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single, x => x.String, Array.Empty<string>()));
         }
     }
 }

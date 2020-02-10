@@ -1,6 +1,4 @@
-﻿
-
-using BitHelp.Core.Validation.Extends;
+﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
 using Xunit;
 
@@ -44,7 +42,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.EmailIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
         }
-        
+
         [Fact]
         public void Check_ignore_null()
         {

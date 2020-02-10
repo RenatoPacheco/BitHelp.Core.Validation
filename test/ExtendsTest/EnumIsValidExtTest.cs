@@ -1,5 +1,4 @@
-﻿
-using BitHelp.Core.Validation.Extends;
+﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
 using Xunit;
 

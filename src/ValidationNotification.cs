@@ -11,9 +11,9 @@ namespace BitHelp.Core.Validation
     public class ValidationNotification
     {
         public IList<ValidationMessage> Messages { get; set; } = new List<ValidationMessage>();
-        
+
         public ValidationMessage LastMessage { get; set; }
-        
+
         public void Add(ValidationMessage data)
         {
             Messages.Add(data);
@@ -69,7 +69,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddFatal<T>(
-            Expression<Func<T, object>> expression, 
+            Expression<Func<T, object>> expression,
             Exception exception, string reference = null)
         {
             reference = reference ?? expression.PropertyTrail();
@@ -87,7 +87,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddUnauthorized<T>(
-            Expression<Func<T, object>> expression, 
+            Expression<Func<T, object>> expression,
             string message = null, string reference = null)
         {
             Add(expression, message, reference, ValidationType.Unauthorized);
@@ -104,7 +104,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddAlert<T>(
-            Expression<Func<T, object>> expression, 
+            Expression<Func<T, object>> expression,
             string message = null, string reference = null)
         {
             Add(expression, message, reference, ValidationType.Alert);
@@ -121,7 +121,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddSuccess<T>(
-            Expression<Func<T, object>> expression, 
+            Expression<Func<T, object>> expression,
             string message = null, string reference = null)
         {
             Add(expression, message, reference, ValidationType.Success);

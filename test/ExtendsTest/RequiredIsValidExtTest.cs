@@ -1,6 +1,8 @@
 ﻿using BitHelp.Core.Validation.Test.Resources;
 using BitHelp.Core.Validation.Extends;
 using Xunit;
+using System;
+
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RequiredIsValidExtTest
@@ -80,7 +82,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             var array = new ArrayValues
             {
-                String = new string[] { }
+                String = Array.Empty<string>()
             };
 
             _notification.Clear();

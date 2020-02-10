@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     public class EqualIsValidExtTest
     {
         readonly ValidationNotification _notification = new ValidationNotification();
-        
+
         [Fact]
         public void Check_value_equal_valid()
         {
@@ -15,7 +15,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             {
                 Long = 123,
                 Int = 123
-                
+
             };
 
             _notification.Clear();

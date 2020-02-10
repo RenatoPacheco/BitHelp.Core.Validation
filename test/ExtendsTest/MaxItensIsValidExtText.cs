@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             var array = new ArrayValues
             {
-                Int = new int[] { }
+                Int = Array.Empty<int>()
             };
 
             _notification.Clear();

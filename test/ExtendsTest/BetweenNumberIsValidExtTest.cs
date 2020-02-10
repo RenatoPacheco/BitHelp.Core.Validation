@@ -97,8 +97,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, new decimal[] { }));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, new decimal[] { }));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, Array.Empty<decimal>()));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, Array.Empty<decimal>()));
         }
     }
 }

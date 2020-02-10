@@ -28,8 +28,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_compare_null_valid()
         {
-            var model = new CompareLessDateTimeIsValidTest() 
-            { 
+            var model = new CompareLessDateTimeIsValidTest()
+            {
                 Value = _value.AddMinutes(123),
                 Compare = null
             };
@@ -42,10 +42,10 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_null_valid()
         {
-            var model = new CompareLessDateTimeIsValidTest() 
-            { 
+            var model = new CompareLessDateTimeIsValidTest()
+            {
                 Value = null,
-                Compare = _value.AddMinutes(123) 
+                Compare = _value.AddMinutes(123)
             };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
@@ -56,9 +56,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_less_valid()
         {
-            var model = new CompareLessDateTimeIsValidTest() 
-            { 
-                Value = _value.AddMinutes(123), 
+            var model = new CompareLessDateTimeIsValidTest()
+            {
+                Value = _value.AddMinutes(123),
                 Compare = _value.AddMinutes(456)
             };
             var context = new ValidationContext(model);
@@ -71,8 +71,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_equal_invalid()
         {
             var model = new CompareLessDateTimeIsValidTest()
-            { 
-                Value = _value.AddMinutes(123), 
+            {
+                Value = _value.AddMinutes(123),
                 Compare = _value.AddMinutes(123)
             };
             var context = new ValidationContext(model);
@@ -85,8 +85,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_plus_invalid()
         {
             var model = new CompareLessDateTimeIsValidTest()
-            { 
-                Value = _value.AddMinutes(456), 
+            {
+                Value = _value.AddMinutes(456),
                 Compare = _value.AddMinutes(123)
             };
             var context = new ValidationContext(model);

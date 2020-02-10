@@ -1,6 +1,7 @@
 ﻿using Xunit;
 using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
+using System;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
@@ -11,9 +12,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_number_itens_is_valid()
         {
-            ArrayValues array = new ArrayValues();
-            array.Bool = new bool[] { true, false, true };
-            array.Char = new char[] { 'a', 'b', 'c' };
+            ArrayValues array = new ArrayValues
+            {
+                Bool = new bool[] { true, false, true },
+                Char = new char[] { 'a', 'b', 'c' }
+            };
 
             _notification.Clear();
             _notification.EqualItensIsValid(array.Bool, array.Char);
@@ -27,9 +30,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_number_itens_is_invalid()
         {
-            ArrayValues array = new ArrayValues();
-            array.Bool = new bool[] { true, false, true };
-            array.Char = new char[] { 'a', 'b' };
+            ArrayValues array = new ArrayValues
+            {
+                Bool = new bool[] { true, false, true },
+                Char = new char[] { 'a', 'b' }
+            };
 
             _notification.Clear();
             _notification.EqualItensIsValid(array.Bool, array.Char);
@@ -43,9 +48,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_all_values_null_is_valid()
         {
-            ArrayValues array = new ArrayValues();
-            array.Bool = null;
-            array.Char = null;
+            ArrayValues array = new ArrayValues
+            {
+                Bool = null,
+                Char = null
+            };
 
             _notification.Clear();
             _notification.EqualItensIsValid(array.Bool, array.Char);
@@ -59,9 +66,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_one_value_null_is_invalid()
         {
-            ArrayValues array = new ArrayValues();
-            array.Bool = new bool[] { true, false, true };
-            array.Char = null;
+            ArrayValues array = new ArrayValues
+            {
+                Bool = new bool[] { true, false, true },
+                Char = null
+            };
 
             _notification.Clear();
             _notification.EqualItensIsValid(array.Bool, array.Char);
@@ -75,9 +84,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_one_value_null_and_other_empty_is_invalid()
         {
-            ArrayValues array = new ArrayValues();
-            array.Bool = new bool[] { };
-            array.Char = null;
+            ArrayValues array = new ArrayValues
+            {
+                Bool = Array.Empty<bool>(),
+                Char = null
+            };
 
             _notification.Clear();
             _notification.EqualItensIsValid(array.Bool, array.Char);

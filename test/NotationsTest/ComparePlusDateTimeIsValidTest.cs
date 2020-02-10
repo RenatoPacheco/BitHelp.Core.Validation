@@ -28,8 +28,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_compare_null_valid()
         {
-            var model = new ComparePlusDateTimeIsValidTest() 
-            { 
+            var model = new ComparePlusDateTimeIsValidTest()
+            {
                 Value = _value.AddMinutes(123),
                 Compare = null
             };
@@ -42,10 +42,10 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_null_valid()
         {
-            var model = new ComparePlusDateTimeIsValidTest() 
-            { 
+            var model = new ComparePlusDateTimeIsValidTest()
+            {
                 Value = null,
-                Compare = _value.AddMinutes(123) 
+                Compare = _value.AddMinutes(123)
             };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
@@ -56,9 +56,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_less_invalid()
         {
-            var model = new ComparePlusDateTimeIsValidTest() 
-            { 
-                Value = _value.AddMinutes(123), 
+            var model = new ComparePlusDateTimeIsValidTest()
+            {
+                Value = _value.AddMinutes(123),
                 Compare = _value.AddMinutes(456)
             };
             var context = new ValidationContext(model);
@@ -70,9 +70,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_equal_invalid()
         {
-            var model = new ComparePlusDateTimeIsValidTest() 
-            { 
-                Value = _value.AddMinutes(123), 
+            var model = new ComparePlusDateTimeIsValidTest()
+            {
+                Value = _value.AddMinutes(123),
                 Compare = _value.AddMinutes(123)
             };
             var context = new ValidationContext(model);
@@ -84,9 +84,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_plus_valid()
         {
-            var model = new ComparePlusDateTimeIsValidTest() 
-            { 
-                Value = _value.AddMinutes(456), 
+            var model = new ComparePlusDateTimeIsValidTest()
+            {
+                Value = _value.AddMinutes(456),
                 Compare = _value.AddMinutes(123)
             };
             var context = new ValidationContext(model);

@@ -26,8 +26,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_compare_null_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest() 
-            { 
+            var model = new CompareLessTimeSpanIsValidTest()
+            {
                 Value = TimeSpan.FromMinutes(123),
                 Compare = null
             };
@@ -40,10 +40,10 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_null_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest() 
-            { 
+            var model = new CompareLessTimeSpanIsValidTest()
+            {
                 Value = null,
-                Compare = TimeSpan.FromMinutes(123) 
+                Compare = TimeSpan.FromMinutes(123)
             };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
@@ -54,9 +54,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_less_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest() 
-            { 
-                Value = TimeSpan.FromMinutes(123), 
+            var model = new CompareLessTimeSpanIsValidTest()
+            {
+                Value = TimeSpan.FromMinutes(123),
                 Compare = TimeSpan.FromMinutes(456)
             };
             var context = new ValidationContext(model);
@@ -69,8 +69,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_equal_invalid()
         {
             var model = new CompareLessTimeSpanIsValidTest()
-            { 
-                Value = TimeSpan.FromMinutes(123), 
+            {
+                Value = TimeSpan.FromMinutes(123),
                 Compare = TimeSpan.FromMinutes(123)
             };
             var context = new ValidationContext(model);
@@ -83,8 +83,8 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public void Check_value_plus_invalid()
         {
             var model = new CompareLessTimeSpanIsValidTest()
-            { 
-                Value = TimeSpan.FromMinutes(456), 
+            {
+                Value = TimeSpan.FromMinutes(456),
                 Compare = TimeSpan.FromMinutes(123)
             };
             var context = new ValidationContext(model);

@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation
         }
 
         public ValidationMessage(
-            string message, string reference = null, 
+            string message, string reference = null,
             ValidationType type = ValidationType.Error)
             : this()
         {
@@ -71,9 +71,9 @@ namespace BitHelp.Core.Validation
 
         public override bool Equals(object obj)
         {
-            ValidationMessage comparar = obj as ValidationMessage;
-            return !object.Equals(comparar, null)
-                && GetHashCode() == comparar.GetHashCode();
+            ValidationMessage compare = obj as ValidationMessage;
+            return !object.Equals(compare, null)
+                && GetHashCode() == compare.GetHashCode();
         }
 
         public override int GetHashCode()
