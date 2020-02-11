@@ -9,10 +9,10 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageOutputPath>../nuget</PackageOutputPath>
-    <Description>Project description.</Description>
+    <Description>Project for data validation.</Description>
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/RenatoPacheco/BitHelp.Core.Validation</RepositoryUrl>
-    <PackageReleaseNotes>Package release note.</PackageReleaseNotes>
+    <PackageReleaseNotes>Project for data validation.</PackageReleaseNotes>
     <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
   </PropertyGroup>
 
