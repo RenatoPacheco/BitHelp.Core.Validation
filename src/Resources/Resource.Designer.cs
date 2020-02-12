@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace BitHelp.Core.Validation.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BitHelp.Core.Validation.Resources.Resource", typeof(Resource).Assembly);
@@ -51,7 +51,7 @@ namespace BitHelp.Core.Validation.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string DisplayValue {
+        public static string DisplayValue {
             get {
                 return ResourceManager.GetString("DisplayValue", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Number of items are not the same.
         /// </summary>
-        internal static string EqualNumberItemsInvalid {
+        public static string EqualNumberItemsInvalid {
             get {
                 return ResourceManager.GetString("EqualNumberItemsInvalid", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Minimum value is {0}..
         /// </summary>
-        internal static string MinimumValidIs {
+        public static string MinimumValidIs {
             get {
                 return ResourceManager.GetString("MinimumValidIs", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Value is not valid..
         /// </summary>
-        internal static string NotValid {
+        public static string NotValid {
             get {
                 return ResourceManager.GetString("NotValid", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Value is required..
         /// </summary>
-        internal static string Required {
+        public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Value is valid..
         /// </summary>
-        internal static string Valid {
+        public static string Valid {
             get {
                 return ResourceManager.GetString("Valid", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid boolean..
         /// </summary>
-        internal static string XBooleanInvalid {
+        public static string XBooleanInvalid {
             get {
                 return ResourceManager.GetString("XBooleanInvalid", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must different {1}..
         /// </summary>
-        internal static string XCompareDifferentInvalid {
+        public static string XCompareDifferentInvalid {
             get {
                 return ResourceManager.GetString("XCompareDifferentInvalid", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must equal {1}..
         /// </summary>
-        internal static string XCompareEqualInvalid {
+        public static string XCompareEqualInvalid {
             get {
                 return ResourceManager.GetString("XCompareEqualInvalid", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must be less than {1}..
         /// </summary>
-        internal static string XCompareLessInvalid {
+        public static string XCompareLessInvalid {
             get {
                 return ResourceManager.GetString("XCompareLessInvalid", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must be greater than {1}..
         /// </summary>
-        internal static string XComparePlusInvalid {
+        public static string XComparePlusInvalid {
             get {
                 return ResourceManager.GetString("XComparePlusInvalid", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} has not been confirmed..
         /// </summary>
-        internal static string XConfirmedInvalid {
+        public static string XConfirmedInvalid {
             get {
                 return ResourceManager.GetString("XConfirmedInvalid", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid date time..
         /// </summary>
-        internal static string XDateTimeInvalid {
+        public static string XDateTimeInvalid {
             get {
                 return ResourceManager.GetString("XDateTimeInvalid", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid decimal..
         /// </summary>
-        internal static string XDecimalInvalid {
+        public static string XDecimalInvalid {
             get {
                 return ResourceManager.GetString("XDecimalInvalid", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid double..
         /// </summary>
-        internal static string XDoubleInvalid {
+        public static string XDoubleInvalid {
             get {
                 return ResourceManager.GetString("XDoubleInvalid", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain exactly {1} characters..
         /// </summary>
-        internal static string XExactCharactersInvalid {
+        public static string XExactCharactersInvalid {
             get {
                 return ResourceManager.GetString("XExactCharactersInvalid", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain {1} element..
         /// </summary>
-        internal static string XExactItemsIsInvalid {
+        public static string XExactItemsIsInvalid {
             get {
                 return ResourceManager.GetString("XExactItemsIsInvalid", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid guid..
         /// </summary>
-        internal static string XGuidInvalid {
+        public static string XGuidInvalid {
             get {
                 return ResourceManager.GetString("XGuidInvalid", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid int..
         /// </summary>
-        internal static string XIntInvalid {
+        public static string XIntInvalid {
             get {
                 return ResourceManager.GetString("XIntInvalid", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid long..
         /// </summary>
-        internal static string XLongInvalid {
+        public static string XLongInvalid {
             get {
                 return ResourceManager.GetString("XLongInvalid", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain at most {1} characters..
         /// </summary>
-        internal static string XMaxCharactersInvalid {
+        public static string XMaxCharactersInvalid {
             get {
                 return ResourceManager.GetString("XMaxCharactersInvalid", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain a maximum of {1} element..
         /// </summary>
-        internal static string XMaxItemsIsInvalid {
+        public static string XMaxItemsIsInvalid {
             get {
                 return ResourceManager.GetString("XMaxItemsIsInvalid", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} cannot be greater than {1}..
         /// </summary>
-        internal static string XMaxValueInvalid {
+        public static string XMaxValueInvalid {
             get {
                 return ResourceManager.GetString("XMaxValueInvalid", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain at least {1} characters..
         /// </summary>
-        internal static string XMinCharactersInvalid {
+        public static string XMinCharactersInvalid {
             get {
                 return ResourceManager.GetString("XMinCharactersInvalid", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain at least {1} element..
         /// </summary>
-        internal static string XMinItemsIsInvalid {
+        public static string XMinItemsIsInvalid {
             get {
                 return ResourceManager.GetString("XMinItemsIsInvalid", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} cannot be less than {1}..
         /// </summary>
-        internal static string XMinValueInvalid {
+        public static string XMinValueInvalid {
             get {
                 return ResourceManager.GetString("XMinValueInvalid", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is empty..
         /// </summary>
-        internal static string XNotEmptyInvalid {
+        public static string XNotEmptyInvalid {
             get {
                 return ResourceManager.GetString("XNotEmptyInvalid", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid..
         /// </summary>
-        internal static string XNotValid {
+        public static string XNotValid {
             get {
                 return ResourceManager.GetString("XNotValid", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to No {0} value can be equal to {1}..
         /// </summary>
-        internal static string XNoValueCanEqual {
+        public static string XNoValueCanEqual {
             get {
                 return ResourceManager.GetString("XNoValueCanEqual", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to No {0} value can be less to {1}..
         /// </summary>
-        internal static string XNoValueCanLess {
+        public static string XNoValueCanLess {
             get {
                 return ResourceManager.GetString("XNoValueCanLess", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to No {0} value can be plus to {1}..
         /// </summary>
-        internal static string XNoValueCanPlus {
+        public static string XNoValueCanPlus {
             get {
                 return ResourceManager.GetString("XNoValueCanPlus", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} cannot be null or empty..
         /// </summary>
-        internal static string XNullOrEmpty {
+        public static string XNullOrEmpty {
             get {
                 return ResourceManager.GetString("XNullOrEmpty", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must have a caster between {1} and {2}..
         /// </summary>
-        internal static string XRangeCharactersInvalid {
+        public static string XRangeCharactersInvalid {
             get {
                 return ResourceManager.GetString("XRangeCharactersInvalid", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain between {1} and {2} elements..
         /// </summary>
-        internal static string XRangeItemsInvalid {
+        public static string XRangeItemsInvalid {
             get {
                 return ResourceManager.GetString("XRangeItemsInvalid", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} must contain a value between {1} and {2}..
         /// </summary>
-        internal static string XRangeValueInvalid {
+        public static string XRangeValueInvalid {
             get {
                 return ResourceManager.GetString("XRangeValueInvalid", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is requerid..
         /// </summary>
-        internal static string XRequired {
+        public static string XRequired {
             get {
                 return ResourceManager.GetString("XRequired", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} contains repeated values..
         /// </summary>
-        internal static string XSingletonItemsInvalid {
+        public static string XSingletonItemsInvalid {
             get {
                 return ResourceManager.GetString("XSingletonItemsInvalid", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not valid timespan..
         /// </summary>
-        internal static string XTimeSpanInvalid {
+        public static string XTimeSpanInvalid {
             get {
                 return ResourceManager.GetString("XTimeSpanInvalid", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not a valid url..
         /// </summary>
-        internal static string XUrlInvalid {
+        public static string XUrlInvalid {
             get {
                 return ResourceManager.GetString("XUrlInvalid", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is valid..
         /// </summary>
-        internal static string XValid {
+        public static string XValid {
             get {
                 return ResourceManager.GetString("XValid", resourceCulture);
             }
