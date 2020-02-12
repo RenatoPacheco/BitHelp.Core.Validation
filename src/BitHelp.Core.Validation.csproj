@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Authors>Renato Pacheco</Authors>
     <PackageProjectUrl></PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
@@ -12,13 +12,14 @@
     <Description>Project for data validation.</Description>
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/RenatoPacheco/BitHelp.Core.Validation</RepositoryUrl>
-    <PackageReleaseNotes>
-      Feature:
-      * Adding RemoveAtReference by expression
-      Hotfix:
-      * RemoveAtReference by string was cleaning the other references
-    </PackageReleaseNotes>
-    <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
+    <PackageReleaseNotes>Feature:
+
+- Adding tests to AddAlert, AddError, AddFatal, AddInfo, AddSuccess and AddUnauthorized
+- Adding parameter to exception in AddAlert, AddError and AddUnauthorized
+- In AddFatal I used the Message property if StackTrace property is null like message
+- Set resources as public
+</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
