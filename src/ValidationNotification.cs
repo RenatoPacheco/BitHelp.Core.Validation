@@ -165,7 +165,7 @@ namespace BitHelp.Core.Validation
         public void RemoveAtReference(string reference)
         {
             reference = reference?.ToLower();
-            Messages = Messages.Where(x => x.Reference?.ToLower() == reference).ToList();
+            Messages = Messages.Where(x => x.Reference?.ToLower() != reference).ToList();
         }
     }
 }
