@@ -31,7 +31,7 @@ namespace BitHelp.Core.Validation
 
         private void Add<T>(
             Expression<Func<T, object>> expression, string message,
-            string reference, ValidationType type)
+            string reference, ValidationType type, Exception exception = null)
         {
             string display = expression.PropertyDisplay();
 
@@ -40,22 +40,22 @@ namespace BitHelp.Core.Validation
             message = message ?? (ValidationMessage.IsTypeError(type) ? Resource.XNotValid : Resource.XValid);
             message = Regex.Replace(message, @"\{0\}", display);
 
-            Messages.Add(new ValidationMessage(message, reference, type));
+            Messages.Add(new ValidationMessage(message, reference, type) { Exception = exception });
         }
 
         #region AddError
 
         public void AddError(
-           string message, string reference = null)
+           string message, string reference = null, Exception exception = null)
         {
-            Messages.Add(new ValidationMessage(message, reference, ValidationType.Error));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Error) { Exception = exception });
         }
 
         public void AddError<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null)
+            string message = null, string reference = null, Exception exception = null)
         {
-            Add(expression, message, reference, ValidationType.Error);
+            Add(expression, message, reference, ValidationType.Error, exception);
         }
 
         #endregion
@@ -81,16 +81,16 @@ namespace BitHelp.Core.Validation
         #region AddUnauthorized
 
         public void AddUnauthorized(
-           string message, string reference = null)
+           string message, string reference = null, Exception exception = null)
         {
-            Messages.Add(new ValidationMessage(message, reference, ValidationType.Unauthorized));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Unauthorized) { Exception = exception });
         }
 
         public void AddUnauthorized<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null)
+            string message = null, string reference = null, Exception exception = null)
         {
-            Add(expression, message, reference, ValidationType.Unauthorized);
+            Add(expression, message, reference, ValidationType.Unauthorized, exception);
         }
 
         #endregion
@@ -98,16 +98,16 @@ namespace BitHelp.Core.Validation
         #region AddAlert
 
         public void AddAlert(
-           string message, string reference = null)
+           string message, string reference = null, Exception exception = null)
         {
-            Messages.Add(new ValidationMessage(message, reference, ValidationType.Alert));
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.Alert) { Exception = exception });
         }
 
         public void AddAlert<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null)
+            string message = null, string reference = null, Exception exception = null)
         {
-            Add(expression, message, reference, ValidationType.Alert);
+            Add(expression, message, reference, ValidationType.Alert, exception);
         }
 
         #endregion
