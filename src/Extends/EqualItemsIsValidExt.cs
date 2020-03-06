@@ -14,10 +14,11 @@ namespace BitHelp.Core.Validation.Extends
                 Expression<Func<TClass, IList>> compare, params Expression<Func<TClass, IList>>[] compareMore)
             where TClass : class
         {
-            IList<IList> values = new List<IList>();
-
-            values.Add(expression.Compile().DynamicInvoke(data) as IList);
-            values.Add(compare.Compile().DynamicInvoke(data) as IList);
+            IList<IList> values = new List<IList>
+            {
+                expression.Compile().DynamicInvoke(data) as IList,
+                compare.Compile().DynamicInvoke(data) as IList
+            };
 
             foreach (var item in compareMore)
             {

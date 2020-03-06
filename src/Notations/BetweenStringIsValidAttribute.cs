@@ -19,7 +19,7 @@ namespace BitHelp.Core.Validation.Notations
             Options = options;
         }
 
-        IEnumerable<string> Options { get; set; } = new string[] { };
+        IEnumerable<string> Options { get; set; } = Array.Empty<string>();
 
         protected override bool Check(object value)
         {

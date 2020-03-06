@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.Extend
 {
     public static class ClassExtend
     {
-        public static string GetDisplayName<TClass>(this TClass source, Expression<Func<TClass, object>> expression)
+        public static string GetDisplayName<TClass>(this TClass _, Expression<Func<TClass, object>> expression)
         {
             return expression.PropertyDisplay();
         }

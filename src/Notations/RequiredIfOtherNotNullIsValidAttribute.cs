@@ -11,13 +11,10 @@ namespace BitHelp.Core.Validation.Notations
     {
         public RequiredIfOtherNotNullIsValidAttribute(string otherProperty)
         {
-            if (otherProperty == null)
-                throw new ArgumentNullException(nameof(otherProperty));
-
             ErrorMessageResourceType = typeof(Resource);
             ErrorMessageResourceName = nameof(Resource.XRequired);
 
-            OtherProperty = otherProperty;
+            OtherProperty = otherProperty ?? throw new ArgumentNullException(nameof(otherProperty));
         }
 
         public string OtherProperty { get; set; }

@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Notations
             CultureInfo = cultureInfo;
         }
 
-        IEnumerable<DateTime> Options { get; set; } = new DateTime[] { };
+        IEnumerable<DateTime> Options { get; set; } = Array.Empty<DateTime>();
 
         /// <summary>
         /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture

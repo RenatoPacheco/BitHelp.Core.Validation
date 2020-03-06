@@ -19,7 +19,7 @@ namespace BitHelp.Core.Validation.Notations
             Options = options;
         }
 
-        IEnumerable<TimeSpan> Options { get; set; } = new TimeSpan[] { };
+        IEnumerable<TimeSpan> Options { get; set; } = Array.Empty<TimeSpan>();
 
         protected override bool Check(object value)
         {

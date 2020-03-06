@@ -19,7 +19,7 @@ namespace BitHelp.Core.Validation.Notations
             Options = options;
         }
 
-        IEnumerable<decimal> Options { get; set; } = new decimal[] { };
+        IEnumerable<decimal> Options { get; set; } = Array.Empty<decimal>();
 
         protected override bool Check(object value)
         {

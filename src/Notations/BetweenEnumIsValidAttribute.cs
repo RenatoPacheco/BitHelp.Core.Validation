@@ -19,7 +19,7 @@ namespace BitHelp.Core.Validation.Notations
             Options = options;
         }
 
-        IEnumerable<Enum> Options { get; set; } = new Enum[] { };
+        IEnumerable<Enum> Options { get; set; } = Array.Empty<Enum>();
 
         protected override bool Check(object value)
         {
