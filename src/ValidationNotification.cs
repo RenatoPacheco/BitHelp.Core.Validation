@@ -14,14 +14,26 @@ namespace BitHelp.Core.Validation
 
         public ValidationMessage LastMessage { get; set; }
 
-        public void Add(ValidationMessage data)
+        public void Add(ValidationMessage message)
         {
-            Messages.Add(data);
+            Messages.Add(message);
         }
 
         public void Add(ISelfValidation data)
         {
             Messages = Messages.Concat(data.Notifications.Messages).ToList();
+        }
+
+        public void Add(ISelfValidation data, string prefix)
+        {
+            int total = data.Notifications.Messages.Count();
+            for (int i = 0; i < total; i++)
+            {
+                ValidationMessage message = (ValidationMessage)data.Notifications.Messages[i].Clone();
+                message.Reference = string.IsNullOrWhiteSpace(message.Reference) ? prefix
+                    : $"{prefix}.{message.Reference}";
+                this.Add(message);
+            }
         }
 
         public void Add(ValidationNotification notification)
@@ -164,8 +176,13 @@ namespace BitHelp.Core.Validation
 
         public void RemoveAtReference(string reference)
         {
-            reference = reference?.ToLower();
-            Messages = Messages.Where(x => x.Reference?.ToLower() != reference).ToList();
+            reference = reference?.ToLower() ?? string.Empty;
+            string referencePrefix = $"{reference}.";
+            Messages = Messages.Where(x =>
+            {
+                string compare = x.Reference?.ToLower() ?? string.Empty;
+                return compare != reference && compare.IndexOf(referencePrefix) != 0;
+            }).ToList();
         }
     }
 }

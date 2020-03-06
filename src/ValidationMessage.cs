@@ -2,7 +2,7 @@
 
 namespace BitHelp.Core.Validation
 {
-    public class ValidationMessage
+    public class ValidationMessage : ICloneable
     {
         protected ValidationMessage()
         {
@@ -44,7 +44,12 @@ namespace BitHelp.Core.Validation
 
         public string Message { get; set; }
 
-        public string Reference { get; set; }
+        private string _reference;
+        public string Reference
+        {
+            get { return _reference; }
+            set { _reference = value?.Trim(); }
+        }
 
         public Exception Exception { get; set; }
 
@@ -114,5 +119,10 @@ namespace BitHelp.Core.Validation
         }
 
         #endregion
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <Authors>Renato Pacheco</Authors>
     <PackageProjectUrl></PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
@@ -12,13 +12,11 @@
     <Description>Project for data validation.</Description>
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/RenatoPacheco/BitHelp.Core.Validation</RepositoryUrl>
-    <PackageReleaseNotes>Feature:
+    <PackageReleaseNotes>
+      Feature:
 
-- Adding tests to AddAlert, AddError, AddFatal, AddInfo, AddSuccess and AddUnauthorized
-- Adding parameter to exception in AddAlert, AddError and AddUnauthorized
-- In AddFatal I used the Message property if StackTrace property is null like message
-- Set resources as public
-</PackageReleaseNotes>
+      - Adding the option of the use of a prefix in all references in add notification by ISelfValidation.
+    </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
