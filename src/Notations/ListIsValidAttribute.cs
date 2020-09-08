@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public override bool IsValid(object value)
         {
-            bool result = false;
+            bool result = IgnoreNull;
             if (value is IEnumerable && !(value is string))
             {
                 var list = value as IEnumerable;
