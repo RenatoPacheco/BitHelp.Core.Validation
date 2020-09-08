@@ -175,7 +175,7 @@
     <value>{0} não pode ter um valor menor que {1}.</value>
   </data>
   <data name="XNotEmptyInvalid" xml:space="preserve">
-    <value>{0} está vazio.</value>
+    <value>{0} não pode estar vazio(a).</value>
   </data>
   <data name="XNotValid" xml:space="preserve">
     <value>{0} não é válido(a).</value>
@@ -196,7 +196,7 @@
     <value>{0} não é uma url válida.</value>
   </data>
   <data name="XValid" xml:space="preserve">
-    <value>{0} é válido.</value>
+    <value>{0} é válido(a).</value>
   </data>
   <data name="XExactItemsIsInvalid" xml:space="preserve">
     <value>{0} deve conter {1} elemento(s).</value>
