@@ -55,6 +55,20 @@ namespace BitHelp.Core.Validation
             Messages.Add(new ValidationMessage(message, reference, type) { Exception = exception });
         }
 
+        private void Add<T, P>(
+            Expression<Func<T, P>> expression, string message,
+            string reference, ValidationType type, Exception exception = null)
+        {
+            string display = expression.PropertyDisplay();
+
+            reference = reference ?? expression.PropertyTrail();
+
+            message = message ?? (ValidationMessage.IsTypeError(type) ? Resource.XNotValid : Resource.XValid);
+            message = Regex.Replace(message, @"\{0\}", display);
+
+            Messages.Add(new ValidationMessage(message, reference, type) { Exception = exception });
+        }
+
         #region AddError
 
         public void AddError(
@@ -65,6 +79,13 @@ namespace BitHelp.Core.Validation
 
         public void AddError<T>(
             Expression<Func<T, object>> expression,
+            string message = null, string reference = null, Exception exception = null)
+        {
+            Add(expression, message, reference, ValidationType.Error, exception);
+        }
+
+        public void AddError<T, P>(
+            Expression<Func<T, P>> expression,
             string message = null, string reference = null, Exception exception = null)
         {
             Add(expression, message, reference, ValidationType.Error, exception);
@@ -88,6 +109,14 @@ namespace BitHelp.Core.Validation
             Messages.Add(new ValidationMessage(exception, reference));
         }
 
+        public void AddFatal<T, P>(
+            Expression<Func<T, P>> expression,
+            Exception exception, string reference = null)
+        {
+            reference = reference ?? expression.PropertyTrail();
+            Messages.Add(new ValidationMessage(exception, reference));
+        }
+
         #endregion
 
         #region AddUnauthorized
@@ -100,6 +129,13 @@ namespace BitHelp.Core.Validation
 
         public void AddUnauthorized<T>(
             Expression<Func<T, object>> expression,
+            string message = null, string reference = null, Exception exception = null)
+        {
+            Add(expression, message, reference, ValidationType.Unauthorized, exception);
+        }
+
+        public void AddUnauthorized<T, P>(
+            Expression<Func<T, P>> expression,
             string message = null, string reference = null, Exception exception = null)
         {
             Add(expression, message, reference, ValidationType.Unauthorized, exception);
@@ -122,6 +158,13 @@ namespace BitHelp.Core.Validation
             Add(expression, message, reference, ValidationType.Alert, exception);
         }
 
+        public void AddAlert<T, P>(
+            Expression<Func<T, P>> expression,
+            string message = null, string reference = null, Exception exception = null)
+        {
+            Add(expression, message, reference, ValidationType.Alert, exception);
+        }
+
         #endregion
 
         #region AddSuccess
@@ -139,6 +182,13 @@ namespace BitHelp.Core.Validation
             Add(expression, message, reference, ValidationType.Success);
         }
 
+        public void AddSuccess<T, P>(
+            Expression<Func<T, P>> expression,
+            string message = null, string reference = null)
+        {
+            Add(expression, message, reference, ValidationType.Success);
+        }
+
         #endregion
 
         #region AddInfo
@@ -151,6 +201,13 @@ namespace BitHelp.Core.Validation
 
         public void AddInfo<T>(
             Expression<Func<T, object>> expression, string message = null,
+            string reference = null)
+        {
+            Add(expression, message, reference, ValidationType.Info);
+        }
+
+        public void AddInfo<T, P>(
+            Expression<Func<T, P>> expression, string message = null,
             string reference = null)
         {
             Add(expression, message, reference, ValidationType.Info);
@@ -183,6 +240,18 @@ namespace BitHelp.Core.Validation
                 string compare = x.Reference?.ToLower() ?? string.Empty;
                 return compare != reference && compare.IndexOf(referencePrefix) != 0;
             }).ToList();
+        }
+
+        public void RemoveAtReference<T>(Expression<Func<T, object>> expression)
+        {
+            string reference = expression.PropertyTrail();
+            RemoveAtReference(reference);
+        }
+
+        public void RemoveAtReference<T, P>(Expression<Func<T, P>> expression)
+        {
+            string reference = expression.PropertyTrail();
+            RemoveAtReference(reference);
         }
     }
 }

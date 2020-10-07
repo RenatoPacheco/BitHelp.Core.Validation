@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class BetweenEnumIsValidExt
     {
-        public static ValidationNotification BetweenEnumIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, IEnumerable<Enum> options)
+        public static ValidationNotification BetweenEnumIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<Enum> options)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

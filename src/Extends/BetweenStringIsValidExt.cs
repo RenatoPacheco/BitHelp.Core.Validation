@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class BetweenStringIsValidExt
     {
-        public static ValidationNotification BetweenStringIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, IEnumerable<string> options)
+        public static ValidationNotification BetweenStringIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<string> options)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

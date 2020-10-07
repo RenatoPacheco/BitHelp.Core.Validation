@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinTimeSpanIsValidExt
     {
-        public static ValidationNotification MinTimeSpanIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, TimeSpan minimum)
+        public static ValidationNotification MinTimeSpanIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, TimeSpan minimum)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

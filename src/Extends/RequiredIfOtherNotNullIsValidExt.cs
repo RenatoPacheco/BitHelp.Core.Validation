@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RequiredIfOtherNotNullIsValidExt
     {
-        public static ValidationNotification RequiredIfOtherNotNullIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, object compare)
+        public static ValidationNotification RequiredIfOtherNotNullIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, object compare)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

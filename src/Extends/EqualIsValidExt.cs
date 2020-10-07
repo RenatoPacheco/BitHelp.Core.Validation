@@ -7,8 +7,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class EqualIsValidExt
     {
-        public static ValidationNotification EqualIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, object compare)
+        public static ValidationNotification EqualIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, object compare)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

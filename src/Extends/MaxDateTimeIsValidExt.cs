@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MaxDateTimeIsValidExt
     {
-        public static ValidationNotification MaxDateTimeIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, DateTime maximum, CultureInfo cultureInfo = null)
+        public static ValidationNotification MaxDateTimeIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, DateTime maximum, CultureInfo cultureInfo = null)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RangeNumberIsValidExt
     {
-        public static ValidationNotification RangeNumberIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, decimal minimum, decimal maximum)
+        public static ValidationNotification RangeNumberIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, decimal minimum, decimal maximum)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

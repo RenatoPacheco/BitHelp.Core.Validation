@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinDateTimeIsValidExt
     {
-        public static ValidationNotification MinDateTimeIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, DateTime minimum, CultureInfo cultureInfo = null)
+        public static ValidationNotification MinDateTimeIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, DateTime minimum, CultureInfo cultureInfo = null)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

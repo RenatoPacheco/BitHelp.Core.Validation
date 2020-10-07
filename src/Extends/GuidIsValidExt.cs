@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class GuidIsValidExt
     {
-        public static ValidationNotification GuidIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression)
+        public static ValidationNotification GuidIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

@@ -8,8 +8,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class NotEmptyIsValidExt
     {
-        public static ValidationNotification NotEmptyIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, bool ignoreWithSpace = false)
+        public static ValidationNotification NotEmptyIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, bool ignoreWithSpace = false)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

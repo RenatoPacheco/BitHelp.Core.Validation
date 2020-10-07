@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinItemsIsValidExt
     {
-        public static ValidationNotification MinItemsIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int minimum)
+        public static ValidationNotification MinItemsIsValid<T>(
+            this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int minimum)
         {
             string reference = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;

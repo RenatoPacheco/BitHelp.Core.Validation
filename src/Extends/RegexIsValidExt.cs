@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RegexIsValidExt
     {
-        public static ValidationNotification RegexIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, string pattern, RegexOptions options = RegexOptions.None)
+        public static ValidationNotification RegexIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, string pattern, RegexOptions options = RegexOptions.None)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

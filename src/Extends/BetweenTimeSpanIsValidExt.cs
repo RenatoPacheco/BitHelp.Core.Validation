@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class BetweenTimeSpanIsValidExt
     {
-        public static ValidationNotification BetweenTimeSpanIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, object>> expression, IEnumerable<TimeSpan> options)
+        public static ValidationNotification BetweenTimeSpanIsValid<T, P>(
+            this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<TimeSpan> options)
         {
             string reference = expression.PropertyTrail();
             object value = expression.Compile().DynamicInvoke(data);

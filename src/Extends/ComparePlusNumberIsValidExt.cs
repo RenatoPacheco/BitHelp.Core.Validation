@@ -7,10 +7,10 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ComparePlusNumberIsValidExt
     {
-        public static ValidationNotification ComparePlusNumberIsValid<TClass>(
-            this ValidationNotification source, TClass data,
-            Expression<Func<TClass, object>> expression,
-            Expression<Func<TClass, object>> expressionCompare)
+        public static ValidationNotification ComparePlusNumberIsValid<T, P, PCompare>(
+            this ValidationNotification source, T data,
+            Expression<Func<T, P>> expression,
+            Expression<Func<T, PCompare>> expressionCompare)
         {
             string reference = expression.PropertyTrail();
 

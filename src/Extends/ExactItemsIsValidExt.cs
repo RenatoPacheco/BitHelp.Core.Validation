@@ -9,8 +9,8 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ExactItemsIsValidExt
     {
-        public static ValidationNotification ExactItemsIsValid<TClass>(
-            this ValidationNotification source, TClass data, Expression<Func<TClass, IList>> expression, int exact)
+        public static ValidationNotification ExactItemsIsValid<T>(
+            this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int exact)
         {
             string reference = expression.PropertyTrail();
             IList value = expression.Compile().DynamicInvoke(data) as IList;
