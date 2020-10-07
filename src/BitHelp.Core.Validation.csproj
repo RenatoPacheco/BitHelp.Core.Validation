@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.5.1</Version>
+    <Version>0.6.0</Version>
     <Authors>Renato Pacheco</Authors>
     <PackageProjectUrl></PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
@@ -15,7 +15,7 @@
     <PackageReleaseNotes>
       Feature:
 
-      - Adding the option of the use of a prefix in all references in add notification by ISelfValidation.
+      - Adding the option to use different properties of type object in expressions.
     </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
