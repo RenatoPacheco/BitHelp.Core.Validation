@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation
             ValidationType type = ValidationType.Fatal)
             : this()
         {
-            Message = exception.StackTrace ?? exception.Message;
+            Message = exception?.Message ?? exception?.StackTrace ?? "Exception";
             Exception = exception;
             Reference = reference;
             Type = type;
