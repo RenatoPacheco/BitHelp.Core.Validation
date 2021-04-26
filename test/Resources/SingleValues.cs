@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation.Test.Resources
 {
-    public class SingleValues
+    public class SingleValues : ISelfValidation
     {
         public char Char { get; set; }
 
@@ -61,5 +61,9 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         [Display(Name = "Enum null")]
         public EnumValue? EnumNull { get; set; }
+
+        public ValidationNotification Notifications { get; private set; } = new ValidationNotification();
+
+        public bool IsValid() => Notifications.IsValid();
     }
 }
