@@ -8,6 +8,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class DecimalIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification DecimalIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression)
+            where T : ISelfValidation
+        {
+            return source.DecimalIsValid(
+                source.GetStructureToValidate(expression));
+        }
+
+        public static ValidationNotification DecimalIsValid<T>(
+            this T source, object value)
+            where T : ISelfValidation
+        {
+            return source.DecimalIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            });
+        }
+
+        public static ValidationNotification DecimalIsValid<T>(
+            this T source, IStructureToValidate data)
+            where T : ISelfValidation
+        {
+            return source.Notifications.DecimalIsValid(data);
+        }
+
+        #endregion
+
         public static ValidationNotification DecimalIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class EmailIsValidExtTest
+    public class DoubleIsValidExtTest
     {
         readonly ValidationNotification _notification = new ValidationNotification();
 
@@ -13,62 +13,61 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             var single = new SingleValues
             {
-                String = "myemail@site.com"
+                Double = 1.79
             };
 
             _notification.Clear();
-            _notification.EmailIsValid(single.String);
+            _notification.DoubleIsValid(single.Double);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EmailIsValid(single, x => x.String);
+            _notification.DoubleIsValid(single, x => x.Double);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EmailIsValid(x => x.String);
+            single.DoubleIsValid(x => x.Double);
             Assert.True(single.IsValid());
         }
 
-
         [Fact]
-        public void Check_is_invalid()
+        public void Check_not_number_is_invalid()
         {
             var single = new SingleValues
             {
-                String = "myemailsite.com"
+                String = "text"
             };
 
             _notification.Clear();
-            _notification.EmailIsValid(single.String);
+            _notification.DoubleIsValid(single.String);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EmailIsValid(single, x => x.String);
+            _notification.DoubleIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EmailIsValid(x => x.String);
+            single.DoubleIsValid(x => x.String);
             Assert.False(single.IsValid());
         }
 
-       [Fact]
+        [Fact]
         public void Check_ignore_null()
         {
             var single = new SingleValues
             {
-                String = null
+                DoubleNull = null
             };
 
             _notification.Clear();
-            _notification.EmailIsValid(single.String);
+            _notification.DoubleIsValid(single.DoubleNull);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EmailIsValid(single, x => x.String);
+            _notification.DoubleIsValid(single, x => x.DoubleNull);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EmailIsValid(x => x.String);
+            single.DoubleIsValid(x => x.DoubleNull);
             Assert.True(single.IsValid());
         }
     }

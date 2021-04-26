@@ -23,6 +23,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.DecimalIsValid(single, x => x.Decimal);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(x => x.Decimal);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -40,6 +44,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.DecimalIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(x => x.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -57,6 +65,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.DecimalIsValid(single, x => x.DecimalNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(x => x.DecimalNull);
+            Assert.True(single.IsValid());
         }
     }
 }

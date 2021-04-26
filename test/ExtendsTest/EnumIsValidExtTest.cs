@@ -23,6 +23,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EnumIsValid(single, x => x.Enum, typeof(EnumValue));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(x => x.Enum, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -40,6 +44,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(x => x.String, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -57,6 +65,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(x => x.String, typeof(EnumValue));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -74,6 +86,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EnumIsValid(single, x => x.Int, typeof(EnumValue));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(x => x.Int, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -91,6 +107,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EnumIsValid(single, x => x.Int, typeof(EnumValue));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(x => x.Int, typeof(EnumValue));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -108,6 +128,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(x => x.String, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
     }
 }

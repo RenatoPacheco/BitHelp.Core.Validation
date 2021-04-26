@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualIsValid(single, x => x.Long, single.Int);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(x => x.Long, single.Int);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -44,6 +48,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualIsValid(single, x => x.LongNull, single.IntNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(x => x.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -63,6 +71,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualIsValid(single, x => x.LongNull, single.IntNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(x => x.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -82,6 +94,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualIsValid(single, x => x.LongNull, single.IntNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(x => x.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
 
@@ -103,6 +119,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualIsValid(single, x => x.LongNull, single.IntNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(x => x.LongNull, single.IntNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -121,6 +141,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualIsValid(single, x => x.String, single.Int);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(x => x.String, single.Int);
+            Assert.True(single.IsValid());
         }
     }
 }
