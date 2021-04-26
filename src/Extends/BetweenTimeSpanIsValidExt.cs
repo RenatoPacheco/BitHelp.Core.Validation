@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Notations;
 using BitHelp.Core.Validation.Resources;
@@ -9,6 +9,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class BetweenTimeSpanIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification BetweenTimeSpanIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression, IEnumerable<TimeSpan> options)
+            where T : ISelfValidation
+        {
+            return source.BetweenTimeSpanIsValid(
+                source.GetStructureToValidate(expression), options);
+        }
+
+        public static ValidationNotification BetweenTimeSpanIsValid<T>(
+            this T source, object value, IEnumerable<TimeSpan> options)
+            where T : ISelfValidation
+        {
+            return source.BetweenTimeSpanIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, options);
+        }
+
+        public static ValidationNotification BetweenTimeSpanIsValid<T>(
+            this T source, IStructureToValidate data, IEnumerable<TimeSpan> options)
+            where T : ISelfValidation
+        {
+            return source.Notifications.BetweenTimeSpanIsValid(data, options);
+        }
+
+        #endregion
+
         public static ValidationNotification BetweenTimeSpanIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<TimeSpan> options)
         {

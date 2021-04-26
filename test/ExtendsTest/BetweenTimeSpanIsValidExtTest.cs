@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenTimeSpanIsValid(single, x => x.String, _options);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenTimeSpanIsValid(x => x.String, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -42,6 +46,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenTimeSpanIsValid(single, x => x.String, _options);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenTimeSpanIsValid(x => x.String, _options);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -59,6 +67,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenTimeSpanIsValid(single, x => x.String, _options);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenTimeSpanIsValid(x => x.String, _options);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -76,6 +88,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenTimeSpanIsValid(single, x => x.String, _options);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenTimeSpanIsValid(x => x.String, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -88,6 +104,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, null));
             Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, null));
+            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(x => x.String, null));
         }
 
         [Fact]
@@ -100,6 +117,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, Array.Empty<TimeSpan>()));
             Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, Array.Empty<TimeSpan>()));
+            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(x => x.String, Array.Empty<TimeSpan>()));
         }
     }
 }

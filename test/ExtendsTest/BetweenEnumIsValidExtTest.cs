@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenEnumIsValid(single, x => x.Enum, _options);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(x => x.Enum, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -42,6 +46,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenEnumIsValid(single, x => x.Enum, _options);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(x => x.Enum, _options);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -59,6 +67,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.BetweenEnumIsValid(single, x => x.EnumNull, _options);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(x => x.EnumNull, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -71,6 +83,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.EnumNull, null));
             Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.EnumNull, null));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.EnumNull, null));
         }
 
         [Fact]
@@ -83,6 +96,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.EnumNull, Array.Empty<Enum>()));
             Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.EnumNull, Array.Empty<Enum>()));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.EnumNull, Array.Empty<Enum>()));
         }
     }
 }

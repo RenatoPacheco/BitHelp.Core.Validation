@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Notations;
 using BitHelp.Core.Validation.Resources;
@@ -10,6 +10,42 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class BetweenDateTimeIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification BetweenDateTimeIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression,
+            IEnumerable<DateTime> options, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.BetweenDateTimeIsValid(
+                source.GetStructureToValidate(expression),
+                options, cultureInfo);
+        }
+
+        public static ValidationNotification BetweenDateTimeIsValid<T>(
+            this T source, object value,
+            IEnumerable<DateTime> options, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.BetweenDateTimeIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, options, cultureInfo);
+        }
+
+        public static ValidationNotification BetweenDateTimeIsValid<T>(
+            this T source, IStructureToValidate data,
+            IEnumerable<DateTime> options, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.Notifications.BetweenDateTimeIsValid(data,
+                options, cultureInfo);
+        }
+
+        #endregion
+
         public static ValidationNotification BetweenDateTimeIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<DateTime> options, CultureInfo cultureInfo = null)
         {
