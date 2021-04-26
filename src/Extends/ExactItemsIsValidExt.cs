@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq.Expressions;
-using BitHelp.Core.Extend;
+using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Notations;
 using BitHelp.Core.Validation.Resources;
 
@@ -12,27 +12,43 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification ExactItemsIsValid<T>(
             this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int exact)
         {
-            string reference = expression.PropertyTrail();
-            IList value = expression.Compile().DynamicInvoke(data) as IList;
-            string display = expression.PropertyDisplay();
-            return source.ExactItemsIsValid(value, display, reference, exact);
+            return source.ExactItemsIsValid(
+                data.GetStructureToValidate(expression),
+                exact);
         }
 
         public static ValidationNotification ExactItemsIsValid(
             this ValidationNotification source, IList value, int exact)
         {
-            return source.ExactItemsIsValid(value, Resource.DisplayValue, null, exact);
+            return source.ExactItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, exact);
         }
 
+        [Obsolete("Use ExactItemsIsValid(IStructureToValidate data, int exact)")]
         private static ValidationNotification ExactItemsIsValid(
             this ValidationNotification source, object value, string display, string reference, int exact)
         {
+            return source.ExactItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = display,
+                Reference = reference
+            }, exact);
+        }
+
+        private static ValidationNotification ExactItemsIsValid(
+            this ValidationNotification source, IStructureToValidate data, int exact)
+        {
             source.LastMessage = null;
             ExactItemsIsValidAttribute validation = new ExactItemsIsValidAttribute(exact);
-            if (!validation.IsValid(value))
+            if (!validation.IsValid(data.Value))
             {
-                string text = validation.FormatErrorMessage(display);
-                var message = new ValidationMessage(text, reference);
+                string text = validation.FormatErrorMessage(data.Display);
+                var message = new ValidationMessage(text, data.Reference);
                 source.LastMessage = message;
                 source.Add(message);
             }

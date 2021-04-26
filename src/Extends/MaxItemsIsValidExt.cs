@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq.Expressions;
-using BitHelp.Core.Extend;
+using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Notations;
 using BitHelp.Core.Validation.Resources;
 
@@ -12,27 +12,43 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MaxItemsIsValid<T>(
             this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int maximum)
         {
-            string reference = expression.PropertyTrail();
-            IList value = expression.Compile().DynamicInvoke(data) as IList;
-            string display = expression.PropertyDisplay();
-            return source.MaxItemsIsValid(value, display, reference, maximum);
+            return source.MaxItemsIsValid(
+                data.GetStructureToValidate(expression),
+                maximum);
         }
 
         public static ValidationNotification MaxItemsIsValid(
             this ValidationNotification source, IList value, int maximum)
         {
-            return source.MaxItemsIsValid(value, Resource.DisplayValue, null, maximum);
+            return source.MaxItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, maximum);
         }
 
+        [Obsolete("Use MaxItemsIsValid(IStructureToValidate data, int maximum)")]
         private static ValidationNotification MaxItemsIsValid(
             this ValidationNotification source, object value, string display, string reference, int maximum)
         {
+            return source.MaxItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = display,
+                Reference = reference
+            }, maximum);
+        }
+
+        private static ValidationNotification MaxItemsIsValid(
+            this ValidationNotification source, IStructureToValidate data, int maximum)
+        {
             source.LastMessage = null;
             MaxItemsIsValidAttribute validation = new MaxItemsIsValidAttribute(maximum);
-            if (!validation.IsValid(value))
+            if (!validation.IsValid(data.Value))
             {
-                string text = validation.FormatErrorMessage(display);
-                var message = new ValidationMessage(text, reference);
+                string text = validation.FormatErrorMessage(data.Display);
+                var message = new ValidationMessage(text, data.Reference);
                 source.LastMessage = message;
                 source.Add(message);
             }
