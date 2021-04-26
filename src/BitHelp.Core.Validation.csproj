@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.6.1</Version>
+    <Version>0.7.0</Version>
     <Authors>Renato Pacheco</Authors>
     <PackageProjectUrl></PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
@@ -13,9 +13,11 @@
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/RenatoPacheco/BitHelp.Core.Validation</RepositoryUrl>
     <PackageReleaseNotes>
-      Hotfix:
+      Release:
 
-      - Show exception message for default in fatal message.
+      - Creating IStructureToValidate to simplify obtaining the data to validate.
+      - Applying the IStructureToValidate interface.
+      - Making methods that use IStructureToValidate public.
     </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
