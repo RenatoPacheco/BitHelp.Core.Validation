@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Extends
             }, exact);
         }
 
-        private static ValidationNotification ExactItemsIsValid(
+        public static ValidationNotification ExactItemsIsValid(
             this ValidationNotification source, IStructureToValidate data, int exact)
         {
             source.LastMessage = null;

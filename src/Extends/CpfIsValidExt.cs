@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification CpfIsValid(
+        public static ValidationNotification CpfIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

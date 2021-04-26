@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
             }, ignoreWithSpace);
         }
 
-        private static ValidationNotification NotEmptyIsValid(
+        public static ValidationNotification NotEmptyIsValid(
             this ValidationNotification source, IStructureToValidate data, bool ignoreWithSpace)
         {
             source.LastMessage = null;

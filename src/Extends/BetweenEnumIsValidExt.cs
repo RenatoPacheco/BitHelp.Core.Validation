@@ -41,7 +41,7 @@ namespace BitHelp.Core.Validation.Extends
             }, options);
         }
 
-        private static ValidationNotification BetweenEnumIsValid(
+        public static ValidationNotification BetweenEnumIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<Enum> options)
         {
             source.LastMessage = null;

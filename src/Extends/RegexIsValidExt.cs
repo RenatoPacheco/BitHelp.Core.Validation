@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Extends
             }, pattern, options);
         }
 
-        private static ValidationNotification RegexIsValid(
+        public static ValidationNotification RegexIsValid(
             this ValidationNotification source, IStructureToValidate data, string pattern, RegexOptions options = RegexOptions.None)
         {
             source.LastMessage = null;

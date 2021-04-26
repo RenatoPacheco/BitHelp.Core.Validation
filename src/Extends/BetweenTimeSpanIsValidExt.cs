@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Extends
             }, options);
         }
 
-        private static ValidationNotification BetweenTimeSpanIsValid(
+        public static ValidationNotification BetweenTimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<TimeSpan> options)
         {
             source.LastMessage = null;

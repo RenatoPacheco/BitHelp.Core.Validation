@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             }, compare);
         }
 
-        private static ValidationNotification RequiredIfOtherNotNullIsValid(
+        public static ValidationNotification RequiredIfOtherNotNullIsValid(
             this ValidationNotification source, IStructureToValidate data, object compare)
         {
             source.LastMessage = null;

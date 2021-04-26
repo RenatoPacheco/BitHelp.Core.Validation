@@ -28,9 +28,9 @@ namespace BitHelp.Core.Validation.Extends
             }, maximum, cultureInfo);
         }
 
-        [Obsolete("Use MaxCharactersIsValid(IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo)")]
+        [Obsolete("Use MaxCharactersIsValid(IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo = null)")]
         private static ValidationNotification MaxDateTimeIsValid(
-            this ValidationNotification source, object value, string display, string reference, DateTime maximum, CultureInfo cultureInfo)
+            this ValidationNotification source, object value, string display, string reference, DateTime maximum, CultureInfo cultureInfo = null)
         {
             return source.MaxDateTimeIsValid(new StructureToValidate
             {
@@ -41,8 +41,8 @@ namespace BitHelp.Core.Validation.Extends
 
         }
 
-        private static ValidationNotification MaxDateTimeIsValid(
-            this ValidationNotification source, IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo)
+        public static ValidationNotification MaxDateTimeIsValid(
+            this ValidationNotification source, IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo = null)
         {
             source.LastMessage = null;
             MaxDateTimeIsValidAttribute validation = new MaxDateTimeIsValidAttribute(maximum, cultureInfo);

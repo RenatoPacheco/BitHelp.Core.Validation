@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification DoubleIsValid(
+        public static ValidationNotification DoubleIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

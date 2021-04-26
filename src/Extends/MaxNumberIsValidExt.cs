@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
             }, maximum);
         }
 
-        private static ValidationNotification MaxNumberIsValid(
+        public static ValidationNotification MaxNumberIsValid(
             this ValidationNotification source, IStructureToValidate data, decimal maximum)
         {
             source.LastMessage = null;

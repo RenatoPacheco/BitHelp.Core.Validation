@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum);
         }
 
-        private static ValidationNotification MinItemsIsValid(
+        public static ValidationNotification MinItemsIsValid(
             this ValidationNotification source, IStructureToValidate data, int minimum)
         {
             source.LastMessage = null;

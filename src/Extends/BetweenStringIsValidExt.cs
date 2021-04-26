@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Extends
             }, options);
         }
 
-        private static ValidationNotification BetweenStringIsValid(
+        public static ValidationNotification BetweenStringIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<string> options)
         {
             source.LastMessage = null;

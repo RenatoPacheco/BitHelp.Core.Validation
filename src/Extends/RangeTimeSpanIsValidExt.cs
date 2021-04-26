@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum);
         }
 
-        private static ValidationNotification RangeTimeSpanIsValid(
+        public static ValidationNotification RangeTimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data, TimeSpan minimum, TimeSpan maximum)
         {
             source.LastMessage = null;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using BitHelp.Core.Extend;
+using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
@@ -12,13 +12,23 @@ namespace BitHelp.Core.Validation.Extends
             Expression<Func<T, P>> expression,
             Expression<Func<T, PCompare>> expressionCompare)
         {
-            string reference = expression.PropertyTrail();
+            return source.CompareEqualIsValid(
+                data.GetStructureToValidate(expression),
+                data.GetStructureToValidate(expressionCompare));
+        }
 
-            object value = expression.Compile().DynamicInvoke(data);
-            string display = expression.PropertyDisplay();
+        public static ValidationNotification CompareEqualIsValid(
+            this ValidationNotification source,
+            IStructureToValidate data,
+            IStructureToValidate dataCompare)
+        {
+            string reference = data.Reference;
 
-            object valueCompare = expressionCompare.Compile().DynamicInvoke(data);
-            string displayCompare = expressionCompare.PropertyDisplay();
+            object value = data.Value;
+            string display = data.Display;
+
+            object valueCompare = dataCompare.Value;
+            string displayCompare = dataCompare.Display;
 
             source.LastMessage = null;
 

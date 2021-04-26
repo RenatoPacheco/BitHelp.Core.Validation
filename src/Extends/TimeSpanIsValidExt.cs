@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification TimeSpanIsValid(
+        public static ValidationNotification TimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

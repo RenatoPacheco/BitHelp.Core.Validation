@@ -28,9 +28,9 @@ namespace BitHelp.Core.Validation.Extends
             }, cultureInfo);
         }
 
-        [Obsolete("Use DateTimeIsValid(IStructureToValidate data, CultureInfo cultureInfo)")]
+        [Obsolete("Use DateTimeIsValid(IStructureToValidate data, CultureInfo cultureInfo = null)")]
         private static ValidationNotification DateTimeIsValid(
-            this ValidationNotification source, object value, string display, string reference, CultureInfo cultureInfo)
+            this ValidationNotification source, object value, string display, string reference, CultureInfo cultureInfo = null)
         {
             return source.DateTimeIsValid(new StructureToValidate
             {
@@ -41,8 +41,8 @@ namespace BitHelp.Core.Validation.Extends
 
         }
 
-        private static ValidationNotification DateTimeIsValid(
-            this ValidationNotification source, IStructureToValidate data, CultureInfo cultureInfo)
+        public static ValidationNotification DateTimeIsValid(
+            this ValidationNotification source, IStructureToValidate data, CultureInfo cultureInfo = null)
         {
             source.LastMessage = null;
             DateTimeIsValidAttribute validation = new DateTimeIsValidAttribute(cultureInfo);

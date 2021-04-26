@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
             }, maximum);
         }
 
-        private static ValidationNotification MaxCharactersIsValid(
+        public static ValidationNotification MaxCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int maximum)
         {
             source.LastMessage = null;

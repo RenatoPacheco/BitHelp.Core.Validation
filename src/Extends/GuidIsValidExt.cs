@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification GuidIsValid(
+        public static ValidationNotification GuidIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

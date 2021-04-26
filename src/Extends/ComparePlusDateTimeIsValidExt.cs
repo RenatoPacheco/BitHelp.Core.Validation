@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq.Expressions;
-using BitHelp.Core.Extend;
+using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
@@ -14,13 +14,25 @@ namespace BitHelp.Core.Validation.Extends
             Expression<Func<T, PCompare>> expressionCompare,
             CultureInfo cultureInfo = null)
         {
-            string reference = expression.PropertyTrail();
+            return source.ComparePlusDateTimeIsValid(
+                data.GetStructureToValidate(expression),
+                data.GetStructureToValidate(expressionCompare),
+                cultureInfo);
+        }
 
-            object value = expression.Compile().DynamicInvoke(data);
-            string display = expression.PropertyDisplay();
+        public static ValidationNotification ComparePlusDateTimeIsValid(
+            this ValidationNotification source,
+            IStructureToValidate data,
+            IStructureToValidate dataCompare,
+            CultureInfo cultureInfo = null)
+        {
+            string reference = data.Reference;
 
-            object valueCompare = expressionCompare.Compile().DynamicInvoke(data);
-            string displayCompare = expressionCompare.PropertyDisplay();
+            object value = data.Value;
+            string display = data.Display;
+
+            object valueCompare = dataCompare.Value;
+            string displayCompare = dataCompare.Display;
 
             cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture;
             source.LastMessage = null;

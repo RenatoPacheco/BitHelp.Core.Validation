@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum);
         }
 
-        private static ValidationNotification MinNumberIsValid(
+        public static ValidationNotification MinNumberIsValid(
             this ValidationNotification source, IStructureToValidate data, decimal minimum)
         {
             source.LastMessage = null;

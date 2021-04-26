@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification LongIsValid(
+        public static ValidationNotification LongIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

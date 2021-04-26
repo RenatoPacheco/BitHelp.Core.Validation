@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
             }, type);
         }
 
-        private static ValidationNotification EnumIsValid(
+        public static ValidationNotification EnumIsValid(
             this ValidationNotification source, IStructureToValidate data, Type type)
         {
             source.LastMessage = null;

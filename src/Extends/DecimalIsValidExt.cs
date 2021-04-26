@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification DecimalIsValid(
+        public static ValidationNotification DecimalIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

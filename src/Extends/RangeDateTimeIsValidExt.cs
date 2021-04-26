@@ -28,9 +28,9 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum, cultureInfo);
         }
 
-        [Obsolete("Use RangeDateTimeIsValid(IStructureToValidate data, DateTime minimum, DateTime maximum, CultureInfo cultureInfo)")]
+        [Obsolete("Use RangeDateTimeIsValid(IStructureToValidate data, DateTime minimum, DateTime maximum, CultureInfo cultureInfo = null)")]
         private static ValidationNotification RangeDateTimeIsValid(
-            this ValidationNotification source, object value, string display, string reference, DateTime minimum, DateTime maximum, CultureInfo cultureInfo)
+            this ValidationNotification source, object value, string display, string reference, DateTime minimum, DateTime maximum, CultureInfo cultureInfo = null)
         {
             return source.RangeDateTimeIsValid(new StructureToValidate
             {
@@ -40,8 +40,8 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum, cultureInfo);
         }
 
-        private static ValidationNotification RangeDateTimeIsValid(
-            this ValidationNotification source, IStructureToValidate data, DateTime minimum, DateTime maximum, CultureInfo cultureInfo)
+        public static ValidationNotification RangeDateTimeIsValid(
+            this ValidationNotification source, IStructureToValidate data, DateTime minimum, DateTime maximum, CultureInfo cultureInfo = null)
         {
             source.LastMessage = null;
             RangeDateTimeIsValidAttribute validation = new RangeDateTimeIsValidAttribute(minimum, maximum, cultureInfo);

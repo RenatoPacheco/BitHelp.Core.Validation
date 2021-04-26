@@ -38,7 +38,7 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        private static ValidationNotification SingletonItemsIsValid(
+        public static ValidationNotification SingletonItemsIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.LastMessage = null;

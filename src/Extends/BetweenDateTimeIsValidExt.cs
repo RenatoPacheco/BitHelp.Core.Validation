@@ -42,7 +42,7 @@ namespace BitHelp.Core.Validation.Extends
             }, options, cultureInfo);
         }
 
-        private static ValidationNotification BetweenDateTimeIsValid(
+        public static ValidationNotification BetweenDateTimeIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<DateTime> options, CultureInfo cultureInfo)
         {
             source.LastMessage = null;
