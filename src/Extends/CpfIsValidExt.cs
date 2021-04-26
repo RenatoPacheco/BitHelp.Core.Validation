@@ -8,6 +8,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class CpfIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification CpfIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression)
+            where T : ISelfValidation
+        {
+            return source.CpfIsValid(
+                source.GetStructureToValidate(expression));
+        }
+
+        public static ValidationNotification CpfIsValid<T>(
+            this T source, object value)
+            where T : ISelfValidation
+        {
+            return source.CpfIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            });
+        }
+
+        public static ValidationNotification CpfIsValid<T>(
+            this T source, IStructureToValidate data)
+            where T : ISelfValidation
+        {
+            return source.Notifications.CpfIsValid(data);
+        }
+
+        #endregion
+
         public static ValidationNotification CpfIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
