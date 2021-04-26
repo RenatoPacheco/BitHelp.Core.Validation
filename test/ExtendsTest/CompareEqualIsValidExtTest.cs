@@ -20,6 +20,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareEqualIsValid(single, x => x.LongNull, x => x.Long);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareEqualIsValid(x => x.LongNull, x => x.Long);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -34,6 +38,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareEqualIsValid(single, x => x.LongNull, x => x.Long);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareEqualIsValid(x => x.LongNull, x => x.Long);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -48,6 +56,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareEqualIsValid(single, x => x.String, x => x.Long);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareEqualIsValid(x => x.String, x => x.Long);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -62,6 +74,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareEqualIsValid(single, x => x.LongNull, x => x.Long);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareEqualIsValid(x => x.LongNull, x => x.Long);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -76,6 +92,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareEqualIsValid(single, x => x.String, x => x.Bool);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareEqualIsValid(x => x.String, x => x.Bool);
+            Assert.False(single.IsValid());
         }
     }
 }

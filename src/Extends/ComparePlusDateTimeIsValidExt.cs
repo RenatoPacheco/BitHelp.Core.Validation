@@ -8,6 +8,31 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ComparePlusDateTimeIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification ComparePlusDateTimeIsValid<T, P, PCompare>(
+            this T source, Expression<Func<T, P>> expression,
+            Expression<Func<T, PCompare>> expressionCompare,
+            CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.ComparePlusDateTimeIsValid(
+                source.GetStructureToValidate(expression),
+                source.GetStructureToValidate(expressionCompare),
+                cultureInfo);
+        }
+
+        public static ValidationNotification ComparePlusDateTimeIsValid<T>(
+            this T source, IStructureToValidate data,
+            IStructureToValidate dataCompare,
+            CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.Notifications.ComparePlusDateTimeIsValid(data, dataCompare, cultureInfo);
+        }
+
+        #endregion
+
         public static ValidationNotification ComparePlusDateTimeIsValid<T, P, PCompare>(
             this ValidationNotification source, T data,
             Expression<Func<T, P>> expression,

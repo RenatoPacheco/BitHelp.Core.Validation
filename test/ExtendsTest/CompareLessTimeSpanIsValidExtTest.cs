@@ -21,6 +21,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessTimeSpanIsValid(single, x => x.String, x => x.TimeSpanNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessTimeSpanIsValid(x => x.String, x => x.TimeSpanNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -35,6 +39,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessTimeSpanIsValid(single, x => x.String, x => x.TimeSpanNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessTimeSpanIsValid(x => x.String, x => x.TimeSpanNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -49,6 +57,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessTimeSpanIsValid(single, x => x.String, x => x.TimeSpanNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessTimeSpanIsValid(x => x.String, x => x.TimeSpanNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -63,6 +75,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessTimeSpanIsValid(single, x => x.String, x => x.TimeSpanNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessTimeSpanIsValid(x => x.String, x => x.TimeSpanNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -77,6 +93,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessTimeSpanIsValid(single, x => x.String, x => x.TimeSpanNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessTimeSpanIsValid(x => x.String, x => x.TimeSpanNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -91,6 +111,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessTimeSpanIsValid(single, x => x.String, x => x.TimeSpanNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessTimeSpanIsValid(x => x.String, x => x.TimeSpanNull);
+            Assert.False(single.IsValid());
         }
     }
 }

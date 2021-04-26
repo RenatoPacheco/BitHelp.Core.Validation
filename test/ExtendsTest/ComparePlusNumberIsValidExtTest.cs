@@ -20,6 +20,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ComparePlusNumberIsValid(single, x => x.String, x => x.DecimalNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ComparePlusNumberIsValid(x => x.String, x => x.DecimalNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -34,6 +38,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ComparePlusNumberIsValid(single, x => x.String, x => x.DecimalNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ComparePlusNumberIsValid(x => x.String, x => x.DecimalNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -48,6 +56,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ComparePlusNumberIsValid(single, x => x.String, x => x.DecimalNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ComparePlusNumberIsValid(x => x.String, x => x.DecimalNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -62,6 +74,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ComparePlusNumberIsValid(single, x => x.String, x => x.DecimalNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ComparePlusNumberIsValid(x => x.String, x => x.DecimalNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -76,6 +92,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ComparePlusNumberIsValid(single, x => x.String, x => x.DecimalNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ComparePlusNumberIsValid(x => x.String, x => x.DecimalNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -90,6 +110,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ComparePlusNumberIsValid(single, x => x.String, x => x.DecimalNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ComparePlusNumberIsValid(x => x.String, x => x.DecimalNull);
+            Assert.True(single.IsValid());
         }
     }
 }

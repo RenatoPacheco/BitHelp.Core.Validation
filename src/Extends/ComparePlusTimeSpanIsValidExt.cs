@@ -7,6 +7,28 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ComparePlusTimeSpanIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification ComparePlusTimeSpanIsValid<T, P, PCompare>(
+            this T source, Expression<Func<T, P>> expression,
+            Expression<Func<T, PCompare>> expressionCompare)
+            where T : ISelfValidation
+        {
+            return source.ComparePlusTimeSpanIsValid(
+                source.GetStructureToValidate(expression),
+                source.GetStructureToValidate(expressionCompare));
+        }
+
+        public static ValidationNotification ComparePlusTimeSpanIsValid<T>(
+            this T source, IStructureToValidate data,
+            IStructureToValidate dataCompare)
+            where T : ISelfValidation
+        {
+            return source.Notifications.ComparePlusTimeSpanIsValid(data, dataCompare);
+        }
+
+        #endregion
+
         public static ValidationNotification ComparePlusTimeSpanIsValid<T, P, PCompare>(
             this ValidationNotification source, T data,
             Expression<Func<T, P>> expression,

@@ -22,6 +22,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -36,6 +40,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -50,6 +58,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -64,6 +76,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -78,6 +94,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -92,6 +112,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.CompareLessDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            Assert.False(single.IsValid());
         }
     }
 }

@@ -7,6 +7,28 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class CompareLessNumberIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification CompareLessNumberIsValid<T, P, PCompare>(
+            this T source, Expression<Func<T, P>> expression,
+            Expression<Func<T, PCompare>> expressionCompare)
+            where T : ISelfValidation
+        {
+            return source.CompareLessNumberIsValid(
+                source.GetStructureToValidate(expression),
+                source.GetStructureToValidate(expressionCompare));
+        }
+
+        public static ValidationNotification CompareLessNumberIsValid<T>(
+            this T source, IStructureToValidate data,
+            IStructureToValidate dataCompare)
+            where T : ISelfValidation
+        {
+            return source.Notifications.CompareLessNumberIsValid(data, dataCompare);
+        }
+
+        #endregion
+
         public static ValidationNotification CompareLessNumberIsValid<T, P, PCompare>(
             this ValidationNotification source, T data,
             Expression<Func<T, P>> expression,

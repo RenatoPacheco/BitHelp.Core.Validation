@@ -7,6 +7,28 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class CompareEqualIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification CompareEqualIsValid<T, P, PCompare>(
+            this T source, Expression<Func<T, P>> expression,
+            Expression<Func<T, PCompare>> expressionCompare)
+            where T : ISelfValidation
+        {
+            return source.CompareEqualIsValid(
+                source.GetStructureToValidate(expression),
+                source.GetStructureToValidate(expressionCompare));
+        }
+
+        public static ValidationNotification CompareEqualIsValid<T>(
+            this T source, IStructureToValidate data,
+            IStructureToValidate dataCompare)
+            where T : ISelfValidation
+        {
+            return source.Notifications.CompareEqualIsValid(data, dataCompare);
+        }
+
+        #endregion
+
         public static ValidationNotification CompareEqualIsValid<T, P, PCompare>(
             this ValidationNotification source, T data,
             Expression<Func<T, P>> expression,
