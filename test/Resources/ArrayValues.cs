@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation.Test.Resources
 {
-    public class ArrayValues
+    public class ArrayValues : ISelfValidation
     {
         [Display(Name = "Array char")]
         public char[] Char { get; set; }
@@ -37,5 +37,9 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         [Display(Name = "Array enum")]
         public EnumValue[] Enum { get; set; }
+
+        public ValidationNotification Notifications { get; private set; } = new ValidationNotification();
+
+        public bool IsValid() => Notifications.IsValid();
     }
 }

@@ -1,18 +1,46 @@
-﻿using BitHelp.Core.Validation.Resources;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections;
 using System.Linq.Expressions;
+using System.Collections.Generic;
+using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
     public static class EqualItemsIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification EqualItemsIsValid<T>(
+            this T source, Expression<Func<T, IList>> expression,
+                Expression<Func<T, IList>> compare, params Expression<Func<T, IList>>[] compareMore)
+            where T : ISelfValidation
+        {
+            IList<IList> values = new List<IList>
+            {
+                expression.Compile().DynamicInvoke(source) as IList,
+                compare.Compile().DynamicInvoke(source) as IList
+            };
+
+            foreach (var item in compareMore)
+            {
+                values.Add(item.Compile().DynamicInvoke(source) as IList);
+            }
+            return source.Notifications.EqualItemsIsValid(values);
+        }
+
+        public static ValidationNotification EqualItemsIsValid(
+            this ISelfValidation source, IList value, IList compare, params IList[] compareMore)
+        {
+            compareMore = compareMore.Concat(new IList[] { value, compare }).ToArray();
+            return source.Notifications.EqualItemsIsValid(compareMore);
+        }
+
+        #endregion
+
         public static ValidationNotification EqualItemsIsValid<T>(
             this ValidationNotification source, T data, Expression<Func<T, IList>> expression,
                 Expression<Func<T, IList>> compare, params Expression<Func<T, IList>>[] compareMore)
-            where T : class
         {
             IList<IList> values = new List<IList>
             {

@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -43,6 +47,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -61,6 +69,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -79,6 +91,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -97,6 +113,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
+            Assert.False(array.IsValid());
         }
     }
 }
