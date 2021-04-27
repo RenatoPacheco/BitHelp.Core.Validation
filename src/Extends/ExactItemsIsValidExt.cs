@@ -9,6 +9,39 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class ExactItemsIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification ExactItemsIsValid<T>(
+            this T source, Expression<Func<T, IList>> expression,
+            int exact)
+            where T : ISelfValidation
+        {
+            return source.ExactItemsIsValid(
+                source.GetStructureToValidate(expression),
+                exact);
+        }
+
+        public static ValidationNotification ExactItemsIsValid<T>(
+            this T source, IList value, int exact)
+            where T : ISelfValidation
+        {
+            return source.ExactItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, exact);
+        }
+
+        public static ValidationNotification ExactItemsIsValid<T>(
+            this T source, IStructureToValidate data, int exact)
+            where T : ISelfValidation
+        {
+            return source.Notifications.ExactItemsIsValid(data, exact);
+        }
+
+        #endregion
+
         public static ValidationNotification ExactItemsIsValid<T>(
             this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int exact)
         {

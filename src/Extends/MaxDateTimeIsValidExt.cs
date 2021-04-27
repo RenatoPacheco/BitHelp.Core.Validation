@@ -9,6 +9,41 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MaxDateTimeIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification MaxDateTimeIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression,
+            DateTime maximum, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.MaxDateTimeIsValid(
+                source.GetStructureToValidate(expression),
+                maximum, cultureInfo);
+        }
+
+        public static ValidationNotification MaxDateTimeIsValid<T>(
+            this T source, object value,
+            DateTime maximum, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.MaxDateTimeIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, maximum, cultureInfo);
+        }
+
+        public static ValidationNotification MaxDateTimeIsValid<T>(
+            this T source, IStructureToValidate data,
+            DateTime maximum, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MaxDateTimeIsValid(data, maximum, cultureInfo);
+        }
+
+        #endregion
+
         public static ValidationNotification MaxDateTimeIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, DateTime maximum, CultureInfo cultureInfo = null)
         {
@@ -28,7 +63,7 @@ namespace BitHelp.Core.Validation.Extends
             }, maximum, cultureInfo);
         }
 
-        [Obsolete("Use MaxCharactersIsValid(IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo = null)")]
+        [Obsolete("Use MaxDateTimeIsValid(IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo = null)")]
         private static ValidationNotification MaxDateTimeIsValid(
             this ValidationNotification source, object value, string display, string reference, DateTime maximum, CultureInfo cultureInfo = null)
         {

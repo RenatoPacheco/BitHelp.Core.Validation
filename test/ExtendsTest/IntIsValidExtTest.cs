@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(single, x => x.Int);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.IntIsValid(x => x.Int);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.IntIsValid(x => x.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(single, x => x.IntNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.IntIsValid(x => x.IntNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.IntIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.IntIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -109,6 +129,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.IntIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
 
@@ -127,6 +151,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.IntIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -144,6 +172,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.IntIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.IntIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
     }
 }

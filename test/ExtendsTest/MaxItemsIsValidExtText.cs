@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MaxItemsIsValid(array, x => x.Int, 5);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(x => x.Int, 5);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MaxItemsIsValid(array, x => x.Int, 5);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(x => x.Int, 5);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MaxItemsIsValid(array, x => x.Int, 5);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(x => x.Int, 5);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MaxItemsIsValid(array, x => x.Int, 5);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(x => x.Int, 5);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MaxItemsIsValid(array, x => x.Int, 5);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(x => x.Int, 5);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -104,6 +124,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array.Int, 0));
             Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array, x => x.Int, 0));
+            Assert.Throws<ArgumentException>(() => array.MaxItemsIsValid(x => x.Int, 0));
         }
     }
 }

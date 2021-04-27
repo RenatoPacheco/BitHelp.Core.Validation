@@ -9,6 +9,38 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MaxItemsIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification MaxItemsIsValid<T>(
+            this T source, Expression<Func<T, IList>> expression, int maximum)
+            where T : ISelfValidation
+        {
+            return source.MaxItemsIsValid(
+                source.GetStructureToValidate(expression),
+                maximum);
+        }
+
+        public static ValidationNotification MaxItemsIsValid<T>(
+            this T source, IList value, int maximum)
+            where T : ISelfValidation
+        {
+            return source.MaxItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, maximum);
+        }
+
+        public static ValidationNotification MaxItemsIsValid<T>(
+            this T source, IStructureToValidate data, int maximum)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MaxItemsIsValid(data, maximum);
+        }
+
+        #endregion
+
         public static ValidationNotification MaxItemsIsValid<T>(
             this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int maximum)
         {

@@ -8,6 +8,38 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MaxCharactersIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification MaxCharactersIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression, int maximum)
+            where T : ISelfValidation
+        {
+            return source.MaxCharactersIsValid(
+                source.GetStructureToValidate(expression),
+                maximum);
+        }
+
+        public static ValidationNotification MaxCharactersIsValid<T>(
+            this T source, object value, int maximum)
+            where T : ISelfValidation
+        {
+            return source.MaxCharactersIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, maximum);
+        }
+
+        public static ValidationNotification MaxCharactersIsValid<T>(
+            this T source, IStructureToValidate data, int maximum)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MaxCharactersIsValid(data, maximum);
+        }
+
+        #endregion
+
         public static ValidationNotification MaxCharactersIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, int maximum)
         {

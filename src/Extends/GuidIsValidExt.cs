@@ -8,6 +8,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class GuidIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification GuidIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression)
+            where T : ISelfValidation
+        {
+            return source.GuidIsValid(
+                source.GetStructureToValidate(expression));
+        }
+
+        public static ValidationNotification GuidIsValid<T>(
+            this T source, object value)
+            where T : ISelfValidation
+        {
+            return source.GuidIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            });
+        }
+
+        public static ValidationNotification GuidIsValid<T>(
+            this T source, IStructureToValidate data)
+            where T : ISelfValidation
+        {
+            return source.Notifications.GuidIsValid(data);
+        }
+
+        #endregion
+
         public static ValidationNotification GuidIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {

@@ -23,6 +23,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ExactCharactersIsValid(single, x => x.String, single.String.Length);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(x => x.String, single.String.Length);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -40,6 +44,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ExactCharactersIsValid(single, x => x.String, single.String.Length - 1);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(x => x.String, single.String.Length - 1);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -57,6 +65,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ExactCharactersIsValid(single, x => x.String, single.String.Length + 1);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(x => x.String, single.String.Length + 1);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -74,6 +86,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.ExactCharactersIsValid(single, x => x.String, 10);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
         }
     }
 }
