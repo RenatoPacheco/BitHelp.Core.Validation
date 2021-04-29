@@ -8,6 +8,41 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class NotEmptyIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification NotEmptyIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression,
+            bool ignoreWithSpace = false)
+            where T : ISelfValidation
+        {
+            return source.NotEmptyIsValid(
+                source.GetStructureToValidate(expression),
+                ignoreWithSpace);
+        }
+
+        public static ValidationNotification NotEmptyIsValid<T>(
+            this T source, object value,
+            bool ignoreWithSpace = false)
+            where T : ISelfValidation
+        {
+            return source.NotEmptyIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, ignoreWithSpace);
+        }
+
+        public static ValidationNotification NotEmptyIsValid<T>(
+            this T source, IStructureToValidate data,
+            bool ignoreWithSpace = false)
+            where T : ISelfValidation
+        {
+            return source.Notifications.NotEmptyIsValid(data, ignoreWithSpace);
+        }
+
+        #endregion
+
         public static ValidationNotification NotEmptyIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, bool ignoreWithSpace = false)
         {

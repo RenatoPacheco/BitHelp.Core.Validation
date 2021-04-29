@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinCharactersIsValid(single, x => x.String, 10);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinCharactersIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinCharactersIsValid(single, x => x.String, 10);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinCharactersIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinCharactersIsValid(single, x => x.String, 10);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinCharactersIsValid(x => x.String, 10);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinCharactersIsValid(single, x => x.String, 10);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinCharactersIsValid(x => x.String, 10);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinCharactersIsValid(single, x => x.String, 10);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinCharactersIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -104,6 +124,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.MinCharactersIsValid(single.String, 0));
             Assert.Throws<ArgumentException>(() => _notification.MinCharactersIsValid(single, x => x.String, 0));
+            Assert.Throws<ArgumentException>(() => single.MinCharactersIsValid(x => x.String, 0));
         }
     }
 }

@@ -8,6 +8,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinTimeSpanIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification MinTimeSpanIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression, TimeSpan minimum)
+            where T : ISelfValidation
+        {
+            return source.MinTimeSpanIsValid(
+                source.GetStructureToValidate(expression), minimum);
+        }
+
+        public static ValidationNotification MinTimeSpanIsValid<T>(
+            this T source, object value, TimeSpan minimum)
+            where T : ISelfValidation
+        {
+            return source.MinTimeSpanIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, minimum);
+        }
+
+        public static ValidationNotification MinTimeSpanIsValid<T>(
+            this T source, IStructureToValidate data, TimeSpan minimum)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MinTimeSpanIsValid(data, minimum);
+        }
+
+        #endregion
+
         public static ValidationNotification MinTimeSpanIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, TimeSpan minimum)
         {

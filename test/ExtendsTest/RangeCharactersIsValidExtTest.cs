@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -109,6 +129,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -126,6 +150,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeCharactersIsValid(single, x => x.String, 10, 20);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeCharactersIsValid(x => x.String, 10, 20);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -138,6 +166,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single.String, 0, 10));
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single, x => x.String, 0, 10));
+            Assert.Throws<ArgumentException>(() => single.RangeCharactersIsValid(x => x.String, 0, 10));
         }
 
         [Fact]
@@ -150,6 +179,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single.String, 5, 0));
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single, x => x.String, 5, 0));
+            Assert.Throws<ArgumentException>(() => single.RangeCharactersIsValid(x => x.String, 5, 0));
         }
 
         [Fact]
@@ -162,6 +192,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single.String, 5, 4));
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single, x => x.String, 5, 4));
+            Assert.Throws<ArgumentException>(() => single.RangeCharactersIsValid(x => x.String, 5, 4));
         }
 
         [Fact]
@@ -174,6 +205,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single.String, 5, 5));
             Assert.Throws<ArgumentException>(() => _notification.RangeCharactersIsValid(single, x => x.String, 5, 5));
+            Assert.Throws<ArgumentException>(() => single.RangeCharactersIsValid(x => x.String, 5, 5));
         }
     }
 }

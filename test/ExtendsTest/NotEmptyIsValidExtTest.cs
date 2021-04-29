@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(single, x => x.String);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(x => x.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(x => x.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(single, x => x.String, true);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(x => x.String, true);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(single, x => x.String);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(x => x.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(x => x.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -109,6 +129,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(single, x => x.String, true);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(x => x.String, true);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -126,6 +150,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -143,6 +171,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -160,6 +192,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
 
@@ -178,6 +214,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -195,6 +235,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.NotEmptyIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
     }
 }

@@ -26,6 +26,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinDateTimeIsValid(single, x => x.String, date.AddDays(10));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinDateTimeIsValid(x => x.String, date.AddDays(10));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -44,6 +48,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinDateTimeIsValid(single, x => x.String, date.AddDays(10));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinDateTimeIsValid(x => x.String, date.AddDays(10));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -62,6 +70,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinDateTimeIsValid(single, x => x.String, date.AddDays(10));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinDateTimeIsValid(x => x.String, date.AddDays(10));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -79,6 +91,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinDateTimeIsValid(single, x => x.String, date.AddDays(10));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinDateTimeIsValid(x => x.String, date.AddDays(10));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -96,6 +112,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinDateTimeIsValid(single, x => x.String, date.AddDays(10));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinDateTimeIsValid(x => x.String, date.AddDays(10));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -113,6 +133,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.MinDateTimeIsValid(single, x => x.String, date.AddDays(10));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.MinDateTimeIsValid(x => x.String, date.AddDays(10));
+            Assert.True(single.IsValid());
         }
     }
 }

@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.TimeSpanIsValid(single, x => x.TimeSpan);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(x => x.TimeSpan);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.TimeSpanIsValid(single, x => x.String);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(x => x.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.TimeSpanIsValid(single, x => x.String);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(x => x.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.TimeSpanIsValid(single, x => x.String);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(x => x.String);
+            Assert.True(single.IsValid());
         }
     }
 }

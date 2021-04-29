@@ -9,8 +9,46 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RegexIsValidExt
     {
+        #region To ISelfValidation
+
         public static ValidationNotification RegexIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression, string pattern, RegexOptions options = RegexOptions.None)
+            this T source, Expression<Func<T, P>> expression,
+            string pattern, RegexOptions options = RegexOptions.None)
+            where T : ISelfValidation
+        {
+            return source.RegexIsValid(
+                source.GetStructureToValidate(expression),
+                pattern, options);
+        }
+
+        public static ValidationNotification RegexIsValid<T>(
+            this T source, object value,
+            string pattern, RegexOptions options = RegexOptions.None)
+            where T : ISelfValidation
+        {
+            return source.RegexIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, pattern, options);
+        }
+
+        public static ValidationNotification RegexIsValid<T>(
+            this T source, IStructureToValidate data,
+            string pattern, RegexOptions options = RegexOptions.None)
+            where T : ISelfValidation
+        {
+            return source.Notifications.RegexIsValid(
+                data, pattern, options);
+        }
+
+        #endregion
+
+        public static ValidationNotification RegexIsValid<T, P>(
+            this ValidationNotification source, T data,
+            Expression<Func<T, P>> expression,
+            string pattern, RegexOptions options = RegexOptions.None)
         {
             return source.RegexIsValid(
                 data.GetStructureToValidate(expression),
@@ -18,7 +56,8 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification RegexIsValid(
-            this ValidationNotification source, object value, string pattern, RegexOptions options = RegexOptions.None)
+            this ValidationNotification source, object value,
+            string pattern, RegexOptions options = RegexOptions.None)
         {
             return source.RegexIsValid(new StructureToValidate
             {
@@ -30,7 +69,9 @@ namespace BitHelp.Core.Validation.Extends
 
         [Obsolete("Use RegexIsValid(IStructureToValidate data, string pattern, RegexOptions options = RegexOptions.None)")]
         private static ValidationNotification RegexIsValid(
-            this ValidationNotification source, object value, string display, string reference, string pattern, RegexOptions options = RegexOptions.None)
+            this ValidationNotification source, object value,
+            string display, string reference,
+            string pattern, RegexOptions options = RegexOptions.None)
         {
             return source.RegexIsValid(new StructureToValidate
             {
@@ -41,7 +82,8 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification RegexIsValid(
-            this ValidationNotification source, IStructureToValidate data, string pattern, RegexOptions options = RegexOptions.None)
+            this ValidationNotification source, IStructureToValidate data,
+            string pattern, RegexOptions options = RegexOptions.None)
         {
             source.LastMessage = null;
             RegexIsValidAttribute validation = new RegexIsValidAttribute(pattern, options);

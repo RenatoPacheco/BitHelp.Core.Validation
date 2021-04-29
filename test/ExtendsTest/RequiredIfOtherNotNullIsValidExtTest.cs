@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIfOtherNotNullIsValid(x => x.String, single.BoolNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -43,6 +47,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIfOtherNotNullIsValid(x => x.String, single.BoolNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -61,6 +69,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIfOtherNotNullIsValid(x => x.String, single.BoolNull);
+            Assert.True(single.IsValid());
         }
 
 
@@ -80,6 +92,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIfOtherNotNullIsValid(single, x => x.String, single.BoolNull);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIfOtherNotNullIsValid(x => x.String, single.BoolNull);
+            Assert.False(single.IsValid());
         }
     }
 }

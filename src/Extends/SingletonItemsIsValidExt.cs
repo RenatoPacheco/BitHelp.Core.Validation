@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq.Expressions;
 using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Notations;
@@ -8,15 +9,46 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class SingletonItemsIsValidExt
     {
-        public static ValidationNotification SingletonItemsIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression)
+        #region To ISelfValidation
+
+        public static ValidationNotification SingletonItemsIsValid<T>(
+            this T source, Expression<Func<T, IList>> expression)
+            where T : ISelfValidation
+        {
+            return source.SingletonItemsIsValid(
+                source.GetStructureToValidate(expression));
+        }
+
+        public static ValidationNotification SingletonItemsIsValid<T>(
+            this T source, IList value)
+            where T : ISelfValidation
+        {
+            return source.SingletonItemsIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            });
+        }
+
+        public static ValidationNotification SingletonItemsIsValid<T>(
+            this T source, IStructureToValidate data)
+            where T : ISelfValidation
+        {
+            return source.Notifications.SingletonItemsIsValid(data);
+        }
+
+        #endregion
+
+        public static ValidationNotification SingletonItemsIsValid<T>(
+            this ValidationNotification source, T data, Expression<Func<T, IList>> expression)
         {
             return source.SingletonItemsIsValid(
                 data.GetStructureToValidate(expression));
         }
 
         public static ValidationNotification SingletonItemsIsValid(
-            this ValidationNotification source, object value)
+            this ValidationNotification source, IList value)
         {
             return source.SingletonItemsIsValid(new StructureToValidate
             {

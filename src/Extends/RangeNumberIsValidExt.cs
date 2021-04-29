@@ -8,6 +8,42 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RangeNumberIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification RangeNumberIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression,
+            decimal minimum, decimal maximum)
+            where T : ISelfValidation
+        {
+            return source.RangeNumberIsValid(
+                source.GetStructureToValidate(expression),
+                minimum, maximum);
+        }
+
+        public static ValidationNotification RangeNumberIsValid<T>(
+            this T source, object value,
+            decimal minimum, decimal maximum)
+            where T : ISelfValidation
+        {
+            return source.RangeNumberIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, minimum, maximum);
+        }
+
+        public static ValidationNotification RangeNumberIsValid<T>(
+            this T source, IStructureToValidate data,
+            decimal minimum, decimal maximum)
+            where T : ISelfValidation
+        {
+            return source.Notifications.RangeNumberIsValid(
+                data, minimum, maximum);
+        }
+
+        #endregion
+
         public static ValidationNotification RangeNumberIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, decimal minimum, decimal maximum)
         {

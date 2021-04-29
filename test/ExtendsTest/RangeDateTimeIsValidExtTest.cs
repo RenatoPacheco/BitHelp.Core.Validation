@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.DateTime, date.AddDays(10), date.AddDays(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.DateTime, date.AddDays(10), date.AddDays(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -42,6 +46,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.DateTime, date.AddDays(10), date.AddDays(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.DateTime, date.AddDays(10), date.AddDays(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -59,6 +67,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.DateTime, date.AddDays(10), date.AddDays(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.DateTime, date.AddDays(10), date.AddDays(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -76,6 +88,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.DateTime, date.AddDays(10), date.AddDays(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.DateTime, date.AddDays(10), date.AddDays(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -93,6 +109,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.DateTime, date.AddDays(10), date.AddDays(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.DateTime, date.AddDays(10), date.AddDays(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -110,6 +130,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.String, date.AddDays(10), date.AddDays(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.String, date.AddDays(10), date.AddDays(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -127,6 +151,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.String, date.AddDays(10), date.AddDays(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.String, date.AddDays(10), date.AddDays(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -144,6 +172,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeDateTimeIsValid(single, x => x.String, date.AddDays(10), date.AddDays(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeDateTimeIsValid(x => x.String, date.AddDays(10), date.AddDays(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -156,6 +188,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeDateTimeIsValid(single.String, date.AddDays(5), date.AddDays(4)));
             Assert.Throws<ArgumentException>(() => _notification.RangeDateTimeIsValid(single, x => x.String, date.AddDays(5), date.AddDays(4)));
+            Assert.Throws<ArgumentException>(() => single.RangeDateTimeIsValid(x => x.String, date.AddDays(5), date.AddDays(4)));
         }
 
         [Fact]
@@ -168,6 +201,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeDateTimeIsValid(single.String, date.AddDays(5), date.AddDays(5)));
             Assert.Throws<ArgumentException>(() => _notification.RangeDateTimeIsValid(single, x => x.String, date.AddDays(5), date.AddDays(5)));
+            Assert.Throws<ArgumentException>(() => single.RangeDateTimeIsValid(x => x.String, date.AddDays(5), date.AddDays(5)));
         }
     }
 }

@@ -8,6 +8,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinNumberIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification MinNumberIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression, decimal minimum)
+            where T : ISelfValidation
+        {
+            return source.MinNumberIsValid(
+                source.GetStructureToValidate(expression), minimum);
+        }
+
+        public static ValidationNotification MinNumberIsValid<T>(
+            this T source, object value, decimal minimum)
+            where T : ISelfValidation
+        {
+            return source.MinNumberIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, minimum);
+        }
+
+        public static ValidationNotification MinNumberIsValid<T>(
+            this T source, IStructureToValidate data, decimal minimum)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MinNumberIsValid(data, minimum);
+        }
+
+        #endregion
+
         public static ValidationNotification MinNumberIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, decimal minimum)
         {

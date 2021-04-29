@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RegexIsValid(x => x.String, @"^[a-z]+$");
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -42,6 +46,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RegexIsValid(x => x.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -59,6 +67,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RegexIsValid(x => x.String, @"^[a-z]+$");
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -71,6 +83,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array.String, string.Empty));
             Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array, x => x.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => array.RegexIsValid(x => x.String, string.Empty));
         }
 
 
@@ -84,6 +97,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array.String, null));
             Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array, x => x.String, null));
+            Assert.Throws<ArgumentNullException>(() => array.RegexIsValid(x => x.String, null));
         }
     }
 }

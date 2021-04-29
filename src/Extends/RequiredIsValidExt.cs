@@ -9,6 +9,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class RequiredIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification RequiredIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression)
+            where T : ISelfValidation
+        {
+            return source.RequiredIsValid(
+                source.GetStructureToValidate(expression));
+        }
+
+        public static ValidationNotification RequiredIsValid<T>(
+            this T source, object value)
+            where T : ISelfValidation
+        {
+            return source.RequiredIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            });
+        }
+
+        public static ValidationNotification RequiredIsValid<T>(
+            this T source, IStructureToValidate data)
+            where T : ISelfValidation
+        {
+            return source.Notifications.RequiredIsValid(data);
+        }
+
+        #endregion
+
         public static ValidationNotification RequiredIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {

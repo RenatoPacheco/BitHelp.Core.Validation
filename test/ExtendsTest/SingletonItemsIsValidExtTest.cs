@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -109,6 +129,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.SingletonItemsIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
     }
 }

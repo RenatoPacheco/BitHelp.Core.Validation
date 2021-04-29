@@ -24,6 +24,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIsValid(single, x => x.String);
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(x => x.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +45,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIsValid(single, x => x.String);
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(x => x.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +66,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.RequiredIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -75,6 +87,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIsValid(array, x => x.String);
             Assert.True(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.RequiredIsValid(x => x.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -92,6 +108,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.RequiredIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
 
 
@@ -110,6 +130,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RequiredIsValid(array, x => x.String);
             Assert.False(_notification.IsValid());
+
+            array.Notifications.Clear();
+            array.RequiredIsValid(x => x.String);
+            Assert.False(array.IsValid());
         }
     }
 }

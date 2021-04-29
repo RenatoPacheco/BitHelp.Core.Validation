@@ -8,6 +8,37 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinCharactersIsValidExt
     {
+        #region To ISelfValidation
+
+        public static ValidationNotification MinCharactersIsValid<T, P>(
+            this T source, Expression<Func<T, P>> expression, int minimum)
+            where T : ISelfValidation
+        {
+            return source.MinCharactersIsValid(
+                source.GetStructureToValidate(expression), minimum);
+        }
+
+        public static ValidationNotification MinCharactersIsValid<T>(
+            this T source, object value, int minimum)
+            where T : ISelfValidation
+        {
+            return source.MinCharactersIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, minimum);
+        }
+
+        public static ValidationNotification MinCharactersIsValid<T>(
+            this T source, IStructureToValidate data, int minimum)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MinCharactersIsValid(data, minimum);
+        }
+
+        #endregion
+
         public static ValidationNotification MinCharactersIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression, int minimum)
         {

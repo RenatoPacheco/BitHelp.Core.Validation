@@ -9,8 +9,45 @@ namespace BitHelp.Core.Validation.Extends
 {
     public static class MinDateTimeIsValidExt
     {
+        #region To ISelfValidation
+
         public static ValidationNotification MinDateTimeIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression, DateTime minimum, CultureInfo cultureInfo = null)
+            this T source, Expression<Func<T, P>> expression,
+            DateTime minimum, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.MinDateTimeIsValid(
+                source.GetStructureToValidate(expression),
+                minimum, cultureInfo);
+        }
+
+        public static ValidationNotification MinDateTimeIsValid<T>(
+            this T source, object value,
+            DateTime minimum, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.MinDateTimeIsValid(new StructureToValidate
+            {
+                Value = value,
+                Display = Resource.DisplayValue,
+                Reference = null
+            }, minimum, cultureInfo);
+        }
+
+        public static ValidationNotification MinDateTimeIsValid<T>(
+            this T source, IStructureToValidate data,
+            DateTime minimum, CultureInfo cultureInfo = null)
+            where T : ISelfValidation
+        {
+            return source.Notifications.MinDateTimeIsValid(data, minimum, cultureInfo);
+        }
+
+        #endregion
+
+        public static ValidationNotification MinDateTimeIsValid<T, P>(
+            this ValidationNotification source, T data,
+            Expression<Func<T, P>> expression,
+            DateTime minimum, CultureInfo cultureInfo = null)
         {
             return source.MinDateTimeIsValid(
                 data.GetStructureToValidate(expression),
@@ -18,7 +55,8 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification MinDateTimeIsValid(
-            this ValidationNotification source, object value, DateTime minimum, CultureInfo cultureInfo = null)
+            this ValidationNotification source, object value,
+            DateTime minimum, CultureInfo cultureInfo = null)
         {
             return source.MinDateTimeIsValid(new StructureToValidate
             {
@@ -30,7 +68,9 @@ namespace BitHelp.Core.Validation.Extends
 
         [Obsolete("Use MinDateTimeIsValid(IStructureToValidate data, DateTime minimum, CultureInfo cultureInfo = null)")]
         private static ValidationNotification MinDateTimeIsValid(
-            this ValidationNotification source, object value, string display, string reference, DateTime minimum, CultureInfo cultureInfo = null)
+            this ValidationNotification source, object value,
+            string display, string reference, DateTime minimum,
+            CultureInfo cultureInfo = null)
         {
             return source.MinDateTimeIsValid(new StructureToValidate
             {
@@ -41,7 +81,8 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification MinDateTimeIsValid(
-            this ValidationNotification source, IStructureToValidate data, DateTime minimum, CultureInfo cultureInfo = null)
+            this ValidationNotification source, IStructureToValidate data,
+            DateTime minimum, CultureInfo cultureInfo = null)
         {
             source.LastMessage = null;
             MinDateTimeIsValidAttribute validation = new MinDateTimeIsValidAttribute(minimum, cultureInfo);
