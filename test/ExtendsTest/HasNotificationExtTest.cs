@@ -23,7 +23,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.True(single.HasNotification(x => x.Bool));
 
             single.Notifications.Clear();
@@ -49,15 +49,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(_notification.IsValid(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.False(single.IsValid(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.String, message);
+            single.AddErrorNotification(x => x.String, message);
             Assert.True(single.IsValid(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddSuccess<SingleValues>(x => x.Bool, message);
+            single.AddSuccessNotification(x => x.Bool, message);
             Assert.True(single.IsValid(x => x.Bool));
         }
 
@@ -76,11 +76,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasErrorNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.True(single.HasErrorNotification(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddUnauthorized(single, x => x.Bool, message);
+            single.AddUnauthorizedNotification(x => x.Bool, message);
             Assert.False(single.HasErrorNotification(x => x.Bool));
         }
 
@@ -99,11 +99,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasUnauthorizedNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddUnauthorized(single, x => x.Bool, message);
+            single.AddUnauthorizedNotification(x => x.Bool, message);
             Assert.True(single.HasUnauthorizedNotification(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.False(single.HasUnauthorizedNotification(x => x.Bool));
         }
 
@@ -122,11 +122,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasSuccessNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddSuccess(single, x => x.Bool, message);
+            single.AddSuccessNotification(x => x.Bool, message);
             Assert.True(single.HasSuccessNotification(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.False(single.HasSuccessNotification(x => x.Bool));
         }
 
@@ -145,11 +145,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasInfoNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddInfo(single, x => x.Bool, message);
+            single.AddInfoNotification(x => x.Bool, message);
             Assert.True(single.HasInfoNotification(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.False(single.HasInfoNotification(x => x.Bool));
         }
 
@@ -168,11 +168,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasAlertNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddAlert(single, x => x.Bool, message);
+            single.AddAlertNotification(x => x.Bool, message);
             Assert.True(single.HasAlertNotification(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message);
+            single.AddErrorNotification(x => x.Bool, message);
             Assert.False(single.HasAlertNotification(x => x.Bool));
         }
 
@@ -191,11 +191,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.False(_notification.HasFatalNotification(single, x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddFatal(single, x => x.Bool, message);
+            single.AddFatalNotification(x => x.Bool, message);
             Assert.True(single.HasFatalNotification(x => x.Bool));
 
             single.Notifications.Clear();
-            single.Notifications.AddError(single, x => x.Bool, message.StackTrace);
+            single.AddErrorNotification(x => x.Bool, message.StackTrace);
             Assert.False(single.HasFatalNotification(x => x.Bool));
         }
     }
