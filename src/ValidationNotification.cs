@@ -85,7 +85,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddError<T, P>(
-            Expression<Func<T, P>> expression,
+            T _, Expression<Func<T, P>> expression,
             string message = null, string reference = null, Exception exception = null)
         {
             Add(expression, message, reference, ValidationType.Error, exception);
@@ -110,7 +110,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddFatal<T, P>(
-            Expression<Func<T, P>> expression,
+            T _, Expression<Func<T, P>> expression,
             Exception exception, string reference = null)
         {
             reference = reference ?? expression.PropertyTrail();
@@ -135,7 +135,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddUnauthorized<T, P>(
-            Expression<Func<T, P>> expression,
+            T _, Expression<Func<T, P>> expression,
             string message = null, string reference = null, Exception exception = null)
         {
             Add(expression, message, reference, ValidationType.Unauthorized, exception);
@@ -159,7 +159,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddAlert<T, P>(
-            Expression<Func<T, P>> expression,
+            T _, Expression<Func<T, P>> expression,
             string message = null, string reference = null, Exception exception = null)
         {
             Add(expression, message, reference, ValidationType.Alert, exception);
@@ -183,7 +183,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddSuccess<T, P>(
-            Expression<Func<T, P>> expression,
+            T _, Expression<Func<T, P>> expression,
             string message = null, string reference = null)
         {
             Add(expression, message, reference, ValidationType.Success);
@@ -207,7 +207,7 @@ namespace BitHelp.Core.Validation
         }
 
         public void AddInfo<T, P>(
-            Expression<Func<T, P>> expression, string message = null,
+            T _, Expression<Func<T, P>> expression, string message = null,
             string reference = null)
         {
             Add(expression, message, reference, ValidationType.Info);
