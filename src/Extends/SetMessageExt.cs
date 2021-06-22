@@ -1,5 +1,5 @@
-﻿using BitHelp.Core.Extend;
-using System;
+﻿using System;
+using BitHelp.Core.Extend;
 using System.Linq.Expressions;
 
 namespace BitHelp.Core.Validation.Extends
@@ -9,7 +9,9 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetMessage(
             this ValidationNotification source, string message)
         {
-            if (string.IsNullOrEmpty(message?.Trim()))
+            message = message?.Trim();
+
+            if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
             if (source.LastMessage != null)
@@ -21,11 +23,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetMessage<T>(
             this ValidationNotification source, Expression<Func<T, object>> expression, string message)
         {
-            if (string.IsNullOrEmpty(message?.Trim()))
+            message = message?.Trim();
+
+            if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
             if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message.Trim(), expression.PropertyDisplay());
+                source.LastMessage.Message = string.Format(message, expression.PropertyDisplay());
 
             return source;
         }
@@ -33,11 +37,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetMessage<T, P>(
             this ValidationNotification source, Expression<Func<T, P>> expression, string message)
         {
-            if (string.IsNullOrEmpty(message?.Trim()))
+            message = message?.Trim();
+
+            if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
             if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message.Trim(), expression.PropertyDisplay());
+                source.LastMessage.Message = string.Format(message, expression.PropertyDisplay());
 
             return source;
         }
@@ -45,11 +51,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetMessage<T>(
             this ValidationNotification source, T _, Expression<Func<T, object>> expression, string message)
         {
-            if (string.IsNullOrEmpty(message?.Trim()))
+            message = message?.Trim();
+
+            if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
             if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message.Trim(), expression.PropertyDisplay());
+                source.LastMessage.Message = string.Format(message, expression.PropertyDisplay());
 
             return source;
         }
@@ -57,11 +65,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetMessage<T, P>(
             this ValidationNotification source, T _, Expression<Func<T, P>> expression, string message)
         {
-            if (string.IsNullOrEmpty(message?.Trim()))
+            message = message?.Trim();
+
+            if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
             if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message.Trim(), expression.PropertyDisplay());
+                source.LastMessage.Message = string.Format(message, expression.PropertyDisplay());
 
             return source;
         }
