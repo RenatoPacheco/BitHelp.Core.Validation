@@ -77,13 +77,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification NotEmptyIsValid(
             this ValidationNotification source, IStructureToValidate data, bool ignoreWithSpace)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             NotEmptyIsValidAttribute validation = new NotEmptyIsValidAttribute(ignoreWithSpace);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

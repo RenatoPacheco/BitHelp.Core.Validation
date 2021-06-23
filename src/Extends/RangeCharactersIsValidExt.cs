@@ -78,13 +78,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RangeCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int minimum, int maximum)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             RangeCharactersIsValidAttribute validation = new RangeCharactersIsValidAttribute(minimum, maximum);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

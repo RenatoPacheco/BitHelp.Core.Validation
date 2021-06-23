@@ -74,13 +74,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MinItemsIsValid(
             this ValidationNotification source, IStructureToValidate data, int minimum)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             MinItemsIsValidAttribute validation = new MinItemsIsValidAttribute(minimum);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

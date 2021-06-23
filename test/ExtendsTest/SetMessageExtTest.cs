@@ -42,21 +42,35 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = "number"
             };
             string message = "{0} new message";
-            string messageFinal = string.Format(message, single.GetDisplayName(x => x.String));
+            string finalMessage = string.Format(message, single.GetDisplayName(x => x.String));
+
+            _notification.Clear();
+            _notification.LongIsValid(single, x => x.String)
+                    .SetMessage(finalMessage);
+
+            Assert.False(_notification.IsValid());
+            Assert.Equal(finalMessage, _notification.Messages[0].Message);
+
+            _notification.Clear();
+            _notification.LongIsValid(single, x => x.String)
+                    .SetMessage(message);
+
+            Assert.False(_notification.IsValid());
+            Assert.Equal(finalMessage, _notification.Messages[0].Message);
 
             _notification.Clear();
             _notification.LongIsValid(single, x => x.String)
                     .SetMessage<SingleValues>(x => x.String, message);
 
             Assert.False(_notification.IsValid());
-            Assert.Equal(messageFinal, _notification.Messages[0].Message);
+            Assert.Equal(finalMessage, _notification.Messages[0].Message);
 
             _notification.Clear();
             _notification.LongIsValid(single, x => x.String)
                 .SetMessage(single, x => x.String, message);
 
             Assert.False(_notification.IsValid());
-            Assert.Equal(messageFinal, _notification.Messages[0].Message);
+            Assert.Equal(finalMessage, _notification.Messages[0].Message);
         }
 
         [Fact]

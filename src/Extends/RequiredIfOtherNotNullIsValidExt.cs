@@ -72,14 +72,14 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RequiredIfOtherNotNullIsValid(
             this ValidationNotification source, IStructureToValidate data, object compare)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             if(!source.Messages.Any(x => x.IsTypeError() && x.Reference?.ToLower() == data.Reference?.ToLower()))
             {
                 if (!object.Equals(compare, null) && object.Equals(data.Value, null))
                 {
                     string text = string.Format(Resource.XRequired, data.Display);
                     var message = new ValidationMessage(text, data.Reference);
-                    source.LastMessage = message;
+                    source.SetLastMessage(message, data.Display);
                     source.Add(message);
                 }
             }

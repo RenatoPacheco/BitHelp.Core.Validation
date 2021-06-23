@@ -76,13 +76,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification ExactCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int exact)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             ExactCharactersIsValidAttribute validation = new ExactCharactersIsValidAttribute(exact);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

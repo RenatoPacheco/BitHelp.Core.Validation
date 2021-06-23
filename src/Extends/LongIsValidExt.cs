@@ -72,13 +72,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification LongIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             LongIsValidAttribute validation = new LongIsValidAttribute();
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

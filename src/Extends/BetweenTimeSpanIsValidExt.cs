@@ -74,13 +74,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenTimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<TimeSpan> options)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             BetweenTimeSpanIsValidAttribute validation = new BetweenTimeSpanIsValidAttribute(options);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

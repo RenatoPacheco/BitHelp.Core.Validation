@@ -74,13 +74,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification EnumIsValid(
             this ValidationNotification source, IStructureToValidate data, Type type)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             EnumIsValidAttribute validation = new EnumIsValidAttribute(type);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

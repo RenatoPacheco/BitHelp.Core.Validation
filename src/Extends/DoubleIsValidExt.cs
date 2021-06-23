@@ -72,13 +72,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification DoubleIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             DoubleIsValidAttribute validation = new DoubleIsValidAttribute();
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

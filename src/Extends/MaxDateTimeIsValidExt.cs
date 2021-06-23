@@ -79,13 +79,13 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification MaxDateTimeIsValid(
             this ValidationNotification source, IStructureToValidate data, DateTime maximum, CultureInfo cultureInfo = null)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             MaxDateTimeIsValidAttribute validation = new MaxDateTimeIsValidAttribute(maximum, cultureInfo);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

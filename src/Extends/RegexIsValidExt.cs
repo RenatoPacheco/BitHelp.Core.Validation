@@ -85,13 +85,13 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, IStructureToValidate data,
             string pattern, RegexOptions options = RegexOptions.None)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             RegexIsValidAttribute validation = new RegexIsValidAttribute(pattern, options);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
                 var message = new ValidationMessage(text, data.Reference);
-                source.LastMessage = message;
+                source.SetLastMessage(message, data.Display);
                 source.Add(message);
             }
             return source;

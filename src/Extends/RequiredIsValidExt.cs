@@ -73,7 +73,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification RequiredIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             RequiredIsValidAttribute validation = new RequiredIsValidAttribute();
             if(!source.Messages.Any(x => x.IsTypeError() && x.Reference?.ToLower() == data.Reference?.ToLower()))
             {
@@ -81,7 +81,7 @@ namespace BitHelp.Core.Validation.Extends
                 {
                     string text = validation.FormatErrorMessage(data.Display);
                     var message = new ValidationMessage(text, data.Reference);
-                    source.LastMessage = message;
+                    source.SetLastMessage(message, data.Display);
                     source.Add(message);
                 }
             }

@@ -52,7 +52,7 @@ namespace BitHelp.Core.Validation.Extends
             object valueCompare = dataCompare.Value;
             string displayCompare = dataCompare.Display;
 
-            source.LastMessage = null;
+            source.CleanLastMessage();
 
             if (!(value is null))
             {
@@ -63,7 +63,7 @@ namespace BitHelp.Core.Validation.Extends
                         display, displayCompare);
 
                     var message = new ValidationMessage(text, reference);
-                    source.LastMessage = message;
+                    source.SetLastMessage(message, data.Display);
                     source.Add(message);
                 }
             }

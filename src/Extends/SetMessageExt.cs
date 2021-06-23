@@ -14,7 +14,7 @@ namespace BitHelp.Core.Validation.Extends
                 throw new ArgumentNullException(nameof(message));
 
             if (source.LastMessage != null)
-                source.LastMessage.Message = message;
+                source.LastMessage.Message = string.Format(message, source.LastDisplayName);
 
             return source;
         }

@@ -101,12 +101,12 @@ namespace BitHelp.Core.Validation.Extends
                 }
             }
 
-            source.LastMessage = null;
+            source.CleanLastMessage();
             if (!result)
             {
                 string text = Resource.EqualNumberItemsInvalid;
                 var message = new ValidationMessage(text, null);
-                source.LastMessage = message;
+                source.SetLastMessage(message, Resource.DisplayValue);
                 source.Add(message);
             }
             return source;

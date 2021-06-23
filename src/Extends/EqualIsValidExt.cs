@@ -73,7 +73,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification EqualIsValid(
             this ValidationNotification source, IStructureToValidate data, object compare)
         {
-            source.LastMessage = null;
+            source.CleanLastMessage();
             if(data.Value != null && compare != null)
             {
                 string valueCheck = Convert.ToString(data.Value);
@@ -82,7 +82,7 @@ namespace BitHelp.Core.Validation.Extends
                 {
                     string text = string.Format(Resource.XConfirmedInvalid, data.Display);
                     var message = new ValidationMessage(text, data.Reference);
-                    source.LastMessage = message;
+                    source.SetLastMessage(message, data.Display);
                     source.Add(message);
                 }
             }
