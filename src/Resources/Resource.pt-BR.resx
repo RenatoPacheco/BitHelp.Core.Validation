@@ -127,7 +127,7 @@
     <value>Valor não é válido.</value>
   </data>
   <data name="EqualNumberItemsInvalid" xml:space="preserve">
-    <value>Quantidades de items não são iguais.</value>
+    <value>Quantidades de itens não são iguais.</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>Valor é obrigatório.</value>
@@ -220,7 +220,7 @@
     <value>Valor de {0} não pode ser maior que {1}.</value>
   </data>
   <data name="XNullOrEmpty" xml:space="preserve">
-    <value>{0} não pode ser nulo ou vazio.</value>
+    <value>{0} não pode ser nulo(a) ou vazio(a).</value>
   </data>
   <data name="XSingletonItemsInvalid" xml:space="preserve">
     <value>{0} contém valores repetidos.</value>
