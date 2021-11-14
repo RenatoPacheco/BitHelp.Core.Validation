@@ -9,131 +9,139 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     {
         readonly ValidationNotification _notification = new ValidationNotification();
 
-        [Fact]
-        public void Check_null_invalid()
+        [Theory]
+        [InlineData("")]
+        [InlineData(123)]
+        [InlineData("abcd")]
+        public void Check_value_is_valid(object value)
         {
             var single = new SingleValues
             {
-                String = null
+                Object = value
             };
 
             _notification.Clear();
-            _notification.RequiredIsValid(single.String);
+            _notification.RequiredIsValid(single.Object);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.RequiredIsValid(single, x => x.Object);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        public void Check_value_not_is_valid(object value)
+        {
+            var single = new SingleValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.RequiredIsValid(single.Object);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RequiredIsValid(single, x => x.String);
+            _notification.RequiredIsValid(single, x => x.Object);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.RequiredIsValid(x => x.String);
+            single.RequiredIsValid(x => x.Object);
+            Assert.False(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData(123, 456)]
+        [InlineData(123, "456")]
+        [InlineData("", "")]
+        public void Check_value_array_is_valid(params object[] value)
+        {
+            var single = new ArrayValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.RequiredIsValid(single.Object);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.RequiredIsValid(single, x => x.Object);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(null, "abc")]
+        public void Check_value_array_not_is_valid(params object[] value)
+        {
+            var single = new ArrayValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.RequiredIsValid(single.Object);
+            Assert.False(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.RequiredIsValid(single, x => x.Object);
+            Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(x => x.Object);
             Assert.False(single.IsValid());
         }
 
         [Fact]
-        public void Check_empty_valid()
+        public void Check_empty_array__not_is_valid()
         {
-            var single = new SingleValues
+            var single = new ArrayValues
             {
-                String = string.Empty
+                Object = Array.Empty<object>()
             };
 
             _notification.Clear();
-            _notification.RequiredIsValid(single.String);
-            Assert.True(_notification.IsValid());
+            _notification.RequiredIsValid(single.Object);
+            Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RequiredIsValid(single, x => x.String);
-            Assert.True(_notification.IsValid());
+            _notification.RequiredIsValid(single, x => x.Object);
+            Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.RequiredIsValid(x => x.String);
-            Assert.True(single.IsValid());
+            single.RequiredIsValid(x => x.Object);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
-        public void Check_list_item_null_invalid()
+        public void Check_null_array_not_is_valid()
         {
-            var array = new ArrayValues
+            var single = new ArrayValues
             {
-                String = new string[] { string.Empty, null }
+                Object = null
             };
 
             _notification.Clear();
-            _notification.RequiredIsValid(array.String);
+            _notification.RequiredIsValid(single.Object);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RequiredIsValid(array, x => x.String);
+            _notification.RequiredIsValid(single, x => x.Object);
             Assert.False(_notification.IsValid());
 
-            array.Notifications.Clear();
-            array.RequiredIsValid(x => x.String);
-            Assert.False(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_list_item_empty_valid()
-        {
-            var array = new ArrayValues
-            {
-                String = new string[] { string.Empty, string.Empty }
-            };
-
-            _notification.Clear();
-            _notification.RequiredIsValid(array.String);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RequiredIsValid(array, x => x.String);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RequiredIsValid(x => x.String);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_list_no_item_invalid()
-        {
-            var array = new ArrayValues
-            {
-                String = Array.Empty<string>()
-            };
-
-            _notification.Clear();
-            _notification.RequiredIsValid(array.String);
-            Assert.False(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RequiredIsValid(array, x => x.String);
-            Assert.False(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RequiredIsValid(x => x.String);
-            Assert.False(array.IsValid());
-        }
-
-
-        [Fact]
-        public void Check_list_null_invalid()
-        {
-            var array = new ArrayValues
-            {
-                String = null
-            };
-
-            _notification.Clear();
-            _notification.RequiredIsValid(array.String);
-            Assert.False(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RequiredIsValid(array, x => x.String);
-            Assert.False(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RequiredIsValid(x => x.String);
-            Assert.False(array.IsValid());
+            single.Notifications.Clear();
+            single.RequiredIsValid(x => x.Object);
+            Assert.False(single.IsValid());
         }
     }
 }
