@@ -1,5 +1,6 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
+using System;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
@@ -8,66 +9,148 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     {
         readonly ValidationNotification _notification = new ValidationNotification();
 
-        [Fact]
-        public void Check_is_valid()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(123)]
+        [InlineData("123")]
+        [InlineData(double.MaxValue)]
+        [InlineData(double.MinValue)]
+        public void Check_value_is_valid(object value)
         {
             var single = new SingleValues
             {
-                Decimal = .121m
+                Object = value
             };
 
             _notification.Clear();
-            _notification.DecimalIsValid(single.Decimal);
+            _notification.DecimalIsValid(single.Object);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.DecimalIsValid(single, x => x.Decimal);
+            _notification.DecimalIsValid(single, x => x.Object);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.DecimalIsValid(x => x.Decimal);
+            single.DecimalIsValid(x => x.Object);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_not_number_is_invalid()
+        [Theory]
+        [InlineData("abc")]
+        [InlineData("")]
+        [InlineData(long.MaxValue)]
+        [InlineData(long.MinValue)]
+        public void Check_value_not_is_valid(object value)
         {
             var single = new SingleValues
             {
-                String = "text"
+                Object = value
             };
 
             _notification.Clear();
-            _notification.DecimalIsValid(single.String);
+            _notification.DecimalIsValid(single.Object);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.DecimalIsValid(single, x => x.String);
+            _notification.DecimalIsValid(single, x => x.Object);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.DecimalIsValid(x => x.String);
+            single.DecimalIsValid(x => x.Object);
+            Assert.False(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData(123, 456)]
+        [InlineData(123, "456")]
+        [InlineData("123", "456")]
+        [InlineData("123", 456)]
+        public void Check_value_array_is_valid(params object[] value)
+        {
+            var single = new ArrayValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.DecimalIsValid(single.Object);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.DecimalIsValid(single, x => x.Object);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData("", "")]
+        [InlineData(null, null)]
+        [InlineData("abc")]
+        [InlineData("", 123)]
+        [InlineData("abc", 123)]
+        [InlineData(null, 123)]
+        public void Check_value_array_not_is_valid(params object[] value)
+        {
+            var single = new ArrayValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.DecimalIsValid(single.Object);
+            Assert.False(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.DecimalIsValid(single, x => x.Object);
+            Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(x => x.Object);
             Assert.False(single.IsValid());
         }
 
         [Fact]
-        public void Check_ignore_null()
+        public void Check_empty_array_is_valid()
         {
-            var single = new SingleValues
+            var single = new ArrayValues
             {
-                DecimalNull = null
+                Object = Array.Empty<object>()
             };
 
             _notification.Clear();
-            _notification.DecimalIsValid(single.DecimalNull);
+            _notification.DecimalIsValid(single.Object);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.DecimalIsValid(single, x => x.DecimalNull);
+            _notification.DecimalIsValid(single, x => x.Object);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.DecimalIsValid(x => x.DecimalNull);
+            single.DecimalIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+        }
+
+        [Fact]
+        public void Check_null_array_is_valid()
+        {
+            var single = new ArrayValues
+            {
+                Object = null
+            };
+
+            _notification.Clear();
+            _notification.DecimalIsValid(single.Object);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.DecimalIsValid(single, x => x.Object);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(x => x.Object);
             Assert.True(single.IsValid());
         }
     }
