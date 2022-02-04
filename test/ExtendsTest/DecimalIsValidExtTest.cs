@@ -13,8 +13,6 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(null)]
         [InlineData(123)]
         [InlineData("123")]
-        [InlineData(double.MaxValue)]
-        [InlineData(double.MinValue)]
         public void Check_value_is_valid(object value)
         {
             var single = new SingleValues
@@ -38,8 +36,6 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData("abc")]
         [InlineData("")]
-        [InlineData(long.MaxValue)]
-        [InlineData(long.MinValue)]
         public void Check_value_not_is_valid(object value)
         {
             var single = new SingleValues
