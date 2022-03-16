@@ -13,17 +13,18 @@
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/RenatoPacheco/BitHelp.Core.Validation</RepositoryUrl>
     <PackageReleaseNotes>
-      Release:
-
-      - Fixing the RemoveAtReference extension
-      - There is no need to keep .nupkg files
-      - Add extension to check for notifications
-      - Add extension to add notifications for ISelfValidation
+      Read release in: https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md
     </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>validation;netcore</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+      <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BitHelp.Core.Extend" Version="0.4.0" />

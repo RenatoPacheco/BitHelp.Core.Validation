@@ -41,7 +41,7 @@ dotnet add package BitHelp.Core.Validation
 - Add extension to check for notifications
 - Add extension to add notifications for ISelfValidation
 
-To read about others releases access [RELEASES.md](./RELEASES.md)
+To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
 # Build and Test
 
