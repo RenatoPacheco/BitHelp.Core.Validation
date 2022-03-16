@@ -237,4 +237,10 @@
   <data name="XComparePlusInvalid" xml:space="preserve">
     <value>{0} must be greater than {1}.</value>
   </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Not found.</value>
+  </data>
+  <data name="XNotFound" xml:space="preserve">
+    <value>{0} not found.</value>
+  </data>
 </root>

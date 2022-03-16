@@ -15,6 +15,10 @@
         /// </summary>
         Unauthorized,
         /// <summary>
+        /// Is a type error
+        /// </summary>
+        NotFound,
+        /// <summary>
         /// Is a type info
         /// </summary>
         Alert,

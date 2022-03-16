@@ -163,6 +163,30 @@ namespace BitHelp.Core.Validation
 
         #endregion
 
+        #region AddNotFound
+
+        public void AddNotFound(
+           string message, string reference = null, Exception exception = null)
+        {
+            Messages.Add(new ValidationMessage(message, reference, ValidationType.NotFound) { Exception = exception });
+        }
+
+        public void AddNotFound<T>(
+            Expression<Func<T, object>> expression,
+            string message = null, string reference = null, Exception exception = null)
+        {
+            Add(expression, message, reference, ValidationType.NotFound, exception);
+        }
+
+        public void AddNotFound<T, P>(
+            T _, Expression<Func<T, P>> expression,
+            string message = null, string reference = null, Exception exception = null)
+        {
+            Add(expression, message, reference, ValidationType.NotFound, exception);
+        }
+
+        #endregion
+
         #region AddAlert
 
         public void AddAlert(
