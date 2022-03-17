@@ -1,4 +1,4 @@
-name: Build & Publish to NuGet
+name: Build & Publish packages
 
 on:
   workflow_dispatch:
