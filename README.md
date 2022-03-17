@@ -2,8 +2,11 @@
 
 [![Licensed under the MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Integration Tests](https://github.com/RenatoPacheco/BitHelp.Core.Validation/workflows/Integration%20Tests/badge.svg?branch=master)](https://github.com/RenatoPacheco/BitHelp.Core.Validation/actions/workflows/integration-tests.yml)
+[![BitHelp.Core.Validation on fuget.org](https://www.fuget.org/packages/BitHelp.Core.Validation/badge.svg)](https://www.fuget.org/packages/BitHelp.Core.Validation)
 [![NuGet](https://img.shields.io/nuget/v/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
 [![Nuget](https://img.shields.io/nuget/dt/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
+[![codecov](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation/branch/main/graph/badge.svg?token=6YLN9GKD8X)](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RenatoPacheco_BitHelp.Core.Validation&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=RenatoPacheco_BitHelp.Core.Validation)
 
 This project facilitates the validation of an entity's properties.
 
@@ -31,16 +34,15 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-#### Release 0.10.0
+## Release 0.11.0
 
 **Features:**
 
-- Fixing the RemoveAtReference extension
-- There is no need to keep .nupkg files
-- Add extension to check for notifications
-- Add extension to add notifications for ISelfValidation
+- Adding type error to not found with message
+- Adding package in github
+- Otmization of the any tests validation
 
-To read about others releases access [RELEASES.md](./RELEASES.md)
+To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
 # Build and Test
 

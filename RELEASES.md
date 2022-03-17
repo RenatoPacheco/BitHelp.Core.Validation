@@ -1,5 +1,13 @@
 # BitHelp.Core.Validation
 
+## Release 0.11.0
+
+**Features:**
+
+- Adding type error to not found with message
+- Adding package in github
+- Otmization of the any tests validation
+
 ## Release 0.10.0
 
 **Features:**

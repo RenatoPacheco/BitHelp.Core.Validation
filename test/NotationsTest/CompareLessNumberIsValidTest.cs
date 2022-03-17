@@ -8,88 +8,48 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
     public class CompareLessNumberIsValidTest
     {
         [CompareLessNumberIsValid(nameof(Compare))]
-        public int? Value { get; set; }
+        public object Value { get; set; }
 
-        public int? Compare { get; set; }
+        public object Compare { get; set; }
 
-        [Fact]
-        public void Check_all_null_valid()
-        {
-            var model = new CompareLessNumberIsValidTest();
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
-        }
-
-        [Fact]
-        public void Check_compare_null_valid()
+        [Theory]
+        [InlineData(123, null)]
+        [InlineData(null, 123)]
+        [InlineData(null, null)]
+        [InlineData(123, 456)]
+        [InlineData("123", "456")]
+        [InlineData("abc", 123)]
+        [InlineData(123, "abcd")]
+        [InlineData("abc", "abcd")]
+        public void Check_value_is_valid(object value, object compare)
         {
             var model = new CompareLessNumberIsValidTest()
             {
-                Value = 123,
-                Compare = null
+                Value = value,
+                Compare = compare
             };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
+            var result = Validator.TryValidateObject(model, context, results, true);
+            Assert.True(result);
         }
 
-        [Fact]
-        public void Check_value_null_valid()
+        [Theory]
+        [InlineData(123, 123)]
+        [InlineData(456, 123)]
+        [InlineData("123", "123")]
+        [InlineData("456", "123")]
+        public void Check_value_not_is_valid(object value, object compare)
         {
             var model = new CompareLessNumberIsValidTest()
             {
-                Value = null,
-                Compare = 123
+                Value = value,
+                Compare = compare
             };
             var context = new ValidationContext(model);
             var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
-        }
-
-        [Fact]
-        public void Check_value_less_valid()
-        {
-            var model = new CompareLessNumberIsValidTest()
-            {
-                Value = 123,
-                Compare = 456
-            };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
-        }
-
-        [Fact]
-        public void Check_value_equal_invalid()
-        {
-            var model = new CompareLessNumberIsValidTest()
-            {
-                Value = 123,
-                Compare = 123
-            };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.False(isValid);
-        }
-
-        [Fact]
-        public void Check_value_plus_invalid()
-        {
-            var model = new CompareLessNumberIsValidTest()
-            {
-                Value = 456,
-                Compare = 123
-            };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.False(isValid);
+            var result = Validator.TryValidateObject(model, context, results, true);
+            Assert.False(result);
         }
     }
 }

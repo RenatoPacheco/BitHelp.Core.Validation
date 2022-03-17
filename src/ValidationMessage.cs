@@ -64,12 +64,12 @@ namespace BitHelp.Core.Validation
 
         public bool IsTypeError()
         {
-            return (int)Type <= (int)ValidationType.Unauthorized;
+            return (int)Type <= (int)ValidationType.NotFound;
         }
 
         public static bool IsTypeError(ValidationType type)
         {
-            return (int)type >= (int)ValidationType.Unauthorized;
+            return (int)type >= (int)ValidationType.NotFound;
         }
 
         #region operator

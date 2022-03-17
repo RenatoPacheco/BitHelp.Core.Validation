@@ -88,6 +88,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not found..
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value is not valid..
         /// </summary>
         public static string NotValid {
@@ -300,6 +309,15 @@ namespace BitHelp.Core.Validation.Resources {
         public static string XNotEmptyInvalid {
             get {
                 return ResourceManager.GetString("XNotEmptyInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} not found..
+        /// </summary>
+        public static string XNotFound {
+            get {
+                return ResourceManager.GetString("XNotFound", resourceCulture);
             }
         }
         

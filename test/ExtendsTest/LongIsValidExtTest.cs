@@ -1,5 +1,6 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
+using System;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
@@ -8,66 +9,146 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     {
         readonly ValidationNotification _notification = new ValidationNotification();
 
-        [Fact]
-        public void Check_is_valid()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(123)]
+        [InlineData("123")]
+        [InlineData(long.MaxValue)]
+        [InlineData(long.MinValue)]
+        public void Check_value_is_valid(object value)
         {
             var single = new SingleValues
             {
-                Long = long.MaxValue
+                Object = value
             };
 
             _notification.Clear();
-            _notification.LongIsValid(single.Long);
+            _notification.LongIsValid(single.Object);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.LongIsValid(single, x => x.Long);
+            _notification.LongIsValid(single, x => x.Object);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.LongIsValid(x => x.Long);
+            single.LongIsValid(x => x.Object);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_not_number_is_invalid()
+        [Theory]
+        [InlineData("abc")]
+        [InlineData("")]
+        public void Check_value_not_is_valid(object value)
         {
             var single = new SingleValues
             {
-                String = "text"
+                Object = value
             };
 
             _notification.Clear();
-            _notification.LongIsValid(single.String);
+            _notification.LongIsValid(single.Object);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.LongIsValid(single, x => x.String);
+            _notification.LongIsValid(single, x => x.Object);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.LongIsValid(x => x.String);
+            single.LongIsValid(x => x.Object);
+            Assert.False(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData(123, 456)]
+        [InlineData(123, "456")]
+        [InlineData("123", "456")]
+        [InlineData("123", 456)]
+        public void Check_value_array_is_valid(params object[] value)
+        {
+            var single = new ArrayValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.LongIsValid(single.Object);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.LongIsValid(single, x => x.Object);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.LongIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+        }
+
+        [Theory]
+        [InlineData("", "")]
+        [InlineData(null, null)]
+        [InlineData("abc")]
+        [InlineData("", 123)]
+        [InlineData("abc", 123)]
+        [InlineData(null, 123)]
+        public void Check_value_array_not_is_valid(params object[] value)
+        {
+            var single = new ArrayValues
+            {
+                Object = value
+            };
+
+            _notification.Clear();
+            _notification.LongIsValid(single.Object);
+            Assert.False(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.LongIsValid(single, x => x.Object);
+            Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.LongIsValid(x => x.Object);
             Assert.False(single.IsValid());
         }
 
         [Fact]
-        public void Check_ignore_null()
+        public void Check_empty_array_is_valid()
         {
-            var single = new SingleValues
+            var single = new ArrayValues
             {
-                LongNull = null
+                Object = Array.Empty<object>()
             };
 
             _notification.Clear();
-            _notification.LongIsValid(single.LongNull);
+            _notification.LongIsValid(single.Object);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.LongIsValid(single, x => x.LongNull);
+            _notification.LongIsValid(single, x => x.Object);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.LongIsValid(x => x.LongNull);
+            single.LongIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+        }
+
+        [Fact]
+        public void Check_null_array_is_valid()
+        {
+            var single = new ArrayValues
+            {
+                Object = null
+            };
+
+            _notification.Clear();
+            _notification.LongIsValid(single.Object);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.LongIsValid(single, x => x.Object);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.LongIsValid(x => x.Object);
             Assert.True(single.IsValid());
         }
     }

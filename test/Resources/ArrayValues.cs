@@ -5,6 +5,9 @@ namespace BitHelp.Core.Validation.Test.Resources
 {
     public class ArrayValues : ISelfValidation
     {
+        [Display(Name = "Array object")]
+        public object[] Object { get; set; }
+
         [Display(Name = "Array char")]
         public char[] Char { get; set; }
 
