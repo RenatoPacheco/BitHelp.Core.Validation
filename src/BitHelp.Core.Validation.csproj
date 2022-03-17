@@ -16,7 +16,6 @@
       Read release in: https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md
     </PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>validation;netcore</PackageTags>
