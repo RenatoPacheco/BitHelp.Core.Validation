@@ -5,7 +5,7 @@
 [![BitHelp.Core.Validation on fuget.org](https://www.fuget.org/packages/BitHelp.Core.Validation/badge.svg)](https://www.fuget.org/packages/BitHelp.Core.Validation)
 [![NuGet](https://img.shields.io/nuget/v/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
 [![Nuget](https://img.shields.io/nuget/dt/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
-[![codecov](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation/branch/main/graph/badge.svg?token=6YLN9GKD8X)](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation)
+[![codecov](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation/branch/master/graph/badge.svg?token=6YLN9GKD8X)](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RenatoPacheco_BitHelp.Core.Validation&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=RenatoPacheco_BitHelp.Core.Validation)
 
 This project facilitates the validation of an entity's properties.
