@@ -6,95 +6,53 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class CompareEqualIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_equal_valid()
+
+        [Theory]
+        [InlineData(null, 100)]
+        [InlineData(123, 123)]
+        [InlineData(123, "123")]
+        public void Check_format_is_valid(object input, object compare)
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
-                LongNull = 123,
-                Long = 123
+                Object = input,
+                ObjectCompare = compare
             };
 
             _notification.Clear();
-            _notification.CompareEqualIsValid(single, x => x.LongNull, x => x.Long);
+            _notification.CompareEqualIsValid(
+                single, x => x.Object, x => x.ObjectCompare);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.CompareEqualIsValid(x => x.LongNull, x => x.Long);
+            single.CompareEqualIsValid(
+                x => x.Object, x => x.ObjectCompare);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_different_invalid()
+        [Theory]
+        [InlineData(100, null)]
+        [InlineData(123, 321)]
+        [InlineData(123, "123,9")]
+        [InlineData(true, "trUe")]
+        public void Check_format_is_invalid(object input, object compare)
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
-                LongNull = 234,
-                Long = 123
+                Object = input,
+                ObjectCompare = compare
             };
 
             _notification.Clear();
-            _notification.CompareEqualIsValid(single, x => x.LongNull, x => x.Long);
+            _notification.CompareEqualIsValid(
+                single, x => x.Object, x => x.ObjectCompare);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.CompareEqualIsValid(x => x.LongNull, x => x.Long);
-            Assert.False(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_equal_type_different_valid()
-        {
-            var single = new SingleValues
-            {
-                String = "234",
-                Long = 234
-            };
-
-            _notification.Clear();
-            _notification.CompareEqualIsValid(single, x => x.String, x => x.Long);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.CompareEqualIsValid(x => x.String, x => x.Long);
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_ignore_null()
-        {
-            var single = new SingleValues
-            {
-                LongNull = null,
-                Long = 123
-            };
-
-            _notification.Clear();
-            _notification.CompareEqualIsValid(single, x => x.LongNull, x => x.Long);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.CompareEqualIsValid(x => x.LongNull, x => x.Long);
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_different_case_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = "TrUe",
-                Bool = true
-            };
-
-            _notification.Clear();
-            _notification.CompareEqualIsValid(single, x => x.String, x => x.Bool);
-            Assert.False(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.CompareEqualIsValid(x => x.String, x => x.Bool);
+            single.CompareEqualIsValid(
+                x => x.Object, x => x.ObjectCompare);
             Assert.False(single.IsValid());
         }
     }

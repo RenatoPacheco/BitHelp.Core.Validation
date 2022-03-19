@@ -7,6 +7,8 @@ namespace BitHelp.Core.Validation.Test.Resources
     {
         public object Object { get; set; }
 
+        public object ObjectCompare { get; set; }
+
         public char Char { get; set; }
 
         public string String { get; set; }
