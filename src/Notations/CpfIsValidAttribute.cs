@@ -11,18 +11,16 @@ namespace BitHelp.Core.Validation.Notations
         {
             string input = Convert.ToString(value);
 
-            Boolean retorno;
+            bool retorno;
             string pattern;
             Regex regex;
-
-            retorno = false;
 
             // Checando se tem apenas números
             pattern = @"^([0-9]{11})$|^([0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2})$";
             regex = new Regex(pattern);
             retorno = regex.Match(input).Success;
             //Checando se não são 11 dígitos iguais
-            if (retorno == true)
+            if (retorno)
             {
                 input = input.Replace("-", "");
                 input = input.Replace(".", "");
@@ -31,16 +29,15 @@ namespace BitHelp.Core.Validation.Notations
                 retorno = !regex.Match(input).Success;
             }
 
-            if (retorno == true)
+            if (retorno)
             {
                 /**/
                 // Para validar calculamos usando os 9 primeiro dígito
                 string cpf = input.Substring(0, 9);
                 int soma;
-                int resto = 0;
-                int quociente = 0;
-                int primeiroDigito = 0;
-                int segundoDigito = 0;
+                int resto;
+                int primeiroDigito;
+                int segundoDigito;
                 int multiplicador;
                 // Calculando o primeiro dígito
                 multiplicador = 10;
@@ -51,7 +48,6 @@ namespace BitHelp.Core.Validation.Notations
                     multiplicador--;
                 }
                 resto = soma % 11;
-                quociente = (soma - resto) / 11;
                 if (resto < 2)
                 {
                     primeiroDigito = 0;
@@ -62,7 +58,7 @@ namespace BitHelp.Core.Validation.Notations
                 }
                 // Calculando o segundo dígito
                 // para calcular adicionamos o digito ao cpf
-                cpf = cpf + primeiroDigito.ToString();
+                cpf += primeiroDigito.ToString();
                 multiplicador = 11;
                 soma = 0;
                 for (int indice = 0; indice < cpf.Length; indice++)
@@ -71,7 +67,6 @@ namespace BitHelp.Core.Validation.Notations
                     multiplicador--;
                 }
                 resto = soma % 11;
-                quociente = (soma - resto) / 11;
                 if (resto < 2)
                 {
                     segundoDigito = 0;
@@ -81,7 +76,7 @@ namespace BitHelp.Core.Validation.Notations
                     segundoDigito = 11 - resto;
                 }
                 // Para finalizar adicionamos o digito ao cpf
-                cpf = cpf + segundoDigito.ToString();
+                cpf += segundoDigito.ToString();
                 // Agora que obtivemos um cpf completo comparamos o resultado com o informado
                 return (input == cpf);
             }

@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use CpfIsValid(IStructureToValidate data)")]
-        private static ValidationNotification CpfIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.CpfIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification CpfIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
