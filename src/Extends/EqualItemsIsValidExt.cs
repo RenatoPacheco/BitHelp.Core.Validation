@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Extends
                 compare.Compile().DynamicInvoke(source) as IList
             };
 
-            foreach (var item in compareMore)
+            foreach (Expression<Func<T, IList>> item in compareMore)
             {
                 values.Add(item.Compile().DynamicInvoke(source) as IList);
             }
@@ -48,7 +48,7 @@ namespace BitHelp.Core.Validation.Extends
                 compare.Compile().DynamicInvoke(data) as IList
             };
 
-            foreach (var item in compareMore)
+            foreach (Expression<Func<T, IList>> item in compareMore)
             {
                 values.Add(item.Compile().DynamicInvoke(data) as IList);
             }
@@ -69,7 +69,7 @@ namespace BitHelp.Core.Validation.Extends
             int? total = null;
             bool isNull = false;
             
-            foreach (var item in value)
+            foreach (IList item in value)
             {
                 if(item != null)
                 {
@@ -79,7 +79,7 @@ namespace BitHelp.Core.Validation.Extends
                         break;
                     }
 
-                    int current = (item as IList).Count;
+                    int current = item.Count;
                     if (total == null)
                     {
                         total = current;
@@ -105,7 +105,7 @@ namespace BitHelp.Core.Validation.Extends
             if (!result)
             {
                 string text = Resource.EqualNumberItemsInvalid;
-                var message = new ValidationMessage(text, null);
+                ValidationMessage message = new ValidationMessage(text, null);
                 source.SetLastMessage(message, Resource.DisplayValue);
                 source.Add(message);
             }

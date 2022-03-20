@@ -2,121 +2,115 @@
 using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
 using System;
+using System.Collections;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EqualItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_number_items_is_valid()
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(new string[] { }, new int[] { })]
+        [InlineData(new bool[] { true, false, true }, new char[] { 'a', 'b', 'c' })]
+        public void Check_format_is_valid(IList input, IList compare)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues lists = new()
             {
-                Bool = new bool[] { true, false, true },
-                Char = new char[] { 'a', 'b', 'c' }
+                Value = input,
+                Compare = compare
             };
 
             _notification.Clear();
-            _notification.EqualItemsIsValid(array.Bool, array.Char);
+            _notification.EqualItemsIsValid(
+                lists.Value, lists.Compare);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_number_items_is_invalid()
-        {
-            ArrayValues array = new ArrayValues
-            {
-                Bool = new bool[] { true, false, true },
-                Char = new char[] { 'a', 'b' }
-            };
-
-            _notification.Clear();
-            _notification.EqualItemsIsValid(array.Bool, array.Char);
-            Assert.False(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
-            Assert.False(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
-            Assert.False(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_all_values_null_is_valid()
-        {
-            ArrayValues array = new ArrayValues
-            {
-                Bool = null,
-                Char = null
-            };
-
-            _notification.Clear();
-            _notification.EqualItemsIsValid(array.Bool, array.Char);
+            _notification.EqualItemsIsValid(
+                lists.Value, lists.Compare, lists.Compare);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
+            _notification.EqualItemsIsValid(
+                lists, x => x.Value, x => x.Compare);
             Assert.True(_notification.IsValid());
 
-            array.Notifications.Clear();
-            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
-            Assert.True(array.IsValid());
+            _notification.Clear();
+            _notification.EqualItemsIsValid(
+                lists, x => x.Value, x => x.Compare, x => x.Compare);
+            Assert.True(_notification.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(input, compare);
+            Assert.True(lists.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(input, compare, compare);
+            Assert.True(lists.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(
+                x => x.Value, x => x.Compare);
+            Assert.True(lists.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(
+                x => x.Value, x => x.Compare, x => x.Compare);
+            Assert.True(lists.IsValid());
         }
 
-        [Fact]
-        public void Check_one_value_null_is_invalid()
+        [Theory]
+        [InlineData(null, new char[] { 'a', 'b', 'c' })]
+        [InlineData(new bool[] { true, false, true }, new string[] { "a", "b" })]
+        [InlineData(new bool[] { true, false, true }, null)]
+        [InlineData(new bool[] { }, null)]
+        public void Check_format_is_invalid(IList input, IList compare)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues lists = new()
             {
-                Bool = new bool[] { true, false, true },
-                Char = null
+                Value = input,
+                Compare = compare
             };
 
             _notification.Clear();
-            _notification.EqualItemsIsValid(array.Bool, array.Char);
+            _notification.EqualItemsIsValid(
+                lists.Value, lists.Compare);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
-            Assert.False(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
-            Assert.False(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_one_value_null_and_other_empty_is_invalid()
-        {
-            ArrayValues array = new ArrayValues
-            {
-                Bool = Array.Empty<bool>(),
-                Char = null
-            };
-
-            _notification.Clear();
-            _notification.EqualItemsIsValid(array.Bool, array.Char);
+            _notification.EqualItemsIsValid(
+                lists.Value, lists.Compare, lists.Compare);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EqualItemsIsValid(array, x => x.Bool, y => y.Char);
+            _notification.EqualItemsIsValid(
+                lists, x => x.Value, x => x.Compare);
             Assert.False(_notification.IsValid());
 
-            array.Notifications.Clear();
-            array.EqualItemsIsValid(x => x.Bool, y => y.Char);
-            Assert.False(array.IsValid());
+            _notification.Clear();
+            _notification.EqualItemsIsValid(
+                lists, x => x.Value, x => x.Compare, x => x.Compare);
+            Assert.False(_notification.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(input, compare);
+            Assert.False(lists.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(input, compare, compare);
+            Assert.False(lists.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(
+                x => x.Value, x => x.Compare);
+            Assert.False(lists.IsValid());
+
+            lists.Notifications.Clear();
+            lists.EqualItemsIsValid(
+                x => x.Value, x => x.Compare, x => x.Compare);
+            Assert.False(lists.IsValid());
         }
     }
 }
