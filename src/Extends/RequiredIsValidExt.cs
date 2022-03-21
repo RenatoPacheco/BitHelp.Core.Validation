@@ -58,18 +58,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use RequiredIsValid(IStructureToValidate data)")]
-        private static ValidationNotification RequiredIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.RequiredIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification RequiredIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
