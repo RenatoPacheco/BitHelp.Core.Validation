@@ -124,6 +124,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value cannot be null or empty..
+        /// </summary>
+        public static string ValueCannotBeNullOrEmpty {
+            get {
+                return ResourceManager.GetString("ValueCannotBeNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is not valid boolean..
         /// </summary>
         public static string XBooleanInvalid {

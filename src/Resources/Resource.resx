@@ -243,4 +243,7 @@
   <data name="XNotFound" xml:space="preserve">
     <value>{0} not found.</value>
   </data>
+  <data name="ValueCannotBeNullOrEmpty" xml:space="preserve">
+    <value>Value cannot be null or empty.</value>
+  </data>
 </root>

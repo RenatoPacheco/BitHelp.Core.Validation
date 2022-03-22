@@ -5,9 +5,11 @@ namespace BitHelp.Core.Validation.Test.Resources
 {
     public class SingleValues : ISelfValidation
     {
-        public object Object { get; set; }
+        public object Value { get; set; }
 
-        public object ObjectCompare { get; set; }
+        public object Compare { get; set; }
+
+        public object Object { get; set; }
 
         public char Char { get; set; }
 
@@ -43,7 +45,6 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         [Display(Name = "Date time null")]
         public DateTime? DateTimeNull { get; set; }
-
 
         [Display(Name = "Time span")]
         public TimeSpan TimeSpan { get; set; }

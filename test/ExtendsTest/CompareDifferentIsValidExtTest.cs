@@ -19,17 +19,17 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             SingleValues single = new()
             {
                 Object = input,
-                ObjectCompare = compare
+                Compare = compare
             };
 
             _notification.Clear();
             _notification.CompareDifferentIsValid(
-                single, x => x.Object, x => x.ObjectCompare);
+                single, x => x.Object, x => x.Compare);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
             single.CompareDifferentIsValid(
-                x => x.Object, x => x.ObjectCompare);
+                x => x.Object, x => x.Compare);
             Assert.True(single.IsValid());
         }
 
@@ -41,17 +41,17 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             SingleValues single = new()
             {
                 Object = input,
-                ObjectCompare = compare
+                Compare = compare
             };
 
             _notification.Clear();
             _notification.CompareDifferentIsValid(
-                single, x => x.Object, x => x.ObjectCompare);
+                single, x => x.Object, x => x.Compare);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
             single.CompareDifferentIsValid(
-                x => x.Object, x => x.ObjectCompare);
+                x => x.Object, x => x.Compare);
             Assert.False(single.IsValid());
         }
     }
