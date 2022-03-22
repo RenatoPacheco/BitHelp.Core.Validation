@@ -25,7 +25,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
 
     public class CompareLessDateTimeIsValidValue03Test
     {
-        [CompareLessDateTimeIsValid(nameof(Compare), "  ")]
+        [CompareLessDateTimeIsValid(nameof(Compare), "invalid-culture")]
         public object Value { get; set; }
 
         public object Compare { get; set; }
@@ -109,7 +109,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
 
-            Assert.Throws<Exception>(() => Validator.TryValidateObject(model, context, results, true));
+            Assert.Throws<NullReferenceException>(() => Validator.TryValidateObject(model, context, results, true));
         }
 
         [Fact]

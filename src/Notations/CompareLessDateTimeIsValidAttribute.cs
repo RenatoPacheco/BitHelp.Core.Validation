@@ -41,7 +41,8 @@ namespace BitHelp.Core.Validation.Notations
             PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
             if (object.Equals(property, null))
             {
-                throw new Exception(string.Format(Resource.XNotFound, nameof(OtherProperty)));
+                throw new NullReferenceException(
+                    string.Format(Resource.XNotFound, nameof(OtherProperty)));
             }
 
             CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;
