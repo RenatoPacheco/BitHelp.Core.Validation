@@ -2,7 +2,6 @@
 
 [![Licensed under the MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Integration Tests](https://github.com/RenatoPacheco/BitHelp.Core.Validation/workflows/Integration%20Tests/badge.svg?branch=master)](https://github.com/RenatoPacheco/BitHelp.Core.Validation/actions/workflows/integration-tests.yml)
-[![BitHelp.Core.Validation on fuget.org](https://www.fuget.org/packages/BitHelp.Core.Validation/badge.svg)](https://www.fuget.org/packages/BitHelp.Core.Validation)
 [![NuGet](https://img.shields.io/nuget/v/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
 [![Nuget](https://img.shields.io/nuget/dt/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
 [![codecov](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation/branch/master/graph/badge.svg?token=6YLN9GKD8X)](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation)
