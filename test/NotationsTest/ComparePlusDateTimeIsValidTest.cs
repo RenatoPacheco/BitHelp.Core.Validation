@@ -25,14 +25,6 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
 
     public class ComparePlusDateTimeIsValidValue03Test
     {
-        [ComparePlusDateTimeIsValid(nameof(Compare), "invalid-culture")]
-        public object Value { get; set; }
-
-        public object Compare { get; set; }
-    }
-
-    public class ComparePlusDateTimeIsValidValue04Test
-    {
         [ComparePlusDateTimeIsValid(nameof(Compare))]
         public object Value { get; set; }
 
@@ -113,23 +105,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         }
 
         [Fact]
-        public void Check_culture_info_invalid()
-        {
-            ComparePlusDateTimeIsValidValue03Test model = new()
-            {
-                Value = "12/26/2020",
-                Compare = "12/25/2020"
-            };
-            ValidationContext context = new(model);
-            List<ValidationResult> results = new();
-
-            Assert.Throws<CultureNotFoundException>(() => Validator.TryValidateObject(model, context, results, true));
-        }
-
-        [Fact]
         public void Check_culture_info_as_null_valid()
         {
-            ComparePlusDateTimeIsValidValue04Test model = new()
+            ComparePlusDateTimeIsValidValue03Test model = new()
             {
                 Value = DateTime.Now.AddDays(2).ToString(),
                 Compare = DateTime.Now.ToString()
