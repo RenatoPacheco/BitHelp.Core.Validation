@@ -63,18 +63,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum);
         }
 
-        [Obsolete("Use RangeTimeSpanIsValid(IStructureToValidate data, TimeSpan minimum, TimeSpan maximum)")]
-        private static ValidationNotification RangeTimeSpanIsValid(
-            this ValidationNotification source, object value, string display, string reference, TimeSpan minimum, TimeSpan maximum)
-        {
-            return source.RangeTimeSpanIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum, maximum);
-        }
-
         public static ValidationNotification RangeTimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data, TimeSpan minimum, TimeSpan maximum)
         {

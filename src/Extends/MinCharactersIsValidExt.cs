@@ -58,18 +58,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum);
         }
 
-        [Obsolete("Use MinCharactersIsValid(IStructureToValidate data, int minimum)")]
-        private static ValidationNotification MinCharactersIsValid(
-            this ValidationNotification source, object value, string display, string reference, int minimum)
-        {
-            return source.MinCharactersIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum);
-        }
-
         public static ValidationNotification MinCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int minimum)
         {

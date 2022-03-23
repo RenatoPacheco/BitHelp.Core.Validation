@@ -59,18 +59,6 @@ namespace BitHelp.Core.Validation.Extends
             }, maximum);
         }
 
-        [Obsolete("Use MaxNumberIsValid(IStructureToValidate data, decimal maximum)")]
-        private static ValidationNotification MaxNumberIsValid(
-            this ValidationNotification source, object value, string display, string reference, decimal maximum)
-        {
-            return source.MaxNumberIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, maximum);
-        }
-
         public static ValidationNotification MaxNumberIsValid(
             this ValidationNotification source, IStructureToValidate data, decimal maximum)
         {

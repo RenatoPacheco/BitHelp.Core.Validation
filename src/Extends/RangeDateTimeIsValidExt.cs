@@ -72,20 +72,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum, cultureInfo);
         }
 
-        [Obsolete("Use RangeDateTimeIsValid(IStructureToValidate data, DateTime minimum, DateTime maximum, CultureInfo cultureInfo = null)")]
-        private static ValidationNotification RangeDateTimeIsValid(
-            this ValidationNotification source, object value,
-            string display, string reference, DateTime minimum,
-            DateTime maximum, CultureInfo cultureInfo = null)
-        {
-            return source.RangeDateTimeIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum, maximum, cultureInfo);
-        }
-
         public static ValidationNotification RangeDateTimeIsValid(
             this ValidationNotification source, IStructureToValidate data,
             DateTime minimum, DateTime maximum, CultureInfo cultureInfo = null)

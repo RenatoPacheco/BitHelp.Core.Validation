@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use DoubleIsValid(IStructureToValidate data)")]
-        private static ValidationNotification DoubleIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.DoubleIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification DoubleIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

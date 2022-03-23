@@ -61,18 +61,6 @@ namespace BitHelp.Core.Validation.Extends
             }, exact);
         }
 
-        [Obsolete("Use ExactItemsIsValid(IStructureToValidate data, int exact)")]
-        private static ValidationNotification ExactItemsIsValid(
-            this ValidationNotification source, object value, string display, string reference, int exact)
-        {
-            return source.ExactItemsIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, exact);
-        }
-
         public static ValidationNotification ExactItemsIsValid(
             this ValidationNotification source, IStructureToValidate data, int exact)
         {

@@ -67,20 +67,6 @@ namespace BitHelp.Core.Validation.Extends
             }, pattern, options);
         }
 
-        [Obsolete("Use RegexIsValid(IStructureToValidate data, string pattern, RegexOptions options = RegexOptions.None)")]
-        private static ValidationNotification RegexIsValid(
-            this ValidationNotification source, object value,
-            string display, string reference,
-            string pattern, RegexOptions options = RegexOptions.None)
-        {
-            return source.RegexIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, pattern, options);
-        }
-
         public static ValidationNotification RegexIsValid(
             this ValidationNotification source, IStructureToValidate data,
             string pattern, RegexOptions options = RegexOptions.None)

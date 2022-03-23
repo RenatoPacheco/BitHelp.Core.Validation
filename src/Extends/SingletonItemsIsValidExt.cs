@@ -58,18 +58,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use SingletonItemsIsValid(IStructureToValidate data)")]
-        private static ValidationNotification SingletonItemsIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.SingletonItemsIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification SingletonItemsIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

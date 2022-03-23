@@ -62,18 +62,6 @@ namespace BitHelp.Core.Validation.Extends
             }, ignoreWithSpace);
         }
 
-        [Obsolete("Use NotNullOrEmptyIsValid(IStructureToValidate data, bool ignoreWithSpace)")]
-        private static ValidationNotification NotNullOrEmptyIsValid(
-            this ValidationNotification source, object value, string display, string reference, bool ignoreWithSpace)
-        {
-            return source.NotNullOrEmptyIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, ignoreWithSpace);
-        }
-
         public static ValidationNotification NotNullOrEmptyIsValid(
             this ValidationNotification source, IStructureToValidate data, bool ignoreWithSpace)
         {

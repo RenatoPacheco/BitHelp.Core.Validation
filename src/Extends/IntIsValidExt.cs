@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use IntIsValid(IStructureToValidate data)")]
-        private static ValidationNotification IntIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.IntIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification IntIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

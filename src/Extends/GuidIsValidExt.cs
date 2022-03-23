@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use GuidIsValid(IStructureToValidate data)")]
-        private static ValidationNotification GuidIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.GuidIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification GuidIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use TimeSpanIsValid(IStructureToValidate data)")]
-        private static ValidationNotification TimeSpanIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.TimeSpanIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification TimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

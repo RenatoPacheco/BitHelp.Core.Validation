@@ -59,18 +59,6 @@ namespace BitHelp.Core.Validation.Extends
             }, options);
         }
 
-        [Obsolete("Use BetweenStringIsValid(IStructureToValidate data, IEnumerable<Enum> options)")]
-        private static ValidationNotification BetweenStringIsValid(
-            this ValidationNotification source, object value, string display, string reference, IEnumerable<string> options)
-        {
-            return source.BetweenStringIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, options);
-        }
-
         public static ValidationNotification BetweenStringIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<string> options)
         {

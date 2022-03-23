@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             }, compare);
         }
 
-        [Obsolete("Use RequiredIfOtherNotNullIsValid(IStructureToValidate data, object compare)")]
-        private static ValidationNotification RequiredIfOtherNotNullIsValid(
-            this ValidationNotification source, object value, string display, string reference, object compare)
-        {
-            return source.RequiredIfOtherNotNullIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, compare);
-        }
-
         public static ValidationNotification RequiredIfOtherNotNullIsValid(
             this ValidationNotification source, IStructureToValidate data, object compare)
         {

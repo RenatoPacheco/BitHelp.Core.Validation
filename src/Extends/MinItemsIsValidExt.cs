@@ -59,18 +59,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum);
         }
 
-        [Obsolete("Use MinItemsIsValid(IStructureToValidate data, int minimum)")]
-        private static ValidationNotification MinItemsIsValid(
-            this ValidationNotification source, object value, string display, string reference, int minimum)
-        {
-            return source.MinItemsIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum);
-        }
-
         public static ValidationNotification MinItemsIsValid(
             this ValidationNotification source, IStructureToValidate data, int minimum)
         {

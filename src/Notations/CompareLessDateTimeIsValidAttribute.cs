@@ -16,7 +16,7 @@ namespace BitHelp.Core.Validation.Notations
             if (string.IsNullOrWhiteSpace(otherProperty))
             {
                 throw new ArgumentException(
-                    Resource.ValueCannotBeNullOrEmpty, nameof(otherProperty));
+                    string.Format(Resource.XNullOrEmpty, nameof(otherProperty)), nameof(otherProperty));
             }
 
             ErrorMessageResourceType = typeof(Resource);

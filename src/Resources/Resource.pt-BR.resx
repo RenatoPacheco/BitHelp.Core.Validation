@@ -243,7 +243,4 @@
   <data name="XNotFound" xml:space="preserve">
     <value>{0} não encontado(a).</value>
   </data>
-  <data name="ValueCannotBeNullOrEmpty" xml:space="preserve">
-    <value>Valor não pode ser nulo ou vazio.</value>
-  </data>
 </root>

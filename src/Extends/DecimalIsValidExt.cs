@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use DecimalIsValid(IStructureToValidate data)")]
-        private static ValidationNotification DecimalIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.DecimalIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification DecimalIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

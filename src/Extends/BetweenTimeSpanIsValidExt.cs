@@ -59,18 +59,6 @@ namespace BitHelp.Core.Validation.Extends
             }, options);
         }
 
-        [Obsolete("Use BetweenTimeSpanIsValid(IStructureToValidate data, IEnumerable<Enum> options)")]
-        private static ValidationNotification BetweenTimeSpanIsValid(
-            this ValidationNotification source, object value, string display, string reference, IEnumerable<TimeSpan> options)
-        {
-            return source.BetweenTimeSpanIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, options);
-        }
-
         public static ValidationNotification BetweenTimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<TimeSpan> options)
         {

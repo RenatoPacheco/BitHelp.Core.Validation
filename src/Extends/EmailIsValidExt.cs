@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use EmailIsValid(IStructureToValidate data)")]
-        private static ValidationNotification EmailIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.EmailIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification EmailIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

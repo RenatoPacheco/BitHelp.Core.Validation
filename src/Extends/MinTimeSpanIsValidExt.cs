@@ -58,18 +58,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum);
         }
 
-        [Obsolete("Use MinTimeSpanIsValid(IStructureToValidate data, TimeSpan minimum)")]
-        private static ValidationNotification MinTimeSpanIsValid(
-            this ValidationNotification source, object value, string display, string reference, TimeSpan minimum)
-        {
-            return source.MinTimeSpanIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum);
-        }
-
         public static ValidationNotification MinTimeSpanIsValid(
             this ValidationNotification source, IStructureToValidate data, TimeSpan minimum)
         {
