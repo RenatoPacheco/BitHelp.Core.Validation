@@ -13,7 +13,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 
         private string GetReference<T>(Expression<Func<T, object>> expression)
         {
-            return expression.PropertyTrail();
+            return expression.PropertyPath();
         }
         
         private string GetDisplay<T>(Expression<Func<T, object>> expression)

@@ -11,7 +11,7 @@ namespace BitHelp.Core.Validation.Extends
             this T source, Expression<Func<T, P>> expression)
             where T : ISelfValidation
         {
-            string reference = expression.PropertyTrail();
+            string reference = expression.PropertyPath();
             source.Notifications.RemoveAtReference(reference);
 
             return source.Notifications;
