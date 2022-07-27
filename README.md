@@ -11,12 +11,6 @@ This project facilitates the validation of an entity's properties.
 
 # Getting Started
 
-## Software dependencies
-
-[.NET Standard 2.0](https://docs.microsoft.com/pt-br/dotnet/standard/net-standard)
-
-[BitHelp.Core.Extend (>= 0.4.0)](https://www.nuget.org/packages/BitHelp.Core.Extend/)
-
 ## Installation process
 
 This package is available through Nuget Packages: https://www.nuget.org/packages/BitHelp.Core.Validation
