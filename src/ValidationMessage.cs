@@ -2,7 +2,8 @@
 
 namespace BitHelp.Core.Validation
 {
-    public class ValidationMessage : ICloneable
+    public class ValidationMessage 
+        : ICloneable, IEquatable<ValidationMessage>
     {
         protected ValidationMessage()
         {
@@ -74,11 +75,14 @@ namespace BitHelp.Core.Validation
 
         #region operator
 
+        public bool Equals(ValidationMessage other)
+        {
+            return GetHashCode() == other.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
-            ValidationMessage compare = obj as ValidationMessage;
-            return !object.Equals(compare, null)
-                && GetHashCode() == compare.GetHashCode();
+            return obj is ValidationMessage value && Equals(value);
         }
 
         public override int GetHashCode()
