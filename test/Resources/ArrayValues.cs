@@ -7,10 +7,10 @@ namespace BitHelp.Core.Validation.Test.Resources
     public class ArrayValues : ISelfValidation
     {
         [Display(Name = "Array value")]
-        public IList Value { get; set; }
+        public IEnumerable Value { get; set; }
 
         [Display(Name = "Array compare")]
-        public IList Compare { get; set; }
+        public IEnumerable Compare { get; set; }
 
         [Display(Name = "Array object")]
         public object[] Object { get; set; }

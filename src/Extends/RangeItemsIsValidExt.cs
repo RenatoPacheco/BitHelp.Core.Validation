@@ -12,8 +12,7 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification RangeItemsIsValid<T>(
-            this T source, Expression<Func<T, IList>> expression,
-            int minimum, int maximum)
+            this T source, Expression<Func<T, IEnumerable>> expression,int minimum, int maximum)
             where T : ISelfValidation
         {
             return source.RangeItemsIsValid(
@@ -22,8 +21,7 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification RangeItemsIsValid<T>(
-            this T source, object value,
-            int minimum, int maximum)
+            this T source, IEnumerable value, int minimum, int maximum)
             where T : ISelfValidation
         {
             return source.RangeItemsIsValid(new StructureToValidate
@@ -35,18 +33,16 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification RangeItemsIsValid<T>(
-            this T source, IStructureToValidate data,
-            int minimum, int maximum)
+            this T source, IStructureToValidate data, int minimum, int maximum)
             where T : ISelfValidation
         {
-            return source.Notifications.RangeItemsIsValid(
-                data, minimum, maximum);
+            return source.Notifications.RangeItemsIsValid(data, minimum, maximum);
         }
 
         #endregion
 
         public static ValidationNotification RangeItemsIsValid<T>(
-            this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int minimum, int maximum)
+            this ValidationNotification source, T data, Expression<Func<T, IEnumerable>> expression, int minimum, int maximum)
         {
             return source.RangeItemsIsValid(
                 data.GetStructureToValidate(expression),
@@ -54,7 +50,7 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification RangeItemsIsValid(
-            this ValidationNotification source, IList value, int minimum, int maximum)
+            this ValidationNotification source, IEnumerable value, int minimum, int maximum)
         {
             return source.RangeItemsIsValid(new StructureToValidate
             {

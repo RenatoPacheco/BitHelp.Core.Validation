@@ -2,137 +2,62 @@
 using BitHelp.Core.Validation.Extends;
 using Xunit;
 using System;
+using System.Collections;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class SingletonItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_list_is_valid()
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(new string[] { }, null)]
+        [InlineData(new object[] { 2, "text", true }, null)]
+        [InlineData(new object[] { 2, "text", true, false }, null)]
+        [InlineData(new object[] { 2, "2", true }, null)]
+        public void Check_singleton_items_is_valid(IEnumerable input, object any)
         {
             var array = new ArrayValues
             {
-                String = new string[] { "1", "2", "3", null }
+                Value = input
             };
 
             _notification.Clear();
-            _notification.SingletonItemsIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.Value);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItemsIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.Value);
             Assert.True(_notification.IsValid());
 
             array.Notifications.Clear();
-            array.SingletonItemsIsValid(x => x.String);
+            array.SingletonItemsIsValid(x => x.Value);
             Assert.True(array.IsValid());
         }
 
-        [Fact]
-        public void Check_list_repeat_is_invalid()
+        [Theory]
+        [InlineData(new object[] { 2, "text", true, true }, null)]
+        [InlineData(new object[] { 2, "text", "text" }, null)]
+        [InlineData(new object[] { 2, 2, "text" }, null)]
+        public void Check_singleton_items_is_invalid(IEnumerable input, object any)
         {
             var array = new ArrayValues
             {
-                String = new string[] { "1", "2", "1", null }
+                Value = input
             };
 
             _notification.Clear();
-            _notification.SingletonItemsIsValid(array.String);
+            _notification.SingletonItemsIsValid(array.Value);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.SingletonItemsIsValid(array, x => x.String);
+            _notification.SingletonItemsIsValid(array, x => x.Value);
             Assert.False(_notification.IsValid());
 
             array.Notifications.Clear();
-            array.SingletonItemsIsValid(x => x.String);
+            array.SingletonItemsIsValid(x => x.Value);
             Assert.False(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_list_repeat_null_is_invalid()
-        {
-            var array = new ArrayValues
-            {
-                String = new string[] { "1", null, "3", null }
-            };
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array.String);
-            Assert.False(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array, x => x.String);
-            Assert.False(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.SingletonItemsIsValid(x => x.String);
-            Assert.False(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_one_item_is_valid()
-        {
-            var array = new ArrayValues
-            {
-                String = new string[] { "1" }
-            };
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array.String);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array, x => x.String);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.SingletonItemsIsValid(x => x.String);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_empty_is_valid()
-        {
-            var array = new ArrayValues
-            {
-                String = Array.Empty<string>()
-            };
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array.String);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array, x => x.String);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.SingletonItemsIsValid(x => x.String);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_null_is_valid()
-        {
-            var array = new ArrayValues
-            {
-                String = null
-            };
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array.String);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.SingletonItemsIsValid(array, x => x.String);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.SingletonItemsIsValid(x => x.String);
-            Assert.True(array.IsValid());
         }
     }
 }
