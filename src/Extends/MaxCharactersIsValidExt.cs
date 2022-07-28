@@ -59,18 +59,6 @@ namespace BitHelp.Core.Validation.Extends
             }, maximum);
         }
 
-        [Obsolete("Use MaxCharactersIsValid(IStructureToValidate data, int maximum)")]
-        private static ValidationNotification MaxCharactersIsValid(
-            this ValidationNotification source, object value, string display, string reference, int maximum)
-        {
-            return source.MaxCharactersIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, maximum);
-        }
-
         public static ValidationNotification MaxCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int maximum)
         {

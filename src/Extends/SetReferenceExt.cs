@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, Expression<Func<T, object>> expression)
         {
             if (source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyTrail();
+                source.LastMessage.Reference = expression.PropertyPath();
 
             return source;
         }
@@ -19,7 +19,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, Expression<Func<T, P>> expression)
         {
             if(source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyTrail();
+                source.LastMessage.Reference = expression.PropertyPath();
 
             return source;
         }
@@ -28,7 +28,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, T _, Expression<Func<T, object>> expression)
         {
             if (source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyTrail();
+                source.LastMessage.Reference = expression.PropertyPath();
 
             return source;
         }
@@ -37,7 +37,7 @@ namespace BitHelp.Core.Validation.Extends
             this ValidationNotification source, T _, Expression<Func<T, P>> expression)
         {
             if (source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyTrail();
+                source.LastMessage.Reference = expression.PropertyPath();
 
             return source;
         }

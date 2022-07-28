@@ -2,189 +2,88 @@
 using BitHelp.Core.Validation.Extends;
 using Xunit;
 using System;
+using System.Collections;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RangeItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_if_6_items_is_in_range_5_and_10_valid()
+        [Theory]
+        [InlineData(null, 2, 3)]
+        [InlineData(new object[] { }, 2, 3)]
+        [InlineData(new object[] { 1, 2 }, 2, 3)]
+        [InlineData(new object[] { 1, 2, 3 }, 2, 3)]
+        public void Check_range_items_is_valid(IEnumerable input, int min, int max)
         {
             var array = new ArrayValues
             {
-                Int = new int[] { 1, 2, 3, 4, 5, 6 }
+                Value = input
             };
 
             _notification.Clear();
-            _notification.RangeItemsIsValid(array.Int, 5, 10);
+            _notification.RangeItemsIsValid(array.Value, min, max);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RangeItemsIsValid(array, x => x.Int, 5, 10);
+            _notification.RangeItemsIsValid(array, x => x.Value, min, max);
             Assert.True(_notification.IsValid());
 
             array.Notifications.Clear();
-            array.RangeItemsIsValid(x => x.Int, 5, 10);
+            array.RangeItemsIsValid(x => x.Value, min, max);
             Assert.True(array.IsValid());
         }
 
-        [Fact]
-        public void Check_if_5_items_is_in_range_5_and_10_valid()
+        [Theory]
+        [InlineData(new object[] { 1 }, 2, 3)]
+        [InlineData(new object[] { 1, 2, 3, 4 }, 2, 3)]
+        public void Check_range_items_is_invalid(IEnumerable input, int min, int max)
         {
             var array = new ArrayValues
             {
-                Int = new int[] { 1, 2, 3, 4, 5 }
+                Value = input
             };
 
             _notification.Clear();
-            _notification.RangeItemsIsValid(array.Int, 5, 110);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array, x => x.Int, 5, 10);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RangeItemsIsValid(x => x.Int, 5, 10);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_10_items_is_in_range_5_and_10_valid()
-        {
-            var array = new ArrayValues
-            {
-                Int = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }
-            };
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array.Int, 5, 110);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array, x => x.Int, 5, 10);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RangeItemsIsValid(x => x.Int, 5, 10);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_4_items_is_in_range_5_and_10_invalid()
-        {
-            var array = new ArrayValues
-            {
-                Int = new int[] { 1, 2, 3, 4 }
-            };
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array.Int, 5, 10);
+            _notification.RangeItemsIsValid(array.Value, min, max);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RangeItemsIsValid(array, x => x.Int, 5, 10);
+            _notification.RangeItemsIsValid(array, x => x.Value, min, max);
             Assert.False(_notification.IsValid());
 
             array.Notifications.Clear();
-            array.RangeItemsIsValid(x => x.Int, 5, 10);
+            array.RangeItemsIsValid(x => x.Value, min, max);
             Assert.False(array.IsValid());
         }
 
-        [Fact]
-        public void Check_if_0_items_is_in_range_5_and_10_ignore_valid()
+        [Theory]
+        [InlineData(null, 0, 3)]
+        [InlineData(null, -1, 3)]
+        [InlineData(null, 2, 0)]
+        [InlineData(null, 2, -1)]
+        [InlineData(null, 2, 1)]
+        [InlineData(new string[] { }, 0, 3)]
+        [InlineData(new string[] { }, -1, 3)]
+        [InlineData(new string[] { }, 2, 0)]
+        [InlineData(new string[] { }, 2, -1)]
+        [InlineData(new string[] { }, 2, 1)]
+        [InlineData(new string[] { "text" }, 0, 3)]
+        [InlineData(new string[] { "text" }, -1, 3)]
+        [InlineData(new string[] { "text" }, 2, 0)]
+        [InlineData(new string[] { "text" }, 2, -1)]
+        [InlineData(new string[] { "text" }, 2, 1)]
+        public void Check_range_items_exception(IEnumerable input, int min, int max)
         {
             var array = new ArrayValues
             {
-                Int = Array.Empty<int>()
+                Value = input
             };
 
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array.Int, 5, 10);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array, x => x.Int, 5, 10);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RangeItemsIsValid(x => x.Int, 5, 10);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_null_items_is_in_range_5_and_10_invalid()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array.Int, 5, 10);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RangeItemsIsValid(array, x => x.Int, 5, 10);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.RangeItemsIsValid(x => x.Int, 5, 10);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_minimum_less_1_exception()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array.Int, 0, 10));
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array, x => x.Int, 0, 10));
-            Assert.Throws<ArgumentException>(() => array.RangeItemsIsValid(x => x.Int, 0, 10));
-        }
-
-        [Fact]
-        public void Check_if_maximum_less_1_exception()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array.Int, 5, 0));
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array, x => x.Int, 5, 0));
-            Assert.Throws<ArgumentException>(() => array.RangeItemsIsValid(x => x.Int, 5, 0));
-        }
-
-        [Fact]
-        public void Check_if_maximum_less_minimum_exception()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array.Int, 5, 4));
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array, x => x.Int, 5, 4));
-            Assert.Throws<ArgumentException>(() => array.RangeItemsIsValid(x => x.Int, 5, 4));
-        }
-
-        [Fact]
-        public void Check_if_maximum_equal_minimum_exception()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array.Int, 5, 5));
-            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array, x => x.Int, 5, 5));
-            Assert.Throws<ArgumentException>(() => array.RangeItemsIsValid(x => x.Int, 5, 5));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array.Value, min, max));
+            Assert.Throws<ArgumentException>(() => _notification.RangeItemsIsValid(array, x => x.Value, min, max));
+            Assert.Throws<ArgumentException>(() => array.RangeItemsIsValid(x => x.Value, min, max));
         }
     }
 }

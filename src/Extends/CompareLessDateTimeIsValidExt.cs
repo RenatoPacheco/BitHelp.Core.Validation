@@ -72,7 +72,7 @@ namespace BitHelp.Core.Validation.Extends
                         Resource.XCompareLessInvalid,
                         display, displayCompare);
 
-                    var message = new ValidationMessage(text, reference);
+                    ValidationMessage message = new ValidationMessage(text, reference);
                     source.SetLastMessage(message, data.Display);
                     source.Add(message);
                 }

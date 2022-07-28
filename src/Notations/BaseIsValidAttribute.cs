@@ -1,12 +1,12 @@
-﻿using BitHelp.Core.Validation.Resources;
-using System;
+﻿using System;
+using BitHelp.Core.Validation.Resources;
 using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation.Notations
 {
     public abstract class BaseIsValidAttribute : ValidationAttribute
     {
-        public BaseIsValidAttribute()
+        protected BaseIsValidAttribute()
         {
             ErrorMessageResourceType = typeof(Resource);
             ErrorMessageResourceName = nameof(Resource.XNotValid);
@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Notations
         {
             if (!object.Equals(value, null))
             {
-                string input = Convert.ToString(value ?? string.Empty);
+                string input = Convert.ToString(value);
                 return (IgnoreEmpty && string.IsNullOrEmpty(input)) || Check(value);
             }
             return IgnoreNull;

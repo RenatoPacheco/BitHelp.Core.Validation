@@ -57,18 +57,6 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        [Obsolete("Use LongIsValid(IStructureToValidate data)")]
-        private static ValidationNotification LongIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.LongIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            });
-        }
-
         public static ValidationNotification LongIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {

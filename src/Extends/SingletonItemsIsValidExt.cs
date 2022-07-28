@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification SingletonItemsIsValid<T>(
-            this T source, Expression<Func<T, IList>> expression)
+            this T source, Expression<Func<T, IEnumerable>> expression)
             where T : ISelfValidation
         {
             return source.SingletonItemsIsValid(
@@ -20,7 +20,7 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification SingletonItemsIsValid<T>(
-            this T source, IList value)
+            this T source, IEnumerable value)
             where T : ISelfValidation
         {
             return source.SingletonItemsIsValid(new StructureToValidate
@@ -41,32 +41,20 @@ namespace BitHelp.Core.Validation.Extends
         #endregion
 
         public static ValidationNotification SingletonItemsIsValid<T>(
-            this ValidationNotification source, T data, Expression<Func<T, IList>> expression)
+            this ValidationNotification source, T data, Expression<Func<T, IEnumerable>> expression)
         {
             return source.SingletonItemsIsValid(
                 data.GetStructureToValidate(expression));
         }
 
         public static ValidationNotification SingletonItemsIsValid(
-            this ValidationNotification source, IList value)
+            this ValidationNotification source, IEnumerable value)
         {
             return source.SingletonItemsIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            });
-        }
-
-        [Obsolete("Use SingletonItemsIsValid(IStructureToValidate data)")]
-        private static ValidationNotification SingletonItemsIsValid(
-            this ValidationNotification source, object value, string display, string reference)
-        {
-            return source.SingletonItemsIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
             });
         }
 

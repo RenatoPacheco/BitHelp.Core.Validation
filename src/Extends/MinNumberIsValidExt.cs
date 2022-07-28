@@ -58,18 +58,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum);
         }
 
-        [Obsolete("Use MinNumberIsValid(IStructureToValidate data, decimal minimum)")]
-        private static ValidationNotification MinNumberIsValid(
-            this ValidationNotification source, object value, string display, string reference, decimal minimum)
-        {
-            return source.MinNumberIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum);
-        }
-
         public static ValidationNotification MinNumberIsValid(
             this ValidationNotification source, IStructureToValidate data, decimal minimum)
         {

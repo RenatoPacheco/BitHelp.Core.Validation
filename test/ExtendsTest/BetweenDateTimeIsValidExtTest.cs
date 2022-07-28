@@ -17,7 +17,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
         }
 
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
         readonly DateTime date = DateTime.Now;
         readonly DateTime[] options;
 

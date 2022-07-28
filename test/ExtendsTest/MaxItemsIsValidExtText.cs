@@ -2,129 +2,77 @@
 using BitHelp.Core.Validation.Extends;
 using Xunit;
 using System;
+using System.Collections;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MaxItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_if_4_items_is_in_maximum_5_valid()
+        [Theory]
+        [InlineData(null, 1)]
+        [InlineData(new string[] { }, 1)]
+        [InlineData(new int[] { 1 }, 1)]
+        [InlineData(new int[] { 1, 4 }, 4)]
+        [InlineData(new object[] { 1, "text", true, null }, 5)]
+        public void Check_max_items_is_valid(IEnumerable input, int max)
         {
             var array = new ArrayValues
             {
-                Int = new int[] { 1, 2, 3, 4 }
+                Value = input
             };
 
             _notification.Clear();
-            _notification.MaxItemsIsValid(array.Int, 5);
+            _notification.MaxItemsIsValid(array.Value, max);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.MaxItemsIsValid(array, x => x.Int, 5);
+            _notification.MaxItemsIsValid(array, x => x.Value, max);
             Assert.True(_notification.IsValid());
 
             array.Notifications.Clear();
-            array.MaxItemsIsValid(x => x.Int, 5);
+            array.MaxItemsIsValid(x => x.Value, max);
             Assert.True(array.IsValid());
         }
 
-        [Fact]
-        public void Check_if_5_items_is_in_maximum_5_valid()
+        [Theory]
+        [InlineData(new object[] { 1, "text", true, null }, 3)]
+        public void Check_max_items_is_invalid(IEnumerable input, int max)
         {
             var array = new ArrayValues
             {
-                Int = new int[] { 1, 2, 3, 4, 5 }
+                Value = input
             };
 
             _notification.Clear();
-            _notification.MaxItemsIsValid(array.Int, 5);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.MaxItemsIsValid(array, x => x.Int, 5);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.MaxItemsIsValid(x => x.Int, 5);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_6_items_is_in_maximum_5_invalid()
-        {
-            var array = new ArrayValues
-            {
-                Int = new int[] { 1, 2, 3, 4, 5, 6 }
-            };
-
-            _notification.Clear();
-            _notification.MaxItemsIsValid(array.Int, 5);
+            _notification.MaxItemsIsValid(array.Value, max);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.MaxItemsIsValid(array, x => x.Int, 5);
+            _notification.MaxItemsIsValid(array, x => x.Value, max);
             Assert.False(_notification.IsValid());
 
             array.Notifications.Clear();
-            array.MaxItemsIsValid(x => x.Int, 5);
+            array.MaxItemsIsValid(x => x.Value, max);
             Assert.False(array.IsValid());
         }
 
-        [Fact]
-        public void Check_if_0_items_is_in_maximum_5_valid()
+        [Theory]
+        [InlineData(null, 0)]
+        [InlineData(null, -1)]
+        [InlineData(new string[] { }, -2)]
+        [InlineData(new string[] { "text" }, -3)]
+        public void Check_max_items_exception(IEnumerable input, int max)
         {
             var array = new ArrayValues
             {
-                Int = Array.Empty<int>()
+                Value = input
             };
 
-            _notification.Clear();
-            _notification.MaxItemsIsValid(array.Int, 5);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.MaxItemsIsValid(array, x => x.Int, 5);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.MaxItemsIsValid(x => x.Int, 5);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_null_items_is_in_maximum_5_invalid()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            _notification.Clear();
-            _notification.MaxItemsIsValid(array.Int, 5);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.MaxItemsIsValid(array, x => x.Int, 5);
-            Assert.True(_notification.IsValid());
-
-            array.Notifications.Clear();
-            array.MaxItemsIsValid(x => x.Int, 5);
-            Assert.True(array.IsValid());
-        }
-
-        [Fact]
-        public void Check_if_maximum_less_1_exception()
-        {
-            var array = new ArrayValues
-            {
-                Int = null
-            };
-
-            Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array.Int, 0));
-            Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array, x => x.Int, 0));
-            Assert.Throws<ArgumentException>(() => array.MaxItemsIsValid(x => x.Int, 0));
+            Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array.Value, max));
+            Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array, x => x.Value, max));
+            Assert.Throws<ArgumentException>(() => array.MaxItemsIsValid(x => x.Value, max));
         }
     }
 }

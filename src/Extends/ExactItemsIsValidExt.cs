@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification ExactItemsIsValid<T>(
-            this T source, Expression<Func<T, IList>> expression,
+            this T source, Expression<Func<T, IEnumerable>> expression,
             int exact)
             where T : ISelfValidation
         {
@@ -22,7 +22,7 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification ExactItemsIsValid<T>(
-            this T source, IList value, int exact)
+            this T source, IEnumerable value, int exact)
             where T : ISelfValidation
         {
             return source.ExactItemsIsValid(new StructureToValidate
@@ -43,7 +43,7 @@ namespace BitHelp.Core.Validation.Extends
         #endregion
 
         public static ValidationNotification ExactItemsIsValid<T>(
-            this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int exact)
+            this ValidationNotification source, T data, Expression<Func<T, IEnumerable>> expression, int exact)
         {
             return source.ExactItemsIsValid(
                 data.GetStructureToValidate(expression),
@@ -51,25 +51,13 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification ExactItemsIsValid(
-            this ValidationNotification source, IList value, int exact)
+            this ValidationNotification source, IEnumerable value, int exact)
         {
             return source.ExactItemsIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, exact);
-        }
-
-        [Obsolete("Use ExactItemsIsValid(IStructureToValidate data, int exact)")]
-        private static ValidationNotification ExactItemsIsValid(
-            this ValidationNotification source, object value, string display, string reference, int exact)
-        {
-            return source.ExactItemsIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
             }, exact);
         }
 

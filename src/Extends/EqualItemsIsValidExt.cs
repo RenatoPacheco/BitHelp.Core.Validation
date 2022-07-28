@@ -12,64 +12,64 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification EqualItemsIsValid<T>(
-            this T source, Expression<Func<T, IList>> expression,
-                Expression<Func<T, IList>> compare, params Expression<Func<T, IList>>[] compareMore)
+            this T source, Expression<Func<T, IEnumerable>> expression,
+                Expression<Func<T, IEnumerable>> compare, params Expression<Func<T, IEnumerable>>[] compareMore)
             where T : ISelfValidation
         {
-            IList<IList> values = new List<IList>
+            IList<IEnumerable> values = new List<IEnumerable>
             {
-                expression.Compile().DynamicInvoke(source) as IList,
-                compare.Compile().DynamicInvoke(source) as IList
+                expression.Compile().DynamicInvoke(source) as IEnumerable,
+                compare.Compile().DynamicInvoke(source) as IEnumerable
             };
 
-            foreach (var item in compareMore)
+            foreach (Expression<Func<T, IEnumerable>> item in compareMore)
             {
-                values.Add(item.Compile().DynamicInvoke(source) as IList);
+                values.Add(item.Compile().DynamicInvoke(source) as IEnumerable);
             }
             return source.Notifications.EqualItemsIsValid(values);
         }
 
         public static ValidationNotification EqualItemsIsValid(
-            this ISelfValidation source, IList value, IList compare, params IList[] compareMore)
+            this ISelfValidation source, IEnumerable value, IEnumerable compare, params IEnumerable[] compareMore)
         {
-            compareMore = compareMore.Concat(new IList[] { value, compare }).ToArray();
+            compareMore = compareMore.Concat(new IEnumerable[] { value, compare }).ToArray();
             return source.Notifications.EqualItemsIsValid(compareMore);
         }
 
         #endregion
 
         public static ValidationNotification EqualItemsIsValid<T>(
-            this ValidationNotification source, T data, Expression<Func<T, IList>> expression,
-                Expression<Func<T, IList>> compare, params Expression<Func<T, IList>>[] compareMore)
+            this ValidationNotification source, T data, Expression<Func<T, IEnumerable>> expression,
+                Expression<Func<T, IEnumerable>> compare, params Expression<Func<T, IEnumerable>>[] compareMore)
         {
-            IList<IList> values = new List<IList>
+            IList<IEnumerable> values = new List<IEnumerable>
             {
-                expression.Compile().DynamicInvoke(data) as IList,
-                compare.Compile().DynamicInvoke(data) as IList
+                expression.Compile().DynamicInvoke(data) as IEnumerable,
+                compare.Compile().DynamicInvoke(data) as IEnumerable
             };
 
-            foreach (var item in compareMore)
+            foreach (Expression<Func<T, IEnumerable>> item in compareMore)
             {
-                values.Add(item.Compile().DynamicInvoke(data) as IList);
+                values.Add(item.Compile().DynamicInvoke(data) as IEnumerable);
             }
             return source.EqualItemsIsValid(values);
         }
 
         public static ValidationNotification EqualItemsIsValid(
-            this ValidationNotification source, IList value, IList compare, params IList[] compareMore)
+            this ValidationNotification source, IEnumerable value, IEnumerable compare, params IEnumerable[] compareMore)
         {
-            compareMore = compareMore.Concat(new IList[] { value, compare }).ToArray();
+            compareMore = compareMore.Concat(new IEnumerable[] { value, compare }).ToArray();
             return source.EqualItemsIsValid(compareMore);
         }
 
         private static ValidationNotification EqualItemsIsValid(
-            this ValidationNotification source, IEnumerable<IList> value)
+            this ValidationNotification source, IEnumerable<IEnumerable> value)
         {
             bool result = true;
             int? total = null;
             bool isNull = false;
             
-            foreach (var item in value)
+            foreach (IList item in value)
             {
                 if(item != null)
                 {
@@ -79,7 +79,7 @@ namespace BitHelp.Core.Validation.Extends
                         break;
                     }
 
-                    int current = (item as IList).Count;
+                    int current = item.Count;
                     if (total == null)
                     {
                         total = current;
@@ -105,7 +105,7 @@ namespace BitHelp.Core.Validation.Extends
             if (!result)
             {
                 string text = Resource.EqualNumberItemsInvalid;
-                var message = new ValidationMessage(text, null);
+                ValidationMessage message = new ValidationMessage(text, null);
                 source.SetLastMessage(message, Resource.DisplayValue);
                 source.Add(message);
             }

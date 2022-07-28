@@ -67,7 +67,7 @@ namespace BitHelp.Core.Validation
         {
             string display = expression.PropertyDisplay();
 
-            reference = reference ?? expression.PropertyTrail();
+            reference = reference ?? expression.PropertyPath();
 
             message = message ?? (ValidationMessage.IsTypeError(type) ? Resource.XNotValid : Resource.XValid);
             message = Regex.Replace(message, @"\{0\}", display);
@@ -81,7 +81,7 @@ namespace BitHelp.Core.Validation
         {
             string display = expression.PropertyDisplay();
 
-            reference = reference ?? expression.PropertyTrail();
+            reference = reference ?? expression.PropertyPath();
 
             message = message ?? (ValidationMessage.IsTypeError(type) ? Resource.XNotValid : Resource.XValid);
             message = Regex.Replace(message, @"\{0\}", display);
@@ -125,7 +125,7 @@ namespace BitHelp.Core.Validation
             Expression<Func<T, object>> expression,
             Exception exception, string reference = null)
         {
-            reference = reference ?? expression.PropertyTrail();
+            reference = reference ?? expression.PropertyPath();
             Messages.Add(new ValidationMessage(exception, reference));
         }
 
@@ -133,7 +133,7 @@ namespace BitHelp.Core.Validation
             T _, Expression<Func<T, P>> expression,
             Exception exception, string reference = null)
         {
-            reference = reference ?? expression.PropertyTrail();
+            reference = reference ?? expression.PropertyPath();
             Messages.Add(new ValidationMessage(exception, reference));
         }
 
@@ -288,13 +288,13 @@ namespace BitHelp.Core.Validation
 
         public void RemoveAtReference<T>(Expression<Func<T, object>> expression)
         {
-            string reference = expression.PropertyTrail();
+            string reference = expression.PropertyPath();
             RemoveAtReference(reference);
         }
 
         public void RemoveAtReference<T, P>(Expression<Func<T, P>> expression)
         {
-            string reference = expression.PropertyTrail();
+            string reference = expression.PropertyPath();
             RemoveAtReference(reference);
         }
     }

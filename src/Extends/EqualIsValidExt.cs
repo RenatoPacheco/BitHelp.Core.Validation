@@ -58,18 +58,6 @@ namespace BitHelp.Core.Validation.Extends
             }, compare);
         }
 
-        [Obsolete("Use EqualIsValid(IStructureToValidate data, object compare)")]
-        private static ValidationNotification EqualIsValid(
-            this ValidationNotification source, object value, string display, string reference, object compare)
-        {
-            return source.EqualIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, compare);
-        }
-
         public static ValidationNotification EqualIsValid(
             this ValidationNotification source, IStructureToValidate data, object compare)
         {

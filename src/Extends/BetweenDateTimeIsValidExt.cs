@@ -65,19 +65,6 @@ namespace BitHelp.Core.Validation.Extends
             }, options, cultureInfo);
         }
 
-        [Obsolete("Use BetweenDateTimeIsValid(IStructureToValidate data, IEnumerable<DateTime> options, CultureInfo cultureInfo)")]
-        private static ValidationNotification BetweenDateTimeIsValid(
-            this ValidationNotification source, object value, string display, string reference,
-            IEnumerable<DateTime> options, CultureInfo cultureInfo)
-        {
-            return source.BetweenDateTimeIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, options, cultureInfo);
-        }
-
         public static ValidationNotification BetweenDateTimeIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<DateTime> options, CultureInfo cultureInfo)
         {

@@ -63,18 +63,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum);
         }
 
-        [Obsolete("Use RangeNumberIsValid(IStructureToValidate data, decimal minimum, decimal maximum)")]
-        private static ValidationNotification RangeNumberIsValid(
-            this ValidationNotification source, object value, string display, string reference, decimal minimum, decimal maximum)
-        {
-            return source.RangeNumberIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum, maximum);
-        }
-
         public static ValidationNotification RangeNumberIsValid(
             this ValidationNotification source, IStructureToValidate data, decimal minimum, decimal maximum)
         {

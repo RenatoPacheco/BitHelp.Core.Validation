@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Helpers
         {
             return new StructureToValidate
             {
-                Reference = expression.PropertyTrail(),
+                Reference = expression.PropertyPath(),
                 Value = expression.Compile().DynamicInvoke(source),
                 Display = expression.PropertyDisplay()
             };

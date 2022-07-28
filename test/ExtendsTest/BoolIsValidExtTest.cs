@@ -6,89 +6,65 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class BoolIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_true_is_valid()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(true)]
+        [InlineData(false)]
+        [InlineData("True")]
+        [InlineData("False")]
+        [InlineData("true")]
+        [InlineData("false")]
+        public void Check_format_is_valid(object input)
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
-                Bool = true
+                Object = input
             };
 
             _notification.Clear();
-            _notification.BoolIsValid(single.Bool);
+            _notification.BoolIsValid(single.Object);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BoolIsValid(single, x => x.Bool);
+            _notification.BoolIsValid(single, x => x.Object);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BoolIsValid(x => x.Bool);
+            single.BoolIsValid(input);
             Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_true_as_string_is_valid()
-        {
-            var single = new SingleValues
-            {
-                String = "true"
-            };
-
-            _notification.Clear();
-            _notification.BoolIsValid(single.String);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.BoolIsValid(single, x => x.String);
-            Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BoolIsValid(x => x.String);
+            single.BoolIsValid(x => x.Object);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_ignore_null()
+        [Theory]
+        [InlineData("")]
+        [InlineData("0")]
+        [InlineData("1")]
+        public void Check_format_is_invalid(object input)
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
-                String = null
+                Object = input
             };
 
             _notification.Clear();
-            _notification.BoolIsValid(single.String);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.BoolIsValid(single, x => x.String);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.BoolIsValid(x => x.String);
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_number_is_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = "1"
-            };
-
-            _notification.Clear();
-            _notification.BoolIsValid(single.String);
+            _notification.BoolIsValid(single.Object);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BoolIsValid(single, x => x.String);
+            _notification.BoolIsValid(single, x => x.Object);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BoolIsValid(x => x.String);
+            single.BoolIsValid(input);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BoolIsValid(x => x.Object);
             Assert.False(single.IsValid());
         }
     }

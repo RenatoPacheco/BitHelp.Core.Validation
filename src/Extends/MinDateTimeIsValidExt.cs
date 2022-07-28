@@ -66,20 +66,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, cultureInfo);
         }
 
-        [Obsolete("Use MinDateTimeIsValid(IStructureToValidate data, DateTime minimum, CultureInfo cultureInfo = null)")]
-        private static ValidationNotification MinDateTimeIsValid(
-            this ValidationNotification source, object value,
-            string display, string reference, DateTime minimum,
-            CultureInfo cultureInfo = null)
-        {
-            return source.MinDateTimeIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum);
-        }
-
         public static ValidationNotification MinDateTimeIsValid(
             this ValidationNotification source, IStructureToValidate data,
             DateTime minimum, CultureInfo cultureInfo = null)

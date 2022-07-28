@@ -3,95 +3,118 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using Xunit;
 using System;
+using System.Globalization;
 
 namespace BitHelp.Core.Validation.Test.NotationsTest
 {
-    public class ComparePlusDateTimeIsValidTest
+    public class ComparePlusDateTimeIsValidValue01Test
+    {
+        [ComparePlusDateTimeIsValid("", "en-US")]
+        public object Value { get; set; }
+
+        public object Compare { get; set; }
+    }
+
+    public class ComparePlusDateTimeIsValidValue02Test
+    {
+        [ComparePlusDateTimeIsValid("Invalid", "en-US")]
+        public object Value { get; set; }
+
+        public object Compare { get; set; }
+    }
+
+    public class ComparePlusDateTimeIsValidValue03Test
     {
         [ComparePlusDateTimeIsValid(nameof(Compare))]
-        public DateTime? Value { get; set; }
+        public object Value { get; set; }
 
-        public DateTime? Compare { get; set; }
+        public object Compare { get; set; }
+    }
 
-        readonly DateTime _value = DateTime.Now;
 
-        [Fact]
-        public void Check_all_null_valid()
+    public class ComparePlusDateTimeIsValidTest
+    {
+        [ComparePlusDateTimeIsValid(nameof(Compare), "en-US")]
+        public object Value { get; set; }
+
+        public object Compare { get; set; }
+
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(null, "12/25/2020")]
+        [InlineData("12/26/2020", null)]
+        [InlineData("12/26/2020", "12/25/2020")]
+        [InlineData("not valid date", "12/25/2020")]
+        [InlineData("12/26/2020", "not valid date")]
+        public void Check_format_is_valid(
+            object input, object compare)
         {
-            var model = new ComparePlusDateTimeIsValidTest();
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ComparePlusDateTimeIsValidTest model = new()
+            {
+                Value = input,
+                Compare = compare
+            };
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
 
-        [Fact]
-        public void Check_compare_null_valid()
+        [Theory]
+        [InlineData("12/25/2020", "12/26/2020")]
+        public void Check_format_is_invalid(
+            object input, object compare)
         {
-            var model = new ComparePlusDateTimeIsValidTest()
+            ComparePlusDateTimeIsValidTest model = new()
             {
-                Value = _value.AddMinutes(123),
-                Compare = null
+                Value = input,
+                Compare = compare
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
-        }
-
-        [Fact]
-        public void Check_value_null_valid()
-        {
-            var model = new ComparePlusDateTimeIsValidTest()
-            {
-                Value = null,
-                Compare = _value.AddMinutes(123)
-            };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
-        }
-
-        [Fact]
-        public void Check_value_less_invalid()
-        {
-            var model = new ComparePlusDateTimeIsValidTest()
-            {
-                Value = _value.AddMinutes(123),
-                Compare = _value.AddMinutes(456)
-            };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.False(isValid);
         }
 
         [Fact]
-        public void Check_value_equal_invalid()
+        public void Check_property_unll_or_empty_invalid()
         {
-            var model = new ComparePlusDateTimeIsValidTest()
+            ComparePlusDateTimeIsValidValue01Test model = new()
             {
-                Value = _value.AddMinutes(123),
-                Compare = _value.AddMinutes(123)
+                Value = "12/26/2020",
+                Compare = "12/25/2020"
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.False(isValid);
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+
+            Assert.Throws<ArgumentException>(() => Validator.TryValidateObject(model, context, results, true));
         }
 
         [Fact]
-        public void Check_value_plus_valid()
+        public void Check_property_invalid()
         {
-            var model = new ComparePlusDateTimeIsValidTest()
+            ComparePlusDateTimeIsValidValue02Test model = new()
             {
-                Value = _value.AddMinutes(456),
-                Compare = _value.AddMinutes(123)
+                Value = "12/26/2020",
+                Compare = "12/25/2020"
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+
+            Assert.Throws<NullReferenceException>(() => Validator.TryValidateObject(model, context, results, true));
+        }
+
+        [Fact]
+        public void Check_culture_info_as_null_valid()
+        {
+            ComparePlusDateTimeIsValidValue03Test model = new()
+            {
+                Value = DateTime.Now.AddDays(2).ToString(),
+                Compare = DateTime.Now.ToString()
+            };
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
     }

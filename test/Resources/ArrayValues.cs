@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation.Test.Resources
 {
     public class ArrayValues : ISelfValidation
     {
+        [Display(Name = "Array value")]
+        public IEnumerable Value { get; set; }
+
+        [Display(Name = "Array compare")]
+        public IEnumerable Compare { get; set; }
+
         [Display(Name = "Array object")]
         public object[] Object { get; set; }
 

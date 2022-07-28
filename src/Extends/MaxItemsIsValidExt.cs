@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification MaxItemsIsValid<T>(
-            this T source, Expression<Func<T, IList>> expression, int maximum)
+            this T source, Expression<Func<T, IEnumerable>> expression, int maximum)
             where T : ISelfValidation
         {
             return source.MaxItemsIsValid(
@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification MaxItemsIsValid<T>(
-            this T source, IList value, int maximum)
+            this T source, IEnumerable value, int maximum)
             where T : ISelfValidation
         {
             return source.MaxItemsIsValid(new StructureToValidate
@@ -42,7 +42,7 @@ namespace BitHelp.Core.Validation.Extends
         #endregion
 
         public static ValidationNotification MaxItemsIsValid<T>(
-            this ValidationNotification source, T data, Expression<Func<T, IList>> expression, int maximum)
+            this ValidationNotification source, T data, Expression<Func<T, IEnumerable>> expression, int maximum)
         {
             return source.MaxItemsIsValid(
                 data.GetStructureToValidate(expression),
@@ -50,25 +50,13 @@ namespace BitHelp.Core.Validation.Extends
         }
 
         public static ValidationNotification MaxItemsIsValid(
-            this ValidationNotification source, IList value, int maximum)
+            this ValidationNotification source, IEnumerable value, int maximum)
         {
             return source.MaxItemsIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, maximum);
-        }
-
-        [Obsolete("Use MaxItemsIsValid(IStructureToValidate data, int maximum)")]
-        private static ValidationNotification MaxItemsIsValid(
-            this ValidationNotification source, object value, string display, string reference, int maximum)
-        {
-            return source.MaxItemsIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
             }, maximum);
         }
 

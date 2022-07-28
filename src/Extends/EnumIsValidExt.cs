@@ -59,18 +59,6 @@ namespace BitHelp.Core.Validation.Extends
             }, type);
         }
 
-        [Obsolete("Use EnumIsValid(IStructureToValidate data, Type type)")]
-        private static ValidationNotification EnumIsValid(
-            this ValidationNotification source, object value, string display, string reference, Type type)
-        {
-            return source.EnumIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, type);
-        }
-
         public static ValidationNotification EnumIsValid(
             this ValidationNotification source, IStructureToValidate data, Type type)
         {

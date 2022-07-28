@@ -63,18 +63,6 @@ namespace BitHelp.Core.Validation.Extends
             }, minimum, maximum);
         }
 
-        [Obsolete("Use RangeCharactersIsValid(IStructureToValidate data, int minimum, int maximum)")]
-        private static ValidationNotification RangeCharactersIsValid(
-            this ValidationNotification source, object value, string display, string reference, int minimum, int maximum)
-        {
-            return source.RangeCharactersIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, minimum, maximum);
-        }
-
         public static ValidationNotification RangeCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int minimum, int maximum)
         {

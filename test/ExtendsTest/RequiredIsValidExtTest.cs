@@ -1,7 +1,7 @@
-﻿using BitHelp.Core.Validation.Test.Resources;
-using BitHelp.Core.Validation.Extends;
-using Xunit;
+﻿using Xunit;
 using System;
+using BitHelp.Core.Validation.Extends;
+using BitHelp.Core.Validation.Test.Resources;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {

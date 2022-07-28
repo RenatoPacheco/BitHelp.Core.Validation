@@ -13,9 +13,10 @@ namespace BitHelp.Core.Validation.Notations
     {
         public CompareLessDateTimeIsValidAttribute(string otherProperty, string cultureInfo = null)
         {
-            if (otherProperty == null)
+            if (string.IsNullOrWhiteSpace(otherProperty))
             {
-                throw new ArgumentNullException(nameof(otherProperty));
+                throw new ArgumentException(
+                    string.Format(Resource.XNullOrEmpty, nameof(otherProperty)), nameof(otherProperty));
             }
 
             ErrorMessageResourceType = typeof(Resource);
@@ -40,7 +41,8 @@ namespace BitHelp.Core.Validation.Notations
             PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
             if (object.Equals(property, null))
             {
-                throw new ArgumentException(Resource.NotValid, nameof(OtherProperty));
+                throw new NullReferenceException(
+                    string.Format(Resource.XNotFound, nameof(OtherProperty)));
             }
 
             CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;

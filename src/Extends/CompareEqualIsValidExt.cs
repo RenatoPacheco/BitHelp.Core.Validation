@@ -56,7 +56,7 @@ namespace BitHelp.Core.Validation.Extends
 
             if (!(value is null))
             {
-                if (value?.ToString() != valueCompare?.ToString())
+                if (value.ToString() != valueCompare?.ToString())
                 {
                     string text = string.Format(
                         Resource.XCompareEqualInvalid,

@@ -1,121 +1,71 @@
-using System;
+using Xunit;
+using System.Globalization;
 using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
-using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class ComparePlusDateTimeIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
-        readonly DateTime _value = DateTime.Now;
+        readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_all_null_valid()
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(null, "12/25/2020")]
+        [InlineData("12/26/2020", null)]
+        [InlineData("12/26/2020", "12/25/2020")]
+        [InlineData("26/12/2020", "25/12/2020", "pt-BR")]
+        [InlineData("not valid date", "12/25/2020")]
+        [InlineData("12/26/2020", "not valid date")]
+        [InlineData("not valid date", "not valid date", null)]
+        public void Check_format_is_valid(
+            object input, object compare, string cultureInfo = "en-US")
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
-                String = null,
-                DateTimeNull = null
+                Value = input,
+                Compare = compare
             };
 
+            CultureInfo culture = cultureInfo is null
+                ? null : new CultureInfo(cultureInfo);
+
             _notification.Clear();
-            _notification.ComparePlusDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
+            _notification.ComparePlusDateTimeIsValid(
+                single, x => x.Value, x => x.Compare, culture);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.ComparePlusDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            single.ComparePlusDateTimeIsValid(
+                x => x.Value, x => x.Compare, culture);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_compare_null_valid()
+        [Theory]
+        [InlineData("12/25/2020", "12/26/2020")]
+        [InlineData("25/12/2020", "26/12/2020", "pt-BR")]
+        public void Check_format_is_invalid(
+            object input, object compare, string cultureInfo = "en-US")
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
-                String = _value.AddMinutes(123).ToString(),
-                DateTimeNull = null
+                Value = input,
+                Compare = compare
             };
 
-            _notification.Clear();
-            _notification.ComparePlusDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.ComparePlusDateTimeIsValid(x => x.String, x => x.DateTimeNull);
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_value_null_valid()
-        {
-            var single = new SingleValues
-            {
-                String = null,
-                DateTimeNull = _value.AddMinutes(123)
-            };
+            CultureInfo culture = cultureInfo is null
+                ? null : new CultureInfo(cultureInfo);
 
             _notification.Clear();
-            _notification.ComparePlusDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.ComparePlusDateTimeIsValid(x => x.String, x => x.DateTimeNull);
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_value_less_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = _value.AddMinutes(123).ToString(),
-                DateTimeNull = _value.AddMinutes(456)
-            };
-
-            _notification.Clear();
-            _notification.ComparePlusDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
+            _notification.ComparePlusDateTimeIsValid(
+                single, x => x.Value, x => x.Compare, culture);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.ComparePlusDateTimeIsValid(x => x.String, x => x.DateTimeNull);
+            single.ComparePlusDateTimeIsValid(
+                x => x.Value, x => x.Compare, culture);
             Assert.False(single.IsValid());
         }
 
-        [Fact]
-        public void Check_value_equal_invalid()
-        {
-            var single = new SingleValues
-            {
-                String = _value.AddMinutes(123).ToString(),
-                DateTimeNull = _value.AddMinutes(123)
-            };
-
-            _notification.Clear();
-            _notification.ComparePlusDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
-            Assert.False(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.ComparePlusDateTimeIsValid(x => x.String, x => x.DateTimeNull);
-            Assert.False(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_value_plus_valid()
-        {
-            var single = new SingleValues
-            {
-                String = _value.AddMinutes(456).ToString(),
-                DateTimeNull = _value.AddMinutes(123)
-            };
-
-            _notification.Clear();
-            _notification.ComparePlusDateTimeIsValid(single, x => x.String, x => x.DateTimeNull);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.ComparePlusDateTimeIsValid(x => x.String, x => x.DateTimeNull);
-            Assert.True(single.IsValid());
-        }
     }
 }

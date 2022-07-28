@@ -60,19 +60,6 @@ namespace BitHelp.Core.Validation.Extends
             }, options);
         }
 
-        [Obsolete("Use BetweenEnumIsValid(IStructureToValidate data, IEnumerable<Enum> options)")]
-        private static ValidationNotification BetweenEnumIsValid(
-            this ValidationNotification source, object value, string display, string reference,
-            IEnumerable<Enum> options)
-        {
-            return source.BetweenEnumIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, options);
-        }
-
         public static ValidationNotification BetweenEnumIsValid(
             this ValidationNotification source, IStructureToValidate data, IEnumerable<Enum> options)
         {
