@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             }
         }
 
-        public ValidationNotification Notifications { get; } = new ValidationNotification();
+        public ValidationNotification Notifications { get; } = new();
 
         public bool IsValid()
         {
@@ -45,7 +45,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         [Fact]
         public void Check_if_add_notifications()
         {
-            ValidationNotification notifications = new ValidationNotification();
+            ValidationNotification notifications = new();
 
             Text = null;
             Email = null;
@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         [Fact]
         public void Check_if_add_only_one_notifications()
         {
-            ValidationNotification notifications = new ValidationNotification();
+            ValidationNotification notifications = new();
 
             Text = "text here";
             Email = "email@test.site.com";
@@ -84,7 +84,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         [Fact]
         public void Check_if_add_notifications_seting_prefix()
         {
-            ValidationNotification notifications = new ValidationNotification();
+            ValidationNotification notifications = new();
             string prefix = "Test";
 
             Text = null;

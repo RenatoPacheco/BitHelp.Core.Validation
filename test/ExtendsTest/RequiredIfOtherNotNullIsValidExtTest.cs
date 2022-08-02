@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RequiredIfOtherNotNullIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_all_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null,
                 BoolNull = null
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_compara_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = string.Empty,
                 BoolNull = null
@@ -56,7 +56,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_all_not_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = string.Empty,
                 BoolNull = true
@@ -79,7 +79,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_null_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null,
                 BoolNull = true

@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 {
     public class AddInfoTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         private string GetReference<T>(Expression<Func<T, object>> expression)
         {

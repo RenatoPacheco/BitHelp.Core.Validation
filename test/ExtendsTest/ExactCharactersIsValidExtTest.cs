@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class ExactCharactersIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_characters_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "ExactCharactersIsValid"
             };
@@ -32,7 +32,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_max_characters_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "ExactCharactersIsValid"
             };
@@ -53,7 +53,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_min_characters_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "ExactCharactersIsValid"
             };
@@ -74,7 +74,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

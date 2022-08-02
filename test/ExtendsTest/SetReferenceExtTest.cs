@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class SetReferenceExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_set_reference_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "number"
             };
@@ -35,7 +35,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_reference_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "number"
             };
@@ -59,7 +59,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_reference_empty_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "number"
             };
@@ -84,7 +84,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_reference_empty_with_space_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "number"
             };
@@ -108,7 +108,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_reference_expression_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "number"
             };

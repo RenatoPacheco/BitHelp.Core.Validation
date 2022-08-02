@@ -17,7 +17,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 1, 2, 3 }, 2, 3)]
         public void Check_range_items_is_valid(IEnumerable input, int min, int max)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 1, 2, 3, 4 }, 2, 3)]
         public void Check_range_items_is_invalid(IEnumerable input, int min, int max)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new string[] { "text" }, 2, 1)]
         public void Check_range_items_exception(IEnumerable input, int min, int max)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };

@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 {
     public class AddAlertTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         private string GetReference<T>(Expression<Func<T, object>> expression)
         {
@@ -77,7 +77,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_expression_set_exception()
         {
             _notification.Clear();
-            _notification.AddAlert<SingleValues>(x => x.BoolNull, exception: new Exception("Alert here"));
+            _notification.AddAlert<SingleValues>(x => x.BoolNull, exception: new("Alert here"));
 
             ValidationMessage result = _notification.Messages.First();
 
@@ -103,7 +103,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_setting_all_values()
         {
             _notification.Clear();
-            _notification.AddAlert("Message here", reference: "reference", exception: new Exception("Alert here"));
+            _notification.AddAlert("Message here", reference: "reference", exception: new("Alert here"));
 
             ValidationMessage result = _notification.Messages.First();
 

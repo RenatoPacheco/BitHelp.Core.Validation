@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RangeTimeSpanIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_if_15_is_in_range_10_and_20_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 TimeSpan = TimeSpan.FromMinutes(15)
             };
@@ -29,7 +29,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_10_is_in_range_10_and_20_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 TimeSpan = TimeSpan.FromMinutes(10)
             };
@@ -46,7 +46,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_20_is_in_range_10_and_20_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 TimeSpan = TimeSpan.FromMinutes(20)
             };
@@ -63,7 +63,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_9_is_in_range_10_and_20_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 TimeSpan = TimeSpan.FromMinutes(9)
             };
@@ -80,7 +80,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_21_is_in_range_10_and_20_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 TimeSpan = TimeSpan.FromMinutes(21)
             };
@@ -97,7 +97,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_text_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "text"
             };
@@ -114,7 +114,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = string.Empty
             };
@@ -131,7 +131,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -148,7 +148,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_maximum_less_minimum_exception()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -160,7 +160,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_maximum_equal_minimum_exception()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

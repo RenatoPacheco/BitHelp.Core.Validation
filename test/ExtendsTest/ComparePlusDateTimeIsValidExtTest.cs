@@ -28,7 +28,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             CultureInfo culture = cultureInfo is null
-                ? null : new CultureInfo(cultureInfo);
+                ? null : new(cultureInfo);
 
             _notification.Clear();
             _notification.ComparePlusDateTimeIsValid(
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             CultureInfo culture = cultureInfo is null
-                ? null : new CultureInfo(cultureInfo);
+                ? null : new(cultureInfo);
 
             _notification.Clear();
             _notification.ComparePlusDateTimeIsValid(

@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class UrlIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_simple_url_https_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "https://www.site.com"
             };
@@ -32,7 +32,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_simple_url_http_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "http://site.com"
             };
@@ -53,7 +53,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_error_in_start_url_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "htt://site.com"
             };
@@ -74,7 +74,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ftp_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "ftp://site.com"
             };
@@ -95,7 +95,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

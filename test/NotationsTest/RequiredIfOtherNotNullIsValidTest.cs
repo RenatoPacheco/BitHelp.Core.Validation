@@ -15,9 +15,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_all_null_valid()
         {
-            RequiredIfOtherNotNullIsValidTest model = new RequiredIfOtherNotNullIsValidTest();
-            ValidationContext context = new ValidationContext(model);
-            List<ValidationResult> results = new List<ValidationResult>();
+            RequiredIfOtherNotNullIsValidTest model = new();
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
             bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
@@ -25,13 +25,13 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_all_not_null_valid()
         {
-            RequiredIfOtherNotNullIsValidTest model = new RequiredIfOtherNotNullIsValidTest()
+            RequiredIfOtherNotNullIsValidTest model = new()
             {
                 Value = string.Empty,
                 Compare = string.Empty
             };
-            ValidationContext context = new ValidationContext(model);
-            List<ValidationResult> results = new List<ValidationResult>();
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
             bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
@@ -39,12 +39,12 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_compare_not_null_invalid()
         {
-            RequiredIfOtherNotNullIsValidTest model = new RequiredIfOtherNotNullIsValidTest()
+            RequiredIfOtherNotNullIsValidTest model = new()
             {
                 Compare = string.Empty
             };
-            ValidationContext context = new ValidationContext(model);
-            List<ValidationResult> results = new List<ValidationResult>();
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
             bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.False(isValid);
         }
@@ -52,12 +52,12 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_value_not_null_valid()
         {
-            RequiredIfOtherNotNullIsValidTest model = new RequiredIfOtherNotNullIsValidTest()
+            RequiredIfOtherNotNullIsValidTest model = new()
             {
                 Value = string.Empty
             };
-            ValidationContext context = new ValidationContext(model);
-            List<ValidationResult> results = new List<ValidationResult>();
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
             bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }

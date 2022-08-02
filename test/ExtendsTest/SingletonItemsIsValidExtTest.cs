@@ -17,7 +17,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 2, "2", true }, null)]
         public void Check_singleton_items_is_valid(IEnumerable input, object any)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -41,7 +41,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 2, 2, "text" }, null)]
         public void Check_singleton_items_is_invalid(IEnumerable input, object any)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };

@@ -18,7 +18,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 1, "text", true, null }, 5)]
         public void Check_max_items_is_valid(IEnumerable input, int max)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 1, "text", true, null }, 3)]
         public void Check_max_items_is_invalid(IEnumerable input, int max)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new string[] { "text" }, -3)]
         public void Check_max_items_exception(IEnumerable input, int max)
         {
-            ArrayValues array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };

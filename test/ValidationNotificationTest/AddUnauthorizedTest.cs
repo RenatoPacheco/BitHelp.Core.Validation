@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 {
     public class AddUnauthorizedTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         private string GetReference<T>(Expression<Func<T, object>> expression)
         {
@@ -77,7 +77,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_expression_set_exception()
         {
             _notification.Clear();
-            _notification.AddUnauthorized<SingleValues>(x => x.BoolNull, exception: new Exception("Unauthorized here"));
+            _notification.AddUnauthorized<SingleValues>(x => x.BoolNull, exception: new("Unauthorized here"));
 
             ValidationMessage result = _notification.Messages.First();
 
@@ -103,7 +103,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_setting_all_values()
         {
             _notification.Clear();
-            _notification.AddUnauthorized("Message here", reference: "reference", exception: new Exception("Unauthorized here"));
+            _notification.AddUnauthorized("Message here", reference: "reference", exception: new("Unauthorized here"));
 
             ValidationMessage result = _notification.Messages.First();
 

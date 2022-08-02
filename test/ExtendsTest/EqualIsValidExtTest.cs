@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EqualIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_value_equal_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 Long = 123,
                 Int = 123
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_all_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = null,
                 IntNull = null
@@ -57,7 +57,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_value_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = null,
                 IntNull = 123
@@ -80,7 +80,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_compare_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = 123,
                 IntNull = null
@@ -105,7 +105,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_diferent_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = 123,
                 IntNull = 456
@@ -128,7 +128,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_string_and_int_with_equal_value_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "123",
                 Int = 123

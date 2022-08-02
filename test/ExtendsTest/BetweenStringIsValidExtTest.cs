@@ -7,13 +7,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class BetweenStringIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
         private readonly string[] _options = new string[] { "1", "2", "3" };
 
         [Fact]
         public void Check_contain_value_1_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "1"
             };
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_not_contain_value_10_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "10"
             };
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_null_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_option_null_exception()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -89,7 +89,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_option_empty_exception()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

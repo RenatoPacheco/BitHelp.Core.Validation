@@ -7,13 +7,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RangeDateTimeIsValidExtTest
     {
-        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
         private readonly DateTime date = DateTime.Now;
 
         [Fact]
         public void Check_if_15_is_in_range_10_and_20_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 DateTime = date.AddDays(15)
             };
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_10_is_in_range_10_and_20_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 DateTime = date.AddDays(10)
             };
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_20_is_in_range_10_and_20_valid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 DateTime = date.AddDays(20)
             };
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_9_is_in_range_10_and_20_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 DateTime = date.AddDays(9)
             };
@@ -97,7 +97,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_21_is_in_range_10_and_20_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 DateTime = date.AddDays(21)
             };
@@ -118,7 +118,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_text_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = "text"
             };
@@ -139,7 +139,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = string.Empty
             };
@@ -160,7 +160,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -181,7 +181,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_maximum_less_minimum_exception()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -194,7 +194,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_maximum_equal_minimum_exception()
         {
-            SingleValues single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
