@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EmailIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "myemail@site.com"
             };
@@ -27,13 +27,17 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EmailIsValid(x => x.String);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EmailIsValid(single.String);
+            Assert.True(single.IsValid());
         }
 
 
         [Fact]
         public void Check_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "myemailsite.com"
             };
@@ -49,12 +53,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EmailIsValid(x => x.String);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EmailIsValid(single.String);
+            Assert.False(single.IsValid());
         }
 
-       [Fact]
+        [Fact]
         public void Check_ignore_null()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -69,6 +77,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EmailIsValid(x => x.String);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EmailIsValid(single.String);
             Assert.True(single.IsValid());
         }
     }

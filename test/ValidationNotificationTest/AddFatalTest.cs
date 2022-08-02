@@ -9,13 +9,13 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 {
     public class AddFatalTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         private string GetReference<T>(Expression<Func<T, object>> expression)
         {
             return expression.PropertyPath();
         }
-        
+
         private string GetDisplay<T>(Expression<Func<T, object>> expression)
         {
             return expression.PropertyDisplay();
@@ -25,10 +25,10 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_expression_default()
         {
             _notification.Clear();
-            _notification.AddFatal<SingleValues>(x => x.BoolNull, new Exception("Error here"));
+            _notification.AddFatal<SingleValues>(x => x.BoolNull, new("Error here"));
 
-            var reference = GetReference<SingleValues>(x => x.BoolNull);
-            var result = _notification.Messages.First();
+            string reference = GetReference<SingleValues>(x => x.BoolNull);
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal(reference, result.Reference);
             Assert.Equal("Error here", result.Message);
@@ -40,9 +40,9 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_expression_set_reference()
         {
             _notification.Clear();
-            _notification.AddFatal<SingleValues>(x => x.BoolNull, new Exception("Error here"), reference: "reference");
+            _notification.AddFatal<SingleValues>(x => x.BoolNull, new("Error here"), reference: "reference");
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal("reference", result.Reference);
             Assert.Equal(ValidationType.Fatal, result.Type);
@@ -51,9 +51,9 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_default()
         {
             _notification.Clear();
-            _notification.AddFatal(new Exception("Error here"));
+            _notification.AddFatal(new("Error here"));
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Null(result.Reference);
             Assert.Equal("Error here", result.Message);
@@ -65,9 +65,9 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_setting_all_values()
         {
             _notification.Clear();
-            _notification.AddFatal(new Exception("Error here"), reference: "reference");
+            _notification.AddFatal(new("Error here"), reference: "reference");
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal("reference", result.Reference);
             Assert.Equal("Error here", result.Message);

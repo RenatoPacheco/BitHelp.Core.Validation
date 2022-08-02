@@ -6,7 +6,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class CompareEqualIsValidExtTest
     {
-        readonly ValidationNotification _notification = new();
+        private readonly ValidationNotification _notification = new();
 
 
         [Theory]

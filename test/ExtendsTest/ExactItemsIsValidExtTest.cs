@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class ExactItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_if_4_items_is_in_exact_4_valid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Int = new int[] { 1, 2, 3, 4 }
             };
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_4_items_is_in_exact_5_invalid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Int = new int[] { 1, 2, 3, 4 }
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_6_items_is_in_exact_5_invalid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Int = new int[] { 1, 2, 3, 4, 5, 6 }
             };
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_0_items_is_in_exact_5_ignore_valid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Int = Array.Empty<int>()
             };
@@ -96,7 +96,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_items_is_in_exact_5_invalid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Int = null
             };
@@ -117,7 +117,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_exact_less_1_exception()
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Int = null
             };

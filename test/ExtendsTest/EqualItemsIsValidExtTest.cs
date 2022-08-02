@@ -1,14 +1,13 @@
 ﻿using Xunit;
 using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
-using System;
 using System.Collections;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EqualItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new();
+        private readonly ValidationNotification _notification = new();
 
         [Theory]
         [InlineData(null, null)]

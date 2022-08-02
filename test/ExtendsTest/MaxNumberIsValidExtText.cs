@@ -6,13 +6,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MaxNumberIsValidExtText
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_if_5_is_in_maximum_10_valid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "5"
             };
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         public void Check_if_10_is_in_maximum_10_valid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "10"
             };
@@ -56,7 +56,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         public void Check_if_11_is_in_maximum_10_invalid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "11"
             };
@@ -77,7 +77,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_text_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "text"
             };
@@ -98,7 +98,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = string.Empty
             };
@@ -119,7 +119,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

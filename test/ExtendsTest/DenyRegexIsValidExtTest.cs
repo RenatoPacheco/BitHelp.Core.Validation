@@ -6,14 +6,14 @@ using System;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class RegexIsValidExtTest
+    public class DenyRegexIsValidExtTest
     {
         private readonly ValidationNotification _notification = new();
 
         [Theory]
         [InlineData(null, @"^[a-z]+$")]
-        [InlineData("abcdfg", @"^[a-z]+$")]
-        [InlineData("AbCdFg", @"^[a-z]+$", RegexOptions.IgnoreCase)]
+        [InlineData("", @"^[a-z]+$")]
+        [InlineData("AbCdFg", @"^[a-z]+$")]
 
         public void Regex_is_valid(string input, string pattern, RegexOptions options = RegexOptions.None)
         {
@@ -23,25 +23,25 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.RegexIsValid(single.String, pattern, options);
+            _notification.DenyRegexIsValid(single.String, pattern, options);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RegexIsValid(single, x => x.String, pattern, options);
+            _notification.DenyRegexIsValid(single, x => x.String, pattern, options);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.RegexIsValid(x => x.String, pattern, options);
+            single.DenyRegexIsValid(x => x.String, pattern, options);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.RegexIsValid(single.String, pattern, options);
+            single.DenyRegexIsValid(single.String, pattern, options);
             Assert.True(single.IsValid());
         }
 
         [Theory]
-        [InlineData("", @"^[a-z]+$")]
-        [InlineData("AbCdFg", @"^[a-z]+$")]
+        [InlineData("abcdfg", @"^[a-z]+$")]
+        [InlineData("AbCdFg", @"^[a-z]+$", RegexOptions.IgnoreCase)]
 
         public void Regex_not_is_valid(string input, string pattern, RegexOptions options = RegexOptions.None)
         {
@@ -51,19 +51,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.RegexIsValid(single.String, pattern, options);
+            _notification.DenyRegexIsValid(single.String, pattern, options);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RegexIsValid(single, x => x.String, pattern, options);
+            _notification.DenyRegexIsValid(single, x => x.String, pattern, options);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.RegexIsValid(x => x.String, pattern, options);
+            single.DenyRegexIsValid(x => x.String, pattern, options);
             Assert.False(single.IsValid());
 
             single.Notifications.Clear();
-            single.RegexIsValid(single.String, pattern, options);
+            single.DenyRegexIsValid(single.String, pattern, options);
             Assert.False(single.IsValid());
         }
 
@@ -75,10 +75,9 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array.String, string.Empty));
-            Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array, x => x.String, string.Empty));
-            Assert.Throws<ArgumentException>(() => array.RegexIsValid(x => x.String, string.Empty));
-            Assert.Throws<ArgumentException>(() => array.RegexIsValid(array.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => _notification.DenyRegexIsValid(array.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => _notification.DenyRegexIsValid(array, x => x.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => array.DenyRegexIsValid(x => x.String, string.Empty));
         }
 
 
@@ -90,10 +89,9 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array.String, null));
-            Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array, x => x.String, null));
-            Assert.Throws<ArgumentNullException>(() => array.RegexIsValid(x => x.String, null));
-            Assert.Throws<ArgumentNullException>(() => array.RegexIsValid(array.String, null));
+            Assert.Throws<ArgumentNullException>(() => _notification.DenyRegexIsValid(array.String, null));
+            Assert.Throws<ArgumentNullException>(() => _notification.DenyRegexIsValid(array, x => x.String, null));
+            Assert.Throws<ArgumentNullException>(() => array.DenyRegexIsValid(x => x.String, null));
         }
     }
 }

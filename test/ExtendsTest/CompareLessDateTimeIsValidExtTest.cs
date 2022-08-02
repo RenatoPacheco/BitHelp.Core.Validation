@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class CompareLessDateTimeIsValidExtTest
     {
-        readonly ValidationNotification _notification = new();
+        private readonly ValidationNotification _notification = new();
 
         [Theory]
         [InlineData(null, null)]
@@ -27,8 +27,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 Compare = compare
             };
 
-            CultureInfo culture = cultureInfo is null 
-                ? null : new CultureInfo(cultureInfo);
+            CultureInfo culture = cultureInfo is null
+                ? null : new(cultureInfo);
 
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             CultureInfo culture = cultureInfo is null
-                ? null : new CultureInfo(cultureInfo);
+                ? null : new(cultureInfo);
 
             _notification.Clear();
             _notification.CompareLessDateTimeIsValid(

@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class DoubleIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Double = 1.79
             };
@@ -25,6 +25,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
+            single.DoubleIsValid(single.Double);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
             single.DoubleIsValid(x => x.Double);
             Assert.True(single.IsValid());
         }
@@ -32,7 +36,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_not_number_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "text"
             };
@@ -48,12 +52,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DoubleIsValid(x => x.String);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DoubleIsValid(single.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
         public void Check_ignore_null()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 DoubleNull = null
             };
@@ -68,6 +76,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DoubleIsValid(x => x.DoubleNull);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DoubleIsValid(single.DoubleNull);
             Assert.True(single.IsValid());
         }
     }

@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class TimeSpanIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_10_days_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 TimeSpan = TimeSpan.FromDays(10)
             };
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_10_minutes_as_string_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = TimeSpan.FromMinutes(10).ToString()
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_0_time_as_string_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = TimeSpan.FromMinutes(0).ToString()
             };
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

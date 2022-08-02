@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MaxCharactersIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_if_8_characters_is_in_maximum_10_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "12345678"
             };
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_10_characters_is_in_maximum_10_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "1234567890"
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_11_characters_is_in_maximum_10_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "12345678901"
             };
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = string.Empty
             };
@@ -96,7 +96,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -117,7 +117,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_maximum_less_1_exception()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };

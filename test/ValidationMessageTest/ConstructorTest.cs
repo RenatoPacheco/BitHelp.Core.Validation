@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Test.ValidationMessageTest
         [InlineData(null, "Stack Trace", null, ValidationType.Error, "Stack Trace")]
         [InlineData("Message", "Stack Trace", null, ValidationType.Error, "Message")]
         public void Check_exception_values(
-            string message, string stackTrace, 
+            string message, string stackTrace,
             string reference, ValidationType type, string expected)
         {
             try

@@ -7,7 +7,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class DecimalIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Theory]
         [InlineData(null)]
@@ -15,7 +15,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData("123")]
         public void Check_value_is_valid(object value)
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Object = value
             };
@@ -31,6 +31,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.True(single.IsValid());
         }
 
         [Theory]
@@ -38,7 +42,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData("")]
         public void Check_value_not_is_valid(object value)
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Object = value
             };
@@ -54,6 +58,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.False(single.IsValid());
         }
 
         [Theory]
@@ -63,7 +71,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData("123", 456)]
         public void Check_value_array_is_valid(params object[] value)
         {
-            var single = new ArrayValues
+            ArrayValues single = new()
             {
                 Object = value
             };
@@ -78,6 +86,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
             Assert.True(single.IsValid());
         }
 
@@ -90,7 +102,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(null, 123)]
         public void Check_value_array_not_is_valid(params object[] value)
         {
-            var single = new ArrayValues
+            ArrayValues single = new()
             {
                 Object = value
             };
@@ -106,12 +118,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
         public void Check_empty_array_is_valid()
         {
-            var single = new ArrayValues
+            ArrayValues single = new()
             {
                 Object = Array.Empty<object>()
             };
@@ -127,12 +143,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_null_array_is_valid()
         {
-            var single = new ArrayValues
+            ArrayValues single = new()
             {
                 Object = null
             };
@@ -147,6 +167,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
             Assert.True(single.IsValid());
         }
     }

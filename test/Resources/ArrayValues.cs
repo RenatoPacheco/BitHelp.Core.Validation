@@ -48,7 +48,7 @@ namespace BitHelp.Core.Validation.Test.Resources
         [Display(Name = "Array enum")]
         public EnumValue[] Enum { get; set; }
 
-        public ValidationNotification Notifications { get; private set; } = new ValidationNotification();
+        public ValidationNotification Notifications { get; private set; } = new();
 
         public bool IsValid() => Notifications.IsValid();
     }

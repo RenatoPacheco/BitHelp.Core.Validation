@@ -8,7 +8,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MinItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new();
+        private readonly ValidationNotification _notification = new();
 
         [Theory]
         [InlineData(null, 4)]
@@ -17,7 +17,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 3, "text", false }, 2)]
         public void Check_min_items_is_valid(IEnumerable input, int min)
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -40,7 +40,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 1, "text" }, 3)]
         public void Check_min_items_is_invalid(IEnumerable input, int min)
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };
@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new string[] { "text" }, -3)]
         public void Check_min_items_exception(IEnumerable input, int min)
         {
-            var array = new ArrayValues
+            ArrayValues array = new()
             {
                 Value = input
             };

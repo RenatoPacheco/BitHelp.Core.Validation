@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class CompareLessTimeSpanIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_all_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null,
                 TimeSpanNull = null
@@ -30,7 +30,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_compare_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = TimeSpan.FromMinutes(123).ToString(),
                 TimeSpanNull = null
@@ -48,7 +48,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null,
                 TimeSpanNull = TimeSpan.FromMinutes(123)
@@ -66,7 +66,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_less_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = TimeSpan.FromMinutes(123).ToString(),
                 TimeSpanNull = TimeSpan.FromMinutes(456)
@@ -84,7 +84,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_equal_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = TimeSpan.FromMinutes(123).ToString(),
                 TimeSpanNull = TimeSpan.FromMinutes(123)
@@ -102,7 +102,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_plus_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = TimeSpan.FromMinutes(456).ToString(),
                 TimeSpanNull = TimeSpan.FromMinutes(123)

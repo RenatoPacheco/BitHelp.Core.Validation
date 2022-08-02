@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EqualIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_value_equal_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Long = 123,
                 Int = 123
@@ -29,12 +29,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.Long, single.Int);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.Long, single.Int);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_ignore_all_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = null,
                 IntNull = null
@@ -52,12 +56,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_ignore_value_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = null,
                 IntNull = 123
@@ -75,12 +83,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_ignore_compare_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = 123,
                 IntNull = null
@@ -98,6 +110,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
 
@@ -105,7 +121,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_diferent_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 LongNull = 123,
                 IntNull = 456
@@ -123,12 +139,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
         public void Check_string_and_int_with_equal_value_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "123",
                 Int = 123
@@ -144,6 +164,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EqualIsValid(x => x.String, single.Int);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.String, single.Int);
             Assert.True(single.IsValid());
         }
     }

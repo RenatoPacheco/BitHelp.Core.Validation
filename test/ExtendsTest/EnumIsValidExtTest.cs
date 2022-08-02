@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EnumIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new();
 
         [Fact]
         public void Check_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Enum = EnumValue.DateTime
             };
@@ -25,14 +25,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EnumIsValid(x => x.Enum, typeof(EnumValue));
+            single.EnumIsValid(single.Enum, typeof(EnumValue));
             Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_string_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = EnumValue.DateTime.ToString()
             };
@@ -48,12 +48,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.String, typeof(EnumValue));
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.String, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_string_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = "sometext"
             };
@@ -69,12 +73,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.String, typeof(EnumValue));
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.String, typeof(EnumValue));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
         public void Check_number_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Int = (int)EnumValue.DateTime
             };
@@ -90,12 +98,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.Int, typeof(EnumValue));
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.Int, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
         public void Check_number_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 Int = 100
             };
@@ -111,12 +123,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.Int, typeof(EnumValue));
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.Int, typeof(EnumValue));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
         public void Check_ignore_null()
         {
-            var single = new SingleValues
+            SingleValues single = new()
             {
                 String = null
             };
@@ -131,6 +147,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EnumIsValid(x => x.String, typeof(EnumValue));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.String, typeof(EnumValue));
             Assert.True(single.IsValid());
         }
     }
