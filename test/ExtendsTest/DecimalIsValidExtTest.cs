@@ -31,6 +31,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.True(single.IsValid());
         }
 
         [Theory]
@@ -53,6 +57,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
             Assert.False(single.IsValid());
         }
 
@@ -78,6 +86,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
             Assert.True(single.IsValid());
         }
 
@@ -106,6 +118,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -127,6 +143,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -147,6 +167,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DecimalIsValid(x => x.Object);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DecimalIsValid(single.Object);
             Assert.True(single.IsValid());
         }
     }

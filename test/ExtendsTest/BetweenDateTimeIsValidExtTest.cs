@@ -41,6 +41,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(x => x.String, options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.String, options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -61,6 +65,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(x => x.String, options);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.String, options);
             Assert.False(single.IsValid());
         }
 
@@ -83,6 +91,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(x => x.String, options);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.String, options);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -104,6 +116,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(x => x.String, options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.String, options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -117,6 +133,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single.String, null));
             Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single, x => x.String, null));
             Assert.Throws<ArgumentException>(() => single.BetweenDateTimeIsValid(x => x.String, null));
+            Assert.Throws<ArgumentException>(() => single.BetweenDateTimeIsValid(single.String, null));
         }
 
         [Fact]
@@ -130,6 +147,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single.String, Array.Empty<DateTime>()));
             Assert.Throws<ArgumentException>(() => _notification.BetweenDateTimeIsValid(single, x => x.String, Array.Empty<DateTime>()));
             Assert.Throws<ArgumentException>(() => single.BetweenDateTimeIsValid(x => x.String, Array.Empty<DateTime>()));
+            Assert.Throws<ArgumentException>(() => single.BetweenDateTimeIsValid(single.String, Array.Empty<DateTime>()));
         }
     }
 }

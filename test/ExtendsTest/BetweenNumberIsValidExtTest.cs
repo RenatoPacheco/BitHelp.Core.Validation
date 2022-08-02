@@ -28,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenNumberIsValid(x => x.String, _options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.String, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -48,6 +52,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.BetweenNumberIsValid(x => x.String, _options);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.String, _options);
             Assert.False(single.IsValid());
         }
 
@@ -70,6 +78,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenNumberIsValid(x => x.String, _options);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.String, _options);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -91,6 +103,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenNumberIsValid(x => x.String, _options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.String, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -104,6 +120,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, null));
             Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, null));
             Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, null));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, null));
         }
 
         [Fact]
@@ -117,6 +134,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, Array.Empty<decimal>()));
             Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, Array.Empty<decimal>()));
             Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, Array.Empty<decimal>()));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, Array.Empty<decimal>()));
         }
     }
 }

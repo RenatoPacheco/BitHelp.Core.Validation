@@ -29,6 +29,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenStringIsValid(x => x.String, _options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenStringIsValid(single.String, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -49,6 +53,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.BetweenStringIsValid(x => x.String, _options);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenStringIsValid(single.String, _options);
             Assert.False(single.IsValid());
         }
 
@@ -71,6 +79,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenStringIsValid(x => x.String, _options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenStringIsValid(single.String, _options);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -84,6 +96,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single.String, null));
             Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single, x => x.String, null));
             Assert.Throws<ArgumentException>(() => single.BetweenStringIsValid(x => x.String, null));
+            Assert.Throws<ArgumentException>(() => single.BetweenStringIsValid(single.String, null));
         }
 
         [Fact]
@@ -97,6 +110,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single.String, Array.Empty<string>()));
             Assert.Throws<ArgumentException>(() => _notification.BetweenStringIsValid(single, x => x.String, Array.Empty<string>()));
             Assert.Throws<ArgumentException>(() => single.BetweenStringIsValid(x => x.String, Array.Empty<string>()));
+            Assert.Throws<ArgumentException>(() => single.BetweenStringIsValid(single.String, Array.Empty<string>()));
         }
     }
 }

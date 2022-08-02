@@ -33,6 +33,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.RegexIsValid(x => x.String, pattern, options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RegexIsValid(single.String, pattern, options);
+            Assert.True(single.IsValid());
         }
 
         [Theory]
@@ -57,6 +61,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.RegexIsValid(x => x.String, pattern, options);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RegexIsValid(single.String, pattern, options);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -70,6 +78,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array.String, string.Empty));
             Assert.Throws<ArgumentException>(() => _notification.RegexIsValid(array, x => x.String, string.Empty));
             Assert.Throws<ArgumentException>(() => array.RegexIsValid(x => x.String, string.Empty));
+            Assert.Throws<ArgumentException>(() => array.RegexIsValid(array.String, string.Empty));
         }
 
 
@@ -84,6 +93,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array.String, null));
             Assert.Throws<ArgumentNullException>(() => _notification.RegexIsValid(array, x => x.String, null));
             Assert.Throws<ArgumentNullException>(() => array.RegexIsValid(x => x.String, null));
+            Assert.Throws<ArgumentNullException>(() => array.RegexIsValid(array.String, null));
         }
     }
 }

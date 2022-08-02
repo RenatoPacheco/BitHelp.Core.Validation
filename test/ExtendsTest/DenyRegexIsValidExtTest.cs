@@ -33,6 +33,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.DenyRegexIsValid(x => x.String, pattern, options);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DenyRegexIsValid(single.String, pattern, options);
+            Assert.True(single.IsValid());
         }
 
         [Theory]
@@ -56,6 +60,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.DenyRegexIsValid(x => x.String, pattern, options);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.DenyRegexIsValid(single.String, pattern, options);
             Assert.False(single.IsValid());
         }
 
