@@ -25,7 +25,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EnumIsValid(x => x.Enum, typeof(EnumValue));
+            single.EnumIsValid(single.Enum, typeof(EnumValue));
             Assert.True(single.IsValid());
         }
 
@@ -48,6 +48,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.String, typeof(EnumValue));
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.String, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -68,6 +72,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EnumIsValid(x => x.String, typeof(EnumValue));
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.String, typeof(EnumValue));
             Assert.False(single.IsValid());
         }
 
@@ -90,6 +98,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.Int, typeof(EnumValue));
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.Int, typeof(EnumValue));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -111,6 +123,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(x => x.Int, typeof(EnumValue));
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.Int, typeof(EnumValue));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -131,6 +147,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EnumIsValid(x => x.String, typeof(EnumValue));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.String, typeof(EnumValue));
             Assert.True(single.IsValid());
         }
     }

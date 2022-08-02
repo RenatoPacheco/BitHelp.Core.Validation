@@ -29,6 +29,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.Long, single.Int);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.Long, single.Int);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -51,6 +55,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
             Assert.True(single.IsValid());
         }
 
@@ -75,6 +83,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -97,6 +109,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
             Assert.True(single.IsValid());
         }
 
@@ -123,6 +139,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EqualIsValid(x => x.LongNull, single.IntNull);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.LongNull, single.IntNull);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -144,6 +164,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.EqualIsValid(x => x.String, single.Int);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EqualIsValid(single.String, single.Int);
             Assert.True(single.IsValid());
         }
     }

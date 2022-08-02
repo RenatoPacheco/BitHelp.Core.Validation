@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(null, "en-US")]
         [InlineData("12/22/2020", "en-US")]
-        [InlineData("22/12/2020", "pr-BR")]
+        [InlineData("22/12/2020", "pt-BR")]
         public void Date_time_is_valid(string input, string cultureInfo)
         {
             SingleValues single = new()
@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
         [Theory]
         [InlineData("22/12/2020", "en-US")]
-        [InlineData("12/22/2020", "pr-BR")]
+        [InlineData("12/22/2020", "pt-BR")]
         public void Date_time_not_is_valid(string input, string cultureInfo)
         {
             SingleValues single = new()
