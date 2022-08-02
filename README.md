@@ -27,27 +27,14 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.12.0
+## Release 0.13.0
 
 **Features:**
 
-- Reviewed all EqualItems tests
-- Review required validate
-- Review ompare less date time validate
-- Review ompare plus date time validate
-- Adding note to coverage report generate
-- Set to report only errors
-- Remove fuget badge
-- Remove methods obsolete
-- Adding IEquatable<ValidationMessage>
-- Adding testing exception
-- Update packages
-- Remove software dependencies in readme
-
-**Bug fixing**
-
-- Fixing IsTypeError check
-- Update input Func<T, IList> to Func<T, IEnumerable>
+- Adding DenyRegexIsValid
+- Update packages test
+- Delete folder doc
+- Adding more tests
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 

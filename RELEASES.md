@@ -1,5 +1,14 @@
 # BitHelp.Core.Validation
 
+## Release 0.13.0
+
+**Features:**
+
+- Adding DenyRegexIsValid
+- Update packages test
+- Delete folder doc
+- Adding more tests
+
 ## Release 0.12.0
 
 **Features:**
