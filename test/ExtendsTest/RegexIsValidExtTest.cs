@@ -10,66 +10,52 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     {
         private readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_text_lowercase_only_valid()
+        [Theory]
+        [InlineData(null, @"^[a-z]+$")]
+        [InlineData("abcdfg", @"^[a-z]+$")]
+        [InlineData("AbCdFg", @"^[a-z]+$", RegexOptions.IgnoreCase)]
+
+        public void Regex_is_valid(string input, string pattern, RegexOptions options = RegexOptions.None)
         {
             SingleValues single = new()
             {
-                String = "abcdfg"
+                String = input
             };
 
             _notification.Clear();
-            _notification.RegexIsValid(single.String, @"^[a-z]+$");
+            _notification.RegexIsValid(single.String, pattern, options);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
+            _notification.RegexIsValid(single, x => x.String, pattern, options);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.RegexIsValid(x => x.String, @"^[a-z]+$");
+            single.RegexIsValid(x => x.String, pattern, options);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_text_ignorecase_using_options_valid()
+        [Theory]
+        [InlineData("", @"^[a-z]+$")]
+        [InlineData("AbCdFg", @"^[a-z]+$")]
+
+        public void Regex_not_is_valid(string input, string pattern, RegexOptions options = RegexOptions.None)
         {
             SingleValues single = new()
             {
-                String = "AbCdFg"
+                String = input
             };
 
             _notification.Clear();
-            _notification.RegexIsValid(single.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.RegexIsValid(x => x.String, @"^[a-z]+$", RegexOptions.IgnoreCase);
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_text_only_invalid()
-        {
-            SingleValues single = new()
-            {
-                String = "AbCdFg123"
-            };
-
-            _notification.Clear();
-            _notification.RegexIsValid(single.String, @"^[a-z]+$");
+            _notification.RegexIsValid(single.String, pattern, options);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.RegexIsValid(single, x => x.String, @"^[a-z]+$");
+            _notification.RegexIsValid(single, x => x.String, pattern, options);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.RegexIsValid(x => x.String, @"^[a-z]+$");
+            single.RegexIsValid(x => x.String, pattern, options);
             Assert.False(single.IsValid());
         }
 
