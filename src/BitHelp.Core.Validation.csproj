@@ -18,7 +18,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>validation;netcore</PackageTags>
+    <PackageTags>validation;netcore;netstandard;framework;</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
