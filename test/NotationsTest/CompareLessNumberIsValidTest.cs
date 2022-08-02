@@ -23,14 +23,14 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [InlineData("abc", "abcd")]
         public void Check_value_is_valid(object value, object compare)
         {
-            var model = new CompareLessNumberIsValidTest()
+            CompareLessNumberIsValidTest model = new CompareLessNumberIsValidTest()
             {
                 Value = value,
                 Compare = compare
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool result = Validator.TryValidateObject(model, context, results, true);
             Assert.True(result);
         }
 
@@ -41,14 +41,14 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [InlineData("456", "123")]
         public void Check_value_not_is_valid(object value, object compare)
         {
-            var model = new CompareLessNumberIsValidTest()
+            CompareLessNumberIsValidTest model = new CompareLessNumberIsValidTest()
             {
                 Value = value,
                 Compare = compare
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool result = Validator.TryValidateObject(model, context, results, true);
             Assert.False(result);
         }
     }

@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class CompareLessNumberIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_all_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null,
                 DecimalNull = null
@@ -29,7 +29,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_compare_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = 123.ToString(),
                 DecimalNull = null
@@ -47,7 +47,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null,
                 DecimalNull = 123
@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_less_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = 123.ToString(),
                 DecimalNull = 456
@@ -83,7 +83,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_equal_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = 123.ToString(),
                 DecimalNull = 123
@@ -101,7 +101,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_value_plus_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = 456.ToString(),
                 DecimalNull = 123

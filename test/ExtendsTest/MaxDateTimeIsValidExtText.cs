@@ -7,14 +7,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MaxDateTimeIsValidExtText
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
-        readonly DateTime date = DateTime.Now;
+        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly DateTime date = DateTime.Now;
 
         [Fact]
         public void Check_if_5_is_in_maximum_10_valid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = date.AddDays(5).ToString()
             };
@@ -36,7 +36,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         public void Check_if_10_is_in_maximum_10_valid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = date.AddDays(10).ToString()
             };
@@ -58,7 +58,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         public void Check_if_11_is_in_maximum_10_invalid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = date.AddDays(11).ToString()
             };
@@ -79,7 +79,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_text_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "text"
             };
@@ -100,7 +100,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = string.Empty
             };
@@ -121,7 +121,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null
             };

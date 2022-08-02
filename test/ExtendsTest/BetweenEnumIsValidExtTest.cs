@@ -7,13 +7,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class BetweenEnumIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
-        readonly Enum[] _options = new Enum[] { EnumValue.Guid, EnumValue.Enum, EnumValue.Number };
+        private readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly Enum[] _options = new Enum[] { EnumValue.Guid, EnumValue.Enum, EnumValue.Number };
 
         [Fact]
         public void Check_contain_value_guid_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Enum = EnumValue.Guid
             };
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_not_contain_value_string_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Enum = EnumValue.String
             };
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_null_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 EnumNull = null
             };
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_option_null_exception()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 EnumNull = null
             };
@@ -89,7 +89,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_option_empty_exception()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 EnumNull = null
             };

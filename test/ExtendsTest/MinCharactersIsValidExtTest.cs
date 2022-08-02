@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MinCharactersIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_15_characters_is_in_minimum_10_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "123456789012345"
             };
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_10_characters_is_in_minimum_10_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "1234567890"
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_9_characters_is_in_minimum_10_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "123456789"
             };
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = string.Empty
             };
@@ -96,7 +96,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null
             };
@@ -117,7 +117,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_minimum_less_1_exception()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null
             };

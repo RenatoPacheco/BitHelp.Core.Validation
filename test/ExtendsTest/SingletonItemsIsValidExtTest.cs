@@ -1,14 +1,13 @@
 ﻿using BitHelp.Core.Validation.Test.Resources;
 using BitHelp.Core.Validation.Extends;
 using Xunit;
-using System;
 using System.Collections;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class SingletonItemsIsValidExtTest
     {
-        readonly ValidationNotification _notification = new();
+        private readonly ValidationNotification _notification = new();
 
         [Theory]
         [InlineData(null, null)]
@@ -18,7 +17,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 2, "2", true }, null)]
         public void Check_singleton_items_is_valid(IEnumerable input, object any)
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 Value = input
             };
@@ -42,7 +41,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(new object[] { 2, 2, "text" }, null)]
         public void Check_singleton_items_is_invalid(IEnumerable input, object any)
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 Value = input
             };

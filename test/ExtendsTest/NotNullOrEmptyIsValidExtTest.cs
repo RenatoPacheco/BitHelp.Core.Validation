@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class NotNullOrEmptyIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_no_empty_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "123"
             };
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_empty_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = string.Empty
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_empty_ignore_with_space_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = string.Empty
             };
@@ -75,7 +75,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_null_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null
             };
@@ -96,7 +96,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_with_space_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "     "
             };
@@ -117,7 +117,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_with_space_and_ignore_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "     "
             };
@@ -138,7 +138,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_invalid_list_empty()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = Array.Empty<string>()
             };
@@ -159,7 +159,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_invalid_list_null()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = null
             };
@@ -180,7 +180,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_list_item_empty_invalid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = new string[] { "             " }
             };
@@ -202,7 +202,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_list_item_null_invalid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = new string[] { null }
             };
@@ -223,7 +223,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_list_valid()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = new string[] { "123" }
             };

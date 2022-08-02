@@ -8,12 +8,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RegexIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
-        
+        private readonly ValidationNotification _notification = new ValidationNotification();
+
         [Fact]
         public void Check_text_lowercase_only_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "abcdfg"
             };
@@ -34,7 +34,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_text_ignorecase_using_options_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "AbCdFg"
             };
@@ -55,7 +55,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_text_only_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "AbCdFg123"
             };
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_pattern_empty_exception()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = null
             };
@@ -90,7 +90,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_pattern_null_exception()
         {
-            var array = new ArrayValues
+            ArrayValues array = new ArrayValues
             {
                 String = null
             };

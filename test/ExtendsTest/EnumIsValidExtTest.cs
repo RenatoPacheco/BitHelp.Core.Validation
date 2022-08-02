@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class EnumIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Enum = EnumValue.DateTime
             };
@@ -32,7 +32,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_string_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = EnumValue.DateTime.ToString()
             };
@@ -53,7 +53,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_string_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "sometext"
             };
@@ -74,7 +74,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_number_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Int = (int)EnumValue.DateTime
             };
@@ -95,7 +95,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_number_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Int = 100
             };
@@ -116,7 +116,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_null()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null
             };

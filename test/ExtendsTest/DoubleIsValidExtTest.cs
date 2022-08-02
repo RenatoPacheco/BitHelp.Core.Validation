@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class DoubleIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_is_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Double = 1.79
             };
@@ -32,7 +32,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_not_number_is_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "text"
             };
@@ -53,7 +53,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_ignore_null()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 DoubleNull = null
             };

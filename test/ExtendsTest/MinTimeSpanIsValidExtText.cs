@@ -7,13 +7,13 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class MinTimeSpanIsValidExtText
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_15_is_in_minimum_10_valid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = TimeSpan.FromMinutes(15).ToString()
             };
@@ -35,7 +35,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         public void Check_if_10_is_in_minimum_10_valid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = TimeSpan.FromMinutes(10).ToString()
             };
@@ -57,7 +57,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         public void Check_if_9_is_in_minimum_10_invalid()
         {
 
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = TimeSpan.FromMinutes(9).ToString()
             };
@@ -78,7 +78,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_text_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "text"
             };
@@ -99,7 +99,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_empty_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = string.Empty
             };
@@ -120,7 +120,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_null_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = null
             };

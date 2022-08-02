@@ -16,80 +16,80 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [Fact]
         public void Check_all_null_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest();
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            CompareLessTimeSpanIsValidTest model = new CompareLessTimeSpanIsValidTest();
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
 
         [Fact]
         public void Check_compare_null_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest()
+            CompareLessTimeSpanIsValidTest model = new CompareLessTimeSpanIsValidTest()
             {
                 Value = TimeSpan.FromMinutes(123),
                 Compare = null
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
 
         [Fact]
         public void Check_value_null_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest()
+            CompareLessTimeSpanIsValidTest model = new CompareLessTimeSpanIsValidTest()
             {
                 Value = null,
                 Compare = TimeSpan.FromMinutes(123)
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
 
         [Fact]
         public void Check_value_less_valid()
         {
-            var model = new CompareLessTimeSpanIsValidTest()
+            CompareLessTimeSpanIsValidTest model = new CompareLessTimeSpanIsValidTest()
             {
                 Value = TimeSpan.FromMinutes(123),
                 Compare = TimeSpan.FromMinutes(456)
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.True(isValid);
         }
 
         [Fact]
         public void Check_value_equal_invalid()
         {
-            var model = new CompareLessTimeSpanIsValidTest()
+            CompareLessTimeSpanIsValidTest model = new CompareLessTimeSpanIsValidTest()
             {
                 Value = TimeSpan.FromMinutes(123),
                 Compare = TimeSpan.FromMinutes(123)
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.False(isValid);
         }
 
         [Fact]
         public void Check_value_plus_invalid()
         {
-            var model = new CompareLessTimeSpanIsValidTest()
+            CompareLessTimeSpanIsValidTest model = new CompareLessTimeSpanIsValidTest()
             {
                 Value = TimeSpan.FromMinutes(456),
                 Compare = TimeSpan.FromMinutes(123)
             };
-            var context = new ValidationContext(model);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(model, context, results, true);
+            ValidationContext context = new ValidationContext(model);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(model, context, results, true);
             Assert.False(isValid);
         }
     }

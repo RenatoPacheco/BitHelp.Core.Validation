@@ -8,12 +8,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class SetMessageExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_set_message_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "number"
             };
@@ -37,7 +37,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_message_expression_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "number"
             };
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_message_null_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "number"
             };
@@ -95,7 +95,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_message_empty_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "number"
             };
@@ -114,7 +114,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_set_message_empty_whith_space_invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "number"
             };

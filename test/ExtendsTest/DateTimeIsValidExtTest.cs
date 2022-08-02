@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class DateTimeIsValidExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_date_en_US_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "12/22/2020"
             };
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_date_en_US_Invalid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "22/12/2020"
             };
@@ -54,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_date_pt_BR_valid()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 String = "22/12/2020"
             };

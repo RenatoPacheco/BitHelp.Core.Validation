@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using Xunit;
 using System;
-using System.Globalization;
 
 namespace BitHelp.Core.Validation.Test.NotationsTest
 {

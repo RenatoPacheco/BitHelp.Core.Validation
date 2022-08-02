@@ -6,12 +6,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class RemoveAtReferenceExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_if_the_reference_has_been_removed_by_the_validationNotification()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Int = 100,
                 IntNull = 100
@@ -36,7 +36,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_the_reference_has_been_removed_by_the_expression_in_this_object()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Int = 100,
                 IntNull = 100
@@ -61,7 +61,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_if_the_reference_has_been_removed_by_the_iSelfValidation()
         {
-            var single = new SingleValues
+            SingleValues single = new SingleValues
             {
                 Int = 100,
                 IntNull = 100

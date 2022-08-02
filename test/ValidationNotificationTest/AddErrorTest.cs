@@ -9,13 +9,13 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 {
     public class AddErrorTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         private string GetReference<T>(Expression<Func<T, object>> expression)
         {
             return expression.PropertyPath();
         }
-        
+
         private string GetDisplay<T>(Expression<Func<T, object>> expression)
         {
             return expression.PropertyDisplay();
@@ -27,8 +27,8 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError<SingleValues>(x => x.BoolNull);
 
-            var reference = GetReference<SingleValues>(x => x.BoolNull);
-            var result = _notification.Messages.First();
+            string reference = GetReference<SingleValues>(x => x.BoolNull);
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal(reference, result.Reference);
             Assert.Null(result.Exception);
@@ -41,7 +41,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError<SingleValues>(x => x.BoolNull, message: "Message here");
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal("Message here", result.Message);
             Assert.Equal(ValidationType.Error, result.Type);
@@ -53,9 +53,9 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError<SingleValues>(x => x.BoolNull, message: "{0} message here");
 
-            var display = GetDisplay<SingleValues>(x => x.BoolNull);
-            var message = string.Format("{0} message here", display);
-            var result = _notification.Messages.First();
+            string display = GetDisplay<SingleValues>(x => x.BoolNull);
+            string message = string.Format("{0} message here", display);
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal(message, result.Message);
             Assert.Equal(ValidationType.Error, result.Type);
@@ -67,7 +67,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError<SingleValues>(x => x.BoolNull, reference: "reference");
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal("reference", result.Reference);
             Assert.Equal(ValidationType.Error, result.Type);
@@ -79,7 +79,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError<SingleValues>(x => x.BoolNull, exception: new Exception("Error here"));
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal("Error here", result.Exception.Message);
             Assert.Equal(ValidationType.Error, result.Type);
@@ -91,7 +91,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError("Message here");
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Null(result.Reference);
             Assert.Equal("Message here", result.Message);
@@ -105,7 +105,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             _notification.Clear();
             _notification.AddError("Message here", reference: "reference", exception: new Exception("Error here"));
 
-            var result = _notification.Messages.First();
+            ValidationMessage result = _notification.Messages.First();
 
             Assert.Equal("reference", result.Reference);
             Assert.Equal("Message here", result.Message);

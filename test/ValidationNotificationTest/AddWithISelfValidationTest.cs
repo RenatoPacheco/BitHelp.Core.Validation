@@ -9,7 +9,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         private string _text;
         public string Text
         {
-            get { return _text; }
+            get => _text;
             set
             {
                 _text = value;
@@ -23,7 +23,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         [Display(Name = "E-mail")]
         public string Email
         {
-            get { return _email; }
+            get => _email;
             set
             {
                 _email = value;
@@ -50,12 +50,12 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             Text = null;
             Email = null;
 
-            Assert.False(this.IsValid());
+            Assert.False(IsValid());
             Assert.True(notifications.IsValid());
 
             notifications.Add(this);
 
-            Assert.False(this.IsValid());
+            Assert.False(IsValid());
             Assert.False(notifications.IsValid());
             Assert.Equal(2, notifications.Messages.Count);
             Assert.Collection(notifications.Messages, item => Assert.Equal(nameof(Text), item.Reference),
@@ -70,12 +70,12 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             Text = "text here";
             Email = "email@test.site.com";
 
-            Assert.False(this.IsValid());
+            Assert.False(IsValid());
             Assert.True(notifications.IsValid());
 
             notifications.Add(this);
 
-            Assert.False(this.IsValid());
+            Assert.False(IsValid());
             Assert.False(notifications.IsValid());
             Assert.Equal(1, notifications.Messages.Count);
             Assert.Collection(notifications.Messages, item => Assert.Equal(nameof(Text), item.Reference));
@@ -90,14 +90,14 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             Text = null;
             Email = null;
 
-            Assert.False(this.IsValid());
+            Assert.False(IsValid());
             Assert.True(notifications.IsValid());
 
             notifications.Add("Text error....");
-            this.Notifications.Add("Other error...");
+            Notifications.Add("Other error...");
             notifications.Add(this, prefix);
 
-            Assert.False(this.IsValid());
+            Assert.False(IsValid());
             Assert.False(notifications.IsValid());
             Assert.Equal(4, notifications.Messages.Count);
             Assert.Collection(notifications.Messages, item => Assert.Null(item.Reference),

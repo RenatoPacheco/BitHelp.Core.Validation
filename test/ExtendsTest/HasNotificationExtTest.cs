@@ -7,12 +7,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
     public class HasNotificationExtTest
     {
-        readonly ValidationNotification _notification = new ValidationNotification();
+        private readonly ValidationNotification _notification = new ValidationNotification();
 
         [Fact]
         public void Check_has_notification()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -33,7 +33,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_is_valid()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -64,7 +64,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_has_error()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -87,7 +87,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_has_unauthorized()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -110,7 +110,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_has_success()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -133,7 +133,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_has_info()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -156,7 +156,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_has_alert()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             string message = "Message text";
 
             _notification.Clear();
@@ -179,7 +179,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Fact]
         public void Check_has_fatal()
         {
-            var single = new SingleValues();
+            SingleValues single = new SingleValues();
             Exception message = new Exception();
 
             _notification.Clear();
