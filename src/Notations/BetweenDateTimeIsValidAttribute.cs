@@ -10,18 +10,31 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class BetweenDateTimeIsValidAttribute : ListIsValidAttribute
     {
-        public BetweenDateTimeIsValidAttribute(IEnumerable<DateTime> options, CultureInfo cultureInfo = null) : base()
+        public BetweenDateTimeIsValidAttribute(
+               IEnumerable<DateTime> options, 
+               CultureInfo cultureInfo = null, 
+               bool denay = false) 
+            : this(options, denay, cultureInfo) { }
+
+        public BetweenDateTimeIsValidAttribute(
+            IEnumerable<DateTime> options, 
+            bool denay = false, 
+            CultureInfo cultureInfo = null) : base()
         {
             if (!options?.Any() ?? true)
-                throw new ArgumentException(string.Format(Resource.XNullOrEmpty, nameof(options)), nameof(options));
+                throw new ArgumentException(string.Format(
+                    Resource.XNullOrEmpty, nameof(options)), nameof(options));
 
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
             Options = options.Select(x => DateTime.Parse(x.ToString()));
             CultureInfo = cultureInfo;
+            Denay = denay;
         }
 
         IEnumerable<DateTime> Options { get; set; } = Array.Empty<DateTime>();
+
+        bool Denay { get; set; }
 
         /// <summary>
         /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
@@ -32,7 +45,9 @@ namespace BitHelp.Core.Validation.Notations
         {
             string input = Convert.ToString(value);
             CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;
-            return DateTime.TryParse(input, cultureInfo, DateTimeStyles.None, out DateTime compare) && Options.Contains(compare);
+            bool isDateTime = DateTime.TryParse(input, cultureInfo, DateTimeStyles.None, out DateTime compare);
+            bool contains = Options.Contains(compare);
+            return isDateTime && (Denay ? !contains : contains);
         }
     }
 }
