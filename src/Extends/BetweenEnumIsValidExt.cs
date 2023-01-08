@@ -12,16 +12,22 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification BetweenEnumIsValid<T, P>(
-            this T source, Expression<Func<T, P>> expression, IEnumerable<Enum> options)
+            this T source, 
+            Expression<Func<T, P>> expression, 
+            IEnumerable<Enum> options,
+            bool denay = false)
             where T : ISelfValidation
         {
             return source.BetweenEnumIsValid(
                 source.GetStructureToValidate(expression),
-                options);
+                options, denay);
         }
 
         public static ValidationNotification BetweenEnumIsValid<T>(
-            this T source, object value, IEnumerable<Enum> options)
+            this T source, 
+            object value, 
+            IEnumerable<Enum> options,
+            bool denay = false)
             where T : ISelfValidation
         {
             return source.BetweenEnumIsValid(new StructureToValidate
@@ -29,42 +35,54 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options);
+            }, options, denay);
         }
 
         public static ValidationNotification BetweenEnumIsValid<T>(
-            this T source, IStructureToValidate data, IEnumerable<Enum> options)
+            this T source, 
+            IStructureToValidate data, 
+            IEnumerable<Enum> options,
+            bool denay = false)
             where T : ISelfValidation
         {
-            return source.Notifications.BetweenEnumIsValid(data, options);
+            return source.Notifications.BetweenEnumIsValid(data, options, denay);
         }
 
         #endregion
 
         public static ValidationNotification BetweenEnumIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<Enum> options)
+            this ValidationNotification source, T data, 
+            Expression<Func<T, P>> expression, 
+            IEnumerable<Enum> options,
+            bool denay = false)
         {
             return source.BetweenEnumIsValid(
                 data.GetStructureToValidate(expression),
-                options);
+                options, denay);
         }
 
         public static ValidationNotification BetweenEnumIsValid(
-            this ValidationNotification source, object value, IEnumerable<Enum> options)
+            this ValidationNotification source, 
+            object value, 
+            IEnumerable<Enum> options,
+            bool denay = false)
         {
             return source.BetweenEnumIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options);
+            }, options, denay);
         }
 
         public static ValidationNotification BetweenEnumIsValid(
-            this ValidationNotification source, IStructureToValidate data, IEnumerable<Enum> options)
+            this ValidationNotification source, 
+            IStructureToValidate data, 
+            IEnumerable<Enum> options,
+            bool denay = false)
         {
             source.CleanLastMessage();
-            BetweenEnumIsValidAttribute validation = new BetweenEnumIsValidAttribute(options);
+            BetweenEnumIsValidAttribute validation = new BetweenEnumIsValidAttribute(options, denay);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

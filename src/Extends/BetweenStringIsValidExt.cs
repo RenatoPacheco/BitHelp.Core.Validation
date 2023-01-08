@@ -12,15 +12,21 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification BetweenStringIsValid<T, P>(
-            this T source, Expression<Func<T, P>> expression, IEnumerable<string> options)
+            this T source, 
+            Expression<Func<T, P>> expression, 
+            IEnumerable<string> options,
+            bool denay = false)
             where T : ISelfValidation
         {
             return source.BetweenStringIsValid(
-                source.GetStructureToValidate(expression), options);
+                source.GetStructureToValidate(expression), options, denay);
         }
 
         public static ValidationNotification BetweenStringIsValid<T>(
-            this T source, object value, IEnumerable<string> options)
+            this T source,
+            object value, 
+            IEnumerable<string> options,
+            bool denay = false)
             where T : ISelfValidation
         {
             return source.BetweenStringIsValid(new StructureToValidate
@@ -28,42 +34,54 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options);
+            }, options, denay);
         }
 
         public static ValidationNotification BetweenStringIsValid<T>(
-            this T source, IStructureToValidate data, IEnumerable<string> options)
+            this T source, 
+            IStructureToValidate data, 
+            IEnumerable<string> options,
+            bool denay = false)
             where T : ISelfValidation
         {
-            return source.Notifications.BetweenStringIsValid(data, options);
+            return source.Notifications.BetweenStringIsValid(data, options, denay);
         }
 
         #endregion
 
         public static ValidationNotification BetweenStringIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<string> options)
+            this ValidationNotification source, T data, 
+            Expression<Func<T, P>> expression, 
+            IEnumerable<string> options,
+            bool denay = false)
         {
             return source.BetweenStringIsValid(
                 data.GetStructureToValidate(expression),
-                options);
+                options, denay);
         }
 
         public static ValidationNotification BetweenStringIsValid(
-            this ValidationNotification source, object value, IEnumerable<string> options)
+            this ValidationNotification source, 
+            object value, 
+            IEnumerable<string> options, 
+            bool denay = false)
         {
             return source.BetweenStringIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options);
+            }, options, denay);
         }
 
         public static ValidationNotification BetweenStringIsValid(
-            this ValidationNotification source, IStructureToValidate data, IEnumerable<string> options)
+            this ValidationNotification source, 
+            IStructureToValidate data,
+            IEnumerable<string> options, 
+            bool denay = false)
         {
             source.CleanLastMessage();
-            BetweenStringIsValidAttribute validation = new BetweenStringIsValidAttribute(options);
+            BetweenStringIsValidAttribute validation = new BetweenStringIsValidAttribute(options, denay);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

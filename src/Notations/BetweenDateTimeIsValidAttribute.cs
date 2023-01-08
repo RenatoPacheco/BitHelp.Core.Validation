@@ -11,15 +11,9 @@ namespace BitHelp.Core.Validation.Notations
     public class BetweenDateTimeIsValidAttribute : ListIsValidAttribute
     {
         public BetweenDateTimeIsValidAttribute(
-               IEnumerable<DateTime> options, 
-               CultureInfo cultureInfo = null, 
-               bool denay = false) 
-            : this(options, denay, cultureInfo) { }
-
-        public BetweenDateTimeIsValidAttribute(
             IEnumerable<DateTime> options, 
-            bool denay = false, 
-            CultureInfo cultureInfo = null) : base()
+            CultureInfo cultureInfo = null,
+            bool denay = false) : base()
         {
             if (!options?.Any() ?? true)
                 throw new ArgumentException(string.Format(
