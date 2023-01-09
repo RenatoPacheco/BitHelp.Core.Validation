@@ -1,11 +1,12 @@
-﻿using BitHelp.Core.Validation.Extends;
-using BitHelp.Core.Validation.Test.Resources;
+﻿using Xunit;
 using System;
-using Xunit;
+using System.Collections.Generic;
+using BitHelp.Core.Validation.Extends;
+using BitHelp.Core.Validation.Test.Resources;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class BetweenNumberIsValidExtTest
+    public class BetweenDecimalIsValidExtTest
     {
         private readonly ValidationNotification _notification = new();
         private readonly decimal[] _options = new decimal[] { 1, 2, 3 };
@@ -117,10 +118,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, null));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, null));
-            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, null));
-            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, null));
+            IList<decimal> options = null;
+
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, options));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, options));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, options));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, options));
         }
 
         [Fact]
@@ -131,10 +134,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, Array.Empty<decimal>()));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, Array.Empty<decimal>()));
-            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, Array.Empty<decimal>()));
-            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, Array.Empty<decimal>()));
+            IList<decimal> options = Array.Empty<decimal>();
+
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, options));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, options));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, options));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, options));
         }
     }
 }

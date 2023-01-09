@@ -7,14 +7,14 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class BetweenNumberIsValidExt
+    public static class BetweenUintIsValidExt
     {
         #region To ISelfValidation
 
         public static ValidationNotification BetweenNumberIsValid<T, P>(
             this T source, 
             Expression<Func<T, P>> expression, 
-            IEnumerable<decimal> options,
+            IEnumerable<uint> options,
             bool denay = false)
             where T : ISelfValidation
         {
@@ -26,7 +26,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenNumberIsValid<T>(
             this T source, 
             object value, 
-            IEnumerable<decimal> options,
+            IEnumerable<uint> options,
             bool denay = false)
             where T : ISelfValidation
         {
@@ -41,7 +41,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenNumberIsValid<T>(
             this T source, 
             IStructureToValidate data, 
-            IEnumerable<decimal> options,
+            IEnumerable<uint> options,
             bool denay = false)
             where T : ISelfValidation
         {
@@ -50,11 +50,13 @@ namespace BitHelp.Core.Validation.Extends
 
         #endregion
 
+        #region To ValidationNotification
+
         public static ValidationNotification BetweenNumberIsValid<T, P>(
             this ValidationNotification source, 
             T data, 
             Expression<Func<T, P>> expression, 
-            IEnumerable<decimal> options,
+            IEnumerable<uint> options,
             bool denay = false)
         {
             return source.BetweenNumberIsValid(
@@ -65,7 +67,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenNumberIsValid(
             this ValidationNotification source, 
             object value, 
-            IEnumerable<decimal> options,
+            IEnumerable<uint> options,
             bool denay = false)
         {
             return source.BetweenNumberIsValid(new StructureToValidate
@@ -79,7 +81,7 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification BetweenNumberIsValid(
             this ValidationNotification source, 
             IStructureToValidate data, 
-            IEnumerable<decimal> options,
+            IEnumerable<uint> options,
             bool denay = false)
         {
             source.CleanLastMessage();
@@ -93,5 +95,7 @@ namespace BitHelp.Core.Validation.Extends
             }
             return source;
         }
+
+        #endregion
     }
 }
