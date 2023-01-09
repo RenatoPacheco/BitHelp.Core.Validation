@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using BitHelp.Core.Validation.Resources;
-using System.Collections;
 
 namespace BitHelp.Core.Validation.Notations
 {
