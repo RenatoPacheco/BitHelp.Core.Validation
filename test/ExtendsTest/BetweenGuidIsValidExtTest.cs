@@ -28,8 +28,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = _options.First().ToString()
+                String = _options.First().ToString(),
+                Guid = _options.First()
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenGuidIsValid(single.String, _options, denay);
@@ -46,6 +49,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.Equal(!denay, single.IsValid());
+
+            #endregion
+
+            #region guid
+
+            _notification.Clear();
+            _notification.BetweenGuidIsValid(single.Guid, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenGuidIsValid(x => x.Guid, _options, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenGuidIsValid(single.Guid, _options, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -55,8 +80,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = Guid.NewGuid().ToString()
+                String = Guid.NewGuid().ToString(),
+                Guid = Guid.NewGuid()
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenGuidIsValid(single.String, _options, denay);
@@ -73,6 +101,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.Equal(denay, single.IsValid());
+
+            #endregion
+
+            #region guid
+
+            _notification.Clear();
+            _notification.BetweenGuidIsValid(single.Guid, _options, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenGuidIsValid(x => x.Guid, _options, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenGuidIsValid(single.Guid, _options, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -109,8 +159,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = null
+                String = null,
+                GuidNull = null
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenGuidIsValid(single.String, _options, denay);
@@ -127,6 +180,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.True(single.IsValid());
+
+            #endregion
+
+            #region guid
+
+            _notification.Clear();
+            _notification.BetweenGuidIsValid(single.GuidNull, _options, denay);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenGuidIsValid(single, x => x.GuidNull, _options, denay);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenGuidIsValid(x => x.GuidNull, _options, denay);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenGuidIsValid(single.GuidNull, _options, denay);
+            Assert.True(single.IsValid());
+
+            #endregion
         }
 
         [Theory]

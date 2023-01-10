@@ -29,8 +29,8 @@ namespace BitHelp.Core.Validation.Notations
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            IEnumerable<string> texts = Options.Select(x => x.ToString());
-            bool contains = texts.Contains(input);
+            IEnumerable<string> options = Options.Select(x => x.ToString());
+            bool contains = options.Contains(input);
             return Denay ? !contains : contains;
         }
     }

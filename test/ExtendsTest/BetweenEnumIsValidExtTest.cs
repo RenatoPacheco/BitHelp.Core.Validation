@@ -17,8 +17,31 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
+                String = EnumValue.Guid.ToString(),
                 Enum = EnumValue.Guid
             };
+
+            #region string
+
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single.String, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single, x => x.String, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(x => x.String, _options, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(single.String, _options, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            #endregion
+
+            #region enum
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(single.Enum, _options, denay);
@@ -35,6 +58,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenEnumIsValid(single.Enum, _options, denay);
             Assert.Equal(!denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -44,8 +69,31 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
+                String = EnumValue.String.ToString(),
                 Enum = EnumValue.String
             };
+
+            #region string
+
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single.String, _options, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single, x => x.String, _options, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(x => x.String, _options, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(single.String, _options, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            #endregion
+
+            #region enum
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(single.Enum, _options, denay);
@@ -62,6 +110,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenEnumIsValid(single.Enum, _options, denay);
             Assert.Equal(denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -71,8 +121,31 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
+                String = null,
                 EnumNull = null
             };
+
+            #region string
+
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single.String, _options, denay);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenEnumIsValid(single, x => x.String, _options, denay);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(x => x.String, _options, denay);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenEnumIsValid(single.String, _options, denay);
+            Assert.True(single.IsValid());
+
+            #endregion
+
+            #region enum
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(single.EnumNull, _options, denay);
@@ -89,6 +162,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenEnumIsValid(single.EnumNull, _options, denay);
             Assert.True(single.IsValid());
+
+            #endregion
         }
 
         [Theory]

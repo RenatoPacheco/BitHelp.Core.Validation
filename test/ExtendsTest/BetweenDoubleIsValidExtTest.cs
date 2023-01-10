@@ -18,8 +18,15 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = "1"
+                String = "1",
+                Double = 1
             };
+
+            #region string
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single.String, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
 
             _notification.Clear();
             _notification.BetweenNumberIsValid(single.String, _options, denay);
@@ -36,6 +43,32 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.Equal(!denay, single.IsValid());
+
+            #endregion
+
+            #region double
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single.Double, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single.Double, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single, x => x.Double, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(x => x.Double, _options, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.Double, _options, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -45,8 +78,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = "10"
+                String = "10",
+                Double = 10
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenNumberIsValid(single.String, _options, denay);
@@ -63,6 +99,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.Equal(denay, single.IsValid());
+
+            #endregion
+
+            #region double
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single.Double, _options, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single, x => x.Double, _options, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(x => x.Double, _options, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.Double, _options, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -99,8 +157,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = null
+                String = null,
+                DoubleNull = null
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenNumberIsValid(single.String, _options, denay);
@@ -117,6 +178,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.True(single.IsValid());
+
+            #endregion
+
+            #region double
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single.DoubleNull, _options, denay);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single, x => x.DoubleNull, _options, denay);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(x => x.DoubleNull, _options, denay);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenNumberIsValid(single.DoubleNull, _options, denay);
+            Assert.True(single.IsValid());
+
+            #endregion
         }
 
         [Theory]

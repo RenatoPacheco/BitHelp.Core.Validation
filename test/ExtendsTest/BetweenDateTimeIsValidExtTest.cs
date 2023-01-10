@@ -28,8 +28,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = _date.AddDays(1).ToString()
+                String = _date.AddDays(1).ToString(),
+                DateTime = _date.AddDays(1)
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenDateTimeIsValid(single.String, _options, null, denay);
@@ -46,6 +49,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(single.String, _options, null, denay);
             Assert.Equal(!denay, single.IsValid());
+
+            #endregion
+
+            #region datetime
+
+            _notification.Clear();
+            _notification.BetweenDateTimeIsValid(single.DateTime, _options, null, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenDateTimeIsValid(single, x => x.DateTime, _options, null, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(x => x.DateTime, _options, null, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.DateTime, _options, null, denay);
+            Assert.Equal(!denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -55,8 +80,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = _date.AddDays(10).ToString()
+                String = _date.AddDays(10).ToString(),
+                DateTime = _date.AddDays(10)
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenDateTimeIsValid(single.String, _options, null, denay);
@@ -73,6 +101,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(single.String, _options, null, denay);
             Assert.Equal(denay, single.IsValid());
+
+            #endregion
+
+            #region datetime
+
+            _notification.Clear();
+            _notification.BetweenDateTimeIsValid(single.DateTime, _options, null, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenDateTimeIsValid(single, x => x.DateTime, _options, null, denay);
+            Assert.Equal(denay, _notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(x => x.DateTime, _options, null, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.DateTime, _options, null, denay);
+            Assert.Equal(denay, single.IsValid());
+
+            #endregion
         }
 
         [Theory]
@@ -109,8 +159,11 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = null
+                String = null,
+                DateTimeNull = null
             };
+
+            #region string
 
             _notification.Clear();
             _notification.BetweenDateTimeIsValid(single.String, _options, null, denay);
@@ -127,6 +180,28 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.BetweenDateTimeIsValid(single.String, _options, null, denay);
             Assert.True(single.IsValid());
+
+            #endregion
+
+            #region datetime
+
+            _notification.Clear();
+            _notification.BetweenDateTimeIsValid(single.DateTimeNull, _options, null, denay);
+            Assert.True(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenDateTimeIsValid(single, x => x.DateTimeNull, _options, null, denay);
+            Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(x => x.DateTimeNull, _options, null, denay);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.BetweenDateTimeIsValid(single.DateTimeNull, _options, null, denay);
+            Assert.True(single.IsValid());
+
+            #endregion
         }
 
         [Theory]

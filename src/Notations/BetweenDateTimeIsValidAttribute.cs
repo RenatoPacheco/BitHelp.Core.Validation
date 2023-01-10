@@ -21,7 +21,7 @@ namespace BitHelp.Core.Validation.Notations
 
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
-            Options = options.Select(x => DateTime.Parse(x.ToString()));
+            Options = options;
             CultureInfo = cultureInfo;
             Denay = denay;
         }
@@ -39,21 +39,33 @@ namespace BitHelp.Core.Validation.Notations
         {
             bool isValueValid;
             bool contains;
+            string[] options = Options.Select(x => ToString(x)).ToArray();
 
             if (value is DateTime check)
             {
                 isValueValid = true;
-                contains = Options.Contains(check);
+                contains = options.Contains(ToString(check));
             }
             else
             {
-                CultureInfo format = CultureInfo ?? CultureInfo.CurrentCulture;
-                DateTimeStyles style = DateTimeStyles.None;
-                isValueValid = DateTime.TryParse(Convert.ToString(value), format, style, out DateTime convert);
-                contains = Options.Contains(convert);
+                isValueValid = TryParse(Convert.ToString(value), out DateTime convert);
+                contains = options.Contains(ToString(convert));
             }
 
             return isValueValid && (Denay ? !contains : contains);
+        }
+
+        private bool TryParse(string input, out DateTime output)
+        {
+            return DateTime.TryParse(input,
+                CultureInfo ?? CultureInfo.CurrentCulture,
+                DateTimeStyles.None, out output);
+        }
+
+        private string ToString(DateTime input)
+        {
+            return input.ToString(
+                CultureInfo ?? CultureInfo.CurrentCulture);
         }
     }
 }

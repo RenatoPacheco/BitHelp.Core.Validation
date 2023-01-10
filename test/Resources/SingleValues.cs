@@ -15,6 +15,16 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         public string String { get; set; }
 
+        public byte Byte { get; set; }
+
+        [Display(Name = "Byte null")]
+        public byte? ByteNull { get; set; }
+
+        public sbyte Sbyte { get; set; }
+
+        [Display(Name = "Sbyte null")]
+        public sbyte? SbyteNull { get; set; }
+
         public int Int { get; set; }
 
         [Display(Name = "Int null")]
@@ -25,6 +35,11 @@ namespace BitHelp.Core.Validation.Test.Resources
         [Display(Name = "Long null")]
         public long? LongNull { get; set; }
 
+        public ulong Ulong { get; set; }
+
+        [Display(Name = "Ulong null")]
+        public ulong? UlongNull { get; set; }
+
         public decimal Decimal { get; set; }
 
         [Display(Name = "Decimal null")]
@@ -34,6 +49,21 @@ namespace BitHelp.Core.Validation.Test.Resources
 
         [Display(Name = "Double null")]
         public double? DoubleNull { get; set; }
+
+        public float Float { get; set; }
+
+        [Display(Name = "Float null")]
+        public float? FloatNull { get; set; }
+
+        public short Short { get; set; }
+
+        [Display(Name = "Short null")]
+        public short? ShortNull { get; set; }
+
+        public ushort Ushort { get; set; }
+
+        [Display(Name = "Ushort null")]
+        public ushort? UshortNull { get; set; }
 
         public uint Uint { get; set; }
 
