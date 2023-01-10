@@ -31,6 +31,8 @@ dotnet add package BitHelp.Core.Validation
 
 **Features:**
 
+- Including list various types of numbers for comparison in BetweenNumberIsValid
+- Adding BetweenGuidIsValid
 - Adding option to deny betweens validates
 - Avoiding converting values if not necessary
 - Update packages test
