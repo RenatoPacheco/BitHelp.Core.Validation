@@ -246,4 +246,10 @@
   <data name="XItemsInvalid" xml:space="preserve">
     <value>{0} contains invalid items.</value>
   </data>
+  <data name="XShortInvalid" xml:space="preserve">
+    <value>{0} is not valid short.</value>
+  </data>
+  <data name="XByteInvalid" xml:space="preserve">
+    <value>{0} is not valid byte.</value>
+  </data>
 </root>
