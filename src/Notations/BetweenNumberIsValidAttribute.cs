@@ -117,67 +117,264 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override bool Check(object value)
         {
-            string input = Convert.ToString(value);
-            bool isNumber = false;
+            bool isValueValid = false;
             bool contains = false;
 
             if (Type == typeof(float))
             {
-                isNumber = float.TryParse(input, out float compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckFloat(value);
             }
             else if (Type == typeof(double))
             {
-                isNumber = double.TryParse(input, out double compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckDouble(value);
             }
             else if (Type == typeof(decimal))
             {
-                isNumber = decimal.TryParse(input, out decimal compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckDecimal(value);
             }
             else if (Type == typeof(byte))
             {
-                isNumber = byte.TryParse(input, out byte compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckByte(value);
             }
             else if (Type == typeof(sbyte))
             {
-                isNumber = sbyte.TryParse(input, out sbyte compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckSbyte(value);
             }
             else if (Type == typeof(short))
             {
-                isNumber = short.TryParse(input, out short compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckShort(value);
             }
             else if (Type == typeof(ushort))
             {
-                isNumber = ushort.TryParse(input, out ushort compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckUshort(value);
             }
             else if (Type == typeof(int))
             {
-                isNumber = int.TryParse(input, out int compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckInt(value);
             }
             else if (Type == typeof(uint))
             {
-                isNumber = uint.TryParse(input, out uint compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckUint(value);
             }
             else if (Type == typeof(long))
             {
-                isNumber = long.TryParse(input, out long compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckLong(value);
             }
             else if (Type == typeof(ulong))
             {
-                isNumber = ulong.TryParse(input, out ulong compare);
-                contains = Options.Contains(compare);
+                (isValueValid, contains) = CheckUlong(value);
             }
 
-            return isNumber && (Denay ? !contains : contains);
+            return isValueValid && (Denay ? !contains : contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckFloat(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is float check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = float.TryParse(Convert.ToString(value), out float convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckDouble(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is double check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = double.TryParse(Convert.ToString(value), out double convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckDecimal(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is decimal check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = decimal.TryParse(Convert.ToString(value), out decimal convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckByte(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is byte check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = byte.TryParse(Convert.ToString(value), out byte convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckSbyte(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is sbyte check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = sbyte.TryParse(Convert.ToString(value), out sbyte convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckShort(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is short check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = short.TryParse(Convert.ToString(value), out short convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckUshort(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is ushort check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = ushort.TryParse(Convert.ToString(value), out ushort convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckInt(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is int check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = int.TryParse(Convert.ToString(value), out int convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckUint(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is uint check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = uint.TryParse(Convert.ToString(value), out uint convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckLong(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is long check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = long.TryParse(Convert.ToString(value), out long convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
+        }
+
+        private (bool isValueValid, bool contains) CheckUlong(object value)
+        {
+            bool isValueValid;
+            bool contains;
+
+            if (value is ulong check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = ulong.TryParse(Convert.ToString(value), out ulong convert);
+                contains = Options.Contains(convert);
+            }
+
+            return (isValueValid, contains);
         }
     }
 }

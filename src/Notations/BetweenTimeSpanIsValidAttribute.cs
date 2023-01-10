@@ -28,10 +28,21 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override bool Check(object value)
         {
-            string input = Convert.ToString(value);
-            bool isNumber = TimeSpan.TryParse(input, out TimeSpan compare);
-            bool contains = Options.Contains(compare);
-            return isNumber && (Denay ? !contains : contains);
+            bool isValueValid;
+            bool contains;
+
+            if (value is TimeSpan check)
+            {
+                isValueValid = true;
+                contains = Options.Contains(check);
+            }
+            else
+            {
+                isValueValid = TimeSpan.TryParse(Convert.ToString(value), out TimeSpan convert);
+                contains = Options.Contains(convert);
+            }
+
+            return isValueValid && (Denay ? !contains : contains);
         }
     }
 }
