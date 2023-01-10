@@ -27,13 +27,15 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.13.0
+## Release 0.14.0
 
 **Features:**
 
-- Adding DenyRegexIsValid
+- Including list various types of numbers for comparison in BetweenNumberIsValid
+- Adding BetweenGuidIsValid
+- Adding option to deny betweens validates
+- Avoiding converting values if not necessary
 - Update packages test
-- Delete folder doc
 - Adding more tests
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)

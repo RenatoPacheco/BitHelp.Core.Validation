@@ -243,4 +243,7 @@
   <data name="XNotFound" xml:space="preserve">
     <value>{0} não encontado(a).</value>
   </data>
+  <data name="XItemsInvalid" xml:space="preserve">
+    <value>{0} contém itens inválidos.</value>
+  </data>
 </root>

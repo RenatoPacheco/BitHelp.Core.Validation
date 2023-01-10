@@ -1,62 +1,73 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class BetweenTimeSpanIsValidExtTest
+    public class BetweenGuidIsValidExtTest
     {
+        public BetweenGuidIsValidExtTest()
+        {
+            _options = new Guid[]
+            {
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                Guid.NewGuid()
+            };
+        }
+
         private readonly ValidationNotification _notification = new();
-        private readonly TimeSpan[] _options = new TimeSpan[] { TimeSpan.FromDays(1), TimeSpan.FromDays(2), TimeSpan.FromDays(3) };
+        private readonly Guid[] _options;
 
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_contain_value_1_valid(bool denay)
+        public void Check_contain_first_value_valid(bool denay)
         {
             SingleValues single = new()
             {
-                String = TimeSpan.FromDays(1).ToString(),
-                TimeSpan = TimeSpan.FromDays(1)
+                String = _options.First().ToString(),
+                Guid = _options.First()
             };
 
             #region string
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenGuidIsValid(single.String, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenGuidIsValid(x => x.String, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             #endregion
 
-            #region timespan
+            #region guid
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            _notification.BetweenGuidIsValid(single.Guid, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.TimeSpan, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.TimeSpan, _options, denay);
+            single.BetweenGuidIsValid(x => x.Guid, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            single.BetweenGuidIsValid(single.Guid, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             #endregion
@@ -65,50 +76,50 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_not_contain_value_10_invalid(bool denay)
+        public void Check_not_contain_value_invalid(bool denay)
         {
             SingleValues single = new()
             {
-                String = TimeSpan.FromDays(10).ToString(),
-                TimeSpan = TimeSpan.FromDays(10)
+                String = Guid.NewGuid().ToString(),
+                Guid = Guid.NewGuid()
             };
 
             #region string
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenGuidIsValid(single.String, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenGuidIsValid(x => x.String, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             #endregion
 
-            #region timespan
+            #region guid
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            _notification.BetweenGuidIsValid(single.Guid, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.TimeSpan, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.TimeSpan, _options, denay);
+            single.BetweenGuidIsValid(x => x.Guid, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            single.BetweenGuidIsValid(single.Guid, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             #endregion
@@ -125,19 +136,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenGuidIsValid(single.String, _options, denay);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenGuidIsValid(x => x.String, _options, denay);
             Assert.False(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.False(single.IsValid());
         }
 
@@ -149,45 +160,45 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             SingleValues single = new()
             {
                 String = null,
-                TimeSpanNull = null
+                GuidNull = null
             };
 
             #region string
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenGuidIsValid(single.String, _options, denay);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenGuidIsValid(x => x.String, _options, denay);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenGuidIsValid(single.String, _options, denay);
             Assert.True(single.IsValid());
 
             #endregion
 
-            #region timespan
+            #region guid
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.TimeSpanNull, _options, denay);
+            _notification.BetweenGuidIsValid(single.GuidNull, _options, denay);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.TimeSpanNull, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.GuidNull, _options, denay);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.TimeSpanNull, _options, denay);
+            single.BetweenGuidIsValid(x => x.GuidNull, _options, denay);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.TimeSpanNull, _options, denay);
+            single.BetweenGuidIsValid(single.GuidNull, _options, denay);
             Assert.True(single.IsValid());
 
             #endregion
@@ -203,12 +214,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            TimeSpan[] options = null;
+            Guid[] options = null;
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, options, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single, x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(single.String, options, denay));
         }
 
         [Theory]
@@ -221,12 +232,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            TimeSpan[] options = Array.Empty<TimeSpan>();
+            Guid[] options = Array.Empty<Guid>();
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, options, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single, x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(single.String, options, denay));
         }
     }
 }

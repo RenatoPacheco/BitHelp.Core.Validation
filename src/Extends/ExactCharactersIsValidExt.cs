@@ -62,17 +62,6 @@ namespace BitHelp.Core.Validation.Extends
             }, exact);
         }
 
-        private static ValidationNotification ExactCharactersIsValid(
-            this ValidationNotification source, object value, string display, string reference, int exact)
-        {
-            return source.ExactCharactersIsValid(new StructureToValidate
-            {
-                Value = value,
-                Display = display,
-                Reference = reference
-            }, exact);
-        }
-
         public static ValidationNotification ExactCharactersIsValid(
             this ValidationNotification source, IStructureToValidate data, int exact)
         {

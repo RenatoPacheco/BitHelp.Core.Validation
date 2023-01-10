@@ -1,14 +1,15 @@
-﻿using BitHelp.Core.Validation.Extends;
-using BitHelp.Core.Validation.Test.Resources;
+﻿using Xunit;
 using System;
-using Xunit;
+using System.Collections.Generic;
+using BitHelp.Core.Validation.Extends;
+using BitHelp.Core.Validation.Test.Resources;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
-    public class BetweenTimeSpanIsValidExtTest
+    public class BetweenFloatIsValidExtTest
     {
         private readonly ValidationNotification _notification = new();
-        private readonly TimeSpan[] _options = new TimeSpan[] { TimeSpan.FromDays(1), TimeSpan.FromDays(2), TimeSpan.FromDays(3) };
+        private readonly float[] _options = new float[] { 1, 2, 3 };
 
         [Theory]
         [InlineData(false)]
@@ -17,46 +18,54 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = TimeSpan.FromDays(1).ToString(),
-                TimeSpan = TimeSpan.FromDays(1)
+                String = "1",
+                Float = 1
             };
 
             #region string
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenNumberIsValid(single.String, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenNumberIsValid(single.String, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single, x => x.String, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenNumberIsValid(x => x.String, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             #endregion
 
-            #region timespan
+            #region float
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            _notification.BetweenNumberIsValid(single.Float, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.TimeSpan, _options, denay);
+            _notification.BetweenNumberIsValid(single.Float, _options, denay);
+            Assert.Equal(!denay, _notification.IsValid());
+
+            _notification.Clear();
+            _notification.BetweenNumberIsValid(single, x => x.Float, _options, denay);
             Assert.Equal(!denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.TimeSpan, _options, denay);
+            single.BetweenNumberIsValid(x => x.Float, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            single.BetweenNumberIsValid(single.Float, _options, denay);
             Assert.Equal(!denay, single.IsValid());
 
             #endregion
@@ -69,46 +78,46 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         {
             SingleValues single = new()
             {
-                String = TimeSpan.FromDays(10).ToString(),
-                TimeSpan = TimeSpan.FromDays(10)
+                String = "10",
+                Float = 10
             };
 
             #region string
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenNumberIsValid(single.String, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenNumberIsValid(single, x => x.String, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenNumberIsValid(x => x.String, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             #endregion
 
-            #region timespan
+            #region float
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            _notification.BetweenNumberIsValid(single.Float, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.TimeSpan, _options, denay);
+            _notification.BetweenNumberIsValid(single, x => x.Float, _options, denay);
             Assert.Equal(denay, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.TimeSpan, _options, denay);
+            single.BetweenNumberIsValid(x => x.Float, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.TimeSpan, _options, denay);
+            single.BetweenNumberIsValid(single.Float, _options, denay);
             Assert.Equal(denay, single.IsValid());
 
             #endregion
@@ -125,19 +134,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenNumberIsValid(single.String, _options, denay);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenNumberIsValid(single, x => x.String, _options, denay);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenNumberIsValid(x => x.String, _options, denay);
             Assert.False(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.False(single.IsValid());
         }
 
@@ -149,45 +158,45 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             SingleValues single = new()
             {
                 String = null,
-                TimeSpanNull = null
+                FloatNull = null
             };
 
             #region string
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.String, _options, denay);
+            _notification.BetweenNumberIsValid(single.String, _options, denay);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenNumberIsValid(single, x => x.String, _options, denay);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.String, _options, denay);
+            single.BetweenNumberIsValid(x => x.String, _options, denay);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.String, _options, denay);
+            single.BetweenNumberIsValid(single.String, _options, denay);
             Assert.True(single.IsValid());
 
             #endregion
 
-            #region timespan
+            #region float
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single.TimeSpanNull, _options, denay);
+            _notification.BetweenNumberIsValid(single.FloatNull, _options, denay);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenTimeSpanIsValid(single, x => x.TimeSpanNull, _options, denay);
+            _notification.BetweenNumberIsValid(single, x => x.FloatNull, _options, denay);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(x => x.TimeSpanNull, _options, denay);
+            single.BetweenNumberIsValid(x => x.FloatNull, _options, denay);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenTimeSpanIsValid(single.TimeSpanNull, _options, denay);
+            single.BetweenNumberIsValid(single.FloatNull, _options, denay);
             Assert.True(single.IsValid());
 
             #endregion
@@ -203,12 +212,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            TimeSpan[] options = null;
+            IList<float> options = null;
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, options, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, options, denay));
         }
 
         [Theory]
@@ -221,12 +230,12 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            TimeSpan[] options = Array.Empty<TimeSpan>();
+            IList<float> options = Array.Empty<float>();
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single.String, options, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenTimeSpanIsValid(single, x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenTimeSpanIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenNumberIsValid(single, x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(x => x.String, options, denay));
+            Assert.Throws<ArgumentException>(() => single.BetweenNumberIsValid(single.String, options, denay));
         }
     }
 }

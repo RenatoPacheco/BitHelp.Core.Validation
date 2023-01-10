@@ -1,5 +1,6 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
+using System;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
@@ -27,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.ExactCharactersIsValid(x => x.String, single.String.Length);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(single.String, single.String.Length);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -47,6 +52,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.ExactCharactersIsValid(x => x.String, single.String.Length - 1);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(single.String, single.String.Length - 1);
             Assert.False(single.IsValid());
         }
 
@@ -69,6 +78,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.ExactCharactersIsValid(x => x.String, single.String.Length + 1);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(single.String, single.String.Length + 1);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -84,12 +97,30 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.ExactCharactersIsValid(single, x => x.String, 10);
+            _notification.ExactCharactersIsValid(single, x => x.String, 101);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.ExactCharactersIsValid(x => x.String, 10);
+            single.ExactCharactersIsValid(x => x.String, 101);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.ExactCharactersIsValid(single.String, 101);
+            Assert.True(single.IsValid());
+        }
+
+        [Fact]
+        public void Check_option_0_exception()
+        {
+            SingleValues single = new()
+            {
+                String = null
+            };
+
+            Assert.Throws<ArgumentException>(() => _notification.ExactCharactersIsValid(single.String, 0));
+            Assert.Throws<ArgumentException>(() => _notification.ExactCharactersIsValid(single, x => x.String, 0));
+            Assert.Throws<ArgumentException>(() => single.ExactCharactersIsValid(x => x.String, 0));
+            Assert.Throws<ArgumentException>(() => single.ExactCharactersIsValid(single.String, 0));
         }
     }
 }

@@ -241,6 +241,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} contains invalid items..
+        /// </summary>
+        public static string XItemsInvalid {
+            get {
+                return ResourceManager.GetString("XItemsInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is not valid long..
         /// </summary>
         public static string XLongInvalid {

@@ -7,21 +7,27 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class BetweenNumberIsValidExt
+    public static class BetweenUintIsValidExt
     {
         #region To ISelfValidation
 
         public static ValidationNotification BetweenNumberIsValid<T, P>(
-            this T source, Expression<Func<T, P>> expression, IEnumerable<decimal> options)
+            this T source, 
+            Expression<Func<T, P>> expression, 
+            IEnumerable<uint> options,
+            bool denay = false)
             where T : ISelfValidation
         {
             return source.BetweenNumberIsValid(
                 source.GetStructureToValidate(expression),
-                options);
+                options, denay);
         }
 
         public static ValidationNotification BetweenNumberIsValid<T>(
-            this T source, object value, IEnumerable<decimal> options)
+            this T source, 
+            object value, 
+            IEnumerable<uint> options,
+            bool denay = false)
             where T : ISelfValidation
         {
             return source.BetweenNumberIsValid(new StructureToValidate
@@ -29,42 +35,57 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options);
+            }, options, denay);
         }
 
         public static ValidationNotification BetweenNumberIsValid<T>(
-            this T source, IStructureToValidate data, IEnumerable<decimal> options)
+            this T source, 
+            IStructureToValidate data, 
+            IEnumerable<uint> options,
+            bool denay = false)
             where T : ISelfValidation
         {
-            return source.Notifications.BetweenNumberIsValid(data, options);
+            return source.Notifications.BetweenNumberIsValid(data, options, denay);
         }
 
         #endregion
 
+        #region To ValidationNotification
+
         public static ValidationNotification BetweenNumberIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression, IEnumerable<decimal> options)
+            this ValidationNotification source, 
+            T data, 
+            Expression<Func<T, P>> expression, 
+            IEnumerable<uint> options,
+            bool denay = false)
         {
             return source.BetweenNumberIsValid(
                 data.GetStructureToValidate(expression),
-                options);
+                options, denay);
         }
 
         public static ValidationNotification BetweenNumberIsValid(
-            this ValidationNotification source, object value, IEnumerable<decimal> options)
+            this ValidationNotification source, 
+            object value, 
+            IEnumerable<uint> options,
+            bool denay = false)
         {
             return source.BetweenNumberIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options);
+            }, options, denay);
         }
 
         public static ValidationNotification BetweenNumberIsValid(
-            this ValidationNotification source, IStructureToValidate data, IEnumerable<decimal> options)
+            this ValidationNotification source, 
+            IStructureToValidate data, 
+            IEnumerable<uint> options,
+            bool denay = false)
         {
             source.CleanLastMessage();
-            BetweenNumberIsValidAttribute validation = new BetweenNumberIsValidAttribute(options);
+            BetweenNumberIsValidAttribute validation = new BetweenNumberIsValidAttribute(options, denay);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
@@ -74,5 +95,7 @@ namespace BitHelp.Core.Validation.Extends
             }
             return source;
         }
+
+        #endregion
     }
 }

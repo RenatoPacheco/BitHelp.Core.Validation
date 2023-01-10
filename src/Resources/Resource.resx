@@ -243,4 +243,7 @@
   <data name="XNotFound" xml:space="preserve">
     <value>{0} not found.</value>
   </data>
+  <data name="XItemsInvalid" xml:space="preserve">
+    <value>{0} contains invalid items.</value>
+  </data>
 </root>

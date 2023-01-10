@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Globalization;
 using System.Collections.Generic;
 using BitHelp.Core.Validation.Resources;
-using System.Globalization;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -10,18 +10,25 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class BetweenDateTimeIsValidAttribute : ListIsValidAttribute
     {
-        public BetweenDateTimeIsValidAttribute(IEnumerable<DateTime> options, CultureInfo cultureInfo = null) : base()
+        public BetweenDateTimeIsValidAttribute(
+            IEnumerable<DateTime> options, 
+            CultureInfo cultureInfo = null,
+            bool denay = false) : base()
         {
             if (!options?.Any() ?? true)
-                throw new ArgumentException(string.Format(Resource.XNullOrEmpty, nameof(options)), nameof(options));
+                throw new ArgumentException(string.Format(
+                    Resource.XNullOrEmpty, nameof(options)), nameof(options));
 
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
-            Options = options.Select(x => DateTime.Parse(x.ToString()));
+            Options = options;
             CultureInfo = cultureInfo;
+            Denay = denay;
         }
 
         IEnumerable<DateTime> Options { get; set; } = Array.Empty<DateTime>();
+
+        bool Denay { get; set; }
 
         /// <summary>
         /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
@@ -30,9 +37,35 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override bool Check(object value)
         {
-            string input = Convert.ToString(value);
-            CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;
-            return DateTime.TryParse(input, cultureInfo, DateTimeStyles.None, out DateTime compare) && Options.Contains(compare);
+            bool isValueValid;
+            bool contains;
+            string[] options = Options.Select(x => ToString(x)).ToArray();
+
+            if (value is DateTime check)
+            {
+                isValueValid = true;
+                contains = options.Contains(ToString(check));
+            }
+            else
+            {
+                isValueValid = TryParse(Convert.ToString(value), out DateTime convert);
+                contains = options.Contains(ToString(convert));
+            }
+
+            return isValueValid && (Denay ? !contains : contains);
+        }
+
+        private bool TryParse(string input, out DateTime output)
+        {
+            return DateTime.TryParse(input,
+                CultureInfo ?? CultureInfo.CurrentCulture,
+                DateTimeStyles.None, out output);
+        }
+
+        private string ToString(DateTime input)
+        {
+            return input.ToString(
+                CultureInfo ?? CultureInfo.CurrentCulture);
         }
     }
 }

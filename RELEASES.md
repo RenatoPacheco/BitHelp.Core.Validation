@@ -1,5 +1,17 @@
 # BitHelp.Core.Validation
 
+## Release 0.14.0
+
+**Features:**
+
+- Including list various types of numbers for comparison in BetweenNumberIsValid
+- Adding BetweenGuidIsValid
+- Adding option to deny betweens validates
+- Avoiding converting values if not necessary
+- Update packages test
+- Adding more tests
+
+
 ## Release 0.13.0
 
 **Features:**

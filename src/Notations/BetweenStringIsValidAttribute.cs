@@ -9,22 +9,28 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class BetweenStringIsValidAttribute : ListIsValidAttribute
     {
-        public BetweenStringIsValidAttribute(IEnumerable<string> options) : base()
+        public BetweenStringIsValidAttribute(
+            IEnumerable<string> options, bool denay = false) : base()
         {
             if (!options?.Any() ?? true)
-                throw new ArgumentException(string.Format(Resource.XNullOrEmpty, nameof(options)), nameof(options));
+                throw new ArgumentException(
+                    string.Format(Resource.XNullOrEmpty, nameof(options)), nameof(options));
 
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
             Options = options;
+            Denay = denay;
         }
 
         IEnumerable<string> Options { get; set; } = Array.Empty<string>();
 
+        bool Denay { get; set; }
+
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return Options.Contains(input);
+            bool contains = Options.Contains(input);
+            return Denay ? !contains : contains;
         }
     }
 }
