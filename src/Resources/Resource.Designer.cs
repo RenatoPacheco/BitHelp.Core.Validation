@@ -133,6 +133,15 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not valid byte..
+        /// </summary>
+        public static string XByteInvalid {
+            get {
+                return ResourceManager.GetString("XByteInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must different {1}..
         /// </summary>
         public static string XCompareDifferentInvalid {
@@ -408,6 +417,15 @@ namespace BitHelp.Core.Validation.Resources {
         public static string XRequired {
             get {
                 return ResourceManager.GetString("XRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not valid short..
+        /// </summary>
+        public static string XShortInvalid {
+            get {
+                return ResourceManager.GetString("XShortInvalid", resourceCulture);
             }
         }
         
