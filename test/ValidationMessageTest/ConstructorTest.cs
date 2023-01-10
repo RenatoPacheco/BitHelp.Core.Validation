@@ -1,4 +1,5 @@
 ﻿using BitHelp.Core.Validation.Test.Resources;
+using System;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ValidationMessageTest
@@ -26,6 +27,51 @@ namespace BitHelp.Core.Validation.Test.ValidationMessageTest
                 Assert.Equal(result.Reference, reference);
 
             }
+        }
+
+        [Fact]
+        public void Check_text_exception()
+        {
+            Exception error = null;
+
+            try
+            {
+                throw new Exception("Text");
+            }
+            catch (Exception ex)
+            {
+                error = ex;
+            }
+
+            ValidationMessage value = new ValidationMessage(error);
+            Assert.Equal("Text", value.Message);
+        }
+
+        [Fact]
+        public void Check_text_null_exception()
+        {
+            Exception error = null;
+
+            try
+            {
+                throw new Exception(null);
+            }
+            catch (Exception ex)
+            {
+                error = ex;
+            }
+
+            ValidationMessage value = new ValidationMessage(error);
+            Assert.NotEqual("Text", value.Message);
+        }
+
+        [Fact]
+        public void Check__null_exception()
+        {
+            Exception error = null;
+
+            ValidationMessage value = new ValidationMessage(error);
+            Assert.Equal("Exception", value.Message);
         }
     }
 }

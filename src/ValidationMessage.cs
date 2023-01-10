@@ -2,7 +2,7 @@
 
 namespace BitHelp.Core.Validation
 {
-    public class ValidationMessage 
+    public class ValidationMessage
         : ICloneable, IEquatable<ValidationMessage>
     {
         protected ValidationMessage()
@@ -48,8 +48,8 @@ namespace BitHelp.Core.Validation
         private string _reference;
         public string Reference
         {
-            get { return _reference; }
-            set { _reference = value?.Trim(); }
+            get => _reference;
+            set => _reference = value?.Trim();
         }
 
         public Exception Exception { get; set; }
@@ -77,7 +77,11 @@ namespace BitHelp.Core.Validation
 
         public bool Equals(ValidationMessage other)
         {
-            return GetHashCode() == other.GetHashCode();
+            return other != null 
+                && Message == other.Message
+                && Reference == other.Reference
+                && Type == other.Type
+                && Exception == other.Exception;
         }
 
         public override bool Equals(object obj)
@@ -92,19 +96,18 @@ namespace BitHelp.Core.Validation
 
         public static bool operator ==(ValidationMessage a, ValidationMessage b)
         {
-            return object.Equals(a, null) && object.Equals(b, null)
-                || (!object.Equals(a, null) && !object.Equals(b, null) && a.Equals(b));
+            return Equals(a, null) && Equals(b, null)
+                || (a?.Equals(b) ?? false);
         }
 
         public static bool operator !=(ValidationMessage a, ValidationMessage b)
         {
-            return !(object.Equals(a, null) && object.Equals(b, null)
-                || (!object.Equals(a, null) && !object.Equals(b, null) && a.Equals(b)));
+            return !(a == b);
         }
 
         public static implicit operator ValidationMessage(string value)
         {
-            return new ValidationMessage(value);
+            return value is null ? null : new ValidationMessage(value);
         }
 
         public static implicit operator string(ValidationMessage value)
@@ -114,7 +117,7 @@ namespace BitHelp.Core.Validation
 
         public static implicit operator ValidationMessage(Exception value)
         {
-            return new ValidationMessage(value);
+            return value is null ? null : new ValidationMessage(value);
         }
 
         public static implicit operator Exception(ValidationMessage value)
@@ -126,7 +129,7 @@ namespace BitHelp.Core.Validation
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }
