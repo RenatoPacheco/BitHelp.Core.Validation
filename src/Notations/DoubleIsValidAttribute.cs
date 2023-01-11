@@ -12,7 +12,6 @@ namespace BitHelp.Core.Validation.Notations
             ErrorMessageResourceName = nameof(Resource.XDoubleInvalid);
         }
 
-
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);

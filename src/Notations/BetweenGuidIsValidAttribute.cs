@@ -44,7 +44,7 @@ namespace BitHelp.Core.Validation.Notations
                 contains = Options.Contains(convert);
             }
 
-            return isValueValid && (Denay ? !contains : contains);
+            return !isValueValid || (Denay ? !contains : contains);
         }
     }
 }

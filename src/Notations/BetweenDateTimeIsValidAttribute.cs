@@ -52,7 +52,7 @@ namespace BitHelp.Core.Validation.Notations
                 contains = options.Contains(ToString(convert));
             }
 
-            return isValueValid && (Denay ? !contains : contains);
+            return !isValueValid || (Denay ? !contains : contains);
         }
 
         private bool TryParse(string input, out DateTime output)

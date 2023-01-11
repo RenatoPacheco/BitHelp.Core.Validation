@@ -128,7 +128,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_text_invalid(bool denay)
+        public void Check_ignore_invalid_value_even_converted(bool denay)
         {
             SingleValues single = new()
             {
@@ -137,19 +137,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             _notification.Clear();
             _notification.BetweenGuidIsValid(single.String, _options, denay);
-            Assert.False(_notification.IsValid());
+            Assert.True(_notification.IsValid());
 
             _notification.Clear();
             _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
-            Assert.False(_notification.IsValid());
+            Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
             single.BetweenGuidIsValid(x => x.String, _options, denay);
-            Assert.False(single.IsValid());
+            Assert.True(single.IsValid());
 
             single.Notifications.Clear();
             single.BetweenGuidIsValid(single.String, _options, denay);
-            Assert.False(single.IsValid());
+            Assert.True(single.IsValid());
         }
 
         [Theory]

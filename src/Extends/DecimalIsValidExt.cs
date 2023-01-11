@@ -39,6 +39,8 @@ namespace BitHelp.Core.Validation.Extends
 
         #endregion
 
+        #region ValidationNotification
+
         public static ValidationNotification DecimalIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
@@ -71,5 +73,7 @@ namespace BitHelp.Core.Validation.Extends
             }
             return source;
         }
+
+        #endregion
     }
 }
