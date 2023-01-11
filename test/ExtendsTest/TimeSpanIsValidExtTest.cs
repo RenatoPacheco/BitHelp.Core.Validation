@@ -28,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.TimeSpanIsValid(x => x.TimeSpan);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(single.TimeSpan);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -48,6 +52,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.TimeSpanIsValid(x => x.String);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(single.String);
             Assert.True(single.IsValid());
         }
 
@@ -70,6 +78,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.TimeSpanIsValid(x => x.String);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(single.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -91,6 +103,35 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.TimeSpanIsValid(x => x.String);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(single.String);
+            Assert.True(single.IsValid());
+        }
+
+        [Fact]
+        public void Check_text_invalid()
+        {
+            SingleValues single = new()
+            {
+                String = "Text"
+            };
+
+            _notification.Clear();
+            _notification.TimeSpanIsValid(single.String);
+            Assert.False(_notification.IsValid());
+
+            _notification.Clear();
+            _notification.TimeSpanIsValid(single, x => x.String);
+            Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(x => x.String);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.TimeSpanIsValid(single.String);
+            Assert.False(single.IsValid());
         }
     }
 }
