@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitHelp.Core.Validation.Resources;
+using System;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -8,6 +9,10 @@ namespace BitHelp.Core.Validation.Notations
     {
         public EnumIsValidAttribute(Type type)
         {
+            if (!type?.IsEnum ?? true)
+                throw new ArgumentException(
+                    string.Format(Resource.XIntInvalid, nameof(type)), nameof(type));
+
             Type = type;
         }
 

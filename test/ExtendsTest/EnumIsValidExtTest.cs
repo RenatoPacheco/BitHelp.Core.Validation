@@ -1,5 +1,6 @@
 ﻿using BitHelp.Core.Validation.Extends;
 using BitHelp.Core.Validation.Test.Resources;
+using System;
 using Xunit;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
@@ -152,6 +153,38 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.EnumIsValid(single.String, typeof(EnumValue));
             Assert.True(single.IsValid());
+        }
+
+        [Fact]
+        public void Check_type_not_enum_exception()
+        {
+            SingleValues single = new()
+            {
+                String = null
+            };
+
+            Type type = null;
+
+            Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single.String, type));
+            Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single, x => x.String, type));
+            Assert.Throws<ArgumentException>(() => single.EnumIsValid(x => x.String, type));
+            Assert.Throws<ArgumentException>(() => single.EnumIsValid(single.String, type));
+        }
+
+        [Fact]
+        public void Check_type_null_exception()
+        {
+            SingleValues single = new()
+            {
+                String = null
+            };
+
+            Type type = typeof(string);
+
+            Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single.String, type));
+            Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single, x => x.String, type));
+            Assert.Throws<ArgumentException>(() => single.EnumIsValid(x => x.String, type));
+            Assert.Throws<ArgumentException>(() => single.EnumIsValid(single.String, type));
         }
     }
 }
