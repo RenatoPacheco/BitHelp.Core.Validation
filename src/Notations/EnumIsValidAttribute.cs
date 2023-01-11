@@ -1,5 +1,6 @@
-﻿using BitHelp.Core.Validation.Resources;
-using System;
+﻿using System;
+using BitHelp.Core.Validation.Helpers;
+using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -7,20 +8,23 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class EnumIsValidAttribute : ListIsValidAttribute
     {
-        public EnumIsValidAttribute(Type type)
+        public EnumIsValidAttribute(Type type, bool ignoreCase = false)
         {
             if (!type?.IsEnum ?? true)
                 throw new ArgumentException(
-                    string.Format(Resource.XIntInvalid, nameof(type)), nameof(type));
+                    string.Format(Resource.XNotValid, nameof(type)), nameof(type));
 
             Type = type;
+            IgnoreCase = ignoreCase;
         }
 
         public Type Type { get; set; }
 
+        public bool IgnoreCase { get; set; }
+
         protected override bool Check(object value)
         {
-            return Enum.IsDefined(Type, value);
+            return TryParse.ToEnum(Type, value, IgnoreCase, out _);
         }
     }
 }

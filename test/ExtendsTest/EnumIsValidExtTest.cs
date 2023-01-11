@@ -1,7 +1,7 @@
-﻿using BitHelp.Core.Validation.Extends;
-using BitHelp.Core.Validation.Test.Resources;
+﻿using Xunit;
 using System;
-using Xunit;
+using BitHelp.Core.Validation.Extends;
+using BitHelp.Core.Validation.Test.Resources;
 
 namespace BitHelp.Core.Validation.Test.ExtendsTest
 {
@@ -9,150 +9,73 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
     {
         private readonly ValidationNotification _notification = new();
 
-        [Fact]
-        public void Check_is_valid()
+        [Theory]
+        [InlineData(null, typeof(EnumValue), true)]
+        [InlineData(null, typeof(EnumValue), false)]
+        [InlineData(0, typeof(EnumValue), true)]
+        [InlineData(0, typeof(EnumValue), false)]
+        [InlineData("DateTime", typeof(EnumValue), true)]
+        [InlineData("DateTime", typeof(EnumValue), false)]
+        [InlineData("dateTime", typeof(EnumValue), true)]
+        [InlineData(EnumValue.DateTime, typeof(EnumValue), true)]
+        [InlineData(EnumValue.DateTime, typeof(EnumValue), false)]
+        public void Check_is_valid(object value, Type type, bool ignoreCase)
         {
             SingleValues single = new()
             {
-                Enum = EnumValue.DateTime
+                Object = value
             };
 
             _notification.Clear();
-            _notification.EnumIsValid(single.Enum, typeof(EnumValue));
+            _notification.EnumIsValid(single.Object, type, ignoreCase);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EnumIsValid(single, x => x.Enum, typeof(EnumValue));
+            _notification.EnumIsValid(single, x => x.Object, type, ignoreCase);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EnumIsValid(single.Enum, typeof(EnumValue));
+            single.EnumIsValid(x => x.Object, type, ignoreCase);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.EnumIsValid(single.Object, type, ignoreCase);
             Assert.True(single.IsValid());
         }
 
-        [Fact]
-        public void Check_string_is_valid()
+        [Theory]
+        [InlineData(" ", typeof(EnumValue), true)]
+        [InlineData(" ", typeof(EnumValue), false)]
+        [InlineData("other", typeof(EnumValue), true)]
+        [InlineData("other", typeof(EnumValue), false)]
+        [InlineData("Other", typeof(EnumValue), true)]
+        [InlineData("Other", typeof(EnumValue), false)]
+        [InlineData(100, typeof(EnumValue), true)]
+        [InlineData(100, typeof(EnumValue), false)]
+        [InlineData(EnumDiffValue.DateTime, typeof(EnumValue), true)]
+        [InlineData(EnumDiffValue.DateTime, typeof(EnumValue), false)]
+        public void Check_is_invalid(object value, Type type, bool ignoreCase)
         {
             SingleValues single = new()
             {
-                String = EnumValue.DateTime.ToString()
+                Object = value
             };
 
             _notification.Clear();
-            _notification.EnumIsValid(single.String, typeof(EnumValue));
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(x => x.String, typeof(EnumValue));
-            Assert.True(single.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(single.String, typeof(EnumValue));
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_string_is_invalid()
-        {
-            SingleValues single = new()
-            {
-                String = "sometext"
-            };
-
-            _notification.Clear();
-            _notification.EnumIsValid(single.String, typeof(EnumValue));
+            _notification.EnumIsValid(single.Object, type, ignoreCase);
             Assert.False(_notification.IsValid());
 
             _notification.Clear();
-            _notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
+            _notification.EnumIsValid(single, x => x.Object, type, ignoreCase);
             Assert.False(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.EnumIsValid(x => x.String, typeof(EnumValue));
+            single.EnumIsValid(x => x.Object, type, ignoreCase);
             Assert.False(single.IsValid());
 
             single.Notifications.Clear();
-            single.EnumIsValid(single.String, typeof(EnumValue));
+            single.EnumIsValid(single.Object, type, ignoreCase);
             Assert.False(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_number_is_valid()
-        {
-            SingleValues single = new()
-            {
-                Int = (int)EnumValue.DateTime
-            };
-
-            _notification.Clear();
-            _notification.EnumIsValid(single.Int, typeof(EnumValue));
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.EnumIsValid(single, x => x.Int, typeof(EnumValue));
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(x => x.Int, typeof(EnumValue));
-            Assert.True(single.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(single.Int, typeof(EnumValue));
-            Assert.True(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_number_is_invalid()
-        {
-            SingleValues single = new()
-            {
-                Int = 100
-            };
-
-            _notification.Clear();
-            _notification.EnumIsValid(single.Int, typeof(EnumValue));
-            Assert.False(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.EnumIsValid(single, x => x.Int, typeof(EnumValue));
-            Assert.False(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(x => x.Int, typeof(EnumValue));
-            Assert.False(single.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(single.Int, typeof(EnumValue));
-            Assert.False(single.IsValid());
-        }
-
-        [Fact]
-        public void Check_ignore_null()
-        {
-            SingleValues single = new()
-            {
-                String = null
-            };
-
-            _notification.Clear();
-            _notification.EnumIsValid(single.String, typeof(EnumValue));
-            Assert.True(_notification.IsValid());
-
-            _notification.Clear();
-            _notification.EnumIsValid(single, x => x.String, typeof(EnumValue));
-            Assert.True(_notification.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(x => x.String, typeof(EnumValue));
-            Assert.True(single.IsValid());
-
-            single.Notifications.Clear();
-            single.EnumIsValid(single.String, typeof(EnumValue));
-            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -163,7 +86,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Type type = null;
+            Type type = typeof(string);
 
             Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single.String, type));
             Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single, x => x.String, type));
@@ -179,7 +102,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
                 String = null
             };
 
-            Type type = typeof(string);
+            Type type = null;
 
             Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single.String, type));
             Assert.Throws<ArgumentException>(() => _notification.EnumIsValid(single, x => x.String, type));
