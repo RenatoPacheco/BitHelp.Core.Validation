@@ -5,17 +5,17 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class DoubleIsValidAttribute : ListIsValidAttribute
+    public class UlongIsValidAttribute : ListIsValidAttribute
     {
-        public DoubleIsValidAttribute() : base()
+        public UlongIsValidAttribute() : base()
         {
-            ErrorMessageResourceName = nameof(Resource.XDoubleInvalid);
+            ErrorMessageResourceName = nameof(Resource.XLongInvalid);
         }
 
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return double.TryParse(input, out _);
+            return ulong.TryParse(input, out _);
         }
     }
 }

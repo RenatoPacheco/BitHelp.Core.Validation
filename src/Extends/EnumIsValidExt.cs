@@ -11,16 +11,20 @@ namespace BitHelp.Core.Validation.Extends
         #region To ISelfValidation
 
         public static ValidationNotification EnumIsValid<T, P>(
-            this T source, Expression<Func<T, P>> expression, Type type)
+            this T source, 
+            Expression<Func<T, P>> expression, 
+            Type type, bool ignoreCase = false)
             where T : ISelfValidation
         {
             return source.EnumIsValid(
                 source.GetStructureToValidate(expression),
-                type);
+                type, ignoreCase);
         }
 
         public static ValidationNotification EnumIsValid<T>(
-            this T source, object value, Type type)
+            this T source, 
+            object value, Type type, 
+            bool ignoreCase = false)
             where T : ISelfValidation
         {
             return source.EnumIsValid(new StructureToValidate
@@ -28,42 +32,51 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, type);
+            }, type, ignoreCase);
         }
 
         public static ValidationNotification EnumIsValid<T>(
-            this T source, IStructureToValidate data, Type type)
+            this T source, 
+            IStructureToValidate data, 
+            Type type, bool ignoreCase = false)
             where T : ISelfValidation
         {
-            return source.Notifications.EnumIsValid(data, type);
+            return source.Notifications.EnumIsValid(data, type, ignoreCase);
         }
 
         #endregion
 
+        #region ValidationNotification
+
         public static ValidationNotification EnumIsValid<T, P>(
-            this ValidationNotification source, T data, Expression<Func<T, P>> expression, Type type)
+            this ValidationNotification source, 
+            T data, Expression<Func<T, P>> expression, 
+            Type type, bool ignoreCase = false)
         {
             return source.EnumIsValid(
                 data.GetStructureToValidate(expression),
-                type);
+                type, ignoreCase);
         }
 
         public static ValidationNotification EnumIsValid(
-            this ValidationNotification source, object value, Type type)
+            this ValidationNotification source, 
+            object value, Type type, bool ignoreCase = false)
         {
             return source.EnumIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, type);
+            }, type, ignoreCase);
         }
 
         public static ValidationNotification EnumIsValid(
-            this ValidationNotification source, IStructureToValidate data, Type type)
+            this ValidationNotification source, 
+            IStructureToValidate data, Type type, 
+            bool ignoreCase = false)
         {
             source.CleanLastMessage();
-            EnumIsValidAttribute validation = new EnumIsValidAttribute(type);
+            EnumIsValidAttribute validation = new EnumIsValidAttribute(type, ignoreCase);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);
@@ -73,5 +86,7 @@ namespace BitHelp.Core.Validation.Extends
             }
             return source;
         }
+
+        #endregion ValidationNotification
     }
 }

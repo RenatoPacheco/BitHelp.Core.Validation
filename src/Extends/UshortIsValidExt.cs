@@ -6,23 +6,23 @@ using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Extends
 {
-    public static class DecimalIsValidExt
+    public static class UshortIsValidExt
     {
         #region To ISelfValidation
 
-        public static ValidationNotification DecimalIsValid<T, P>(
+        public static ValidationNotification UshortIsValid<T, P>(
             this T source, Expression<Func<T, P>> expression)
             where T : ISelfValidation
         {
-            return source.DecimalIsValid(
+            return source.UshortIsValid(
                 source.GetStructureToValidate(expression));
         }
 
-        public static ValidationNotification DecimalIsValid<T>(
+        public static ValidationNotification UshortIsValid<T>(
             this T source, object value)
             where T : ISelfValidation
         {
-            return source.DecimalIsValid(new StructureToValidate
+            return source.UshortIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
@@ -30,28 +30,28 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        public static ValidationNotification DecimalIsValid<T>(
+        public static ValidationNotification UshortIsValid<T>(
             this T source, IStructureToValidate data)
             where T : ISelfValidation
         {
-            return source.Notifications.DecimalIsValid(data);
+            return source.Notifications.UshortIsValid(data);
         }
 
         #endregion
 
         #region ValidationNotification
 
-        public static ValidationNotification DecimalIsValid<T, P>(
+        public static ValidationNotification UshortIsValid<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
-            return source.DecimalIsValid(
+            return source.UshortIsValid(
                 data.GetStructureToValidate(expression));
         }
 
-        public static ValidationNotification DecimalIsValid(
+        public static ValidationNotification UshortIsValid(
             this ValidationNotification source, object value)
         {
-            return source.DecimalIsValid(new StructureToValidate
+            return source.UshortIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
@@ -59,11 +59,11 @@ namespace BitHelp.Core.Validation.Extends
             });
         }
 
-        public static ValidationNotification DecimalIsValid(
+        public static ValidationNotification UshortIsValid(
             this ValidationNotification source, IStructureToValidate data)
         {
             source.CleanLastMessage();
-            DecimalIsValidAttribute validation = new DecimalIsValidAttribute();
+            UshortIsValidAttribute validation = new UshortIsValidAttribute();
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

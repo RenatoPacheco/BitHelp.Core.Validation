@@ -1,5 +1,14 @@
 # BitHelp.Core.Validation
 
+## Release 0.15.0
+
+**Features:**
+
+- Checking if type is Enum for EnumIsValid
+- Requiring type indication for BetweenEnumIsValid
+- Using support classes to convert some types
+- Removing the responsibility from barring Between**Some**IsValid classes for invalid conversions
+
 ## Release 0.14.0
 
 **Features:**

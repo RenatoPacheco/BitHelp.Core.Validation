@@ -165,7 +165,7 @@ namespace BitHelp.Core.Validation.Notations
                 (isValueValid, contains) = CheckUlong(value);
             }
 
-            return isValueValid && (Denay ? !contains : contains);
+            return !isValueValid || (Denay ? !contains : contains);
         }
 
         private (bool isValueValid, bool contains) CheckFloat(object value)

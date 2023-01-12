@@ -5,17 +5,17 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class DoubleIsValidAttribute : ListIsValidAttribute
+    public class SbyteIsValidAttribute : ListIsValidAttribute
     {
-        public DoubleIsValidAttribute() : base()
+        public SbyteIsValidAttribute() : base()
         {
-            ErrorMessageResourceName = nameof(Resource.XDoubleInvalid);
+            ErrorMessageResourceName = nameof(Resource.XByteInvalid);
         }
 
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return double.TryParse(input, out _);
+            return sbyte.TryParse(input, out _);
         }
     }
 }

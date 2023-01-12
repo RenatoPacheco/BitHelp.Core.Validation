@@ -27,16 +27,14 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.14.0
+## Release 0.15.0
 
 **Features:**
 
-- Including list various types of numbers for comparison in BetweenNumberIsValid
-- Adding BetweenGuidIsValid
-- Adding option to deny betweens validates
-- Avoiding converting values if not necessary
-- Update packages test
-- Adding more tests
+- Checking if type is Enum for EnumIsValid
+- Requiring type indication for BetweenEnumIsValid
+- Using support classes to convert some types
+- Removing the responsibility from barring Between**Some**IsValid classes for invalid conversions
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
@@ -70,7 +68,7 @@ dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.8.6
 To generate the test report, run the command below:
 
 ```
-rm -rf ./coverage ./test/bin ./src/bin
+rm -rf ./coverage ./test/bin ./src/bin ./TestResults
 dotnet restore
 dotnet build --no-restore
 dotnet test --no-build --verbosity=normal --collect:"XPlat Code Coverage" --results-directory ./coverage
@@ -79,7 +77,7 @@ reportgenerator "-reports:coverage/**/coverage.cobertura.xml" "-targetdir:covera
 
 Upon execution, the command will generate a test report in the **./coverage/report**.
 
-so I don't have to run each command for each test that wants to generate the report, I created a **./buildReport.sh** to make it easier, so just run the shell script below:
+So I don't have to run each command for each test that wants to generate the report, I created a **./buildReport.sh** to make it easier, so just run the shell script below:
 
 ```	
 ./buildReport.sh

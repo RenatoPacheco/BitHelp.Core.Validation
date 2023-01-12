@@ -5,17 +5,17 @@ namespace BitHelp.Core.Validation.Notations
 {
     [AttributeUsage(AttributeTargets.Property |
            AttributeTargets.Field, AllowMultiple = false)]
-    public class DoubleIsValidAttribute : ListIsValidAttribute
+    public class UshortIsValidAttribute : ListIsValidAttribute
     {
-        public DoubleIsValidAttribute() : base()
+        public UshortIsValidAttribute() : base()
         {
-            ErrorMessageResourceName = nameof(Resource.XDoubleInvalid);
+            ErrorMessageResourceName = nameof(Resource.XShortInvalid);
         }
 
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
-            return double.TryParse(input, out _);
+            return ushort.TryParse(input, out _);
         }
     }
 }

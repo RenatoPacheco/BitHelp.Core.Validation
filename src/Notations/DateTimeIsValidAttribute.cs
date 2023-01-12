@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Resources;
 
 namespace BitHelp.Core.Validation.Notations
@@ -22,9 +23,7 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override bool Check(object value)
         {
-            string input = Convert.ToString(value);
-            CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;
-            return DateTime.TryParse(input, cultureInfo, DateTimeStyles.None, out _);
+            return TryParse.ToDate(value, CultureInfo, out _);
         }
     }
 }
