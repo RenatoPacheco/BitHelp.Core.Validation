@@ -12,7 +12,8 @@ namespace BitHelp.Core.Validation.Notations
             : base()
         {
             if (exact < 1)
-                throw new ArgumentException(string.Format(Resource.MinimumValidIs, "1"), nameof(exact));
+                throw new ArgumentException(
+                    string.Format(Resource.MinimumValidIs, "1"), nameof(exact));
 
             ErrorMessageResourceName = nameof(Resource.XExactItemsIsInvalid);
 
@@ -25,11 +26,11 @@ namespace BitHelp.Core.Validation.Notations
         }
 
         public int Exact { get; set; }
-        
+
         protected override bool Check(object value)
         {
             IList input = value as IList;
-            return (input == null || input.Count == 0) 
+            return (input == null || input.Count == 0)
                 || input.Count == Exact;
         }
     }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Globalization;
 using System.Collections.Generic;
 using BitHelp.Core.Validation.Resources;
+using BitHelp.Core.Validation.Helpers;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -48,18 +49,11 @@ namespace BitHelp.Core.Validation.Notations
             }
             else
             {
-                isValueValid = TryParse(Convert.ToString(value), out DateTime convert);
+                isValueValid = TryParse.ToDate(value, CultureInfo, out DateTime convert);
                 contains = options.Contains(ToString(convert));
             }
 
             return !isValueValid || (Denay ? !contains : contains);
-        }
-
-        private bool TryParse(string input, out DateTime output)
-        {
-            return DateTime.TryParse(input,
-                CultureInfo ?? CultureInfo.CurrentCulture,
-                DateTimeStyles.None, out output);
         }
 
         private string ToString(DateTime input)

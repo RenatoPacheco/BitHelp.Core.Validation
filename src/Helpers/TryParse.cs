@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BitHelp.Core.Validation.Helpers
 {
@@ -46,6 +47,28 @@ namespace BitHelp.Core.Validation.Helpers
             }
 
             return result;
+        }
+
+        public static bool ToDate(
+            object value, CultureInfo cultureInfo, out DateTime output)
+        {
+            if (value != null)
+            {
+                if (value is DateTime check)
+                {
+                    output = check;
+                    return true;
+                }
+                else
+                {
+                    return DateTime.TryParse(Convert.ToString(value),
+                        cultureInfo ?? CultureInfo.CurrentCulture,
+                        DateTimeStyles.None, out output);
+                }
+            }
+
+            output = new DateTime();
+            return false;
         }
     }
 }
