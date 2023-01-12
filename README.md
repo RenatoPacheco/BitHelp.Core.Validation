@@ -27,16 +27,14 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.14.0
+## Release 0.15.0
 
 **Features:**
 
-- Including list various types of numbers for comparison in BetweenNumberIsValid
-- Adding BetweenGuidIsValid
-- Adding option to deny betweens validates
-- Avoiding converting values if not necessary
-- Update packages test
-- Adding more tests
+- Checking if type is Enum for EnumIsValid
+- Requiring type indication for BetweenEnumIsValid
+- Using support classes to convert some types
+- Removing the responsibility from barring Between**Some**IsValid classes for invalid conversions
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
