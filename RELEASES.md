@@ -1,5 +1,9 @@
 # BitHelp.Core.Validation
 
+## Release 0.15.1
+
+- Cfix: Removing property T _ not using
+
 ## Release 0.15.0
 
 **Features:**
