@@ -27,14 +27,9 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.15.0
+## Release 0.15.1
 
-**Features:**
-
-- Checking if type is Enum for EnumIsValid
-- Requiring type indication for BetweenEnumIsValid
-- Using support classes to convert some types
-- Removing the responsibility from barring Between**Some**IsValid classes for invalid conversions
+- Cfix: Removing property T _ not using
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
