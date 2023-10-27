@@ -14,16 +14,21 @@ namespace BitHelp.Core.Validation.Notations
             ErrorMessageResourceType = typeof(Resource);
             ErrorMessageResourceName = nameof(Resource.XRequired);
 
-            OtherProperty = otherProperty ?? throw new ArgumentNullException(nameof(otherProperty));
+            OtherProperty = otherProperty;
         }
 
         public string OtherProperty { get; set; }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
+            PropertyInfo property = string.IsNullOrWhiteSpace(OtherProperty) 
+                ? null :  validationContext.ObjectType.GetProperty(OtherProperty);
+                
             if (object.Equals(property, null))
-                throw new ArgumentException(Resource.NotValid, nameof(OtherProperty));
+            {
+                throw new NullReferenceException(
+                    string.Format(Resource.XNotFound, nameof(OtherProperty)));
+            }
 
             object otherValue = property.GetValue(validationContext.ObjectInstance, null);
             if (object.Equals(otherValue, null) || !object.Equals(value, null))

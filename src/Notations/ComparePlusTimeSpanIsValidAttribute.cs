@@ -12,11 +12,6 @@ namespace BitHelp.Core.Validation.Notations
     {
         public ComparePlusTimeSpanIsValidAttribute(string otherProperty)
         {
-            if (otherProperty == null)
-            {
-                throw new ArgumentNullException(nameof(otherProperty));
-            }
-
             ErrorMessageResourceType = typeof(Resource);
             ErrorMessageResourceName = nameof(Resource.XComparePlusInvalid);
 
@@ -27,10 +22,13 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
+            PropertyInfo property = string.IsNullOrWhiteSpace(OtherProperty) 
+                ? null :  validationContext.ObjectType.GetProperty(OtherProperty);
+                
             if (object.Equals(property, null))
             {
-                throw new ArgumentException(Resource.NotValid, nameof(OtherProperty));
+                throw new NullReferenceException(
+                    string.Format(Resource.XNotFound, nameof(OtherProperty)));
             }
 
             object otherValue = property.GetValue(validationContext.ObjectInstance, null);
