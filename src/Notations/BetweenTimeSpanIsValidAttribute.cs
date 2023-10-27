@@ -11,22 +11,8 @@ namespace BitHelp.Core.Validation.Notations
     public class BetweenTimeSpanIsValidAttribute : ListIsValidAttribute
     {
         public BetweenTimeSpanIsValidAttribute(
-            IEnumerable<TimeSpan> options, bool denay = false) : base()
-        {
-            if (!options?.Any() ?? true)
-                throw new ArgumentException(string.Format(
-                    Resource.XNullOrEmpty, nameof(options)), nameof(options));
-
-            ErrorMessageResourceName = nameof(Resource.XNotValid);
-
-            Options = options;
-            Denay = denay;
-        }
-
-        public BetweenTimeSpanIsValidAttribute(
             IEnumerable<TimeSpan> options, 
-            CultureInfo cultureInfo,
-            bool denay = false) : base()
+            bool denay = false, CultureInfo cultureInfo = null) : base()
         {
             if (!options?.Any() ?? true)
                 throw new ArgumentException(string.Format(
