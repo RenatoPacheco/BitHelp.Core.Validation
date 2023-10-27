@@ -4,6 +4,7 @@ using BitHelp.Core.Extend;
 using System.Globalization;
 using BitHelp.Core.Validation.Resources;
 using System.ComponentModel.DataAnnotations;
+using BitHelp.Core.Validation.Helpers;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -29,14 +30,7 @@ namespace BitHelp.Core.Validation.Notations
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            PropertyInfo property = string.IsNullOrWhiteSpace(OtherProperty) 
-                ? null :  validationContext.ObjectType.GetProperty(OtherProperty);
-
-            if (object.Equals(property, null))
-            {
-                throw new NullReferenceException(
-                    string.Format(Resource.XNotFound, nameof(OtherProperty)));
-            }
+            PropertyInfo property = validationContext.GetPropertyInfo(OtherProperty);
 
             CultureInfo cultureInfo = System.Globalization.CultureInfo.CurrentCulture;
 
