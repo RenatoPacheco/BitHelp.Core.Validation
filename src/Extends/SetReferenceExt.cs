@@ -15,26 +15,8 @@ namespace BitHelp.Core.Validation.Extends
             return source;
         }
 
-        public static ValidationNotification SetReference<T, P>(
-            this ValidationNotification source, Expression<Func<T, P>> expression)
-        {
-            if(source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyPath();
-
-            return source;
-        }
-
         public static ValidationNotification SetReference<T>(
             this ValidationNotification source, T _, Expression<Func<T, object>> expression)
-        {
-            if (source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyPath();
-
-            return source;
-        }
-
-        public static ValidationNotification SetReference<T, P>(
-            this ValidationNotification source, T _, Expression<Func<T, P>> expression)
         {
             if (source.LastMessage != null)
                 source.LastMessage.Reference = expression.PropertyPath();

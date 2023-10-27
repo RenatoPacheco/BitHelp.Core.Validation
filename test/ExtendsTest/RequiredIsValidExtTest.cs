@@ -31,6 +31,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.RequiredIsValid(x => x.Object);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(single.Object);
+            Assert.True(single.IsValid());
         }
 
         [Theory]
@@ -52,6 +56,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.RequiredIsValid(x => x.Object);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(single.Object);
             Assert.False(single.IsValid());
         }
 
@@ -77,6 +85,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.RequiredIsValid(x => x.Object);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(single.Object);
+            Assert.True(single.IsValid());
         }
 
         [Theory]
@@ -100,6 +112,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.RequiredIsValid(x => x.Object);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(single.Object);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -121,6 +137,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.RequiredIsValid(x => x.Object);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(single.Object);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -141,6 +161,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.RequiredIsValid(x => x.Object);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RequiredIsValid(single.Object);
             Assert.False(single.IsValid());
         }
     }

@@ -28,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.ExactItemsIsValid(x => x.Int, 4);
             Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.ExactItemsIsValid(array.Int, 4);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -48,6 +52,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             array.Notifications.Clear();
             array.ExactItemsIsValid(x => x.Int, 5);
+            Assert.False(array.IsValid());
+
+            array.Notifications.Clear();
+            array.ExactItemsIsValid(array.Int, 5);
             Assert.False(array.IsValid());
         }
 
@@ -70,6 +78,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.ExactItemsIsValid(x => x.Int, 5);
             Assert.False(array.IsValid());
+
+            array.Notifications.Clear();
+            array.ExactItemsIsValid(array.Int, 5);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -90,6 +102,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             array.Notifications.Clear();
             array.ExactItemsIsValid(x => x.Int, 5);
+            Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.ExactItemsIsValid(array.Int, 5);
             Assert.True(array.IsValid());
         }
 
@@ -112,6 +128,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.ExactItemsIsValid(x => x.Int, 5);
             Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.ExactItemsIsValid(array.Int, 5);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -125,6 +145,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.ExactItemsIsValid(array.Int, 0));
             Assert.Throws<ArgumentException>(() => _notification.ExactItemsIsValid(array, x => x.Int, 0));
             Assert.Throws<ArgumentException>(() => array.ExactItemsIsValid(x => x.Int, 0));
+            Assert.Throws<ArgumentException>(() => array.ExactItemsIsValid(array.Int, 0));
         }
     }
 }

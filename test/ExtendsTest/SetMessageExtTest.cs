@@ -90,6 +90,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentNullException>(() =>
                 _notification.LongIsValid(single, x => x.String)
                     .SetMessage(message));
+
+            Assert.Throws<ArgumentNullException>(() =>
+                _notification.LongIsValid(single, x => x.String)
+                    .SetMessage<SingleValues>(x => x.String, message));
+
+            Assert.Throws<ArgumentNullException>(() =>
+                _notification.LongIsValid(single, x => x.String)
+                    .SetMessage(single, x => x.String, message));
         }
 
         [Fact]
@@ -109,6 +117,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentNullException>(() =>
                 _notification.LongIsValid(single, x => x.String)
                     .SetMessage(message));
+
+            Assert.Throws<ArgumentNullException>(() =>
+                _notification.LongIsValid(single, x => x.String)
+                    .SetMessage<SingleValues>(x => x.String, message));
+
+            Assert.Throws<ArgumentNullException>(() =>
+                _notification.LongIsValid(single, x => x.String)
+                    .SetMessage(single, x => x.String, message));
         }
 
         [Fact]
@@ -128,6 +144,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentNullException>(() =>
                 _notification.LongIsValid(single, x => x.String)
                     .SetMessage(message));
+
+            Assert.Throws<ArgumentNullException>(() =>
+                _notification.LongIsValid(single, x => x.String)
+                    .SetMessage<SingleValues>(x => x.String, message));
+
+            Assert.Throws<ArgumentNullException>(() =>
+                _notification.LongIsValid(single, x => x.String)
+                    .SetMessage(single, x => x.String, message));
         }
     }
 }

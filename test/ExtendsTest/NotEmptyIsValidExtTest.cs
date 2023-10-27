@@ -28,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.NotEmptyIsValid(x => x.String);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(single.String);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -48,6 +52,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.NotEmptyIsValid(x => x.String);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(single.String);
             Assert.False(single.IsValid());
         }
 
@@ -70,6 +78,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.NotEmptyIsValid(x => x.String, true);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(single.String, true);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -90,6 +102,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.NotEmptyIsValid(x => x.String);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(single.String);
             Assert.True(single.IsValid());
         }
 
@@ -112,6 +128,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.NotEmptyIsValid(x => x.String);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(single.String);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -132,6 +152,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.NotEmptyIsValid(x => x.String, true);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.NotEmptyIsValid(single.String, true);
             Assert.True(single.IsValid());
         }
 
@@ -154,6 +178,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.NotEmptyIsValid(x => x.String);
             Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(array.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -175,6 +203,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.NotEmptyIsValid(x => x.String);
             Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(array.String);
+            Assert.True(array.IsValid());
         }
 
         [Fact]
@@ -195,6 +227,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             array.Notifications.Clear();
             array.NotEmptyIsValid(x => x.String);
+            Assert.False(array.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(array.String);
             Assert.False(array.IsValid());
         }
 
@@ -218,6 +254,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.NotEmptyIsValid(x => x.String);
             Assert.False(array.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(array.String);
+            Assert.False(array.IsValid());
         }
 
         [Fact]
@@ -238,6 +278,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             array.Notifications.Clear();
             array.NotEmptyIsValid(x => x.String);
+            Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.NotEmptyIsValid(array.String);
             Assert.True(array.IsValid());
         }
     }

@@ -34,6 +34,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.MaxItemsIsValid(x => x.Value, max);
             Assert.True(array.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(array.Value, max);
+            Assert.True(array.IsValid());
         }
 
         [Theory]
@@ -56,6 +60,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.Notifications.Clear();
             array.MaxItemsIsValid(x => x.Value, max);
             Assert.False(array.IsValid());
+
+            array.Notifications.Clear();
+            array.MaxItemsIsValid(array.Value, max);
+            Assert.False(array.IsValid());
         }
 
         [Theory]
@@ -73,6 +81,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array.Value, max));
             Assert.Throws<ArgumentException>(() => _notification.MaxItemsIsValid(array, x => x.Value, max));
             Assert.Throws<ArgumentException>(() => array.MaxItemsIsValid(x => x.Value, max));
+            Assert.Throws<ArgumentException>(() => array.MaxItemsIsValid(array.Value, max));
         }
     }
 }

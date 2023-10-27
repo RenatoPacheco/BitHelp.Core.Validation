@@ -28,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MaxCharactersIsValid(x => x.String, 10);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MaxCharactersIsValid(single.String, 10);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -48,6 +52,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MaxCharactersIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MaxCharactersIsValid(single.String, 10);
             Assert.True(single.IsValid());
         }
 
@@ -70,6 +78,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MaxCharactersIsValid(x => x.String, 10);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MaxCharactersIsValid(single.String, 10);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -90,6 +102,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MaxCharactersIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MaxCharactersIsValid(single.String, 10);
             Assert.True(single.IsValid());
         }
 
@@ -112,6 +128,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MaxCharactersIsValid(x => x.String, 10);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MaxCharactersIsValid(single.String, 10);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -125,6 +145,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             Assert.Throws<ArgumentException>(() => _notification.MaxCharactersIsValid(single.String, 0));
             Assert.Throws<ArgumentException>(() => _notification.MaxCharactersIsValid(single, x => x.String, 0));
             Assert.Throws<ArgumentException>(() => single.MaxCharactersIsValid(x => x.String, 0));
+            Assert.Throws<ArgumentException>(() => single.MaxCharactersIsValid(single.String, 0));
         }
     }
 }
