@@ -49,16 +49,14 @@ namespace BitHelp.Core.Validation.Notations
 
             object otherValue = property.GetValue(validationContext.ObjectInstance, null);
 
-            if (!object.Equals(otherValue, null) && !object.Equals(value, null))
+            if (!object.Equals(otherValue, null) && !object.Equals(value, null)
+                && TimeSpan.TryParse(Convert.ToString(value), cultureInfo, out TimeSpan newValue)
+                && TimeSpan.TryParse(Convert.ToString(otherValue), cultureInfo, out TimeSpan newCompare)
+                && newValue >= newCompare)
             {
-                if (TimeSpan.TryParse(Convert.ToString(value), cultureInfo, out TimeSpan newValue)
-                    && TimeSpan.TryParse(Convert.ToString(otherValue), cultureInfo, out TimeSpan newCompare)
-                    && newValue >= newCompare)
-                {
-                    string name = validationContext.DisplayName;
-                    string nameCompare = property.PropertyDisplay();
-                    return new ValidationResult(string.Format(ErrorMessageString, name, nameCompare));
-                }
+                string name = validationContext.DisplayName;
+                string nameCompare = property.PropertyDisplay();
+                return new ValidationResult(string.Format(ErrorMessageString, name, nameCompare));
             }
 
             return null;
