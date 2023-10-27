@@ -44,16 +44,16 @@ namespace BitHelp.Core.Validation.Extends
             where T : ISelfValidation
         {
             string reference = source.GetStructureToValidate(expression).Reference;
-            return source.Notifications.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Error);
+            return source.Notifications.Messages.Any(x => x.Type == ValidationType.Error
+                && x.Reference == reference);
         }
 
         public static bool HasErrorNotification<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = data.GetStructureToValidate(expression).Reference;
-            return source.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Error);
+            return source.Messages.Any(x => x.Type == ValidationType.Error 
+                && x.Reference == reference);
         }
 
         public static bool HasFatalNotification<T, P>(
@@ -61,16 +61,16 @@ namespace BitHelp.Core.Validation.Extends
             where T : ISelfValidation
         {
             string reference = source.GetStructureToValidate(expression).Reference;
-            return source.Notifications.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Fatal);
+            return source.Notifications.Messages.Any(x => x.Type == ValidationType.Fatal
+                && x.Reference == reference);
         }
 
         public static bool HasFatalNotification<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = data.GetStructureToValidate(expression).Reference;
-            return source.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Fatal);
+            return source.Messages.Any(x => x.Type == ValidationType.Fatal
+                && x.Reference == reference);
         }
 
         public static bool HasUnauthorizedNotification<T, P>(
@@ -78,16 +78,16 @@ namespace BitHelp.Core.Validation.Extends
             where T : ISelfValidation
         {
             string reference = source.GetStructureToValidate(expression).Reference;
-            return source.Notifications.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Unauthorized);
+            return source.Notifications.Messages.Any(x => x.Type == ValidationType.Unauthorized
+                && x.Reference == reference);
         }
 
         public static bool HasUnauthorizedNotification<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = data.GetStructureToValidate(expression).Reference;
-            return source.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Unauthorized);
+            return source.Messages.Any(x => x.Type == ValidationType.Unauthorized
+                && x.Reference == reference);
         }
 
         public static bool HasSuccessNotification<T, P>(
@@ -95,16 +95,16 @@ namespace BitHelp.Core.Validation.Extends
             where T : ISelfValidation
         {
             string reference = source.GetStructureToValidate(expression).Reference;
-            return source.Notifications.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Success);
+            return source.Notifications.Messages.Any(x => x.Type == ValidationType.Success 
+                && x.Reference == reference);
         }
 
         public static bool HasSuccessNotification<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = data.GetStructureToValidate(expression).Reference;
-            return source.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Success);
+            return source.Messages.Any(x => x.Type == ValidationType.Success
+                && x.Reference == reference);
         }
 
         public static bool HasInfoNotification<T, P>(
@@ -112,16 +112,16 @@ namespace BitHelp.Core.Validation.Extends
             where T : ISelfValidation
         {
             string reference = source.GetStructureToValidate(expression).Reference;
-            return source.Notifications.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Info);
+            return source.Notifications.Messages.Any(x => x.Type == ValidationType.Info
+                && x.Reference == reference);
         }
 
         public static bool HasInfoNotification<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = data.GetStructureToValidate(expression).Reference;
-            return source.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Info);
+            return source.Messages.Any(x => x.Type == ValidationType.Info 
+                && x.Reference == reference);
         }
 
         public static bool HasAlertNotification<T, P>(
@@ -129,16 +129,16 @@ namespace BitHelp.Core.Validation.Extends
             where T : ISelfValidation
         {
             string reference = source.GetStructureToValidate(expression).Reference;
-            return source.Notifications.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Alert);
+            return source.Notifications.Messages.Any(x => x.Type == ValidationType.Alert
+                && x.Reference == reference);
         }
 
         public static bool HasAlertNotification<T, P>(
             this ValidationNotification source, T data, Expression<Func<T, P>> expression)
         {
             string reference = data.GetStructureToValidate(expression).Reference;
-            return source.Messages.Any(x => x.Reference == reference
-                && x.Type == ValidationType.Alert);
+            return source.Messages.Any(x => x.Type == ValidationType.Alert
+                && x.Reference == reference);
         }
 
         #endregion

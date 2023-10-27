@@ -54,20 +54,18 @@ namespace BitHelp.Core.Validation.Extends
 
             source.CleanLastMessage();
 
-            if (!(value is null) && !(valueCompare is null))
+            if (!(value is null) && !(valueCompare is null)
+                && decimal.TryParse(Convert.ToString(value), out decimal newValue)
+                && decimal.TryParse(Convert.ToString(valueCompare), out decimal newCompare)
+                && newValue >= newCompare)
             {
-                if (decimal.TryParse(Convert.ToString(value), out decimal newValue)
-                    && decimal.TryParse(Convert.ToString(valueCompare), out decimal newCompare)
-                    && newValue >= newCompare)
-                {
-                    string text = string.Format(
-                        Resource.XCompareLessInvalid,
-                        display, displayCompare);
+                string text = string.Format(
+                    Resource.XCompareLessInvalid,
+                    display, displayCompare);
 
-                    var message = new ValidationMessage(text, reference);
-                    source.SetLastMessage(message, data.Display);
-                    source.Add(message);
-                }
+                var message = new ValidationMessage(text, reference);
+                source.SetLastMessage(message, data.Display);
+                source.Add(message);
             }
 
             return source;
