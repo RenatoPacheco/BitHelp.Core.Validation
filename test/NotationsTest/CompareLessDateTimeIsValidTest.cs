@@ -1,12 +1,20 @@
-using BitHelp.Core.Validation.Notations;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 using Xunit;
 using System;
+using System.Collections.Generic;
+using BitHelp.Core.Validation.Notations;
+using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation.Test.NotationsTest
 {
-    public class CompareLessDateTimeIsValidValue01Test
+    public class CompareLessDateTimeIsValidNamePropNullTest
+    {
+        [CompareLessDateTimeIsValid(null, "en-US")]
+        public object Value { get; set; }
+
+        public object Compare { get; set; }
+    }
+
+    public class CompareLessDateTimeIsValidNamePropEmptyTest
     {
         [CompareLessDateTimeIsValid("", "en-US")]
         public object Value { get; set; }
@@ -14,7 +22,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public object Compare { get; set; }
     }
 
-    public class CompareLessDateTimeIsValidValue02Test
+    public class CompareLessDateTimeIsValidNamePropInvalidTest
     {
         [CompareLessDateTimeIsValid("Invalid", "en-US")]
         public object Value { get; set; }
@@ -22,14 +30,13 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public object Compare { get; set; }
     }
 
-    public class CompareLessDateTimeIsValidValue03Test
+    public class CompareLessDateTimeIsValidCultureInfoInvalidTest
     {
-        [CompareLessDateTimeIsValid(nameof(Compare))]
+        [CompareLessDateTimeIsValid(nameof(Compare), "Invalid")]
         public object Value { get; set; }
 
         public object Compare { get; set; }
     }
-
 
     public class CompareLessDateTimeIsValidTest
     {
@@ -45,8 +52,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         [InlineData("12/24/2020", "12/25/2020")]
         [InlineData("not valid date", "12/25/2020")]
         [InlineData("12/24/2020", "not valid date")]
-        public void Check_format_is_valid(
-            object input, object compare)
+        public void Check_format_is_valid(object input, object compare)
         {
             CompareLessDateTimeIsValidTest model = new()
             {
@@ -61,8 +67,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
 
         [Theory]
         [InlineData("12/25/2020", "12/24/2020")]
-        public void Check_format_is_invalid(
-            object input, object compare)
+        public void Check_format_is_invalid(object input, object compare)
         {
             CompareLessDateTimeIsValidTest model = new()
             {
@@ -76,9 +81,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         }
 
         [Fact]
-        public void Check_property_unll_or_empty_invalid()
+        public void Check_property_null_name_invalid()
         {
-            CompareLessDateTimeIsValidValue01Test model = new()
+            CompareLessDateTimeIsValidNamePropNullTest model = new()
             {
                 Value = "12/24/2020",
                 Compare = "12/25/2020"
@@ -86,13 +91,14 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
 
-            Assert.Throws<ArgumentException>(() => Validator.TryValidateObject(model, context, results, true));
+            Assert.Throws<NullReferenceException>(() 
+                => Validator.TryValidateObject(model, context, results, true));
         }
 
         [Fact]
-        public void Check_property_invalid()
+        public void Check_property_empty_name_invalid()
         {
-            CompareLessDateTimeIsValidValue02Test model = new()
+            CompareLessDateTimeIsValidNamePropEmptyTest model = new()
             {
                 Value = "12/24/2020",
                 Compare = "12/25/2020"
@@ -100,21 +106,38 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
 
-            Assert.Throws<NullReferenceException>(() => Validator.TryValidateObject(model, context, results, true));
+            Assert.Throws<NullReferenceException>(() 
+                => Validator.TryValidateObject(model, context, results, true));
         }
 
         [Fact]
-        public void Check_culture_info_as_null_valid()
+        public void Check_property_name_invalid()
         {
-            CompareLessDateTimeIsValidValue03Test model = new()
+            CompareLessDateTimeIsValidNamePropInvalidTest model = new()
             {
-                Value = DateTime.Now.ToString(),
-                Compare = DateTime.Now.AddDays(2).ToString()
+                Value = "12/24/2020",
+                Compare = "12/25/2020"
             };
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
-            bool isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
+
+            Assert.Throws<NullReferenceException>(() 
+                => Validator.TryValidateObject(model, context, results, true));
+        }
+
+        [Fact]
+        public void Check_culture_info_invalid()
+        {
+            CompareLessDateTimeIsValidCultureInfoInvalidTest model = new()
+            {
+                Value = "12/24/2020",
+                Compare = "12/25/2020"
+            };
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+
+            Assert.Throws<ArgumentException>(()
+                => Validator.TryValidateObject(model, context, results, true));
         }
     }
 }

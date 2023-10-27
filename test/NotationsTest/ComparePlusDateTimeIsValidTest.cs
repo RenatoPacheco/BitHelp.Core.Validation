@@ -6,7 +6,15 @@ using System;
 
 namespace BitHelp.Core.Validation.Test.NotationsTest
 {
-    public class ComparePlusDateTimeIsValidValue01Test
+    public class ComparePlusDateTimeIsValidNamePropNullTest
+    {
+        [ComparePlusDateTimeIsValid(null, "en-US")]
+        public object Value { get; set; }
+
+        public object Compare { get; set; }
+    }
+
+    public class ComparePlusDateTimeIsValidNamePropEmptyTest
     {
         [ComparePlusDateTimeIsValid("", "en-US")]
         public object Value { get; set; }
@@ -14,7 +22,7 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public object Compare { get; set; }
     }
 
-    public class ComparePlusDateTimeIsValidValue02Test
+    public class ComparePlusDateTimeIsValidNamePropInvalidTest
     {
         [ComparePlusDateTimeIsValid("Invalid", "en-US")]
         public object Value { get; set; }
@@ -22,9 +30,9 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public object Compare { get; set; }
     }
 
-    public class ComparePlusDateTimeIsValidValue03Test
+    public class ComparePlusDateTimeIsValidCultureInfoInvalidTest
     {
-        [ComparePlusDateTimeIsValid(nameof(Compare))]
+        [ComparePlusDateTimeIsValid(nameof(Compare), "Invalid")]
         public object Value { get; set; }
 
         public object Compare { get; set; }
@@ -76,45 +84,63 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         }
 
         [Fact]
-        public void Check_property_unll_or_empty_invalid()
+        public void Check_property_null_name_invalid()
         {
-            ComparePlusDateTimeIsValidValue01Test model = new()
+            ComparePlusDateTimeIsValidNamePropNullTest model = new()
             {
-                Value = "12/26/2020",
+                Value = "12/24/2020",
                 Compare = "12/25/2020"
             };
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
 
-            Assert.Throws<ArgumentException>(() => Validator.TryValidateObject(model, context, results, true));
+            Assert.Throws<NullReferenceException>(()
+                => Validator.TryValidateObject(model, context, results, true));
         }
 
         [Fact]
-        public void Check_property_invalid()
+        public void Check_property_empty_name_invalid()
         {
-            ComparePlusDateTimeIsValidValue02Test model = new()
+            ComparePlusDateTimeIsValidNamePropEmptyTest model = new()
             {
-                Value = "12/26/2020",
+                Value = "12/24/2020",
                 Compare = "12/25/2020"
             };
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
 
-            Assert.Throws<NullReferenceException>(() => Validator.TryValidateObject(model, context, results, true));
+            Assert.Throws<NullReferenceException>(()
+                => Validator.TryValidateObject(model, context, results, true));
         }
 
         [Fact]
-        public void Check_culture_info_as_null_valid()
+        public void Check_property_name_invalid()
         {
-            ComparePlusDateTimeIsValidValue03Test model = new()
+            ComparePlusDateTimeIsValidNamePropInvalidTest model = new()
             {
-                Value = DateTime.Now.AddDays(2).ToString(),
-                Compare = DateTime.Now.ToString()
+                Value = "12/24/2020",
+                Compare = "12/25/2020"
             };
             ValidationContext context = new(model);
             List<ValidationResult> results = new();
-            bool isValid = Validator.TryValidateObject(model, context, results, true);
-            Assert.True(isValid);
+
+            Assert.Throws<NullReferenceException>(()
+                => Validator.TryValidateObject(model, context, results, true));
+        }
+
+        [Fact]
+        public void Check_culture_info_invalid()
+        {
+            ComparePlusDateTimeIsValidCultureInfoInvalidTest model = new()
+            {
+                Value = "12/24/2020",
+                Compare = "12/25/2020"
+            };
+            ValidationContext context = new(model);
+            List<ValidationResult> results = new();
+
+            Assert.Throws<ArgumentException>(()
+                => Validator.TryValidateObject(model, context, results, true));
         }
     }
 }
