@@ -38,7 +38,6 @@ namespace BitHelp.Core.Validation.Test.NotationsTest
         public object Compare { get; set; }
     }
 
-
     public class ComparePlusDateTimeIsValidTest
     {
         [ComparePlusDateTimeIsValid(nameof(Compare), "en-US")]
