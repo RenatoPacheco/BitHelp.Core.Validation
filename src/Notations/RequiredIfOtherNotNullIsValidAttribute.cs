@@ -2,6 +2,7 @@
 using System.Reflection;
 using BitHelp.Core.Validation.Resources;
 using System.ComponentModel.DataAnnotations;
+using BitHelp.Core.Validation.Helpers;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -14,16 +15,14 @@ namespace BitHelp.Core.Validation.Notations
             ErrorMessageResourceType = typeof(Resource);
             ErrorMessageResourceName = nameof(Resource.XRequired);
 
-            OtherProperty = otherProperty ?? throw new ArgumentNullException(nameof(otherProperty));
+            OtherProperty = otherProperty;
         }
 
         public string OtherProperty { get; set; }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
-            if (object.Equals(property, null))
-                throw new ArgumentException(Resource.NotValid, nameof(OtherProperty));
+            PropertyInfo property = validationContext.GetPropertyInfo(OtherProperty);
 
             object otherValue = property.GetValue(validationContext.ObjectInstance, null);
             if (object.Equals(otherValue, null) || !object.Equals(value, null))

@@ -1,8 +1,14 @@
 # BitHelp.Core.Validation
 
+## Release 0.16.0
+
+- feature: Increase in test coverage
+- feature: Increase in tests for date validations
+- feature: Including CultureInfo in validations for TimeSpan
+
 ## Release 0.15.1
 
-- Cfix: Removing property T _ not using
+- fix: Removing property T _ not using
 
 ## Release 0.15.0
 

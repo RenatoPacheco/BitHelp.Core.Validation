@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using BitHelp.Core.Validation.Resources;
+using System.Globalization;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -10,7 +11,8 @@ namespace BitHelp.Core.Validation.Notations
     public class BetweenTimeSpanIsValidAttribute : ListIsValidAttribute
     {
         public BetweenTimeSpanIsValidAttribute(
-            IEnumerable<TimeSpan> options, bool denay = false) : base()
+            IEnumerable<TimeSpan> options, 
+            bool denay = false, CultureInfo cultureInfo = null) : base()
         {
             if (!options?.Any() ?? true)
                 throw new ArgumentException(string.Format(
@@ -19,12 +21,18 @@ namespace BitHelp.Core.Validation.Notations
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
             Options = options;
+            CultureInfo = cultureInfo;
             Denay = denay;
         }
 
         IEnumerable<TimeSpan> Options { get; set; } = Array.Empty<TimeSpan>();
 
         bool Denay { get; set; }
+
+        /// <summary>
+        /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
+        /// </summary>
+        public CultureInfo CultureInfo { get; set; }
 
         protected override bool Check(object value)
         {
@@ -38,7 +46,8 @@ namespace BitHelp.Core.Validation.Notations
             }
             else
             {
-                isValueValid = TimeSpan.TryParse(Convert.ToString(value), out TimeSpan convert);
+                CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;
+                isValueValid = TimeSpan.TryParse(Convert.ToString(value), cultureInfo, out TimeSpan convert);
                 contains = Options.Contains(convert);
             }
 

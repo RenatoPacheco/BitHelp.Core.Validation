@@ -29,6 +29,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MinTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10));
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -50,6 +54,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MinTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
             Assert.True(single.IsValid());
         }
 
@@ -73,6 +81,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MinTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10));
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -93,6 +105,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MinTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10));
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
             Assert.False(single.IsValid());
         }
 
@@ -115,6 +131,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MinTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10));
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -135,6 +155,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MinTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10));
             Assert.True(single.IsValid());
         }
     }

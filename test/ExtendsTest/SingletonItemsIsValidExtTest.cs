@@ -34,6 +34,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             array.SingletonItemsIsValid(x => x.Value);
             Assert.True(array.IsValid());
 
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(array.Value);
+            Assert.True(array.IsValid());
+
             Assert.Null(any);
         }
 
@@ -58,6 +62,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             array.Notifications.Clear();
             array.SingletonItemsIsValid(x => x.Value);
+            Assert.False(array.IsValid());
+
+            array.Notifications.Clear();
+            array.SingletonItemsIsValid(array.Value);
             Assert.False(array.IsValid());
 
             Assert.Null(any);

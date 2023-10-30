@@ -28,6 +28,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MinNumberIsValid(x => x.String, 10);
             Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinNumberIsValid(single.String, 10);
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -49,6 +53,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MinNumberIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinNumberIsValid(single.String, 10);
             Assert.True(single.IsValid());
         }
 
@@ -72,6 +80,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MinNumberIsValid(x => x.String, 10);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinNumberIsValid(single.String, 10);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -92,6 +104,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MinNumberIsValid(x => x.String, 10);
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinNumberIsValid(single.String, 10);
             Assert.False(single.IsValid());
         }
 
@@ -114,6 +130,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             single.Notifications.Clear();
             single.MinNumberIsValid(x => x.String, 10);
             Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinNumberIsValid(single.String, 10);
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -134,6 +154,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             single.Notifications.Clear();
             single.MinNumberIsValid(x => x.String, 10);
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.MinNumberIsValid(single.String, 10);
             Assert.True(single.IsValid());
         }
     }

@@ -77,7 +77,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
 
             Assert.False(IsValid());
             Assert.False(notifications.IsValid());
-            Assert.Equal(1, notifications.Messages.Count);
+            Assert.Single(notifications.Messages);
             Assert.Collection(notifications.Messages, item => Assert.Equal(nameof(Text), item.Reference));
         }
 

@@ -24,6 +24,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -41,6 +49,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -58,6 +74,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -75,6 +99,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -92,6 +124,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.TimeSpan, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -109,6 +149,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -126,6 +174,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.False(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.False(single.IsValid());
         }
 
         [Fact]
@@ -143,6 +199,14 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             _notification.Clear();
             _notification.RangeTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
             Assert.True(_notification.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
+
+            single.Notifications.Clear();
+            single.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(20));
+            Assert.True(single.IsValid());
         }
 
         [Fact]
@@ -155,6 +219,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(4)));
             Assert.Throws<ArgumentException>(() => _notification.RangeTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(4)));
+            Assert.Throws<ArgumentException>(() => single.RangeTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(4)));
+            Assert.Throws<ArgumentException>(() => single.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(4)));
         }
 
         [Fact]
@@ -167,6 +233,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Assert.Throws<ArgumentException>(() => _notification.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5)));
             Assert.Throws<ArgumentException>(() => _notification.RangeTimeSpanIsValid(single, x => x.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5)));
+            Assert.Throws<ArgumentException>(() => single.RangeTimeSpanIsValid(x => x.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5)));
+            Assert.Throws<ArgumentException>(() => single.RangeTimeSpanIsValid(single.String, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5)));
         }
     }
 }

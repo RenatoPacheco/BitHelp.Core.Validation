@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Reflection;
 using BitHelp.Core.Extend;
+using System.Globalization;
 using BitHelp.Core.Validation.Resources;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
+using BitHelp.Core.Validation.Helpers;
 
 namespace BitHelp.Core.Validation.Notations
 {
@@ -13,20 +14,11 @@ namespace BitHelp.Core.Validation.Notations
     {
         public ComparePlusDateTimeIsValidAttribute(string otherProperty, string cultureInfo = null)
         {
-            if (string.IsNullOrWhiteSpace(otherProperty))
-            {
-                throw new ArgumentException(
-                    string.Format(Resource.XNullOrEmpty, nameof(otherProperty)), nameof(otherProperty));
-            }
-
             ErrorMessageResourceType = typeof(Resource);
             ErrorMessageResourceName = nameof(Resource.XComparePlusInvalid);
 
             OtherProperty = otherProperty;
-            if(!(cultureInfo is null))
-            {
-                CultureInfo = new CultureInfo(cultureInfo);
-            }
+            CultureInfo = cultureInfo;
         }
 
         public string OtherProperty { get; set; }
@@ -34,18 +26,27 @@ namespace BitHelp.Core.Validation.Notations
         /// <summary>
         /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
         /// </summary>
-        public CultureInfo CultureInfo { get; set; }
+        public string CultureInfo { get; set; }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            PropertyInfo property = validationContext.ObjectType.GetProperty(OtherProperty);
-            if (object.Equals(property, null))
+            PropertyInfo property = validationContext.GetPropertyInfo(OtherProperty);
+
+            CultureInfo cultureInfo = System.Globalization.CultureInfo.CurrentCulture;
+
+            if (CultureInfo != null)
             {
-                throw new NullReferenceException(
-                    string.Format(Resource.XNotFound, nameof(OtherProperty)));
+                if (CultureInfo.DoesCultureExist())
+                {
+                    cultureInfo = new CultureInfo(CultureInfo);
+                }
+                else
+                {
+                    throw new ArgumentException(
+                        string.Format(Resource.XNotValid, nameof(CultureInfo)));
+                }
             }
 
-            CultureInfo cultureInfo = CultureInfo ?? CultureInfo.CurrentCulture;
             object otherValue = property.GetValue(validationContext.ObjectInstance, null);
 
             if (!object.Equals(otherValue, null) && !object.Equals(value, null))

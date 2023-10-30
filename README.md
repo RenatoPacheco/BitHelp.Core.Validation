@@ -27,9 +27,11 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.15.1
+## Release 0.16.0
 
-- Cfix: Removing property T _ not using
+- feature: Increase in test coverage
+- feature: Increase in tests for date validations
+- feature: Including CultureInfo in validations for TimeSpan
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 

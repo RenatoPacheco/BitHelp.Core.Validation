@@ -62,20 +62,18 @@ namespace BitHelp.Core.Validation.Extends
             cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture;
             source.CleanLastMessage();
 
-            if (!(value is null) && !(valueCompare is null))
+            if (!(value is null) && !(valueCompare is null)
+                && DateTime.TryParse(Convert.ToString(value), cultureInfo, DateTimeStyles.None, out DateTime newValue)
+                && DateTime.TryParse(Convert.ToString(valueCompare), cultureInfo, DateTimeStyles.None, out DateTime newCompare)
+                && newValue <= newCompare)
             {
-                if (DateTime.TryParse(Convert.ToString(value), cultureInfo, DateTimeStyles.None, out DateTime newValue)
-                    && DateTime.TryParse(Convert.ToString(valueCompare), cultureInfo, DateTimeStyles.None, out DateTime newCompare)
-                    && newValue <= newCompare)
-                {
-                    string text = string.Format(
-                        Resource.XComparePlusInvalid,
-                        display, displayCompare);
+                string text = string.Format(
+                    Resource.XComparePlusInvalid,
+                    display, displayCompare);
 
-                    var message = new ValidationMessage(text, reference);
-                    source.SetLastMessage(message, data.Display);
-                    source.Add(message);
-                }
+                var message = new ValidationMessage(text, reference);
+                source.SetLastMessage(message, data.Display);
+                source.Add(message);
             }
 
             return source;
