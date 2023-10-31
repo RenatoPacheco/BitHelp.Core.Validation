@@ -128,7 +128,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Fact]
-        public void Check_set_message_empty_whith_space_invalid()
+        public void Check_set_message_empty_with_space_invalid()
         {
             SingleValues single = new()
             {

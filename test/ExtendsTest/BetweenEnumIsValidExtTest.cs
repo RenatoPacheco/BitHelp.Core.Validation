@@ -27,7 +27,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData((int)EnumValue.Guid, true, true)]
         [InlineData((int)EnumValue.Guid, true, false)]
         [InlineData((int)EnumValue.Guid, false, true)]
-        public void Check_contain_value_valid(object value, bool ignoreCase, bool denay)
+        public void Check_contain_value_valid(object value, bool ignoreCase, bool deny)
         {
             SingleValues single = new()
             {
@@ -36,23 +36,23 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(
-                single.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(!denay, _notification.IsValid());
+                single.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(!deny, _notification.IsValid());
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(
-                single, x => x.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(!denay, _notification.IsValid());
+                single, x => x.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(!deny, _notification.IsValid());
 
             single.Notifications.Clear();
             single.BetweenEnumIsValid(
-                x => x.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(!denay, single.IsValid());
+                x => x.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(!deny, single.IsValid());
 
             single.Notifications.Clear();
             single.BetweenEnumIsValid(
-                single.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(!denay, single.IsValid());
+                single.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(!deny, single.IsValid());
         }
 
         [Theory]
@@ -60,7 +60,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(EnumValue.String, true, true)]
         [InlineData(EnumValue.String, true, false)]
         [InlineData(EnumValue.String, false, true)]
-        public void Check_contain_value_invalid(object value, bool ignoreCase, bool denay)
+        public void Check_contain_value_invalid(object value, bool ignoreCase, bool deny)
         {
             SingleValues single = new()
             {
@@ -69,23 +69,23 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(
-                single.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(denay, _notification.IsValid());
+                single.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(deny, _notification.IsValid());
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(
-                single, x => x.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(denay, _notification.IsValid());
+                single, x => x.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(deny, _notification.IsValid());
 
             single.Notifications.Clear();
             single.BetweenEnumIsValid(
-                x => x.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(denay, single.IsValid());
+                x => x.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(deny, single.IsValid());
 
             single.Notifications.Clear();
             single.BetweenEnumIsValid(
-                single.Object, _type, _options, ignoreCase, denay);
-            Assert.Equal(denay, single.IsValid());
+                single.Object, _type, _options, ignoreCase, deny);
+            Assert.Equal(deny, single.IsValid());
         }
 
         [Theory]
@@ -115,7 +115,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(EnumDiffValue.DateTime, false, true)]
         [InlineData(EnumDiffValue.DateTime, true, false)]
         [InlineData(EnumDiffValue.DateTime, true, true)]
-        public void Check_ignore_invalid_value_even_converted(object value, bool ignoreCase, bool denay)
+        public void Check_ignore_invalid_value_even_converted(object value, bool ignoreCase, bool deny)
         {
             SingleValues single = new()
             {
@@ -124,22 +124,22 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(
-                single.Object, _type, _options, ignoreCase, denay);
+                single.Object, _type, _options, ignoreCase, deny);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
             _notification.BetweenEnumIsValid(
-                single, x => x.Object, _type, _options, ignoreCase, denay);
+                single, x => x.Object, _type, _options, ignoreCase, deny);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
             single.BetweenEnumIsValid(
-                x => x.Object, _type, _options, ignoreCase, denay);
+                x => x.Object, _type, _options, ignoreCase, deny);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
             single.BetweenEnumIsValid(
-                single.Object, _type, _options, ignoreCase, denay);
+                single.Object, _type, _options, ignoreCase, deny);
             Assert.True(single.IsValid());
         }
 
@@ -148,7 +148,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(true, true)]
         [InlineData(false, true)]
         [InlineData(true, false)]
-        public void Check_option_null_exception(bool ignoreCase, bool denay)
+        public void Check_option_null_exception(bool ignoreCase, bool deny)
         {
             SingleValues single = new()
             {
@@ -157,10 +157,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             IList<Enum> options = null;
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, deny));
         }
 
         [Theory]
@@ -168,7 +168,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(true, true)]
         [InlineData(false, true)]
         [InlineData(true, false)]
-        public void Check_option_empty_exception(bool ignoreCase, bool denay)
+        public void Check_option_empty_exception(bool ignoreCase, bool deny)
         {
             SingleValues single = new()
             {
@@ -177,10 +177,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             IList<Enum> options = Array.Empty<Enum>();
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, deny));
         }
 
         [Theory]
@@ -188,7 +188,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(true, true)]
         [InlineData(false, true)]
         [InlineData(true, false)]
-        public void Check_option_diff_types_exception(bool ignoreCase, bool denay)
+        public void Check_option_diff_types_exception(bool ignoreCase, bool deny)
         {
             SingleValues single = new()
             {
@@ -197,10 +197,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             IList<Enum> options = new Enum[] { EnumValue.Guid, EnumDiffValue.Number };
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.Object, _type, options, ignoreCase, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenEnumIsValid(single, x => x.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(x => x.Object, _type, options, ignoreCase, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenEnumIsValid(single.Object, _type, options, ignoreCase, deny));
         }
     }
 }

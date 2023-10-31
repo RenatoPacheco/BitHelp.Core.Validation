@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BitHelp.Core.Validation.Test.Resources
 {
-    public class CustonException : Exception
+    public class CustomException : Exception
     {
-        public CustonException(string message, string stackTrace = null)
+        public CustomException(string message, string stackTrace = null)
         {
             _message = message;
             _stackTrace = stackTrace;

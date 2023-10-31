@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
         [Theory]
         [InlineData(null, @"^[a-z]+$")]
-        [InlineData("abcdfg", @"^[a-z]+$")]
+        [InlineData("abcdefg", @"^[a-z]+$")]
         [InlineData("AbCdFg", @"^[a-z]+$", RegexOptions.IgnoreCase)]
 
         public void Regex_is_valid(string input, string pattern, RegexOptions options = RegexOptions.None)

@@ -24,7 +24,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_contain_first_value_valid(bool denay)
+        public void Check_contain_first_value_valid(bool deny)
         {
             SingleValues single = new()
             {
@@ -35,40 +35,40 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             #region string
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.String, _options, denay);
-            Assert.Equal(!denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single.String, _options, deny);
+            Assert.Equal(!deny, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
-            Assert.Equal(!denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, deny);
+            Assert.Equal(!deny, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.String, _options, denay);
-            Assert.Equal(!denay, single.IsValid());
+            single.BetweenGuidIsValid(x => x.String, _options, deny);
+            Assert.Equal(!deny, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.String, _options, denay);
-            Assert.Equal(!denay, single.IsValid());
+            single.BetweenGuidIsValid(single.String, _options, deny);
+            Assert.Equal(!deny, single.IsValid());
 
             #endregion
 
             #region guid
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.Guid, _options, denay);
-            Assert.Equal(!denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single.Guid, _options, deny);
+            Assert.Equal(!deny, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, denay);
-            Assert.Equal(!denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, deny);
+            Assert.Equal(!deny, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.Guid, _options, denay);
-            Assert.Equal(!denay, single.IsValid());
+            single.BetweenGuidIsValid(x => x.Guid, _options, deny);
+            Assert.Equal(!deny, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.Guid, _options, denay);
-            Assert.Equal(!denay, single.IsValid());
+            single.BetweenGuidIsValid(single.Guid, _options, deny);
+            Assert.Equal(!deny, single.IsValid());
 
             #endregion
         }
@@ -76,7 +76,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_not_contain_value_invalid(bool denay)
+        public void Check_not_contain_value_invalid(bool deny)
         {
             SingleValues single = new()
             {
@@ -87,40 +87,40 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             #region string
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.String, _options, denay);
-            Assert.Equal(denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single.String, _options, deny);
+            Assert.Equal(deny, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
-            Assert.Equal(denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, deny);
+            Assert.Equal(deny, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.String, _options, denay);
-            Assert.Equal(denay, single.IsValid());
+            single.BetweenGuidIsValid(x => x.String, _options, deny);
+            Assert.Equal(deny, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.String, _options, denay);
-            Assert.Equal(denay, single.IsValid());
+            single.BetweenGuidIsValid(single.String, _options, deny);
+            Assert.Equal(deny, single.IsValid());
 
             #endregion
 
             #region guid
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.Guid, _options, denay);
-            Assert.Equal(denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single.Guid, _options, deny);
+            Assert.Equal(deny, _notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, denay);
-            Assert.Equal(denay, _notification.IsValid());
+            _notification.BetweenGuidIsValid(single, x => x.Guid, _options, deny);
+            Assert.Equal(deny, _notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.Guid, _options, denay);
-            Assert.Equal(denay, single.IsValid());
+            single.BetweenGuidIsValid(x => x.Guid, _options, deny);
+            Assert.Equal(deny, single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.Guid, _options, denay);
-            Assert.Equal(denay, single.IsValid());
+            single.BetweenGuidIsValid(single.Guid, _options, deny);
+            Assert.Equal(deny, single.IsValid());
 
             #endregion
         }
@@ -128,7 +128,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_ignore_invalid_value_even_converted(bool denay)
+        public void Check_ignore_invalid_value_even_converted(bool deny)
         {
             SingleValues single = new()
             {
@@ -136,26 +136,26 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             };
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.String, _options, denay);
+            _notification.BetweenGuidIsValid(single.String, _options, deny);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, deny);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.String, _options, denay);
+            single.BetweenGuidIsValid(x => x.String, _options, deny);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.String, _options, denay);
+            single.BetweenGuidIsValid(single.String, _options, deny);
             Assert.True(single.IsValid());
         }
 
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_ignore_null_valid(bool denay)
+        public void Check_ignore_null_valid(bool deny)
         {
             SingleValues single = new()
             {
@@ -166,19 +166,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             #region string
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.String, _options, denay);
+            _notification.BetweenGuidIsValid(single.String, _options, deny);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.String, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.String, _options, deny);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.String, _options, denay);
+            single.BetweenGuidIsValid(x => x.String, _options, deny);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.String, _options, denay);
+            single.BetweenGuidIsValid(single.String, _options, deny);
             Assert.True(single.IsValid());
 
             #endregion
@@ -186,19 +186,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
             #region guid
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single.GuidNull, _options, denay);
+            _notification.BetweenGuidIsValid(single.GuidNull, _options, deny);
             Assert.True(_notification.IsValid());
 
             _notification.Clear();
-            _notification.BetweenGuidIsValid(single, x => x.GuidNull, _options, denay);
+            _notification.BetweenGuidIsValid(single, x => x.GuidNull, _options, deny);
             Assert.True(_notification.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(x => x.GuidNull, _options, denay);
+            single.BetweenGuidIsValid(x => x.GuidNull, _options, deny);
             Assert.True(single.IsValid());
 
             single.Notifications.Clear();
-            single.BetweenGuidIsValid(single.GuidNull, _options, denay);
+            single.BetweenGuidIsValid(single.GuidNull, _options, deny);
             Assert.True(single.IsValid());
 
             #endregion
@@ -207,7 +207,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_option_null_exception(bool denay)
+        public void Check_option_null_exception(bool deny)
         {
             SingleValues single = new()
             {
@@ -216,16 +216,16 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Guid[] options = null;
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single.String, options, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single, x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single.String, options, deny));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single, x => x.String, options, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(x => x.String, options, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(single.String, options, deny));
         }
 
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void Check_option_empty_exception(bool denay)
+        public void Check_option_empty_exception(bool deny)
         {
             SingleValues single = new()
             {
@@ -234,10 +234,10 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             Guid[] options = Array.Empty<Guid>();
 
-            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single.String, options, denay));
-            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single, x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(x => x.String, options, denay));
-            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(single.String, options, denay));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single.String, options, deny));
+            Assert.Throws<ArgumentException>(() => _notification.BetweenGuidIsValid(single, x => x.String, options, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(x => x.String, options, deny));
+            Assert.Throws<ArgumentException>(() => single.BetweenGuidIsValid(single.String, options, deny));
         }
     }
 }

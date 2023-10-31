@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
     public class BetweenGuidIsValidAttribute : ListIsValidAttribute
     {
         public BetweenGuidIsValidAttribute(
-            IEnumerable<Guid> options, bool denay = false) : base()
+            IEnumerable<Guid> options, bool deny = false) : base()
         {
             if (!options?.Any() ?? true)
             {
@@ -21,12 +21,12 @@ namespace BitHelp.Core.Validation.Notations
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
             Options = options;
-            Denay = denay;
+            Deny = deny;
         }
 
         private IEnumerable<Guid> Options { get; set; } = Array.Empty<Guid>();
 
-        private bool Denay { get; set; }
+        private bool Deny { get; set; }
 
         protected override bool Check(object value)
         {
@@ -44,7 +44,7 @@ namespace BitHelp.Core.Validation.Notations
                 contains = Options.Contains(convert);
             }
 
-            return !isValueValid || (Denay ? !contains : contains);
+            return !isValueValid || (Deny ? !contains : contains);
         }
     }
 }

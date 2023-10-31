@@ -15,19 +15,19 @@ namespace BitHelp.Core.Validation.Extends
             this T source, 
             Expression<Func<T, P>> expression, 
             IEnumerable<byte> options,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenNumberIsValid(
                 source.GetStructureToValidate(expression),
-                options, denay);
+                options, deny);
         }
 
         public static ValidationNotification BetweenNumberIsValid<T>(
             this T source, 
             object value, 
             IEnumerable<byte> options,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenNumberIsValid(new StructureToValidate
@@ -35,17 +35,17 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options, denay);
+            }, options, deny);
         }
 
         public static ValidationNotification BetweenNumberIsValid<T>(
             this T source, 
             IStructureToValidate data, 
             IEnumerable<byte> options,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
-            return source.Notifications.BetweenNumberIsValid(data, options, denay);
+            return source.Notifications.BetweenNumberIsValid(data, options, deny);
         }
 
         #endregion
@@ -57,35 +57,35 @@ namespace BitHelp.Core.Validation.Extends
             T data, 
             Expression<Func<T, P>> expression, 
             IEnumerable<byte> options,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenNumberIsValid(
                 data.GetStructureToValidate(expression),
-                options, denay);
+                options, deny);
         }
 
         public static ValidationNotification BetweenNumberIsValid(
             this ValidationNotification source, 
             object value, 
             IEnumerable<byte> options,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenNumberIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options, denay);
+            }, options, deny);
         }
 
         public static ValidationNotification BetweenNumberIsValid(
             this ValidationNotification source, 
             IStructureToValidate data, 
             IEnumerable<byte> options,
-            bool denay = false)
+            bool deny = false)
         {
             source.CleanLastMessage();
-            BetweenNumberIsValidAttribute validation = new BetweenNumberIsValidAttribute(options, denay);
+            BetweenNumberIsValidAttribute validation = new BetweenNumberIsValidAttribute(options, deny);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

@@ -40,8 +40,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         }
 
         [Theory]
-        [InlineData("abcdfg", @"^[a-z]+$")]
-        [InlineData("AbCdFg", @"^[a-z]+$", RegexOptions.IgnoreCase)]
+        [InlineData("abcdefg", @"^[a-z]+$")]
+        [InlineData("AbCdeFg", @"^[a-z]+$", RegexOptions.IgnoreCase)]
 
         public void Regex_not_is_valid(string input, string pattern, RegexOptions options = RegexOptions.None)
         {

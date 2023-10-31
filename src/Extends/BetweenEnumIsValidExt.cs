@@ -17,12 +17,12 @@ namespace BitHelp.Core.Validation.Extends
             Type type, 
             IEnumerable<Enum> options,
             bool ignoreCase = false,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenEnumIsValid(
                 source.GetStructureToValidate(expression),
-                type, options, ignoreCase, denay);
+                type, options, ignoreCase, deny);
         }
 
         public static ValidationNotification BetweenEnumIsValid<T>(
@@ -31,7 +31,7 @@ namespace BitHelp.Core.Validation.Extends
             Type type,
             IEnumerable<Enum> options,
             bool ignoreCase = false,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenEnumIsValid(new StructureToValidate
@@ -39,7 +39,7 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, type, options, ignoreCase, denay);
+            }, type, options, ignoreCase, deny);
         }
 
         public static ValidationNotification BetweenEnumIsValid<T>(
@@ -48,11 +48,11 @@ namespace BitHelp.Core.Validation.Extends
             Type type,
             IEnumerable<Enum> options,
             bool ignoreCase = false,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.Notifications.BetweenEnumIsValid(
-                data, type, options, ignoreCase, denay);
+                data, type, options, ignoreCase, deny);
         }
 
         #endregion
@@ -65,11 +65,11 @@ namespace BitHelp.Core.Validation.Extends
             Type type,
             IEnumerable<Enum> options,
             bool ignoreCase = false,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenEnumIsValid(
                 data.GetStructureToValidate(expression),
-                type, options, ignoreCase, denay);
+                type, options, ignoreCase, deny);
         }
 
         public static ValidationNotification BetweenEnumIsValid(
@@ -78,14 +78,14 @@ namespace BitHelp.Core.Validation.Extends
             Type type,
             IEnumerable<Enum> options,
             bool ignoreCase = false,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenEnumIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, type, options, ignoreCase, denay);
+            }, type, options, ignoreCase, deny);
         }
 
         public static ValidationNotification BetweenEnumIsValid(
@@ -94,10 +94,10 @@ namespace BitHelp.Core.Validation.Extends
             Type type,
             IEnumerable<Enum> options,
             bool ignoreCase = false,
-            bool denay = false)
+            bool deny = false)
         {
             source.CleanLastMessage();
-            BetweenEnumIsValidAttribute validation = new BetweenEnumIsValidAttribute(type, options, ignoreCase, denay);
+            BetweenEnumIsValidAttribute validation = new BetweenEnumIsValidAttribute(type, options, ignoreCase, deny);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

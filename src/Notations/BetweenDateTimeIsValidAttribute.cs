@@ -14,7 +14,7 @@ namespace BitHelp.Core.Validation.Notations
         public BetweenDateTimeIsValidAttribute(
             IEnumerable<DateTime> options, 
             CultureInfo cultureInfo = null,
-            bool denay = false) : base()
+            bool deny = false) : base()
         {
             if (!options?.Any() ?? true)
                 throw new ArgumentException(string.Format(
@@ -24,12 +24,12 @@ namespace BitHelp.Core.Validation.Notations
 
             Options = options;
             CultureInfo = cultureInfo;
-            Denay = denay;
+            Deny = deny;
         }
 
         IEnumerable<DateTime> Options { get; set; } = Array.Empty<DateTime>();
 
-        bool Denay { get; set; }
+        bool Deny { get; set; }
 
         /// <summary>
         /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
@@ -53,7 +53,7 @@ namespace BitHelp.Core.Validation.Notations
                 contains = options.Contains(ToString(convert));
             }
 
-            return !isValueValid || (Denay ? !contains : contains);
+            return !isValueValid || (Deny ? !contains : contains);
         }
 
         private string ToString(DateTime input)

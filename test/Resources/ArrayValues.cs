@@ -36,8 +36,8 @@ namespace BitHelp.Core.Validation.Test.Resources
         [Display(Name = "Array date time")]
         public DateTime[] DateTime { get; set; }
 
-        [Display(Name = "Array type span")]
-        public TimeSpan[] Timespan { get; set; }
+        [Display(Name = "Array time span")]
+        public TimeSpan[] TimeSpan { get; set; }
 
         [Display(Name = "Array guid")]
         public Guid[] Guid { get; set; }

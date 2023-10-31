@@ -17,19 +17,19 @@ namespace BitHelp.Core.Validation.Extends
             Expression<Func<T, P>> expression,
             IEnumerable<DateTime> options, 
             CultureInfo cultureInfo = null,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenDateTimeIsValid(
                 source.GetStructureToValidate(expression),
-                options, cultureInfo, denay);
+                options, cultureInfo, deny);
         }
 
         public static ValidationNotification BetweenDateTimeIsValid<T>(
             this T source, object value,
             IEnumerable<DateTime> options, 
             CultureInfo cultureInfo = null,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenDateTimeIsValid(new StructureToValidate
@@ -37,7 +37,7 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options, cultureInfo, denay);
+            }, options, cultureInfo, deny);
         }
 
         public static ValidationNotification BetweenDateTimeIsValid<T>(
@@ -45,11 +45,11 @@ namespace BitHelp.Core.Validation.Extends
             IStructureToValidate data,
             IEnumerable<DateTime> options, 
             CultureInfo cultureInfo = null,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.Notifications.BetweenDateTimeIsValid(data,
-                options, cultureInfo, denay);
+                options, cultureInfo, deny);
         }
 
         #endregion
@@ -60,11 +60,11 @@ namespace BitHelp.Core.Validation.Extends
             Expression<Func<T, P>> expression, 
             IEnumerable<DateTime> options,
             CultureInfo cultureInfo = null,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenDateTimeIsValid(
                 data.GetStructureToValidate(expression),
-                options, cultureInfo, denay);
+                options, cultureInfo, deny);
         }
 
         public static ValidationNotification BetweenDateTimeIsValid(
@@ -72,14 +72,14 @@ namespace BitHelp.Core.Validation.Extends
             object value,
             IEnumerable<DateTime> options, 
             CultureInfo cultureInfo = null,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenDateTimeIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options, cultureInfo, denay);
+            }, options, cultureInfo, deny);
         }
 
         public static ValidationNotification BetweenDateTimeIsValid(
@@ -87,10 +87,10 @@ namespace BitHelp.Core.Validation.Extends
             IStructureToValidate data,
             IEnumerable<DateTime> options, 
             CultureInfo cultureInfo = null,
-            bool denay = false)
+            bool deny = false)
         {
             source.CleanLastMessage();
-            BetweenDateTimeIsValidAttribute validation = new BetweenDateTimeIsValidAttribute(options, cultureInfo, denay);
+            BetweenDateTimeIsValidAttribute validation = new BetweenDateTimeIsValidAttribute(options, cultureInfo, deny);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

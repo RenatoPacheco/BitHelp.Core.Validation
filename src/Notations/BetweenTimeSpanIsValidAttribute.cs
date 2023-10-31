@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public BetweenTimeSpanIsValidAttribute(
             IEnumerable<TimeSpan> options, 
-            bool denay = false, CultureInfo cultureInfo = null) : base()
+            bool deny = false, CultureInfo cultureInfo = null) : base()
         {
             if (!options?.Any() ?? true)
                 throw new ArgumentException(string.Format(
@@ -22,12 +22,12 @@ namespace BitHelp.Core.Validation.Notations
 
             Options = options;
             CultureInfo = cultureInfo;
-            Denay = denay;
+            Deny = deny;
         }
 
         IEnumerable<TimeSpan> Options { get; set; } = Array.Empty<TimeSpan>();
 
-        bool Denay { get; set; }
+        bool Deny { get; set; }
 
         /// <summary>
         /// Set CultureInfo but is null the value used will be CultureInfo.CurrentCulture
@@ -51,7 +51,7 @@ namespace BitHelp.Core.Validation.Notations
                 contains = Options.Contains(convert);
             }
 
-            return !isValueValid || (Denay ? !contains : contains);
+            return !isValueValid || (Deny ? !contains : contains);
         }
     }
 }

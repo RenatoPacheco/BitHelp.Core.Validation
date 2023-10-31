@@ -16,9 +16,9 @@ namespace BitHelp.Core.Validation.Test.ValidationMessageTest
         {
             try
             {
-                throw new CustonException(message, stackTrace);
+                throw new CustomException(message, stackTrace);
             }
-            catch (CustonException ex)
+            catch (CustomException ex)
             {
                 ValidationMessage result = new(ex, reference, type);
 

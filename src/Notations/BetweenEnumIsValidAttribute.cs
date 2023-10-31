@@ -12,7 +12,7 @@ namespace BitHelp.Core.Validation.Notations
     {
         public BetweenEnumIsValidAttribute(
             Type type, IEnumerable<Enum> options, 
-            bool ignoreCase = false, bool denay = false) : base()
+            bool ignoreCase = false, bool deny = false) : base()
         {
             if (!type?.IsEnum ?? true)
                 throw new ArgumentException(
@@ -31,7 +31,7 @@ namespace BitHelp.Core.Validation.Notations
             Type = type;
             Options = options;
             IgnoreCase = ignoreCase;
-            Denay = denay;
+            Deny = deny;
         }
 
         IEnumerable<Enum> Options { get; set; } = Array.Empty<Enum>();
@@ -40,14 +40,14 @@ namespace BitHelp.Core.Validation.Notations
 
         bool IgnoreCase { get; set; }
 
-        bool Denay { get; set; }
+        bool Deny { get; set; }
 
         protected override bool Check(object value)
         {
             bool isValueValid = TryParse.ToEnum(Type, value, IgnoreCase, out object convert);
             bool contains = Options.Contains(convert);
 
-            return !isValueValid || (Denay ? !contains : contains);
+            return !isValueValid || (Deny ? !contains : contains);
         }
     }
 }

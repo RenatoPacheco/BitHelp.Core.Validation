@@ -46,8 +46,8 @@
 
 - Reviewed all EqualItems tests
 - Review required validate
-- Review ompare less date time validate
-- Review ompare plus date time validate
+- Review compare less date time validate
+- Review compare plus date time validate
 - Adding note to coverage report generate
 - Set to report only errors
 - Remove fuget badge
@@ -68,7 +68,7 @@
 
 - Adding type error to not found with message
 - Adding package in github
-- Otmization of the any tests validation
+- Optimization of the any tests validation
 
 ## Release 0.10.0
 

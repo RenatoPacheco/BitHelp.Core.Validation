@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
     public class BetweenStringIsValidAttribute : ListIsValidAttribute
     {
         public BetweenStringIsValidAttribute(
-            IEnumerable<string> options, bool denay = false) : base()
+            IEnumerable<string> options, bool deny = false) : base()
         {
             if (!options?.Any() ?? true)
                 throw new ArgumentException(
@@ -19,18 +19,18 @@ namespace BitHelp.Core.Validation.Notations
             ErrorMessageResourceName = nameof(Resource.XNotValid);
 
             Options = options;
-            Denay = denay;
+            Deny = deny;
         }
 
         IEnumerable<string> Options { get; set; } = Array.Empty<string>();
 
-        bool Denay { get; set; }
+        bool Deny { get; set; }
 
         protected override bool Check(object value)
         {
             string input = Convert.ToString(value);
             bool contains = Options.Contains(input);
-            return Denay ? !contains : contains;
+            return Deny ? !contains : contains;
         }
     }
 }

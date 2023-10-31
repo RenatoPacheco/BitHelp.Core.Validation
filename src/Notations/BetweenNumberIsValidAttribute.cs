@@ -10,7 +10,7 @@ namespace BitHelp.Core.Validation.Notations
            AttributeTargets.Field, AllowMultiple = false)]
     public class BetweenNumberIsValidAttribute : ListIsValidAttribute
     {
-        private BetweenNumberIsValidAttribute (bool denay, IList options)
+        private BetweenNumberIsValidAttribute (bool deny, IList options)
             : base()
         {
             if ((options?.Count ?? 0) <= 0)
@@ -18,92 +18,92 @@ namespace BitHelp.Core.Validation.Notations
                     Resource.XNullOrEmpty, nameof(options)), nameof(options));
 
             ErrorMessageResourceName = nameof(Resource.XNotValid);
-            Denay = denay;
+            Deny = deny;
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<float> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<float> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(float);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<double> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<double> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(double);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<decimal> options, bool denay = false) 
-            : this(denay, options as IList)
+            IEnumerable<decimal> options, bool deny = false) 
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(decimal);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<byte> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<byte> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(byte);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<sbyte> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<sbyte> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(sbyte);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<short> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<short> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(short);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<ushort> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<ushort> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(ushort);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<int> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<int> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(int);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<uint> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<uint> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(uint);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<long> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<long> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(long);
         }
 
         public BetweenNumberIsValidAttribute(
-            IEnumerable<ulong> options, bool denay = false)
-            : this(denay, options as IList)
+            IEnumerable<ulong> options, bool deny = false)
+            : this(deny, options as IList)
         {
             Options = options.Select(x => x as dynamic);
             Type = typeof(ulong);
@@ -111,7 +111,7 @@ namespace BitHelp.Core.Validation.Notations
 
         IEnumerable<dynamic> Options { get; set; } = Array.Empty<dynamic>();
 
-        bool Denay { get; set; }
+        bool Deny { get; set; }
 
         Type Type { get; set; }
 
@@ -165,7 +165,7 @@ namespace BitHelp.Core.Validation.Notations
                 (isValueValid, contains) = CheckUlong(value);
             }
 
-            return !isValueValid || (Denay ? !contains : contains);
+            return !isValueValid || (Deny ? !contains : contains);
         }
 
         private (bool isValueValid, bool contains) CheckFloat(object value)

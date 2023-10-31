@@ -15,18 +15,18 @@ namespace BitHelp.Core.Validation.Extends
             this T source, 
             Expression<Func<T, P>> expression, 
             IEnumerable<TimeSpan> options,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenTimeSpanIsValid(
-                source.GetStructureToValidate(expression), options, denay);
+                source.GetStructureToValidate(expression), options, deny);
         }
 
         public static ValidationNotification BetweenTimeSpanIsValid<T>(
             this T source, 
             object value, 
             IEnumerable<TimeSpan> options,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
             return source.BetweenTimeSpanIsValid(new StructureToValidate
@@ -34,17 +34,17 @@ namespace BitHelp.Core.Validation.Extends
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options, denay);
+            }, options, deny);
         }
 
         public static ValidationNotification BetweenTimeSpanIsValid<T>(
             this T source,
             IStructureToValidate data, 
             IEnumerable<TimeSpan> options,
-            bool denay = false)
+            bool deny = false)
             where T : ISelfValidation
         {
-            return source.Notifications.BetweenTimeSpanIsValid(data, options, denay);
+            return source.Notifications.BetweenTimeSpanIsValid(data, options, deny);
         }
 
         #endregion
@@ -54,35 +54,35 @@ namespace BitHelp.Core.Validation.Extends
             T data, 
             Expression<Func<T, P>> expression, 
             IEnumerable<TimeSpan> options,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenTimeSpanIsValid(
                 data.GetStructureToValidate(expression),
-                options, denay);
+                options, deny);
         }
 
         public static ValidationNotification BetweenTimeSpanIsValid(
             this ValidationNotification source,
             object value, 
             IEnumerable<TimeSpan> options,
-            bool denay = false)
+            bool deny = false)
         {
             return source.BetweenTimeSpanIsValid(new StructureToValidate
             {
                 Value = value,
                 Display = Resource.DisplayValue,
                 Reference = null
-            }, options, denay);
+            }, options, deny);
         }
 
         public static ValidationNotification BetweenTimeSpanIsValid(
             this ValidationNotification source,
             IStructureToValidate data, 
             IEnumerable<TimeSpan> options,
-            bool denay = false)
+            bool deny = false)
         {
             source.CleanLastMessage();
-            BetweenTimeSpanIsValidAttribute validation = new BetweenTimeSpanIsValidAttribute(options, denay);
+            BetweenTimeSpanIsValidAttribute validation = new BetweenTimeSpanIsValidAttribute(options, deny);
             if (!validation.IsValid(data.Value))
             {
                 string text = validation.FormatErrorMessage(data.Display);

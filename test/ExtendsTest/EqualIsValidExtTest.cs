@@ -119,7 +119,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
 
         [Fact]
-        public void Check_diferent_invalid()
+        public void Check_different_invalid()
         {
             SingleValues single = new()
             {
