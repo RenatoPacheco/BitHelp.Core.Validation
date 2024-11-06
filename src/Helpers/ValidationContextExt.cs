@@ -1,10 +1,7 @@
 ﻿using BitHelp.Core.Validation.Resources;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace BitHelp.Core.Validation.Helpers
 {
@@ -17,7 +14,6 @@ namespace BitHelp.Core.Validation.Helpers
 
             if (object.Equals(property, null))
             {
-                return property;
                 throw new NullReferenceException(
                     string.Format(Resource.XNotFound, nameof(propertyName)));
             }
