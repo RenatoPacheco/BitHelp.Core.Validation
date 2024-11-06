@@ -17,6 +17,7 @@ namespace BitHelp.Core.Validation.Helpers
 
             if (object.Equals(property, null))
             {
+                return property;
                 throw new NullReferenceException(
                     string.Format(Resource.XNotFound, nameof(propertyName)));
             }

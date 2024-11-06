@@ -252,4 +252,7 @@
   <data name="XByteInvalid" xml:space="preserve">
     <value>{0} não é um byte válido.</value>
   </data>
+  <data name="XIsRequeridIfOtherOsNull" xml:space="preserve">
+    <value>{0} é obrigatório se {1} for nulo.</value>
+  </data>
 </root>
