@@ -1,5 +1,10 @@
 # BitHelp.Core.Validation
 
+## Release 0.17.0
+
+- feat: Add RequiredIfOtherIsNullIsValid
+- feat: Update Sonar Cloud Analyze
+
 ## Release 0.16.0
 
 - feature: Increase in test coverage
