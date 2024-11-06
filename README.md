@@ -27,11 +27,10 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.16.0
+## Release 0.17.0
 
-- feature: Increase in test coverage
-- feature: Increase in tests for date validations
-- feature: Including CultureInfo in validations for TimeSpan
+- feat: Add RequiredIfOtherIsNullIsValid
+- feat: Update Sonar Cloud Analyze
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
