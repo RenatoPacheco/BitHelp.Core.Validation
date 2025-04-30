@@ -9,8 +9,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetReference<T>(
             this ValidationNotification source, Expression<Func<T, object>> expression)
         {
-            if (source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyPath();
+            foreach (var item in source.LastMessage) {
+                if (item != null)
+                    item.Reference = expression.PropertyPath();
+            }
 
             return source;
         }
@@ -18,8 +20,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetReference<T>(
             this ValidationNotification source, T _, Expression<Func<T, object>> expression)
         {
-            if (source.LastMessage != null)
-                source.LastMessage.Reference = expression.PropertyPath();
+            foreach (var item in source.LastMessage) {
+                if (item != null)
+                    item.Reference = expression.PropertyPath();
+            }
 
             return source;
         }
@@ -27,8 +31,10 @@ namespace BitHelp.Core.Validation.Extends
         public static ValidationNotification SetReference(
             this ValidationNotification source, string reference)
         {
-            if (source.LastMessage != null)
-                source.LastMessage.Reference = reference?.Trim();
+            foreach (var item in source.LastMessage) {
+                if (item != null)
+                    item.Reference = reference?.Trim();
+            }
 
             return source;
         }

@@ -12,9 +12,9 @@ namespace BitHelp.Core.Validation
     {
         public IList<ValidationMessage> Messages { get; set; } = new List<ValidationMessage>();
 
-        public ValidationMessage LastMessage { get; set; } = Resource.DisplayValue;
+        public List<ValidationMessage> LastMessage { get; protected set; } = new List<ValidationMessage>();
 
-        public ValidationMessage LastDisplayName { get; protected set; }
+        public string LastDisplayName { get; protected set; } = Resource.DisplayValue;
 
         public void SetLastMessage(ValidationMessage message, string displayName)
         {
@@ -24,13 +24,13 @@ namespace BitHelp.Core.Validation
             if (string.IsNullOrWhiteSpace(displayName))
                 throw new ArgumentNullException(nameof(displayName));
 
-            LastMessage = message;
+            LastMessage.Add(message);
             LastDisplayName = displayName;
         }
 
         public void CleanLastMessage()
         {
-            LastMessage = null;
+            LastMessage.Clear();
             LastDisplayName = Resource.DisplayValue;
         }
 
@@ -271,7 +271,7 @@ namespace BitHelp.Core.Validation
 
         public void Clear()
         {
-            LastMessage = null;
+            LastMessage.Clear();
             Messages.Clear();
         }
 
