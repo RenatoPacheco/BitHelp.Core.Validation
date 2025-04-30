@@ -4,6 +4,7 @@ using BitHelp.Core.Validation.Test.Demo.Scopes;
 using BitHelp.Core.Validation.Test.Demo.Entities;
 
 namespace BitHelp.Core.Validation.Test.Demo.Commands.UserCmds {
+
     public class UpdateUserCmd
         : ISelfValidation {
 

@@ -4,6 +4,7 @@ using BitHelp.Core.Validation.Test.Demo.Scopes;
 using BitHelp.Core.Validation.Test.Demo.Entities;
 
 namespace BitHelp.Core.Validation.Test.Demo.Commands.UserCmds {
+
     public class PatchUserCmd
         : Common.BasePatchCmd, ISelfValidation {
 
@@ -92,7 +93,7 @@ namespace BitHelp.Core.Validation.Test.Demo.Commands.UserCmds {
             if (user is null && HasRegisteredFields())
                 throw new ArgumentNullException(nameof(user));
 
-            if (IsValid() && ) {
+            if (IsValid() && HasRegisteredFields()) {
 
                 if (IsFieldRegistered(nameof(Name)))
                     user.Name = Name;
