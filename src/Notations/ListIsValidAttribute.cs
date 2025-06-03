@@ -15,7 +15,7 @@ namespace BitHelp.Core.Validation.Notations
                 var list = value as IEnumerable;
                 foreach (var item in list)
                 {
-                    result = !object.Equals(item, null) && base.IsValid(item);
+                    result = base.IsValid(item);
                     if (!result)
                         break;
                 }
