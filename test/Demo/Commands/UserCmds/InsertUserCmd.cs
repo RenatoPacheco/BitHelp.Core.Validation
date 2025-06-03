@@ -65,7 +65,7 @@ namespace BitHelp.Core.Validation.Test.Demo.Commands.UserCmds {
             get => _address;
             set {
                 _address = value;
-                _scpUser.AndressIsValid(x => x.Address);
+                _scpUser.AddressIsValid(x => x.Address);
             }
         }
 

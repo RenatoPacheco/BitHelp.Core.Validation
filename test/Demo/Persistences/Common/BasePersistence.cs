@@ -1,14 +1,9 @@
-﻿using BitHelp.Core.Validation.Test.Demo.Scopes;
-using BitHelp.Core.Validation.Test.Demo.Commands.UserCmds;
+﻿namespace BitHelp.Core.Validation.Test.Demo.Persistences.Common {
 
-namespace BitHelp.Core.Validation.Test.Demo.Persistences.Common {
     public abstract class BasePersistence
         : ISelfValidation {
 
-
         #region Auto ISelfValidation
-
-        protected readonly UserScope<InsertUserCmd> _scpUser;
 
         public ValidationNotification Notifications { get; protected set; } = new();
 

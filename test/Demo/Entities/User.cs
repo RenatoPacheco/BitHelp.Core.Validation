@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using BitHelp.Core.Validation.Test.Demo.Scopes;
 
 namespace BitHelp.Core.Validation.Test.Demo.Entities {
@@ -21,6 +22,7 @@ namespace BitHelp.Core.Validation.Test.Demo.Entities {
         }
 
         protected string _email;
+        [Display(Name = "E-mail")]
         public string Email {
             get => _email;
             set {
@@ -52,7 +54,7 @@ namespace BitHelp.Core.Validation.Test.Demo.Entities {
             get => _address;
             set {
                 _address = value;
-                _scpUser.AndressIsValid(x => x.Address);
+                _scpUser.AddressIsValid(x => x.Address);
             }
         }
 

@@ -1,8 +1,9 @@
 ﻿using BitHelp.Core.Validation.Test.Demo.Entities;
 using BitHelp.Core.Validation.Test.Demo.Commands.UserCmds;
-using BitHelp.Core.Validation.Test.Demo.Persistences.UserPersistences;
+using BitHelp.Core.Validation.Test.Demo.Persistences.UserPers;
 
 namespace BitHelp.Core.Validation.Test.Demo.Services.UserServs {
+
     public class InsertUserServ
         : Common.BaseServ {
 
@@ -14,7 +15,7 @@ namespace BitHelp.Core.Validation.Test.Demo.Services.UserServs {
                 command.Apply(ref result);
 
                 if (IsValid(result)) {
-                    var insertUser = new InsertUserPersistence();
+                    var insertUser = new InsertUserPers();
                     insertUser.Execute(result);
                     IsValid(insertUser);
                 }

@@ -1,8 +1,10 @@
-﻿using BitHelp.Core.Validation.Test.Demo.Entities;
+﻿using System.Linq;
+using BitHelp.Core.Validation.Test.Demo.Entities;
 using BitHelp.Core.Validation.Test.Demo.Commands.UserCmds;
-using BitHelp.Core.Validation.Test.Demo.Persistences.UserPersistences;
+using BitHelp.Core.Validation.Test.Demo.Persistences.UserPers;
 
 namespace BitHelp.Core.Validation.Test.Demo.Services.UserServs {
+
     public class UpdateUserServ
         : Common.BaseServ {
 
@@ -12,14 +14,16 @@ namespace BitHelp.Core.Validation.Test.Demo.Services.UserServs {
 
             if (IsValid(command)) {
 
-                var getUser = new GetUserPersistence();
-                result = getUser.Execute(command.Id.Value);
+                var searchUser = new SearchUserPers();
+                var cmdUser = new SearchUserCmd(command.Id.Value);
 
-                if (IsValid(getUser)) {
+                result = searchUser.Execute(cmdUser).FirstOrDefault();
+
+                if (IsValid(searchUser)) {
                     command.Apply(result);
 
                     if (IsValid(result)) {
-                        var updateUser = new UpdateUserPersistence();
+                        var updateUser = new UpdateUserPers();
                         updateUser.Execute(result);
                         IsValid(updateUser);
                     }

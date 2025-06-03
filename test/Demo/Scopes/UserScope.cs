@@ -44,7 +44,7 @@ namespace BitHelp.Core.Validation.Test.Demo.Scopes {
             _entity.MaxCharactersIsValid(expression, 14);
         }
 
-        public void AndressIsValid(Expression<Func<TClasse, object>> expression) {
+        public void AddressIsValid(Expression<Func<TClasse, object>> expression) {
             RemoveAtReference(expression);
             _entity.NotEmptyIsValid(expression);
             _entity.MaxCharactersIsValid(expression, 100);

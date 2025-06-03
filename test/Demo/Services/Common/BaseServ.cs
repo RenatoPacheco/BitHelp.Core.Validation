@@ -2,9 +2,9 @@
 using BitHelp.Core.Validation.Test.Demo.Commands.UserCmds;
 
 namespace BitHelp.Core.Validation.Test.Demo.Services.Common {
+
     public abstract class BaseServ
         : ISelfValidation {
-
 
         #region Auto ISelfValidation
 
