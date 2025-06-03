@@ -118,141 +118,141 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DisplayValue" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="MinimumValidIs" xml:space="preserve">
-    <value>Minimum value is {0}.</value>
-  </data>
-  <data name="NotValid" xml:space="preserve">
-    <value>Value is not valid.</value>
-  </data>
-  <data name="EqualNumberItemsInvalid" xml:space="preserve">
-    <value>Number of items are not the same</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>Value is required.</value>
-  </data>
-  <data name="Valid" xml:space="preserve">
-    <value>Value is valid.</value>
-  </data>
-  <data name="XBooleanInvalid" xml:space="preserve">
-    <value>{0} is not valid boolean.</value>
-  </data>
-  <data name="XConfirmedInvalid" xml:space="preserve">
-    <value>{0} has not been confirmed.</value>
-  </data>
-  <data name="XDateTimeInvalid" xml:space="preserve">
-    <value>{0} is not valid date time.</value>
-  </data>
-  <data name="XDecimalInvalid" xml:space="preserve">
-    <value>{0} is not valid decimal.</value>
-  </data>
-  <data name="XDoubleInvalid" xml:space="preserve">
-    <value>{0} is not valid double.</value>
-  </data>
-  <data name="XExactCharactersInvalid" xml:space="preserve">
-    <value>{0} must contain exactly {1} characters.</value>
-  </data>
-  <data name="XGuidInvalid" xml:space="preserve">
-    <value>{0} is not valid guid.</value>
-  </data>
-  <data name="XIntInvalid" xml:space="preserve">
-    <value>{0} is not valid int.</value>
-  </data>
-  <data name="XLongInvalid" xml:space="preserve">
-    <value>{0} is not valid long.</value>
-  </data>
-  <data name="XMaxCharactersInvalid" xml:space="preserve">
-    <value>{0} must contain at most {1} characters.</value>
-  </data>
-  <data name="XMaxValueInvalid" xml:space="preserve">
-    <value>{0} cannot be greater than {1}.</value>
-  </data>
-  <data name="XMinCharactersInvalid" xml:space="preserve">
-    <value>{0} must contain at least {1} characters.</value>
-  </data>
-  <data name="XMinValueInvalid" xml:space="preserve">
-    <value>{0} cannot be less than {1}.</value>
-  </data>
-  <data name="XNotEmptyInvalid" xml:space="preserve">
-    <value>{0} is empty.</value>
-  </data>
-  <data name="XNotValid" xml:space="preserve">
-    <value>{0} is not valid.</value>
-  </data>
-  <data name="XRangeCharactersInvalid" xml:space="preserve">
-    <value>{0} must have a caster between {1} and {2}.</value>
-  </data>
-  <data name="XRangeValueInvalid" xml:space="preserve">
-    <value>{0} must contain a value between {1} and {2}.</value>
-  </data>
-  <data name="XRequired" xml:space="preserve">
-    <value>{0} is requerid.</value>
-  </data>
-  <data name="XTimeSpanInvalid" xml:space="preserve">
-    <value>{0} is not valid timespan.</value>
-  </data>
-  <data name="XUrlInvalid" xml:space="preserve">
-    <value>{0} is not a valid url.</value>
-  </data>
-  <data name="XValid" xml:space="preserve">
-    <value>{0} is valid.</value>
-  </data>
-  <data name="XExactItemsIsInvalid" xml:space="preserve">
-    <value>{0} must contain {1} element.</value>
-  </data>
-  <data name="XMaxItemsIsInvalid" xml:space="preserve">
-    <value>{0} must contain a maximum of {1} element.</value>
-  </data>
-  <data name="XMinItemsIsInvalid" xml:space="preserve">
-    <value>{0} must contain at least {1} element.</value>
-  </data>
-  <data name="XRangeItemsInvalid" xml:space="preserve">
-    <value>{0} must contain between {1} and {2} elements.</value>
-  </data>
-  <data name="XNoValueCanEqual" xml:space="preserve">
-    <value>No {0} value can be equal to {1}.</value>
-  </data>
-  <data name="XNoValueCanLess" xml:space="preserve">
-    <value>No {0} value can be less to {1}.</value>
-  </data>
-  <data name="XNoValueCanPlus" xml:space="preserve">
-    <value>No {0} value can be plus to {1}.</value>
-  </data>
-  <data name="XNullOrEmpty" xml:space="preserve">
-    <value>{0} cannot be null or empty.</value>
-  </data>
-  <data name="XSingletonItemsInvalid" xml:space="preserve">
-    <value>{0} contains repeated values.</value>
-  </data>
-  <data name="XCompareEqualInvalid" xml:space="preserve">
-    <value>{0} must equal {1}.</value>
-  </data>
-  <data name="XCompareDifferentInvalid" xml:space="preserve">
-    <value>{0} must different {1}.</value>
-  </data>
-  <data name="XCompareLessInvalid" xml:space="preserve">
-    <value>{0} must be less than {1}.</value>
-  </data>
-  <data name="XComparePlusInvalid" xml:space="preserve">
-    <value>{0} must be greater than {1}.</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>Not found.</value>
-  </data>
-  <data name="XNotFound" xml:space="preserve">
-    <value>{0} not found.</value>
-  </data>
-  <data name="XItemsInvalid" xml:space="preserve">
-    <value>{0} contains invalid items.</value>
-  </data>
-  <data name="XShortInvalid" xml:space="preserve">
-    <value>{0} is not valid short.</value>
-  </data>
-  <data name="XByteInvalid" xml:space="preserve">
-    <value>{0} is not valid byte.</value>
-  </data>
-  <data name="XIsRequeridIfOtherIsNull" xml:space="preserve">
-    <value>{0} is required if {1} is null.</value>
-  </data>
+  <value>Value</value>
+</data>
+<data name="MinimumValidIs" xml:space="preserve">
+  <value>Minimum value is {0}.</value>
+</data>
+<data name="NotValid" xml:space="preserve">
+  <value>The value is not valid.</value>
+</data>
+<data name="EqualNumberItemsInvalid" xml:space="preserve">
+  <value>The number of items is not the same.</value>
+</data>
+<data name="Required" xml:space="preserve">
+  <value>The value is required.</value>
+</data>
+<data name="Valid" xml:space="preserve">
+  <value>The value is valid.</value>
+</data>
+<data name="XBooleanInvalid" xml:space="preserve">
+  <value>{0} is not a valid boolean.</value>
+</data>
+<data name="XConfirmedInvalid" xml:space="preserve">
+  <value>{0} has not been confirmed.</value>
+</data>
+<data name="XDateTimeInvalid" xml:space="preserve">
+  <value>{0} is not a valid date/time.</value>
+</data>
+<data name="XDecimalInvalid" xml:space="preserve">
+  <value>{0} is not a valid decimal.</value>
+</data>
+<data name="XDoubleInvalid" xml:space="preserve">
+  <value>{0} is not a valid double.</value>
+</data>
+<data name="XExactCharactersInvalid" xml:space="preserve">
+  <value>{0} must contain exactly {1} characters.</value>
+</data>
+<data name="XGuidInvalid" xml:space="preserve">
+  <value>{0} is not a valid GUID.</value>
+</data>
+<data name="XIntInvalid" xml:space="preserve">
+  <value>{0} is not a valid integer.</value>
+</data>
+<data name="XLongInvalid" xml:space="preserve">
+  <value>{0} is not a valid long.</value>
+</data>
+<data name="XMaxCharactersInvalid" xml:space="preserve">
+  <value>{0} must contain at most {1} characters.</value>
+</data>
+<data name="XMaxValueInvalid" xml:space="preserve">
+  <value>{0} cannot be greater than {1}.</value>
+</data>
+<data name="XMinCharactersInvalid" xml:space="preserve">
+  <value>{0} must contain at least {1} characters.</value>
+</data>
+<data name="XMinValueInvalid" xml:space="preserve">
+  <value>{0} cannot be less than {1}.</value>
+</data>
+<data name="XNotEmptyInvalid" xml:space="preserve">
+  <value>{0} must not be empty.</value>
+</data>
+<data name="XNotValid" xml:space="preserve">
+  <value>{0} is not valid.</value>
+</data>
+<data name="XRangeCharactersInvalid" xml:space="preserve">
+  <value>{0} must contain between {1} and {2} characters.</value>
+</data>
+<data name="XRangeValueInvalid" xml:space="preserve">
+  <value>{0} must be between {1} and {2}.</value>
+</data>
+<data name="XRequired" xml:space="preserve">
+  <value>{0} is required.</value>
+</data>
+<data name="XTimeSpanInvalid" xml:space="preserve">
+  <value>{0} is not a valid time span.</value>
+</data>
+<data name="XUrlInvalid" xml:space="preserve">
+  <value>{0} is not a valid URL.</value>
+</data>
+<data name="XValid" xml:space="preserve">
+  <value>{0} is valid.</value>
+</data>
+<data name="XExactItemsIsInvalid" xml:space="preserve">
+  <value>{0} must contain exactly {1} item(s).</value>
+</data>
+<data name="XMaxItemsIsInvalid" xml:space="preserve">
+  <value>{0} must contain no more than {1} item(s).</value>
+</data>
+<data name="XMinItemsIsInvalid" xml:space="preserve">
+  <value>{0} must contain at least {1} item(s).</value>
+</data>
+<data name="XRangeItemsInvalid" xml:space="preserve">
+  <value>{0} must contain between {1} and {2} item(s).</value>
+</data>
+<data name="XNoValueCanEqual" xml:space="preserve">
+  <value>No {0} value can be equal to {1}.</value>
+</data>
+<data name="XNoValueCanLess" xml:space="preserve">
+  <value>No {0} value can be less than {1}.</value>
+</data>
+<data name="XNoValueCanPlus" xml:space="preserve">
+  <value>No {0} value can be greater than {1}.</value>
+</data>
+<data name="XNullOrEmpty" xml:space="preserve">
+  <value>{0} cannot be null or empty.</value>
+</data>
+<data name="XSingletonItemsInvalid" xml:space="preserve">
+  <value>{0} contains duplicate values.</value>
+</data>
+<data name="XCompareEqualInvalid" xml:space="preserve">
+  <value>{0} must be equal to {1}.</value>
+</data>
+<data name="XCompareDifferentInvalid" xml:space="preserve">
+  <value>{0} must be different from {1}.</value>
+</data>
+<data name="XCompareLessInvalid" xml:space="preserve">
+  <value>{0} must be less than {1}.</value>
+</data>
+<data name="XComparePlusInvalid" xml:space="preserve">
+  <value>{0} must be greater than {1}.</value>
+</data>
+<data name="NotFound" xml:space="preserve">
+  <value>Not found.</value>
+</data>
+<data name="XNotFound" xml:space="preserve">
+  <value>{0} was not found.</value>
+</data>
+<data name="XItemsInvalid" xml:space="preserve">
+  <value>{0} contains invalid item(s).</value>
+</data>
+<data name="XShortInvalid" xml:space="preserve">
+  <value>{0} is not a valid short.</value>
+</data>
+<data name="XByteInvalid" xml:space="preserve">
+  <value>{0} is not a valid byte.</value>
+</data>
+<data name="XIsRequiredIfOtherIsNull" xml:space="preserve">
+  <value>{0} is required if {1} is null.</value>
+</data>
 </root>

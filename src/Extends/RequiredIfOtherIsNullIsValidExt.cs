@@ -42,7 +42,7 @@ namespace BitHelp.Core.Validation.Extends
             {
                 if (object.Equals(compare.Value, null) && object.Equals(data.Value, null))
                 {
-                    string text = string.Format(Resource.XIsRequeridIfOtherIsNull, data.Display, compare.Display);
+                    string text = string.Format(Resource.XIsRequiredIfOtherIsNull, data.Display, compare.Display);
                     var message = new ValidationMessage(text, data.Reference);
                     source.SetLastMessage(message, data.Display);
                     source.Add(message);

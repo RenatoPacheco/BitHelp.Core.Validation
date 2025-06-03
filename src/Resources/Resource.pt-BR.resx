@@ -136,7 +136,7 @@
     <value>Valor é válido.</value>
   </data>
   <data name="XBooleanInvalid" xml:space="preserve">
-    <value>{0} não é um boleano válido.</value>
+    <value>{0} não é um booleano válido.</value>
   </data>
   <data name="XConfirmedInvalid" xml:space="preserve">
     <value>{0} não foi confirmado.</value>
@@ -151,13 +151,13 @@
     <value>{0} não é um número duplo válido.</value>
   </data>
   <data name="XExactCharactersInvalid" xml:space="preserve">
-    <value>{0} deve conter exatamente {1} caractéres.</value>
+    <value>{0} deve conter exatamente {1} caracteres.</value>
   </data>
   <data name="XGuidInvalid" xml:space="preserve">
-    <value>{0} não é um guid valido.</value>
+    <value>{0} não é um GUID válido.</value>
   </data>
   <data name="XIntInvalid" xml:space="preserve">
-    <value>{0} não é  um número inteiro válido.</value>
+    <value>{0} não é um número inteiro válido.</value>
   </data>
   <data name="XLongInvalid" xml:space="preserve">
     <value>{0} não é um número longo válido.</value>
@@ -190,10 +190,10 @@
     <value>{0} é obrigatório(a). </value>
   </data>
   <data name="XTimeSpanInvalid" xml:space="preserve">
-    <value>{0} não é  um intervalo de tempo válido.</value>
+    <value>{0} não é um intervalo de tempo válido.</value>
   </data>
   <data name="XUrlInvalid" xml:space="preserve">
-    <value>{0} não é uma url válida.</value>
+    <value>{0} não é uma URL válida.</value>
   </data>
   <data name="XValid" xml:space="preserve">
     <value>{0} é válido(a).</value>
@@ -241,7 +241,7 @@
     <value>Não encontrado(a).</value>
   </data>
   <data name="XNotFound" xml:space="preserve">
-    <value>{0} não encontado(a).</value>
+    <value>{0} não encontrado(a).</value>
   </data>
   <data name="XItemsInvalid" xml:space="preserve">
     <value>{0} contém itens inválidos.</value>
@@ -252,7 +252,7 @@
   <data name="XByteInvalid" xml:space="preserve">
     <value>{0} não é um byte válido.</value>
   </data>
-  <data name="XIsRequeridIfOtherOsNull" xml:space="preserve">
+  <data name="XIsRequiredIfOtherIsNull" xml:space="preserve">
     <value>{0} é obrigatório se {1} for nulo.</value>
   </data>
 </root>
