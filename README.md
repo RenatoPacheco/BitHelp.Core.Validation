@@ -1,7 +1,7 @@
 # BitHelp.Core.Validation
 
 [![Licensed under the MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Integration Tests](https://github.com/RenatoPacheco/BitHelp.Core.Validation/workflows/Integration%20Tests/badge.svg?branch=master)](https://github.com/RenatoPacheco/BitHelp.Core.Validation/actions/workflows/integration-tests.yml)
+[![Integration Tests](https://github.com/RenatoPacheco/BitHelp.Core.Validation/workflows/Integration%20Tests/badge.svg)](https://github.com/RenatoPacheco/BitHelp.Core.Validation/actions/workflows/integration-tests.yml)
 [![NuGet](https://img.shields.io/nuget/v/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
 [![Nuget](https://img.shields.io/nuget/dt/BitHelp.Core.Validation.svg)](https://nuget.org/packages/BitHelp.Core.Validation)
 [![codecov](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation/branch/master/graph/badge.svg?token=6YLN9GKD8X)](https://codecov.io/gh/RenatoPacheco/BitHelp.Core.Validation)
@@ -27,10 +27,12 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.17.0
+## Release 1.0.0
 
-- feat: Add RequiredIfOtherIsNullIsValid
-- feat: Update Sonar Cloud Analyze
+- fix: Text fixes
+- fix: Method name fixes
+- feat: Simplifying error message definition
+- feat: Ignore null values ​​in lists, in the same way as individual values
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 

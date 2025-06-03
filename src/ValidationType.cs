@@ -1,7 +1,6 @@
-﻿namespace BitHelp.Core.Validation
-{
-    public enum ValidationType
-    {
+﻿namespace BitHelp.Core.Validation {
+
+    public enum ValidationType {
         /// <summary>
         /// Is a type error
         /// </summary>

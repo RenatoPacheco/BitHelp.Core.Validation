@@ -236,7 +236,7 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
 
         [Fact]
-        public void Check_list_item_null_invalid()
+        public void Check_list_item_null_valid()
         {
             ArrayValues array = new()
             {
@@ -245,19 +245,19 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
             _notification.Clear();
             _notification.NotEmptyIsValid(array.String);
-            Assert.False(_notification.IsValid());
+            Assert.True(_notification.IsValid());
 
             _notification.Clear();
             _notification.NotEmptyIsValid(array, x => x.String);
-            Assert.False(_notification.IsValid());
+            Assert.True(_notification.IsValid());
 
             array.Notifications.Clear();
             array.NotEmptyIsValid(x => x.String);
-            Assert.False(array.IsValid());
+            Assert.True(array.IsValid());
 
             array.Notifications.Clear();
             array.NotEmptyIsValid(array.String);
-            Assert.False(array.IsValid());
+            Assert.True(array.IsValid());
         }
 
         [Fact]

@@ -13,8 +13,10 @@ namespace BitHelp.Core.Validation.Extends
             if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
-            if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message, source.LastDisplayName);
+            foreach(var item in source.LastMessage) {
+                if (item != null)
+                    item.Message = string.Format(message, source.LastDisplayName);
+            }
 
             return source;
         }
@@ -27,8 +29,10 @@ namespace BitHelp.Core.Validation.Extends
             if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
-            if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message, expression.PropertyDisplay());
+            foreach (var item in source.LastMessage) {
+                if (item != null)
+                    item.Message = string.Format(message, expression.PropertyDisplay());
+            }
 
             return source;
         }
@@ -41,8 +45,10 @@ namespace BitHelp.Core.Validation.Extends
             if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
 
-            if (source.LastMessage != null)
-                source.LastMessage.Message = string.Format(message, expression.PropertyDisplay());
+            foreach (var item in source.LastMessage) {
+                if (item != null)
+                    item.Message = string.Format(message, expression.PropertyDisplay());
+            }
 
             return source;
         }

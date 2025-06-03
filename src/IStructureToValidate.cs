@@ -1,7 +1,7 @@
-﻿namespace BitHelp.Core.Validation
-{
-    public interface IStructureToValidate
-    {
+﻿namespace BitHelp.Core.Validation {
+
+    public interface IStructureToValidate {
+
         object Value { get; }
 
         string Display { get; }

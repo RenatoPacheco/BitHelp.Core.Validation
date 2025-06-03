@@ -69,6 +69,8 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
         [InlineData(12, "123")]
         [InlineData("12", "123")]
         [InlineData("12", 123)]
+        [InlineData(null, null)]
+        [InlineData(null, 123)]
         public void Check_value_array_is_valid(params object[] value)
         {
             ArrayValues single = new()
@@ -95,11 +97,9 @@ namespace BitHelp.Core.Validation.Test.ExtendsTest
 
         [Theory]
         [InlineData("", "")]
-        [InlineData(null, null)]
         [InlineData("abc")]
         [InlineData("", 123)]
         [InlineData("abc", 123)]
-        [InlineData(null, 123)]
         public void Check_value_array_not_is_valid(params object[] value)
         {
             ArrayValues single = new()

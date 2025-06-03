@@ -1,0 +1,17 @@
+# Configuration file to standardize code style between Visual Studio and VS Code
+root = true
+
+# Rules for all files
+[*]
+charset = utf-8-bom           # Visual Studio compatible (UTF-8 with BOM)
+end_of_line = crlf            # Standard Windows
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+# CA1051: Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none
+# Do not skip lines in curly braces
+csharp_new_line_before_open_brace = none

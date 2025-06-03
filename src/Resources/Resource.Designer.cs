@@ -254,9 +254,9 @@ namespace BitHelp.Core.Validation.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is required if {1} is null..
         /// </summary>
-        public static string XIsRequeridIfOtherIsNull {
+        public static string XIsRequiredIfOtherIsNull {
             get {
-                return ResourceManager.GetString("XIsRequeridIfOtherIsNull", resourceCulture);
+                return ResourceManager.GetString("XIsRequiredIfOtherIsNull", resourceCulture);
             }
         }
         
@@ -423,7 +423,7 @@ namespace BitHelp.Core.Validation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is requerid..
+        ///   Looks up a localized string similar to {0} is required..
         /// </summary>
         public static string XRequired {
             get {

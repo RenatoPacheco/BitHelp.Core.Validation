@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace BitHelp.Core.Validation
-{
+namespace BitHelp.Core.Validation {
+
     public class ValidationMessage
-        : ICloneable, IEquatable<ValidationMessage>
-    {
-        protected ValidationMessage()
-        {
+        : ICloneable, IEquatable<ValidationMessage> {
+
+        protected ValidationMessage() {
             Id = Guid.NewGuid();
             Date = DateTime.Now;
             Type = ValidationType.Error;
@@ -15,8 +14,7 @@ namespace BitHelp.Core.Validation
         public ValidationMessage(
             string message, string reference = null,
             ValidationType type = ValidationType.Error)
-            : this()
-        {
+            : this() {
             Message = message;
             Reference = reference;
             Type = type;
@@ -24,8 +22,7 @@ namespace BitHelp.Core.Validation
 
         public ValidationMessage(
             string message, ValidationType type)
-            : this()
-        {
+            : this() {
             Message = message;
             Type = type;
         }
@@ -33,8 +30,7 @@ namespace BitHelp.Core.Validation
         public ValidationMessage(
             Exception exception, string reference = null,
             ValidationType type = ValidationType.Fatal)
-            : this()
-        {
+            : this() {
             Message = exception?.Message ?? exception?.StackTrace ?? "Exception";
             Exception = exception;
             Reference = reference;
@@ -46,8 +42,7 @@ namespace BitHelp.Core.Validation
         public string Message { get; set; }
 
         private string _reference;
-        public string Reference
-        {
+        public string Reference {
             get => _reference;
             set => _reference = value?.Trim();
         }
@@ -58,77 +53,64 @@ namespace BitHelp.Core.Validation
 
         public DateTime Date { get; set; }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return Message;
         }
 
-        public bool IsTypeError()
-        {
+        public bool IsTypeError() {
             return IsTypeError(Type);
         }
 
-        public static bool IsTypeError(ValidationType type)
-        {
+        public static bool IsTypeError(ValidationType type) {
             return (int)type <= (int)ValidationType.NotFound;
         }
 
         #region operator
 
-        public bool Equals(ValidationMessage other)
-        {
-            return other != null 
+        public bool Equals(ValidationMessage other) {
+            return other != null
                 && Message == other.Message
                 && Reference == other.Reference
                 && Type == other.Type
                 && Exception == other.Exception;
         }
 
-        public override bool Equals(object obj)
-        {
+        public override bool Equals(object obj) {
             return obj is ValidationMessage value && Equals(value);
         }
 
-        public override int GetHashCode()
-        {
+        public override int GetHashCode() {
             return $"{Id}:{GetType()}".GetHashCode();
         }
 
-        public static bool operator ==(ValidationMessage a, ValidationMessage b)
-        {
-            return Equals(a, null) && Equals(b, null)
+        public static bool operator ==(ValidationMessage a, ValidationMessage b) {
+            return (Equals(a, null) && Equals(b, null))
                 || (a?.Equals(b) ?? false);
         }
 
-        public static bool operator !=(ValidationMessage a, ValidationMessage b)
-        {
+        public static bool operator !=(ValidationMessage a, ValidationMessage b) {
             return !(a == b);
         }
 
-        public static implicit operator ValidationMessage(string value)
-        {
+        public static implicit operator ValidationMessage(string value) {
             return value is null ? null : new ValidationMessage(value);
         }
 
-        public static implicit operator string(ValidationMessage value)
-        {
+        public static implicit operator string(ValidationMessage value) {
             return value?.ToString();
         }
 
-        public static implicit operator ValidationMessage(Exception value)
-        {
+        public static implicit operator ValidationMessage(Exception value) {
             return value is null ? null : new ValidationMessage(value);
         }
 
-        public static implicit operator Exception(ValidationMessage value)
-        {
+        public static implicit operator Exception(ValidationMessage value) {
             return value?.Exception;
         }
 
         #endregion
 
-        public object Clone()
-        {
+        public object Clone() {
             return MemberwiseClone();
         }
     }
