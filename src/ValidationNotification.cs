@@ -6,18 +6,17 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using BitHelp.Core.Validation.Resources;
 
-namespace BitHelp.Core.Validation
-{
-    public class ValidationNotification
-    {
+namespace BitHelp.Core.Validation {
+
+    public class ValidationNotification {
+
         public IList<ValidationMessage> Messages { get; set; } = new List<ValidationMessage>();
 
         public List<ValidationMessage> LastMessage { get; protected set; } = new List<ValidationMessage>();
 
         public string LastDisplayName { get; protected set; } = Resource.DisplayValue;
 
-        public void SetLastMessage(ValidationMessage message, string displayName)
-        {
+        public void SetLastMessage(ValidationMessage message, string displayName) {
             if (message is null)
                 throw new ArgumentNullException(nameof(message));
 
@@ -28,43 +27,36 @@ namespace BitHelp.Core.Validation
             LastDisplayName = displayName;
         }
 
-        public void CleanLastMessage()
-        {
+        public void CleanLastMessage() {
             LastMessage.Clear();
             LastDisplayName = Resource.DisplayValue;
         }
 
-        public void Add(ValidationMessage message)
-        {
+        public void Add(ValidationMessage message) {
             Messages.Add(message);
         }
 
-        public void Add(ISelfValidation data)
-        {
+        public void Add(ISelfValidation data) {
             Messages = Messages.Concat(data.Notifications.Messages).ToList();
         }
 
-        public void Add(ISelfValidation data, string prefix)
-        {
+        public void Add(ISelfValidation data, string prefix) {
             int total = data.Notifications.Messages.Count();
-            for (int i = 0; i < total; i++)
-            {
+            for (int i = 0; i < total; i++) {
                 ValidationMessage message = (ValidationMessage)data.Notifications.Messages[i].Clone();
                 message.Reference = string.IsNullOrWhiteSpace(message.Reference) ? prefix
                     : $"{prefix}.{message.Reference}";
-                this.Add(message);
+                Add(message);
             }
         }
 
-        public void Add(ValidationNotification notification)
-        {
+        public void Add(ValidationNotification notification) {
             Messages = Messages.Concat(notification.Messages).ToList();
         }
 
         private void Add<T>(
             Expression<Func<T, object>> expression, string message,
-            string reference, ValidationType type, Exception exception = null)
-        {
+            string reference, ValidationType type, Exception exception = null) {
             string display = expression.PropertyDisplay();
 
             reference = reference ?? expression.PropertyPath();
@@ -77,8 +69,7 @@ namespace BitHelp.Core.Validation
 
         private void Add<T, P>(
             Expression<Func<T, P>> expression, string message,
-            string reference, ValidationType type, Exception exception = null)
-        {
+            string reference, ValidationType type, Exception exception = null) {
             string display = expression.PropertyDisplay();
 
             reference = reference ?? expression.PropertyPath();
@@ -92,22 +83,19 @@ namespace BitHelp.Core.Validation
         #region AddError
 
         public void AddError(
-           string message, string reference = null, Exception exception = null)
-        {
+           string message, string reference = null, Exception exception = null) {
             Messages.Add(new ValidationMessage(message, reference, ValidationType.Error) { Exception = exception });
         }
 
         public void AddError<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.Error, exception);
         }
 
         public void AddError<T, P>(
             Expression<Func<T, P>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.Error, exception);
         }
 
@@ -116,23 +104,20 @@ namespace BitHelp.Core.Validation
         #region AddFatal
 
         public void AddFatal(
-           Exception exception, string reference = null)
-        {
+           Exception exception, string reference = null) {
             Messages.Add(new ValidationMessage(exception, reference));
         }
 
         public void AddFatal<T>(
             Expression<Func<T, object>> expression,
-            Exception exception, string reference = null)
-        {
+            Exception exception, string reference = null) {
             reference = reference ?? expression.PropertyPath();
             Messages.Add(new ValidationMessage(exception, reference));
         }
 
         public void AddFatal<T, P>(
             Expression<Func<T, P>> expression,
-            Exception exception, string reference = null)
-        {
+            Exception exception, string reference = null) {
             reference = reference ?? expression.PropertyPath();
             Messages.Add(new ValidationMessage(exception, reference));
         }
@@ -142,22 +127,19 @@ namespace BitHelp.Core.Validation
         #region AddUnauthorized
 
         public void AddUnauthorized(
-           string message, string reference = null, Exception exception = null)
-        {
+           string message, string reference = null, Exception exception = null) {
             Messages.Add(new ValidationMessage(message, reference, ValidationType.Unauthorized) { Exception = exception });
         }
 
         public void AddUnauthorized<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.Unauthorized, exception);
         }
 
         public void AddUnauthorized<T, P>(
             Expression<Func<T, P>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.Unauthorized, exception);
         }
 
@@ -166,22 +148,19 @@ namespace BitHelp.Core.Validation
         #region AddNotFound
 
         public void AddNotFound(
-           string message, string reference = null, Exception exception = null)
-        {
+           string message, string reference = null, Exception exception = null) {
             Messages.Add(new ValidationMessage(message, reference, ValidationType.NotFound) { Exception = exception });
         }
 
         public void AddNotFound<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.NotFound, exception);
         }
 
         public void AddNotFound<T, P>(
             Expression<Func<T, P>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.NotFound, exception);
         }
 
@@ -190,22 +169,19 @@ namespace BitHelp.Core.Validation
         #region AddAlert
 
         public void AddAlert(
-           string message, string reference = null, Exception exception = null)
-        {
+           string message, string reference = null, Exception exception = null) {
             Messages.Add(new ValidationMessage(message, reference, ValidationType.Alert) { Exception = exception });
         }
 
         public void AddAlert<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.Alert, exception);
         }
 
         public void AddAlert<T, P>(
             Expression<Func<T, P>> expression,
-            string message = null, string reference = null, Exception exception = null)
-        {
+            string message = null, string reference = null, Exception exception = null) {
             Add(expression, message, reference, ValidationType.Alert, exception);
         }
 
@@ -214,22 +190,19 @@ namespace BitHelp.Core.Validation
         #region AddSuccess
 
         public void AddSuccess(
-           string message, string reference = null)
-        {
+           string message, string reference = null) {
             Messages.Add(new ValidationMessage(message, reference, ValidationType.Success));
         }
 
         public void AddSuccess<T>(
             Expression<Func<T, object>> expression,
-            string message = null, string reference = null)
-        {
+            string message = null, string reference = null) {
             Add(expression, message, reference, ValidationType.Success);
         }
 
         public void AddSuccess<T, P>(
             Expression<Func<T, P>> expression,
-            string message = null, string reference = null)
-        {
+            string message = null, string reference = null) {
             Add(expression, message, reference, ValidationType.Success);
         }
 
@@ -238,62 +211,52 @@ namespace BitHelp.Core.Validation
         #region AddInfo
 
         public void AddInfo(
-           string message, string reference = null)
-        {
+           string message, string reference = null) {
             Messages.Add(new ValidationMessage(message, reference, ValidationType.Info));
         }
 
         public void AddInfo<T>(
             Expression<Func<T, object>> expression, string message = null,
-            string reference = null)
-        {
+            string reference = null) {
             Add(expression, message, reference, ValidationType.Info);
         }
 
         public void AddInfo<T, P>(
             Expression<Func<T, P>> expression, string message = null,
-            string reference = null)
-        {
+            string reference = null) {
             Add(expression, message, reference, ValidationType.Info);
         }
 
         #endregion
 
-        public bool IsValid()
-        {
+        public bool IsValid() {
             return !Messages.Any(x => x.IsTypeError());
         }
 
-        public bool AnyTypeError()
-        {
+        public bool AnyTypeError() {
             return Messages.Any(x => x.IsTypeError());
         }
 
-        public void Clear()
-        {
+        public void Clear() {
             LastMessage.Clear();
             Messages.Clear();
         }
 
-        public void RemoveAtReference(string reference)
-        {
+        public void RemoveAtReference(string reference) {
             reference = reference?.ToLower() ?? string.Empty;
             string referencePrefix = $"{reference}.";
-            Messages = Messages.Where(x =>
-            {
+            Messages = Messages.Where(x => {
                 string compare = x.Reference?.ToLower() ?? string.Empty;
                 return compare != reference && compare.IndexOf(referencePrefix) != 0;
             }).ToList();
         }
 
-        public void RemoveAtReference<T>(Expression<Func<T, object>> expression)
-        {
+        public void RemoveAtReference<T>(Expression<Func<T, object>> expression) {
             string reference = expression.PropertyPath();
             RemoveAtReference(reference);
         }
 
-        public void RemoveAtReference<T, P>(Expression<Func<T, P>> expression)
-        {
+        public void RemoveAtReference<T, P>(Expression<Func<T, P>> expression) {
             string reference = expression.PropertyPath();
             RemoveAtReference(reference);
         }
