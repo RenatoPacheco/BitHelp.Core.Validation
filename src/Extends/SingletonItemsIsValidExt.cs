@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using BitHelp.Core.Validation.Helpers;
 using BitHelp.Core.Validation.Notations;
 using BitHelp.Core.Validation.Resources;
+using BitHelp.Core.Validation.Utilities;
 
 namespace BitHelp.Core.Validation.Extends
 {
@@ -63,12 +64,8 @@ namespace BitHelp.Core.Validation.Extends
         {
             source.CleanLastMessage();
             SingletonItemsIsValidAttribute validation = new SingletonItemsIsValidAttribute();
-            if (!validation.IsValid(data.Value))
-            {
-                string text = validation.FormatErrorMessage(data.Display);
-                var message = new ValidationMessage(text, data.Reference);
-                source.SetLastMessage(message, data.Display);
-                source.Add(message);
+            if (!validation.IsValid(data.Value)) {
+                source.RegisterError(data, validation);
             }
             return source;
         }

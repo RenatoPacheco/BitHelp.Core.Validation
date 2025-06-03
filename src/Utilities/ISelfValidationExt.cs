@@ -1,6 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace BitHelp.Core.Validation.Extends {
+namespace BitHelp.Core.Validation.Utilities {
 
     public static class ISelfValidationExt {
 
