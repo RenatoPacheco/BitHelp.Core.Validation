@@ -1,5 +1,12 @@
 # BitHelp.Core.Validation
 
+## Release 1.0.0
+
+- fix: Text fixes
+- fix: Method name fixes
+- feat: Simplifying error message definition
+- feat: Ignore null values ​​in lists, in the same way as individual values
+
 ## Release 0.17.0
 
 - feat: Add RequiredIfOtherIsNullIsValid

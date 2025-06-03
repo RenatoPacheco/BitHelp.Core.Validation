@@ -27,10 +27,12 @@ dotnet add package BitHelp.Core.Validation
 
 ## Latest releases
 
-## Release 0.17.0
+## Release 1.0.0
 
-- feat: Add RequiredIfOtherIsNullIsValid
-- feat: Update Sonar Cloud Analyze
+- fix: Text fixes
+- fix: Method name fixes
+- feat: Simplifying error message definition
+- feat: Ignore null values ​​in lists, in the same way as individual values
 
 To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
