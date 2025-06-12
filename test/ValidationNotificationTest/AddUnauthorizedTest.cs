@@ -39,11 +39,11 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         public void Check_expression_set_message()
         {
             _notification.Clear();
-            _notification.AddUnauthorized<SingleValues>(x => x.BoolNull, message: "Message here");
+            _notification.AddUnauthorized<SingleValues>(x => x.BoolNull, message: "Unauthorized access.");
 
             ValidationMessage result = _notification.Messages.First();
 
-            Assert.Equal("Message here", result.Message);
+            Assert.Equal("Unauthorized access.", result.Message);
             Assert.Equal(ValidationType.Unauthorized, result.Type);
         }
 

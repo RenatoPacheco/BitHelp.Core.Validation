@@ -20,7 +20,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         }
 
         private string _email;
-        [Display(Name = "E-mail")]
+        [Display(Name = "Email")]
         public string Email
         {
             get => _email;
@@ -67,8 +67,8 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         {
             ValidationNotification notifications = new();
 
-            Text = "text here";
-            Email = "email@test.site.com";
+            Text = "sample text";
+            Email = "email@example.com";
 
             Assert.False(IsValid());
             Assert.True(notifications.IsValid());
@@ -93,7 +93,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
             Assert.False(IsValid());
             Assert.True(notifications.IsValid());
 
-            notifications.Add("Text error....");
+            notifications.Add("Text error...");
             Notifications.Add("Other error...");
             notifications.Add(this, prefix);
 

@@ -32,9 +32,9 @@ dotnet add package BitHelp.Core.Validation
 - fix: Text fixes
 - fix: Method name fixes
 - feat: Simplifying error message definition
-- feat: Ignore null values ​​in lists, in the same way as individual values
+- feat: Ignore null values in lists, just as with individual values
 
-To read about others releases access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
+To read about other releases, access [RELEASES.md](https://github.com/RenatoPacheco/BitHelp.Core.Validation/blob/master/RELEASES.md)
 
 # Build and Test
 
@@ -55,7 +55,7 @@ dotnet test --no-build --verbosity normal
 
 ## Report Generator
 
-[Coverlet] is used as a package in the test project, to generate the test coverage file. But to generate a report, the [Report Generator] must be installed on the computer, in this case in global scope. In this project I am using version 4.8.6.
+[Coverlet] is used as a package in the test project to generate the test coverage file. However, to generate a report, the [Report Generator] must be installed on your computer, in this case globally. In this project, I am using version 4.8.6.
 
 ```	
 dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.8.6
@@ -73,9 +73,9 @@ dotnet test --no-build --verbosity=normal --collect:"XPlat Code Coverage" --resu
 reportgenerator "-reports:coverage/**/coverage.cobertura.xml" "-targetdir:coverage/report" -reporttypes:Html
 ```
 
-Upon execution, the command will generate a test report in the **./coverage/report**.
+After execution, the test report will be available in **./coverage/report**.
 
-So I don't have to run each command for each test that wants to generate the report, I created a **./buildReport.sh** to make it easier, so just run the shell script below:
+To avoid running each command manually every time you want to generate the report, I created **./buildReport.sh** to simplify the process. Just run the shell script below:
 
 ```	
 ./buildReport.sh

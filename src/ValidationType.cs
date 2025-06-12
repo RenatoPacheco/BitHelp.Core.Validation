@@ -2,31 +2,31 @@
 
     public enum ValidationType {
         /// <summary>
-        /// Is a type error
+        /// Represents a validation error.
         /// </summary>
         Fatal,
         /// <summary>
-        /// Is a type error
+        /// Represents a validation error.
         /// </summary>
         Error,
         /// <summary>
-        /// Is a type error
+        /// Represents a validation error.
         /// </summary>
         Unauthorized,
         /// <summary>
-        /// Is a type error
+        /// Represents a validation error.
         /// </summary>
         NotFound,
         /// <summary>
-        /// Is a type info
+        /// Represents a validation information message.
         /// </summary>
         Alert,
         /// <summary>
-        /// Is a type info
+        /// Represents a validation information message.
         /// </summary>
         Success,
         /// <summary>
-        /// Is a type info
+        /// Represents a validation information message.
         /// </summary>
         Info
     }

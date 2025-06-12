@@ -5,7 +5,7 @@
 - fix: Text fixes
 - fix: Method name fixes
 - feat: Simplifying error message definition
-- feat: Ignore null values ​​in lists, in the same way as individual values
+- feat: Ignore null values in lists, just as with individual values
 
 ## Release 0.17.0
 
