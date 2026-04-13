@@ -67,7 +67,7 @@ namespace BitHelp.Core.Validation.Test.ValidationNotificationTest
         {
             ValidationNotification notifications = new();
 
-            Text = "sample text";
+            Text = "text here";
             Email = "email@example.com";
 
             Assert.False(IsValid());

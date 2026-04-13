@@ -53,6 +53,8 @@ namespace BitHelp.Core.Validation {
 
         public DateTime Date { get; set; }
 
+        public ValidationCode Code { get; set; }
+
         public override string ToString() {
             return Message;
         }
