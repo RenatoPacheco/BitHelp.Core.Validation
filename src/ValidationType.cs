@@ -16,6 +16,10 @@
         /// <summary>
         /// Represents a validation error.
         /// </summary>
+        Unauthenticated,
+        /// <summary>
+        /// Represents a validation error.
+        /// </summary>
         NotFound,
         /// <summary>
         /// Represents a validation information message.
@@ -28,6 +32,10 @@
         /// <summary>
         /// Represents a validation information message.
         /// </summary>
-        Info
+        Info,
+        /// <summary>
+        /// Represents a validation information message.
+        /// </summary>
+        Empty
     }
 }

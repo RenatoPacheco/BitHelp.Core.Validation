@@ -15,6 +15,7 @@ namespace BitHelp.Core.Validation {
             string message, string reference = null,
             ValidationType type = ValidationType.Error)
             : this() {
+            Code = ToCode(type);
             Message = message;
             Reference = reference;
             Type = type;
@@ -23,6 +24,7 @@ namespace BitHelp.Core.Validation {
         public ValidationMessage(
             string message, ValidationType type)
             : this() {
+            Code = ToCode(type);
             Message = message;
             Type = type;
         }
@@ -31,6 +33,7 @@ namespace BitHelp.Core.Validation {
             Exception exception, string reference = null,
             ValidationType type = ValidationType.Fatal)
             : this() {
+            Code = ToCode(type);
             Message = exception?.Message ?? exception?.StackTrace ?? "Exception";
             Exception = exception;
             Reference = reference;
@@ -65,6 +68,31 @@ namespace BitHelp.Core.Validation {
 
         public static bool IsTypeError(ValidationType type) {
             return (int)type <= (int)ValidationType.NotFound;
+        }
+
+        private ValidationCode ToCode(ValidationType type) {
+            switch (type) {
+                case ValidationType.Fatal:
+                    return ValidationCode.InternalServerError;
+                case ValidationType.Error:
+                    return ValidationCode.BadRequest;
+                case ValidationType.Unauthorized:
+                    return ValidationCode.Unauthorized;
+                case ValidationType.Unauthenticated:
+                    return ValidationCode.Unauthorized;
+                case ValidationType.NotFound:
+                    return ValidationCode.NotFound;
+                case ValidationType.Alert:
+                    return ValidationCode.Accepted;
+                case ValidationType.Success:
+                    return ValidationCode.OK;
+                case ValidationType.Info:
+                    return ValidationCode.OK;
+                case ValidationType.Empty:
+                    return ValidationCode.NoContent;
+                default:
+                    return ValidationCode.None;
+            }
         }
 
         #region operator
