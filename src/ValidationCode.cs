@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BitHelp.Core.Validation {
 
@@ -16,6 +17,8 @@ namespace BitHelp.Core.Validation {
         Processing = 102,
         [Display(Name = "Early Hints")]
         EarlyHints = 103,
+        [Display(Name = "Upload Resumption Supported")]
+        UploadResumptionSupported = 104,
 
         // 2xx Success
         [Display(Name = "OK")]
@@ -84,8 +87,8 @@ namespace BitHelp.Core.Validation {
         LengthRequired = 411,
         [Display(Name = "Precondition Failed")]
         PreconditionFailed = 412,
-        [Display(Name = "Payload Too Large")]
-        PayloadTooLarge = 413,
+        [Display(Name = "Content Too Large")]
+        ContentTooLarge = 413,
         [Display(Name = "URI Too Long")]
         URITooLong = 414,
         [Display(Name = "Unsupported Media Type")]
@@ -94,12 +97,10 @@ namespace BitHelp.Core.Validation {
         RangeNotSatisfiable = 416,
         [Display(Name = "Expectation Failed")]
         ExpectationFailed = 417,
-        [Display(Name = "I'm A Teapot")]
-        ImATeapot = 418,
         [Display(Name = "Misdirected Request")]
         MisdirectedRequest = 421,
-        [Display(Name = "Unprocessable Entity")]
-        UnprocessableEntity = 422,
+        [Display(Name = "Unprocessable Content")]
+        UnprocessableContent = 422,
         [Display(Name = "Locked")]
         Locked = 423,
         [Display(Name = "Failed Dependency")]

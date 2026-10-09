@@ -78,7 +78,7 @@ namespace BitHelp.Core.Validation.Test.ValidationMessageTest
         [InlineData(ValidationType.Fatal, ValidationCode.InternalServerError)]
         [InlineData(ValidationType.Error, ValidationCode.BadRequest)]
         [InlineData(ValidationType.Unauthorized, ValidationCode.Unauthorized)]
-        [InlineData(ValidationType.Unauthenticated, ValidationCode.Unauthorized)]
+        [InlineData(ValidationType.Forbidden, ValidationCode.Forbidden)]
         [InlineData(ValidationType.NotFound, ValidationCode.NotFound)]
         [InlineData(ValidationType.Alert, ValidationCode.Accepted)]
         [InlineData(ValidationType.Success, ValidationCode.OK)]

@@ -78,8 +78,8 @@ namespace BitHelp.Core.Validation {
                     return ValidationCode.BadRequest;
                 case ValidationType.Unauthorized:
                     return ValidationCode.Unauthorized;
-                case ValidationType.Unauthenticated:
-                    return ValidationCode.Unauthorized;
+                case ValidationType.Forbidden:
+                    return ValidationCode.Forbidden;
                 case ValidationType.NotFound:
                     return ValidationCode.NotFound;
                 case ValidationType.Alert:
