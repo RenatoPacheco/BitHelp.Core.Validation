@@ -16,6 +16,10 @@
         /// <summary>
         /// Represents a validation error.
         /// </summary>
+        Unauthenticated,
+        /// <summary>
+        /// Represents a validation error.
+        /// </summary>
         Forbidden,
         /// <summary>
         /// Represents a validation error.

@@ -78,6 +78,7 @@ namespace BitHelp.Core.Validation.Test.ValidationMessageTest
         [InlineData(ValidationType.Fatal, ValidationCode.InternalServerError)]
         [InlineData(ValidationType.Error, ValidationCode.BadRequest)]
         [InlineData(ValidationType.Unauthorized, ValidationCode.Unauthorized)]
+        [InlineData(ValidationType.Unauthenticated, ValidationCode.Unauthorized)]
         [InlineData(ValidationType.Forbidden, ValidationCode.Forbidden)]
         [InlineData(ValidationType.NotFound, ValidationCode.NotFound)]
         [InlineData(ValidationType.Alert, ValidationCode.Accepted)]
@@ -107,6 +108,22 @@ namespace BitHelp.Core.Validation.Test.ValidationMessageTest
             Assert.Equal(ValidationCode.NotFound, value.Code);
             Assert.Equal(ValidationType.NotFound, value.Type);
             Assert.Equal("Resource not found", value.Message);
+        }
+
+        [Fact]
+        public void Check_is_type_error_for_unauthenticated_and_forbidden()
+        {
+            Assert.True(new ValidationMessage("Message", ValidationType.Unauthenticated).IsTypeError());
+            Assert.True(new ValidationMessage("Message", ValidationType.Forbidden).IsTypeError());
+            Assert.False(new ValidationMessage("Message", ValidationType.Alert).IsTypeError());
+        }
+
+        [Fact]
+        public void Check_unauthenticated_and_forbidden_have_different_codes()
+        {
+            ValidationMessage unauthenticated = new ValidationMessage("Message", ValidationType.Unauthenticated);
+            ValidationMessage forbidden = new ValidationMessage("Message", ValidationType.Forbidden);
+            Assert.NotEqual(unauthenticated.Code, forbidden.Code);
         }
     }
 }
